@@ -1,0 +1,91 @@
+.reviews-section {
+    background-color: var(--color-bg);
+    text-align: center;
+}
+
+.reviews-title {
+    font-family: 'Biro', cursive;
+    font-size: 3rem;
+    color: var(--color-gray-dark);
+    margin-bottom: 3rem;
+}
+
+.reviews-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+}
+
+.review-card {
+    background-color: var(--color-gray-dark);
+    padding-bottom: 10rem;
+    color: var(--color-bg);
+    border-radius: 1rem;
+    padding: 2rem;
+    width: 500px;
+    /* Ancho fijo similar al formulario */
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: left;
+}
+
+.review-name {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    text-align: center;
+}
+
+.review-stars {
+    color: var(--color-yellow);
+    text-align: center;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+.review-comment {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    line-height: 1.5;
+    flex-grow: 1;
+    text-align: justify;
+}
+
+.review-card {
+    animation: fadeIn 0.6s ease;
+}
+
+.review-date {
+    font-size: 0.8rem;
+    color: var(--color-pink);
+    text-align: right;
+    margin-top: 0.5rem;
+    font-style: italic;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    } }
+
+/* MOBILE */
+@media (max-width: 768px) {
+    .review-card {
+        width: 100%;
+        /* Se adapta a móvil */
+    }
+
+    .reviews-title {
+        font-size: 2.2rem;
+    }
+}

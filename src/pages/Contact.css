@@ -1,0 +1,101 @@
+.contact-page {
+    background-color: var(--color-bg);
+    padding: 4rem 2rem;
+    color: var(--color-gray-dark);
+}
+
+.christmas-decor {
+    display: block;
+    width: 100%;
+}
+
+.contact-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 4rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+.contact-info {
+    flex: 1;
+    min-width: 300px;
+    text-align: center;
+    align-items: center;
+}
+
+.contact-title {
+    font-family: 'Biro', serif;
+    font-weight: lighter;
+    font-size: 4rem;
+    color: var(--color-gray-dark);
+    margin-bottom: 1.5rem;
+}
+
+.contact-text {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.2rem;
+    margin-bottom: 2.5rem;
+    line-height: 1.6;
+}
+
+.contact-icons {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.contact-icons a {
+    font-size: 2.5rem;
+    color: var(--color-gray-dark);
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.contact-icons a:hover {
+    color: var(--color-pink);
+    transform: scale(1.1);
+}
+
+.contact-image {
+    flex: 1;
+    min-width: 300px;
+    text-align: center;
+}
+
+.contact-image img {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    object-fit: contain;
+}
+
+.catalogo-price-image {
+    display: flex;
+    justify-content: center;
+}
+
+.catalogo-price-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    /* opcional */ }
+
+@media (max-width: 768px) {
+    .contact-wrapper {
+        flex-direction:column-reverse;
+        align-items: center;
+        text-align: center;
+    }
+
+    .contact-info {
+        text-align: center;
+    }
+
+    .contact-image img {
+        max-width: 50%;
+    }
+}

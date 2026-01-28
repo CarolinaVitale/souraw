@@ -1,0 +1,182 @@
+@import '../styles/variables.css';
+
+.hero-buttons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.hero {
+    background-color: var(--color-bg);
+    padding: 2rem 1rem 0;
+    position: relative;
+}
+
+.hero-doll {
+    position: absolute;
+    bottom: 0px;
+    left: 3%;
+    width: 180px;
+    z-index: 1;
+    transform: translateY(150px);
+}
+
+.logo-souraw {
+    display: none;
+}
+
+.christmas-decor {
+    display: block;
+    width: 100%;
+}
+
+.hero-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+}
+
+/* Imagen */
+.hero-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.hero-image img {
+    width: 100%;
+    max-width: 450px;
+    height: auto;
+}
+
+/* Texto + botón */
+.hero-text {
+    flex: 1;
+    color: var(--color-purple);
+    text-align: center;
+    background-color: var(--color-bg);
+}
+
+.hero-text h1 {
+    font-family: 'Montserrat', cursive;
+    font-weight: 800;
+    font-size: 1.5rem;
+    /* Responsive font size */
+    margin-bottom: 1rem;
+    color: var(--color-purple);
+}
+
+.hero-text p {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 800;
+    font-size: 1rem;
+    line-height: 1.6;
+    margin: 0 auto 1.5rem;
+    max-width: 500px;
+    padding: 0 1rem;
+}
+
+.hero-text-button {
+    background-color: var(--color-yellow);
+    color: var(--color-gray-dark);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    padding: 0.8rem 2.5rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 2rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin: 10px;
+    text-decoration: none;
+}
+
+
+.hero-text-button:hover {
+    background-color: var(--color-pink);
+    color: var(--color-gray-dark);
+}
+
+.social-icons {
+    padding-top: 2rem;
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.social-icons a {
+    color: var(--color-pink);
+    font-size: 1.8rem;
+    transition: transform 0.2s ease;
+}
+
+.social-icons a:hover {
+    transform: scale(1.2);
+}
+
+/* --- MOBILE --- */
+@media (max-width: 768px) {
+    .hero-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 0;
+    }
+
+    .hero-image img {
+        max-width: 60%;
+    }
+
+    .hero-text {
+        background-color: rgb(252, 230, 207, 0.6);
+    }
+
+    .hero-text p {
+        font-size: 1rem;
+        background-color: var(--color-bg);
+        color: var(--color-red);
+
+    }
+
+    .hero-text h1 {
+        font-size: 1.3rem;
+        color: var(--color-green);
+        background-color: var(--color-bg);
+    }
+
+    .social-icons {
+        gap: 1.5rem;
+    }
+
+    .social-icons a {
+        color: var(--color-green);
+
+    }
+
+    .hero-doll {
+        width: 150px;
+        transform: translateY(120px);
+    }
+
+    .logo-souraw {
+        display: block;
+        width: 100%;
+    }
+
+    .hero-buttons {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .hero-text-button {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        width: 180px;
+        padding: 0.8rem 3rem;
+    }
+}

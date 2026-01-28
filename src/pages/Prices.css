@@ -1,0 +1,26 @@
+/* src/pages/Prices.css */
+
+.lista-precios-container {
+    text-align: center;
+    background-color: var(--color-bg);
+    padding: 0;
+    margin: 0;
+}
+
+.lista-precios-img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    margin-top: -180px;
+    transform: translateY(50px);
+}
+
+/* --- MOBILE --- */
+@media (max-width: 768px) {
+
+.lista-precios-img {
+        margin-top: -60px;
+        transform: translateY(20px);
+    }
+}

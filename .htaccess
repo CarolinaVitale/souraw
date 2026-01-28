@@ -1,0 +1,10 @@
+# /public_html/souraw/.htaccess
+RewriteEngine On
+
+# Sirve archivos y carpetas reales
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# Todo lo demás → index.html del build (SPA)
+RewriteRule . index.html [L]

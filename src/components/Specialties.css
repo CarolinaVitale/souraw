@@ -1,0 +1,46 @@
+@import '../styles/variables.css';
+
+.specialties {
+    background-color: var(--color-gray-dark);
+    /* background-image: url('../assets/specialties-bg.webp');
+    background-repeat: repeat;
+    background-size: 1000px; */
+    padding: 4rem 2rem;
+    text-align: center;
+}
+
+.specialties h2 {
+    font-family: 'Biro', serif;
+    font-weight: lighter;
+    font-size: 3rem;
+    color: var(--color-bg);
+}
+
+.specialties-grid {
+    display: grid;
+    gap: 2rem;
+    padding-bottom: 3rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.specialty-card img {
+    width: 100%;
+    border-radius: 10px;
+    object-fit: cover;
+    aspect-ratio: 4 / 5;
+}
+
+/* DESKTOP: 3 columnas */
+@media (min-width: 768px) {
+    .specialties-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* MOBILE: 2 columnas */
+@media (max-width: 767px) {
+    .specialties-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}

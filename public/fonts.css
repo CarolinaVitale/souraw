@@ -1,0 +1,36 @@
+@font-face {
+    font-family: 'Nauryz';
+    src: url('/fonts/NauryzRedKeds.woff2') format('truetype');
+    font-weight: lighter;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Biro';
+    src: url('/fonts/biro-script-plus.woff2') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Montserrat en todos sus pesos */
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('/fonts/Montserrat-SemiBold.woff2') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('/fonts/Montserrat-Regular.woff2') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('/fonts/Montserrat-Black.ttf') format('truetype');
+    font-weight: 800;
+    font-style: normal;
+}
