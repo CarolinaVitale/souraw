@@ -1,13 +1,9 @@
-
-/* Estilos base */
 body {
   margin: 0;
   font-family: 'Montserrat', sans-serif;
   background-color: #fffaf7;
   color: #333;
 }
-
-/* Usá Nauryz donde lo necesites */
 
 .App {
   text-align: center;

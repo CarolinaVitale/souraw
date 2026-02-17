@@ -1,11 +1,11 @@
 // src/pages/Home.jsx
 import React from 'react';
-import Hero from '../components/Hero';
-import ChoosingUs from '../components/ChoosingUs';
-import Carousel from '../components/MenuCarousel';
-import Illustration from '../components/Illustration';
-import Specialties from '../components/Specialties';
-import Contact from '../components/ContactUs';
+import Hero from '../components/Hero/Hero';
+import ChoosingUs from '../components/ChoosingUs/ChoosingUs';
+import Carousel from '../components/MenuCarousel/MenuCarousel';
+import Illustration from '../components/Illustration/Illustration';
+import Specialties from '../components/Specialties/Specialties';
+import Contact from '../components/ContactUs/ContactUs';
 // import BigLogo from '../components/BigLogo';
 
 const Home = () => {

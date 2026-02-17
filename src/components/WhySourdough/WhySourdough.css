@@ -1,0 +1,91 @@
+.why-sourdough {
+    position: relative;
+    width: 100%;
+    height: 70vh;
+    display: flex;
+    overflow: hidden;
+}
+
+.image {
+    flex: 1;
+    background-size: cover;
+    background-position: center;
+}
+
+.desktop-only {
+    display: block;
+}
+
+.mobile-only {
+    display: none;
+}
+
+.mobile-image {
+    display: none;
+}
+
+.text-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgb(54, 54, 54, 0.9);
+    padding: 2rem 3rem;
+    z-index: 2;
+    text-align: center;
+    max-width: 600px;
+    font-family: 'Montserrat', sans-serif;
+    border-radius: 12px;
+}
+
+.text-overlay h2 {
+    font-family: 'Biro', serif;
+    font-weight: lighter;
+    color: var(--color-pink);
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.text-overlay p {
+    color: var(--color-bg);
+    font-size: 1.2rem;
+    line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+    .why-sourdough {
+        flex-direction: column;
+        height: auto;
+        min-height: 95vh;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .desktop-only {
+        display: none;
+    }
+
+    .mobile-image {
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        background-size: cover;
+        background-position: center;
+        z-index: 1;
+    }
+
+    .text-overlay {
+        position: relative;
+        top: auto;
+        left: auto;
+        transform: none;
+        background-color: rgb(54, 54, 54, 0.9);
+        width: 85%;
+        margin: 2rem auto;
+        padding: 1.5rem;
+        z-index: 2;
+    }
+}

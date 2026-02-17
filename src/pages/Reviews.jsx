@@ -1,5 +1,5 @@
-import ReviewForm from "../components/ReviewsForm";
-import ReviewsList from "../components/ReviewsList";
+import ReviewForm from "../components/ReviewForm/ReviewsForm";
+import ReviewsList from "../components/ReviewList/ReviewsList";
 
 
 const ReviewsPage = () => (
