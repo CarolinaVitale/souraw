@@ -6,6 +6,8 @@ import Carousel from '../components/MenuCarousel/MenuCarousel';
 import Illustration from '../components/Illustration/Illustration';
 import Specialties from '../components/Specialties/Specialties';
 import Contact from '../components/ContactUs/ContactUs';
+import Ribbon from '../components/Ribbon/Ribbon';
+import Founder from '../components/Founder/Founder'
 // import BigLogo from '../components/BigLogo';
 
 const Home = () => {
@@ -13,6 +15,8 @@ const Home = () => {
         <>
             {/* <BigLogo /> */}
             <Hero />
+            <Ribbon />
+            <Founder />
             <ChoosingUs />
             <Carousel />
             <Specialties />

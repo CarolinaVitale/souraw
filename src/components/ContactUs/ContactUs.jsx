@@ -10,11 +10,11 @@ const ContactUs = () => {
             <div className="contact-content">
                 <div className="contact-text">
 
-                    <h2>Contáctanos</h2>
+                    <h2>Contact Us</h2>
 
                     <p>
-                        ¿Querés hacer un pedido, saber más sobre nuestros productos o simplemente saludar?
-                        ¡Escríbenos y empecemos a compartir masa madre con propósito!
+                        Would you like to place an order, learn more about our products, or simply say hello?
+                        Write to us and let’s start sharing sourdough with purpose
                     </p>
                     <a
                         href="https://wa.me/584121531299?text=Hola%2C%20quisiera%20hacer%20un%20pedido%20♡"
@@ -22,7 +22,7 @@ const ContactUs = () => {
                         rel="noopener noreferrer"
                         className="contact-button"
                     >
-                        escribir por WhatsApp
+                        WhatsApp
                     </a>
                 </div>
 
@@ -30,7 +30,6 @@ const ContactUs = () => {
                     <img src={contactIllustration} alt="Ilustración de contacto" />
                 </div>
 
-x
             </div>
         </section>
     );

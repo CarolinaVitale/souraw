@@ -1,57 +1,92 @@
-import React, { useState } from 'react';
-import './Header.css';
-import { NavLink } from 'react-router-dom';
-import logomovil from '../../assets/header-logo-movil.png';
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import '../Header/Header.css';
+import logo from '../../assets/logo-header.png'
 
-const Header = () => {
-    const [menuOpen, setMenuOpen] = useState(false);
+function Navbar() {
+    const [click, setClick] = useState(false);
+    const [navbar, setNavbar] = useState(false);
 
-    const toggleMenu = () => setMenuOpen(!menuOpen);
-    const closeMenu = () => setMenuOpen(false);
+    const handleClick = () => setClick(!click);
+    const closeMobileMenu = () => setClick(false);
+
+    const changeBackground = () => {
+        if (window.scrollY >= 100) {
+            setNavbar(true);
+        } else {
+            setNavbar(false);
+        }
+    }
+    useEffect(() => {
+        window.addEventListener('scroll', changeBackground);
+        return () => window.removeEventListener('scroll', changeBackground);
+    }, []);
 
     return (
-        <header className="header-full">
-            <nav className="top-nav">
-                {/* Logo móvil */}
-                <NavLink to="/" className="mobile-logo" onClick={closeMenu}>
-                    <img src={logomovil} alt="Logo Souraw" />
-                </NavLink>
-
-                {/* Nombre Souraw visible solo en desktop */}
-                <div className="nav-left">
-                    <NavLink to="/" className="navbar-home" onClick={closeMenu}>
-                        sOURaW
-                    </NavLink>
-                </div>
-
-                {/* Navegación */}
-                <ul className={`top-nav-list ${menuOpen ? 'show' : ''}`}>
-                    <div className="navbar-pages-group">
-                        <li className="navbar-pages">
-                            <NavLink to="/nosotros" onClick={closeMenu} className={({ isActive }) => isActive ? 'active' : ''}>nosotros</NavLink>
-                        </li>
-                        <li className="navbar-pages">
-                            <NavLink to="/catalogo" onClick={closeMenu} className={({ isActive }) => isActive ? 'active' : ''}>catálogo</NavLink>
-                        </li>
-                        <li className="navbar-pages">
-                            <NavLink to="/contacto" onClick={closeMenu} className={({ isActive }) => isActive ? 'active' : ''}>contacto</NavLink>
-                        </li>
-                        <li className="navbar-pages">
-                            <NavLink to="/pedidos" onClick={closeMenu} className={({ isActive }) => isActive ? 'active' : ''}>pedidos</NavLink>
-                        </li>
-                        <li className="navbar-pages">
-                            <NavLink to="/resenas" onClick={closeMenu} className={({ isActive }) => isActive ? 'active' : ''}>reseñas</NavLink>
-                        </li>
+        <>
+            <nav className={navbar ? 'navbar active' : 'navbar'}>
+                <div className='navbar-container'>
+                    <Link to='/' className='navbar-logo' onClick={closeMobileMenu}>
+                        <img className='logo' src={logo} alt='logo' />
+                    </Link>
+                    <div className='menu-icon' onClick={handleClick}>
+                        <i className={click ? 'fas fa-times' : 'fas fa-bars'} />
                     </div>
-                </ul>
+                    <ul className={click ? 'nav-menu active' : 'nav-menu'}>
 
-                {/* Hamburguesa */}
-                <button className="hamburger" onClick={toggleMenu}>☰</button>
+                        <li className='nav-item'>
+                            <Link
+                                to='/about'
+                                className='nav-links'
+                                onClick={closeMobileMenu}
+                            >
+                                ABOUT
+                            </Link>
+                        </li>
+                        <li className='nav-item'>
+                            <Link
+                                to='/products'
+                                className='nav-links'
+                                onClick={closeMobileMenu}
+                            >
+                                PRODUCTS
+                            </Link>
+                        </li>
+
+                        <li className='nav-item'>
+                            <Link
+                                to='/contact'
+                                className='nav-links'
+                                onClick={closeMobileMenu}
+                            >
+                                CONTACT
+                            </Link>
+                        </li>
+                        <li className='nav-item'>
+                            <Link
+                                to='/reviews'
+                                className='nav-links'
+                                onClick={closeMobileMenu}
+                            >
+                                REVIEWS
+                            </Link>
+                        </li>
+                        <li className='nav-item'>
+                            <Link
+                                to='/orders'
+                                className='nav-links'
+                                onClick={closeMobileMenu}
+                            >
+                                ORDERS
+                            </Link>
+                        </li>
+                    </ul>
+                </div>
             </nav>
-        </header>
+        </>
     );
-};
+}
 
-export default Header;
+export default Navbar;
 
 

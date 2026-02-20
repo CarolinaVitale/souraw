@@ -11,25 +11,31 @@ const About = () => {
             <div className="about-content">
 
                 <div className="about-text">
-                    <h2 data-aos='fade-right'>Un propósito fermentado</h2>
+                    <h2 data-aos='fade-right'>Titulo</h2>
                     <p data-aos='fade-up'>
-                        SOURAW nació de una búsqueda por el bienestar. En un momento emocionalmente difícil —con cambios familiares, distancias, y un diagnóstico que marcó mi vida— el pan de masa madre apareció como refugio.
+                        &lt;p&gt; Hello world &lt;/p&gt;
                     </p>
                     <p data-aos='fade-up'>
-                        Lo que comenzó como un intento por cuidar mi salud digestiva, se convirtió en una rutina sanadora. La harina, el agua, el tiempo… y las manos. Encontré en cada hogaza una pausa, una meditación, un propósito.
+                        If you’re here, it means you want to know a little more about me.    
                     </p>
                     <p data-aos='fade-up'>
-                        SOURAW no es una panadería común. Es un proyecto íntimo, hecho con intención y con ingredientes reales. Es una forma de compartir ese camino de vuelta al cuerpo, a lo natural, y a lo que nos hace bien.
+                        So here is my story.
                     </p>
                     <p data-aos='fade-up'>
-                        Aquí, cada pan cuenta una historia. Y si estás acá, ya eres parte de ella.
+                        My name is Carolina Vitale. I was born in Venezuela and raised in a very small town called Acarigua. All four of my grandparents were Italian, so I grew up surrounded by tradition — especially in the kitchen. Flour on the counter, long conversations around the table, hands always preparing something with love.
                     </p>
+                    <p data-aos='fade-up'>
+                        Since I was little, I’ve been deeply curious. I always dreamed of traveling, of seeing the world. If I’m honest, I never truly felt like I belonged while living in Venezuela. I was grateful — but restless.
+                    </p>
+                    
                 </div>
 
                 <div className="about-image">
                     <img src={historiaImg} alt="Ilustración historia" data-aos='fade-left' />
                 </div>
             </div>
+
+            
             <WhySourdough />
         </section>
     );

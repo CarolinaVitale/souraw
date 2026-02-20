@@ -1,49 +1,52 @@
-import React from 'react';
-import './Hero.css';
-import image from '../../assets/classic-bread.png';
+import React from "react";
+import "./Hero.css";
+import doll from '../../assets/doll.png';
+import { Link } from "react-router-dom";
+import { ShoppingBag, BookOpen, Tag, WhatsappLogo } from "@phosphor-icons/react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faInstagram, faTiktok } from '@fortawesome/free-brands-svg-icons';
-import doll from '../../assets/doll.png';
-import logo from "../../assets/green-logo.png";
-import { Link } from 'react-router-dom';
-import { ShoppingBag, BookOpen, Tag, WhatsappLogo } from '@phosphor-icons/react';
 
 
 const Hero = () => {
     return (
-        <section className="hero">
-            <div className="hero-content">
-                <div className="hero-text">
+        <section
+            className="heroOverlay"
+        >
+            <div className="heroOverlay-inner">
+                <div className="heroOverlay-card">
+                    <div className="heroOverlay-eyebrow">♡</div>
+
                     <img src={doll} className='hero-doll' alt='illustration' />
-                    <br/>
-                    <img src={logo} className='logo-souraw' alt='logo' />
-                    <h1 data-aos='fade-up'>untamed • unrushed • unapologetic</h1>
-                    <br />
-                    <p data-aos='fade-up' data-aos-delay='200'>Productos 100% masa madre, hechos con intención y paciencia ♡ Panes que nutren el cuerpo, acompañan momentos y cuentan historias de bienestar ♡</p>
-                    <br />
 
-                    <div className='hero-buttons'>
-                        <Link to="/pedidos" className='hero-text-button'>
-                            pedidos  <ShoppingBag size={22} weight="light" style={{ marginRight: 6, verticalAlign: 'text-bottom' }} />
+                    <h1 className="heroOverlay-title">untamed • unrushed • unapologetic</h1>
+
+                    <p className="heroOverlay-subtitle">
+                        100% sourdough, crafted with intention and patience ♡ Breads that nourish the body, hold space for special moments, and tell stories of well-being ♡
+                    </p>
+
+                    <div className="heroOverlay-actions">
+                        <Link to="/pedidos" className="heroOverlay-btn">
+                            orders <ShoppingBag size={20} weight="light" />
                         </Link>
 
-                        <Link to="/catalogo" className='hero-text-button'>
-                            catálogo  <BookOpen size={22} weight="light" style={{ marginRight: 6, verticalAlign: 'text-bottom' }} />
+                        <Link to="/catalogo" className="heroOverlay-btn">
+                            produts <BookOpen size={20} weight="light" />
                         </Link>
 
-                        <Link to="/lista-de-precios" className='hero-text-button'>
-                            precios  <Tag size={22} weight="light" style={{ marginRight: 6, verticalAlign: 'text-bottom' }} />
+                        <Link to="/lista-de-precios" className="heroOverlay-btn">
+                            prices <Tag size={20} weight="light" />
                         </Link>
-                        <Link
-                            to="https://wa.me/584121531299?text=Hola%2C%20quisiera%20hacer%20un%20pedido%20♡"
+
+                        <a
+                            href="https://wa.me/584121531299?text=Hola%2C%20quisiera%20hacer%20un%20pedido%20♡"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="hero-text-button"
+                            className="heroOverlay-btn"
                         >
-                            whatsApp <WhatsappLogo size={22} weight="light" style={{ marginRight: 6, verticalAlign: 'text-bottom' }} />
-                        </Link>
-
+                            WhatsApp <WhatsappLogo size={20} weight="light" />
+                        </a>
                     </div>
+
 
                     <div className="social-icons">
                         <a
@@ -63,14 +66,8 @@ const Hero = () => {
                             <FontAwesomeIcon icon={faTiktok} size="2x" />
                         </a>
                     </div>
+
                 </div>
-
-
-
-                <div className="hero-image">
-                    <img src={image} alt="Pan artesanal" data-aos='zoom-in' />
-                </div>
-
             </div>
         </section>
     );

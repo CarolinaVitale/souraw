@@ -1,0 +1,22 @@
+button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: var(--color-red);
+    color: var(--color-bg);
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 0.7rem 1.05rem;
+    letter-spacing: 0.05em;
+    border-radius: 3px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: transform 0.15s ease, background-color 0.2s ease;
+    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.08);
+}
+
+button:hover {
+    background-color: var(--color-pink);
+    transform: translateY(-1px);
+}

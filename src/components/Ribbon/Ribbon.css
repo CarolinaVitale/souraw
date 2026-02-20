@@ -1,0 +1,40 @@
+@import "../../styles/variables.css";
+
+.ribbon {
+    width: 100%;
+    overflow: hidden;
+    background: var(--color-yellow);
+    padding: 0.8rem 0;
+}
+
+.ribbon-inner {
+    display: flex;
+    width: max-content;
+    animation: ribbonScroll 80s linear infinite;
+}
+
+.ribbon-track {
+    display: flex;
+    align-items: center;
+}
+
+.ribbon-item {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 800;
+    font-size: 0.9rem;
+    letter-spacing: 0.06em;
+    color: var(--color-gray-dark);
+    white-space: nowrap;
+    padding-right: 3rem;
+    /* espacio entre items */
+}
+
+@keyframes ribbonScroll {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-50%);
+    }
+}

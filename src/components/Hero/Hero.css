@@ -1,15 +1,15 @@
-@import '../../styles/variables.css';
+@import "../../styles/variables.css";
 
-.hero-buttons {
+.heroOverlay {
+    background-image: url('../../assets/hero-desktop.jpg');
+    background-size: cover;
+    background-position: 65% 40%;
+    background-repeat: no-repeat;
+    height: 100%;
+    margin: 0 auto;
     display: flex;
-    flex-direction: row;
     align-items: center;
-}
-
-.hero {
-    background-color: var(--color-bg);
-    padding: 2rem 1rem 0;
-    position: relative;
+    min-height: calc(100vh - 100px);
 }
 
 .hero-doll {
@@ -17,89 +17,108 @@
     bottom: 0px;
     left: 3%;
     width: 180px;
-    z-index: 1;
-    transform: translateY(150px);
+    z-index: 10;
+    transform: translateY(173px);
 }
 
-.logo-souraw {
-    display: none;
-}
-
-.christmas-decor {
-    display: block;
+.heroOverlay-inner {
     width: 100%;
-}
-
-.hero-content {
+    padding: clamp(1rem, 3vw, 2.5rem);
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    gap: 2rem;
-    max-width: 1200px;
-    margin: 0 auto;
-    flex-wrap: wrap;
+    justify-content: flex-start;
 }
 
-.hero-image {
-    flex: 1;
-    display: flex;
-    justify-content: center;
+.heroOverlay-card {
+    top: 100px;
+    position: relative;
+    width: min(500px, 110%);
+    background: rgb(255, 232, 207, 0.80);
+    padding: 3rem 1.6rem 1.6rem;
+    border-radius: 2px;
+    box-shadow:
+        0 20px 45px rgba(0, 0, 0, 0.12),
+        0 6px 15px rgba(0, 0, 0, 0.06);
 }
 
-.hero-image img {
-    width: 100%;
-    max-width: 450px;
-    height: auto;
+.heroOverlay-card::before {
+    content: "";
+    position: absolute;
+    top: -40px;
+    left: 0;
+    width: 105%;
+    height: 60px;
+    background-image: url("../../assets/brush-stroke-pink2.png");
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-size: cover;
+    pointer-events: none;
+    z-index: 2;
 }
 
-.hero-text {
-    flex: 1;
-    color: var(--color-purple);
-    text-align: center;
-    background-color: var(--color-bg);
-}
-
-.hero-text h1 {
-    font-family: 'Montserrat', cursive;
-    font-weight: 800;
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-    color: var(--color-purple);
-}
-
-.hero-text p {
+.heroOverlay-eyebrow {
     font-family: "Montserrat", sans-serif;
-    font-weight: 800;
-    font-size: 1rem;
-    line-height: 1.6;
-    margin: 0 auto 1.5rem;
-    max-width: 500px;
-    padding: 0 1rem;
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: var(--color-red);
+    margin-bottom: 0.75rem;
+    letter-spacing: 0.02em;
 }
 
-.hero-text-button {
-    background-color: var(--color-yellow);
-    color: var(--color-gray-dark);
-    font-family: 'Montserrat', sans-serif;
+.heroOverlay-logo {
+    width: 170px;
+    height: auto;
+    display: block;
+    margin-bottom: 0.8rem;
+}
+
+.heroOverlay-title {
+    font-family: "Montserrat", sans-serif;
     font-weight: 600;
-    padding: 0.8rem 2.5rem;
-    font-size: 1rem;
-    border: none;
-    border-radius: 2rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin: 10px;
-    text-decoration: none;
+    font-size: 1.6rem;
+    line-height: 1.15;
+    color: var(--color-red);
+    margin: 0 0 0.8rem;
 }
 
-
-.hero-text-button:hover {
-    background-color: var(--color-pink);
+.heroOverlay-subtitle {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+    font-size: 0.8rem;
+    line-height: 1.6;
     color: var(--color-gray-dark);
+    margin: 0 0 1.3rem;
+}
+
+.heroOverlay-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem;
+}
+
+.heroOverlay-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: var(--color-red);
+    color: var(--color-bg);
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 0.7rem 1.05rem;
+    border-radius: 999px;
+    text-decoration: none;
+    transition: transform 0.15s ease, background-color 0.2s ease;
+}
+
+.heroOverlay-btn:hover {
+    background-color: var(--color-pink);
+    transform: translateY(-1px);
 }
 
 .social-icons {
-    padding-top: 2rem;
+    padding-top: 2.5rem;
     margin-bottom: 2rem;
     display: flex;
     justify-content: center;
@@ -107,7 +126,7 @@
 }
 
 .social-icons a {
-    color: var(--color-pink);
+    color: var(--color-red);
     font-size: 1.8rem;
     transition: transform 0.2s ease;
 }
@@ -117,62 +136,49 @@
 }
 
 @media (max-width: 768px) {
-    .hero-content {
-        flex-direction: column;
-        text-align: center;
-        gap: 0;
+    .heroOverlay {
+        width: 100%;
+        margin: 0;
+        border-radius: 0;
+        min-height: 95vh;
+        max-height: none;
+        background-position: 70% 35%;
     }
 
-    .hero-image img {
-        max-width: 60%;
+    .heroOverlay-title {
+        font-size: 1.2rem;
     }
 
-    .hero-text {
-        background-color: rgb(252, 230, 207, 0.6);
+    .heroOverlay-subtitle {
+        font-size: 0.5 rem;
     }
 
-    .hero-text p {
-        font-size: 1rem;
-        background-color: var(--color-bg);
-        color: var(--color-red);
-
+    .heroOverlay-inner {
+        padding: 0.5rem;
+        align-items: flex-end;
     }
 
-    .hero-text h1 {
-        font-size: 1.3rem;
-        color: var(--color-green);
-        background-color: var(--color-bg);
+    .heroOverlay-card {
+        top: 150px;
+        width: 70%;
+        height: 350px;
+        max-width: 560px;
+        margin: 0 auto 1.5rem;
     }
 
-    .social-icons {
-        gap: 1.5rem;
+    .heroOverlay-actions {
+        flex-direction: row;
     }
 
-    .social-icons a {
-        color: var(--color-green);
-
+    .heroOverlay-btn {
+        align-items: center;
+        width: 120px;
+        justify-content: center;
     }
 
     .hero-doll {
         width: 150px;
-        transform: translateY(120px);
-    }
-
-    .logo-souraw {
-        display: block;
-        width: 100%;
-    }
-
-    .hero-buttons {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .hero-text-button {
-        margin-top: 10px;
-        margin-bottom: 10px;
-        width: 180px;
-        padding: 0.8rem 3rem;
+        transform: translateY(150px);
+        left: 0%;
     }
 }

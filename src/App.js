@@ -35,12 +35,12 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/nosotros" element={<About />} />
-        <Route path="/catalogo" element={<Catalog />} />
-        <Route path="/contacto" element={<Contact />} />
-        <Route path="/resenas" element={<Reviews />} />
-        <Route path="/pedidos" element={<Orders />} />
-        <Route path="/lista-de-precios" element={<Prices />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/products" element={<Catalog />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/reviews" element={<Reviews />} />
+        <Route path="/orders" element={<Orders />} />
+        <Route path="/prices" element={<Prices />} />
       </Routes>
       <Footer />
     </Router>
