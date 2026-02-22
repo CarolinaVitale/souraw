@@ -1,76 +1,190 @@
+@import "../../styles/variables.css";
+
 .choosing-us {
     background-color: var(--color-pink);
-    padding: 5rem 2rem;
+    padding: 5rem 2rem 4.5rem 2rem;
     text-align: center;
-    color: var(--color-gray-dark);
     position: relative;
     overflow: hidden;
 }
 
-.choosing-us::before {
-    content: "";
-    position: absolute;
-    top: 17%;
-    right: 30%;
-    width: 900px;
-    height: 900px;
-    background-image: url('../../assets/muneca1.png');
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    z-index: 0;
-}
-
-.choosing-title,
-.illustration-wrapper {
-    position: relative;
-    z-index: 1;
-}
-
 .choosing-title {
     font-size: 4rem;
-    margin-bottom: 3rem;
+    margin-bottom: 2.5rem;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 0.7rem;
-    line-height: 1.4;
+    line-height: 1.2;
+    position: relative;
+    z-index: 2;
 }
 
 .biro {
-    font-family: 'Biro', cursive;
-    font-weight: lighter;
+    font-family: "Biro", cursive;
+    font-weight: 700;
     color: var(--color-bg);
 }
 
 .nauryz {
-    font-family: 'Nauryz', serif;
+    font-family: "Nauryz", serif;
     font-weight: 900;
     color: var(--color-purple);
 }
 
-.illustration-wrapper img {
-    width: 100%;
-    max-width: 600px;
-    height: auto;
-    object-fit: contain;
-    margin: 0 auto;
+.cu-story {
+    position: relative;
 }
 
-@media (max-width: 768px) {
+.cu-sticky {
+    position: sticky;
+    top: 110px;
+    height: calc(100vh - 110px);
+    display: grid;
+    place-items: center;
+}
+
+.cu-canvas {
+    width: min(1000px, 100%);
+    position: relative;
+    padding: 2rem 1rem;
+}
+
+.cu-loaf {
+    width: min(560px, 88%);
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    filter: drop-shadow(0 18px 35px rgba(0, 0, 0, 0.18));
+}
+
+.cu-step {
+    position: absolute;
+    max-width: 260px;
+    text-align: left;
+    opacity: 0;
+    transform: translateY(12px) scale(0.98);
+    transition: opacity 420ms ease, transform 420ms ease;
+    background: rgb(246, 188, 63, 0.7);
+    padding: 0.8rem 0.9rem;
+    border-radius: 3px;
+    backdrop-filter: blur(2px);
+}
+
+.cu-step.is-on {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+.cu-step.is-active {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    box-shadow: 0 16px 35px rgba(0, 0, 0, 0.14);
+    border-color: rgba(54, 54, 54, 0.35);
+}
+
+.cu-year {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    margin-bottom: 0.35rem;
+    color: var(--color-gray-dark);
+}
+
+.cu-text {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+    font-size: 0.92rem;
+    line-height: 1.45;
+    color: var(--color-gray-dark);
+}
+
+.cu-step--topLeft {
+    top: 6%;
+    left: 4%;
+}
+
+.cu-step--topRight {
+    top: 20%;
+    right: 4%;
+}
+
+.cu-step--midLeft {
+    top: 34%;
+    left: 2%;
+}
+
+.cu-step--midRight {
+    top: 48%;
+    right: 2%;
+}
+
+.cu-step--bottomCenter {
+    bottom: 20%;
+    left: 50%;
+    transform: translate(-50%, 12px) scale(0.98);
+}
+
+.cu-step--bottomCenter.is-on {
+    transform: translate(-50%, 0) scale(1);
+}
+
+@media (max-width: 900px) {
+    .choosing-us {
+        padding: 2rem 1.2rem 0rem 1.2rem;
+            margin-bottom: 0;
+    }
+
+    .cu-canvas {
+        position: initial;
+        padding: 0;
+        margin-bottom: -200px;
+    }
+
     .choosing-title {
         font-size: 3rem;
+        margin-bottom: 0;
     }
 
-    .illustration-wrapper img {
-        max-width: 85%;
+    .cu-sticky {
+        top: 90px;
+        height: calc(100vh - 90px);
     }
 
-    .choosing-us::before {
-        top: auto;
-        bottom: 0%;
-        right: -20%;
-        width: 720px;
-        height: 720px;
+    .cu-step {
+        max-width: 82vw;
+        text-align: left;
+    }
+
+    .cu-step--topLeft {
+        top: 12%;
+        left: 35%;
+    }
+
+    .cu-step--topRight {
+        top: 28%;
+        right: 35%;
+    }
+
+    .cu-step--midLeft {
+        top: 44%;
+        left: 35%;
+    }
+
+    .cu-step--midRight {
+        top: 60%;
+        right: 35%;
+    }
+
+    .cu-step--bottomCenter {
+        bottom: 10%;
+        left: 35%;
+        transform: translate(0, 0) scale(1);
+    }
+
+    .cu-step--bottomCenter.is-on {
+        transform: translate(0, 0) scale(1);
     }
 }
