@@ -47,8 +47,8 @@ const MenuCarousel = () => {
             </Swiper>
 
             <div className="catalog-button-wrapper">
-                <Link to="/catalogo" className="catalog-button">
-                    ver catálogo
+                <Link to="/products" className="catalog-button">
+                    our products
                 </Link>
             </div>
         </section>

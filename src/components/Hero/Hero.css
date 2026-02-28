@@ -18,7 +18,7 @@
     left: 3%;
     width: 180px;
     z-index: 10;
-    transform: translateY(173px);
+    transform: translateY(200px);
 }
 
 .heroOverlay-inner {
@@ -101,20 +101,22 @@
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    background-color: var(--color-red);
-    color: var(--color-bg);
+    border: 2px solid var(--color-red);
+    background-color: transparent;
+    color: var(--color-red);
     font-family: "Montserrat", sans-serif;
     font-weight: 600;
     font-size: 0.95rem;
     padding: 0.7rem 1.05rem;
-    border-radius: 999px;
+    border-radius: 3px;
     text-decoration: none;
     transition: transform 0.15s ease, background-color 0.2s ease;
 }
 
 .heroOverlay-btn:hover {
-    background-color: var(--color-pink);
-    transform: translateY(-1px);
+    background-color: var(--color-red);
+    color: var(--color-bg);
+    transform: translateY(-2px);
 }
 
 .social-icons {
@@ -178,7 +180,7 @@
 
     .hero-doll {
         width: 150px;
-        transform: translateY(150px);
+        transform: translateY(130px);
         left: 0%;
     }
 }

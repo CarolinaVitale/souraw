@@ -2,10 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import '../Header/Header.css';
 import logo from '../../assets/logo-header.png'
+import ContactDrawer from '../ContactDrawer/ContactDrawer';
 
 function Navbar() {
     const [click, setClick] = useState(false);
     const [navbar, setNavbar] = useState(false);
+    const [contactOpen, setContactOpen] = useState(false);
 
     const handleClick = () => setClick(!click);
     const closeMobileMenu = () => setClick(false);
@@ -43,7 +45,7 @@ function Navbar() {
                                 ABOUT
                             </Link>
                         </li>
-                        <li className='nav-item'>
+                        {/* <li className='nav-item'>
                             <Link
                                 to='/products'
                                 className='nav-links'
@@ -51,13 +53,17 @@ function Navbar() {
                             >
                                 PRODUCTS
                             </Link>
-                        </li>
+                        </li> */}
 
                         <li className='nav-item'>
                             <Link
-                                to='/contact'
-                                className='nav-links'
-                                onClick={closeMobileMenu}
+                                to="#"
+                                className="nav-links"
+                                onClick={(e) => {
+                                    e.preventDefault();
+                                    closeMobileMenu();
+                                    setContactOpen(true);
+                                }}
                             >
                                 CONTACT
                             </Link>
@@ -71,7 +77,7 @@ function Navbar() {
                                 REVIEWS
                             </Link>
                         </li>
-                        <li className='nav-item'>
+                        {/* <li className='nav-item'>
                             <Link
                                 to='/orders'
                                 className='nav-links'
@@ -79,10 +85,14 @@ function Navbar() {
                             >
                                 ORDERS
                             </Link>
-                        </li>
+                        </li> */}
                     </ul>
                 </div>
             </nav>
+            <ContactDrawer
+                isOpen={contactOpen}
+                onClose={() => setContactOpen(false)}
+            />
         </>
     );
 }

@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { collection, onSnapshot, query, orderBy } from 'firebase/firestore';
 import { db } from '../../firebase';
 import './ReviewsList.css';
+import PageBanner from '../PageBanner/PageBanner';
+import reviewImage from '../../assets/reviews.jpg'
 
 const ReviewsList = () => {
     const [reviews, setReviews] = useState([]);
@@ -33,28 +35,30 @@ const ReviewsList = () => {
     };
 
     return (
-        <section className="reviews-section">
-
-            <h2 className="reviews-title" data-aos="fade-up">Lo que dicen de Nosotros ♡</h2>
-            <div className="reviews-container">
-                {reviews.map((review) => (
-                    <div key={review.id} className="review-card" data-aos="zoom-in-up" data-aos-delay="100">
-                        <h3 className="review-name">
-                            {review.displayName || review.name || "Anónimo"}
-                        </h3>
-                        <div className="review-stars">
-                            {'★'.repeat(review.rating)}{'☆'.repeat(5 - review.rating)}
+        <>
+            <PageBanner image={reviewImage} kicker="Love notes..." title="FROM OUR COMMUNITY" />
+            <section className="reviews-section">
+                <div className="reviews-container">
+                    {reviews.map((review) => (
+                        <div key={review.id} className="review-card" data-aos="zoom-in-up" data-aos-delay="100">
+                            <h3 className="review-name">
+                                {review.displayName || review.name || "Anónimo"}
+                            </h3>
+                            <div className="review-stars">
+                                {'★'.repeat(review.rating)}{'☆'.repeat(5 - review.rating)}
+                            </div>
+                            <p className="review-comment">
+                                {review.text || review.comment}
+                            </p>
+                            {review.createdAt && (
+                                <p className="review-date">{formatDate(review.createdAt)}</p>
+                            )}
                         </div>
-                        <p className="review-comment">
-                            {review.text || review.comment}
-                        </p>
-                        {review.createdAt && (
-                            <p className="review-date">{formatDate(review.createdAt)}</p>
-                        )}
-                    </div>
-                ))}
-            </div>
-        </section>
+                    ))}
+                </div>
+            </section>
+        </>
+
     );
 };
 

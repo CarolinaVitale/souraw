@@ -1,6 +1,6 @@
 .catalog {
     padding: 6rem 2rem;
-    background-color: var(--color-green);
+    background-color: var(--color-pink);
     background-size: 1000px;
     background-repeat: repeat;
 }
@@ -13,7 +13,7 @@
 }
 
 .catalog h2 {
-    font-family: 'Biro', cursive;
+    font-family: 'Montserrat', sans-serif;
     font-size: 2.5rem;
     color: var(--color-gray-dark);
     margin-bottom: 2rem;
@@ -21,7 +21,8 @@
 }
 
 .list-button {
-text-align: center;}
+    text-align: center;
+}
 
 .catalog-grid {
     display: flex;

@@ -60,6 +60,15 @@
     height: 100%;
 }
 
+/* .nav-contact-btn {
+    background-color: transparent;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    border: transparent;
+    font-size: 1.2rem;
+} */
+
 .nav-links:hover {
     border-bottom: 2px solid var(--color-red);
     transition: all 0.2s ease-out;
@@ -97,7 +106,7 @@
 
     .nav-menu.active {
         background: linear-gradient(90deg, #ffe8cf 0%, #e0cbb4 100%);
-        left: -35px;
+        left: -40px;
         opacity: 1;
         transition: all 0.5s ease;
         z-index: 1;
@@ -117,7 +126,6 @@
     }
 
     .nav-links:hover {
-
         background: var(--color-red);
         color: var(--color-bg);
         border-radius: 0;

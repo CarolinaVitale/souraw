@@ -1,26 +1,29 @@
 export const catalogo = {
-    hogazas: [
-        { nombre: "Clásico (1kg)", precioUSD: 7 },
-        { nombre: "Integral (1,2kg)", precioUSD: 10 },
-        { nombre: "Hojaldre (1,2kg)", precioUSD: 14 },
-        { nombre: "4 Raíces (1,1kg)", precioUSD: 15 },
-        // { nombre: "Cebolla & tocineta (1,2kg)", precioUSD: 17 },
-        // { nombre: "Ají dulce & tocineta (1,2kg)", precioUSD: 20 },
-        // { nombre: "Queso (1,2kg)", precioUSD: 22 },
+    wildLoaves: [
+        { name: "Classic (1kg)", priceUSD: 7 },
+        { name: "Whole Wheat (1.2kg)", priceUSD: 10 },
+        { name: "Laminated (1.2kg)", priceUSD: 14 },
+        { name: "4 Roots (1.1kg)", priceUSD: 15 },
+        // { name: "Caramelized Onion & Bacon (1.2kg)", priceUSD: 17 },
+        // { name: "Sweet Pepper & Bacon (1.2kg)", priceUSD: 20 },
+        // { name: "Cheese (1.2kg)", priceUSD: 22 },
     ],
-    caprichos: [
-        { nombre: "Hoagui (4 ud)", precioUSD: 9 },
-        { nombre: "Cuernitos (16 ud)", precioUSD: 9 },
-        { nombre: "Tequeños (10 ud)", precioUSD: 11 },
-        { nombre: "Focaccia (1kg)", precioUSD: 11 },
-        { nombre: "Pan de Molde (1kg)", precioUSD: 8 },
-        { nombre: "Pan Dulce queso búfala (6 ud)", precioUSD: 9 },
+
+    slowCravings: [
+        { name: "Hoagie Rolls (4 pcs)", priceUSD: 9 },
+        { name: "Mini Croissants (16 pcs)", priceUSD: 9 },
+        { name: "Tequeños (10 pcs)", priceUSD: 11 },
+        { name: "Focaccia (1kg)", priceUSD: 11 },
+        { name: "Sandwich Loaf (1kg)", priceUSD: 8 },
+        { name: "Sweet Buffalo Cheese Rolls (6 pcs)", priceUSD: 9 },
     ],
-    pizzas: [
-        { nombre: "Pizza Margherita media (0,5kg)", precioUSD: 22 },
-        { nombre: "Pizza Margherita grande (1kg)", precioUSD: 37 },
+
+    hearthPizzas: [
+        { name: "Margherita — Medium (0.5kg)", priceUSD: 22 },
+        { name: "Margherita — Large (1kg)", priceUSD: 37 },
     ],
-    dulces: [
-        { nombre: "Babka", precioUSD: 26 },
+
+    tenderSweets: [
+        { name: "Chocolate Babka", priceUSD: 26 },
     ],
 };

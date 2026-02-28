@@ -15,10 +15,11 @@ const Contact = () => {
                 </div>
 
                 <div className="contact-info">
-                    <h2 className="contact-title">Contáctanos</h2>
+                    <h2 className="contact-title">Get in touch</h2>
                     <p className="contact-text">
-                        ¿Tienes preguntas? ¿Quieres pedir pan o solo saludar? Estamos felices de leerte. Escríbenos por WhatsApp, Instagram o TikTok.
-                    </p>
+                        Have a question? Craving some bread? Or just want to say hello?
+                        We’re always happy to hear from you.
+Reach out on WhatsApp, Instagram, or TikTok.                    </p>
 
                     <div className="contact-icons">
                         <a href="https://wa.me/584121531299?text=Hola%2C%20quisiera%20hacer%20un%20pedido%20♡" target="_blank" rel="noopener noreferrer">

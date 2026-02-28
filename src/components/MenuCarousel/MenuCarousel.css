@@ -18,7 +18,7 @@
 .menu-slide-img {
     width: 100%;
     height: auto;
-    border-radius: 12px;
+    border-radius: 3px;
     object-fit: cover;
 }
 
@@ -27,21 +27,25 @@
 }
 
 .catalog-button {
-    background-color: var(--color-yellow);
-    color: var(--color-gray-dark);
+    background-color: transparent;
+    color: var(--color-yellow);
+    border: 2px solid var(--color-yellow);
     font-family: 'Montserrat', sans-serif;
     font-weight: 600;
     padding: 0.8rem 2rem;
     font-size: 1rem;
-    border: none;
-    border-radius: 2rem;
+    border-radius: 3px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: transform 0.15s ease, background-color 0.2s ease;
     text-decoration: none;
+    display: inline-flex;
+    align-items: center;
 }
 
 .catalog-button:hover {
-    background-color: var(--color-pink);
+    background-color: var(--color-yellow);
+    color: var(--color-green);
+    transform: translateY(-2px);
 }
 
 .swiper-button-prev,

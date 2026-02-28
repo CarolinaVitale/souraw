@@ -1,0 +1,225 @@
+@import "../../styles/variables.css";
+
+.cd {
+    position: relative;
+    inset: 0;
+    pointer-events: none;
+    z-index: 9999;
+}
+
+.cd.is-open {
+    pointer-events: auto;
+}
+
+.cd-topbar {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 1rem 2rem;
+    gap: 20px;
+}
+
+.cd-backBtn {
+    position: absolute;
+    left: -22px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 44px;
+    height: 44px;
+    border-radius: 999px;
+    border: 2px solid var(--color-pink);
+    background: var(--color-bg);
+    cursor: pointer;
+    display: grid;
+    place-items: center;
+    transition: transform 0.15s ease, background-color 0.2s ease;
+}
+
+.cd-backBtn:hover {
+    transform: translateY(-50%) translateX(-5px);
+    background-color: rgba(255, 255, 255, 0.25);
+}
+
+.cd-backIcon {
+    font-size: 20px;
+    line-height: 1;
+    color: var(--color-pink);
+    transform: translateY(2px);
+}
+
+.cd-intro {
+    padding: 0 1.4rem 0.6rem;
+}
+
+.cd-introTitle {
+    padding-top: 50px;
+    margin: 0;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 900;
+    letter-spacing: 0.06em;
+    color: var(--color-gray-dark);
+    text-transform: uppercase;
+    font-size: 0.95rem;
+}
+
+.cd-introText {
+    margin: 0.35rem 0 0;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+    color: rgba(54, 54, 54, 0.75);
+    line-height: 1.45;
+    font-size: 0.92rem;
+}
+
+.cd-backLabel {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    font-size: 0.85rem;
+    color: var(--color-pink);
+}
+
+.cd-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.35);
+    opacity: 0;
+    transition: opacity 220ms ease;
+}
+
+.cd.is-open .cd-overlay {
+    opacity: 1;
+}
+
+.cd-panel {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: min(520px, 92vw);
+    background: var(--color-bg);
+    border-left: 2px solid rgba(54, 54, 54, 0.15);
+    box-shadow: -18px 0 50px rgba(0, 0, 0, 0.18);
+    transform: translateX(110%);
+    transition: transform 260ms ease;
+    display: flex;
+    flex-direction: column;
+    overflow: visible;
+}
+
+.cd.is-open .cd-panel {
+    transform: translateX(0);
+}
+
+.cd-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.4rem 1.4rem 1rem;
+    border-bottom: 1px solid var(--color-pink);
+}
+
+.cd-title {
+    margin: 0;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 900;
+    letter-spacing: 0.1em;
+    font-size: 3rem;
+    color: var(--color-pink);
+    text-transform: uppercase;
+}
+
+.cd-close {
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+    font-size: 1.2rem;
+    color: var(--color-pink);
+}
+
+.cd-form {
+    padding: 1.2rem 1.4rem 1.6rem;
+    overflow: auto;
+    display: grid;
+    gap: 1.1rem;
+}
+
+.cd-label {
+    display: grid;
+    gap: 0.45rem;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 700;
+    color: var(--color-pink);
+    font-size: 0.95rem;
+}
+
+.cd-form .cd-input::placeholder,
+.cd-form .cd-textarea::placeholder {
+    color: var(--color-pink);
+}
+
+.cd-input,
+.cd-textarea {
+    padding: 0.9rem 1rem;
+    border-radius: 3px;
+    border: 1px solid var(--color-pink);
+    background: rgba(255, 255, 255, 0.6);
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+    outline: none;
+    color: var(--color-pink) !important;
+    resize: none;
+}
+
+.cd-input:focus,
+.cd-textarea:focus {
+    border-color: var(--color-pink);
+}
+
+.cd-submit {
+    margin-top: 0.6rem;
+    border: 0;
+    cursor: pointer;
+    padding: 1rem 1.1rem;
+    border-radius: 3px;
+    background: var(--color-bg);
+    color: var(--color-pink);
+    font-family: "Montserrat", sans-serif;
+    font-weight: 900;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border: 2px solid var(--color-pink);
+}
+
+.cd-submit:hover {
+    background-color: var(--color-pink);
+    color: var(--color-bg);
+}
+
+.cd-note {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+    font-size: 0.9rem;
+    line-height: 1.35;
+    padding: 0.85rem 0.95rem;
+}
+
+.cd-note--success {
+    color: var(--color-red);
+}
+
+.cd-note--error {
+    color: #b42318;
+    border-color: rgba(180, 35, 24, 0.35);
+}
+
+.cd-submit:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+}
+
+@media (max-width: 520px) {
+    .cd-title {
+        font-size: 2rem;
+    }
+}

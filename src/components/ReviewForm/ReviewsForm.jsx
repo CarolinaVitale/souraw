@@ -36,11 +36,12 @@ const ReviewsForm = () => {
 
     return (
         <section className="reviews-section">
-            <h2>¿y tú?... ¿Qué piensas?</h2>
+            <h2>Now it’s your turn — what do you think?</h2>
             <form className="review-form" onSubmit={handleSubmit}>
                 <input
+                    className="review-input"
                     type="text"
-                    placeholder="Tu nombre"
+                    placeholder="Name *"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     required
@@ -58,17 +59,18 @@ const ReviewsForm = () => {
                 </select>
 
                 <textarea
-                    placeholder="Tu comentario"
+                    className="review-textarea"
+                    placeholder="Review *"
                     value={comment}
                     onChange={(e) => setComment(e.target.value)}
                     required
                 />
 
-                <button type="submit">enviar</button>
+                <button className='review-button' type="submit">submit</button>
             </form>
 
             {submitted && (
-                <p className="review-success">¡Gracias por tu reseña!</p>
+                <p className="review-success">Thank you for sharing your experience with us</p>
             )}
         </section>
     );

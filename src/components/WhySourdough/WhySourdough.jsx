@@ -14,11 +14,10 @@ const WhySourdough = () => {
             <div className="mobile-image mobile-only" style={{ backgroundImage: `url(${image1})` }}></div>
 
             <div className="text-overlay">
-                <h2>¿Por qué masa madre?</h2>
+                <h2>¿Why Sourdough?</h2>
                 <p>
-                    Porque es más fácil de digerir, tiene menos gluten, respeta el tiempo natural de fermentación,
-                    y sus bacterias beneficiosas ayudan a descomponer los antinutrientes.
-                    Elegirla es volver al origen.
+                    Because it’s gentler on your body, lower in gluten, and honors the natural rhythm of fermentation. Its beneficial bacteria help break down antinutrients, making it easier to absorb what truly nourishes you.
+                    Choosing it is choosing a return to the origin.
                 </p>
             </div>
         </section>

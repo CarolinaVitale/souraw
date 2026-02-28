@@ -1,60 +1,44 @@
 const panes = [
     {
         id: 1,
-        name: 'Clásico',
-        description: 'Nuestro pan más puro. Fermentado durante 24 horas para lograr una corteza crujiente y una miga aireada, con ese sabor profundo y ligeramente ácido que solo da la masa madre.',
-        ingredients: 'Harina de trigo, agua,  masa madre, afrecho, sal. Sin azúcar. 100% masa madre.',
-        price: '$6,5 (1kg) tasa BCV',
-        image: require('../assets/clasico.webp'),
+        name: "Classic",
+        description:
+            "The one that started it all. Naturally leavened and long-fermented for 24 hours for a crackly crust, an airy crumb, and that gentle tang only real sourdough has. Simple. Honest. Alive.",
+        ingredients:
+            "Wheat flour, water, sourdough starter, bran, salt. No commercial yeast. No sugar added. 100% sourdough.",
+        price: "$6.5 (1kg) BCV rate",
+        image: require("../assets/clasico.webp"),
     },
     {
         id: 2,
-        name: 'Integral',
-        description: 'Hecho con harinas integrales y fermentado lentamente durante 24 horas. Denso, nutritivo y lleno de sabor. Ideal para quienes buscan bienestar sin renunciar al placer.',
-        ingredients: 'Harina de trigo, harina integral de trigo, agua, masa madre, afrecho, sal. Sin azúcar. 100% masa madre.',
-        price: '$10 (1.200kg) tasa BCV',
-        image: require('../assets/integral.webp'),
+        name: "Whole Wheat",
+        description:
+            "Slow food, daily bread. A 24-hour fermentation with whole grain flours for a deeper flavor, a hearty bite, and a more nourishing loaf. Comfort that feels good.",
+        ingredients:
+            "Wheat flour, whole wheat flour, water, sourdough starter, bran, salt. No commercial yeast. No sugar added. 100% sourdough.",
+        price: "$10 (1.200kg) BCV rate",
+        image: require("../assets/integral.webp"),
     },
     {
         id: 6,
-        name: 'Hojaldre',
-        description: 'Capas delicadas, doradas y crujientes envuelven una miga suave y llena de carácter. Este pan es la prueba de que lo simple, bien hecho, puede ser extraordinario. Perfecto para quienes buscan un pan con textura, sabor profundo y un toque de elegancia en cada bocado.',
-        ingredients: 'Harina de trigo, agua, masa madre, mantequilla, sal. Sin azúcar. 100% masa madre.',
-        price: '$14 (1.200kg) tasa BCV',
-        image: require('../assets/hojaldre.webp'),
+        name: "Laminated",
+        description:
+            "Golden layers. A soft center. Big character. This is sourdough with a little extra drama—in the best way. Crispy, buttery, and effortlessly elegant.",
+        ingredients:
+            "Wheat flour, water, sourdough starter, butter, salt. No commercial yeast. No sugar added. 100% sourdough.",
+        price: "$14 (1.200kg) BCV rate",
+        image: require("../assets/hojaldre.webp"),
     },
     {
         id: 7,
-        name: '4 Raíces',
-        description: 'Pan elaborado con harina de trigo blanca e integral, masa madre natural y una mezcla de semillas de sésamo, girasol, calabaza y avena. Sin azúcar añadido y 100% masa madre. Nutritivo, miga tierna y equilibrada y sabor profundo.',
-        ingredients: 'Harina de trigo, harina de trigo integral, masa madre, agua, sésamo, girasol, calabaza, avena y sal. Sin azúcar. 100% masa madre.',
-        price: '$15 (1.100kg) tasa BCV',
-        image: require('../assets/4-raices.webp'),
+        name: "4 Roots",
+        description:
+            "Seeds, balance, depth. White + whole wheat flour, naturally leavened, and finished with sesame, sunflower, pumpkin, and oats. Nutritious, tender-crumbed, and full of that slow-fermented flavor.",
+        ingredients:
+            "Wheat flour, whole wheat flour, sourdough starter, water, sesame seeds, sunflower seeds, pumpkin seeds, oats, salt. No commercial yeast. No sugar added. 100% sourdough.",
+        price: "$15 (1.100kg) BCV rate",
+        image: require("../assets/4-raices.webp"),
     },
-    // {
-    //     id: 3,
-    //     name: 'Tocineta y Cebolla',
-    //     description: 'Una combinación sabrosa y adictiva: la dulzura natural de la cebolla caramelizada se mezcla con el toque ahumado de la tocineta, envuelta en masa madre fermentada por 24 horas.',
-    //     ingredients: 'Harina de trigo, agua,  tocineta, cebolla (caramelizada con la tocineta, sin azúcar) masa madre, afrecho, sal. 100% masa madre.',
-    //     price: '$15 (1.200kg) tasa BCV',
-    //     image: require('../assets/tocineta-cebolla.webp'),
-    // },
-    // {
-    //     id: 4,
-    //     name: 'Ají dulce confitado y tocineta',
-    //     description: 'Una combinación atrevida que funciona a la perfección: el dulzor del ají confitado con el sabor intenso de la tocineta, todo dentro de una masa madre fermentada 24 horas. Es complejo, diferente, y adictivo.Ideal para los que buscan algo más que un pan.',
-    //     ingredients: 'Harina de trigo, agua, masa madre, ají dulce confitado, tocineta, afrecho, sal. Sin azúcar. 100% masa madre.',
-    //     price: '$18 (1.200kg) tasa BCV',
-    //     image: require('../assets/aji-tocineta.webp'),
-    // },
-    // {
-    //     id: 5,
-    //     name: 'Queso',
-    //     description: 'Un pan de corteza firme y corazón suave. Al partirlo, el queso se convierte en el protagonista. Perfecto para acompañar cualquier comida… o disfrutarlo solo.',
-    //     ingredients: 'Harina, agua, queso, masa madre, afrecho, sal. Sin azúcar. 100% masa madre.',
-    //     price: '$19 (1.200kg) tasa BCV',
-    //     image: require('../assets/queso.png'),
-    // },
 ];
 
 export default panes;

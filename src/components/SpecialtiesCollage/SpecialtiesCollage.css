@@ -1,0 +1,380 @@
+@import "../../styles/variables.css";
+
+:root {
+    --ink-soft: rgba(54, 54, 54, 0.22);
+}
+
+.specBoard {
+    background:
+        radial-gradient(900px 520px at 18% 22%, rgba(247, 145, 195, .12), transparent 55%),
+        radial-gradient(900px 520px at 78% 62%, rgba(93, 48, 255, .08), transparent 58%),
+        #f6bc3f;;
+
+    padding: 6rem 1.6rem 7rem;
+    color: var(--color-gray-dark);
+    overflow: hidden;
+}
+
+.specBoard-wrap {
+    width: min(1200px, 100%);
+    margin: 0 auto;
+}
+
+.specBoard-head {
+    text-align: center;
+    margin-bottom: 3.2rem;
+}
+
+.sp-kicker {
+    margin: -15px 0;
+    font-family: "Biro", cursive;
+    font-size: 1.8rem;
+    opacity: 0.85;
+}
+
+.sp-h2 {
+    margin: 0;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 900;
+    letter-spacing: .02em;
+    text-transform: uppercase;
+    font-size: clamp(1.6rem, 2.2vw, 2.2rem);
+}
+
+.board {
+    position: relative;
+    width: min(1100px, 98%);
+    margin: 3.2rem auto 0;
+    height: clamp(340px, 42vw, 520px);
+}
+
+.board-layer {
+    position: absolute;
+    inset: -18px;
+    pointer-events: none;
+}
+
+.board-layer--crumbs {
+    z-index: 2;
+}
+
+.board-layer--overlays {
+    z-index: 25;
+}
+
+.crumbs-overlay {
+    position: absolute;
+    left: -32%;
+    top: 38%;
+    width: 800px;
+    transform: rotate(12deg);
+    opacity: 0.78;
+    mix-blend-mode: multiply;
+    filter: drop-shadow(0 12px 18px rgba(0, 0, 0, .08));
+}
+
+.brand-doodle {
+    position: absolute;
+    opacity: 0.85;
+    z-index: 26;
+    pointer-events: none;
+}
+
+.brand-doodle--bread {
+    left: 5%;
+    top: 6%;
+    width: 65px;
+    transform: rotate(28deg);
+}
+
+.brand-doodle--baguette {
+    right: 8%;
+    top: 14%;
+    width: 90px;
+    transform: rotate(32deg);
+}
+
+.doodle {
+    position: absolute;
+    opacity: 0.9;
+}
+
+.doodle--scribble {
+    width: 140px;
+    height: 70px;
+    right: -10px;
+    bottom: 10%;
+    border: 2px dashed var(--ink-soft);
+    border-radius: 999px;
+    transform: rotate(-8deg);
+}
+
+.boardTag {
+    position: absolute;
+    padding: 0.42rem 0.9rem;
+    border-radius: 999px;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 900;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-size: 0.78rem;
+    border: 2px solid rgba(54, 54, 54, 0.18);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.10);
+    transform: rotate(-8deg);
+    z-index: 28;
+}
+
+.boardTag--right {
+    right: 6%;
+    bottom: 18%;
+    background: rgba(247, 145, 195, 0.95);
+}
+
+.tile {
+    position: absolute;
+    border-radius: 3px;
+    overflow: hidden;
+    background: rgba(0, 0, 0, 0.03);
+    box-shadow: 0 18px 44px rgba(0, 0, 0, 0.18);
+    will-change: transform;
+    z-index: 10;
+}
+
+.tile img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    transform: scale(1.01);
+}
+
+.tile::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, .06), transparent 45%);
+    pointer-events: none;
+}
+
+.tile--van {
+    width: 38%;
+    height: 50%;
+    left: 2%;
+    top: 11%;
+    z-index: 12;
+}
+
+.tile--center {
+    width: 28%;
+    height: 90%;
+    left: 38%;
+    top: 6%;
+    z-index: 11;
+}
+
+.tile--palette {
+    width: 22%;
+    height: 60%;
+    left: 62%;
+    top: 46%;
+    z-index: 13;
+}
+
+.tile--pool {
+    width: 22%;
+    height: 44%;
+    right: -10%;
+    top: 22%;
+    z-index: 12;
+}
+
+.tile--surfer {
+    width: 28%;
+    height: 44%;
+    left: 13%;
+    bottom: -8%;
+    z-index: 14;
+    transform: rotate(-1.5deg);
+}
+
+.tile--fermentina {
+    width: 20%;
+    height: 40%;
+    left: -7%;
+    bottom: -6%;
+    z-index: 14;
+    transform: rotate(-1.5deg);
+}
+
+.circle-photo {
+    position: absolute;
+    top: 6%;
+    right: 12%;
+    width: 240px;
+    height: 240px;
+    border-radius: 50%;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, .3);
+    transform: rotate(4deg);
+    z-index: 15;
+}
+
+.circle-photo img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.circle-photo::after {
+    content: "";
+    position: absolute;
+    inset: -6px;
+    border-radius: 50%;
+    border: 2px dashed var(--ink-soft);
+    pointer-events: none;
+}
+
+.washi {
+    position: absolute;
+    top: -10px;
+    left: 52%;
+    transform: translateX(-50%) rotate(-6deg);
+    width: 62%;
+    height: 32px;
+    border-radius: 3px;
+    opacity: 0.9;
+    box-shadow: 0 10px 22px rgba(0, 0, 0, .12);
+    mix-blend-mode: multiply;
+    pointer-events: none;
+}
+
+.washi--pink {
+    background: rgba(247, 145, 195, .55);
+}
+
+.washi--cream {
+    background: rgba(255, 232, 207, .75);
+}
+
+.washi--yellow {
+    background: rgba(246, 188, 63, .55);
+}
+
+.washi--green {
+    background: rgba(0, 139, 70, .45);
+}
+
+.washi--violet {
+    background: rgba(93, 48, 255, .35);
+}
+
+.boardText {
+    position: absolute;
+    left: 46%;
+    bottom: 8%;
+    transform: translateX(-50%) rotate(-2deg);
+    font-family: "Biro", serif;
+    font-weight: 700;
+    font-size: 1.05rem;
+    opacity: 0.85;
+    z-index: 30;
+    padding: 0.35rem 0.6rem;
+    border-radius: 999px;
+    background: rgba(255, 232, 207, 0.7);
+    border: 1px solid rgba(54, 54, 54, 0.15);
+    box-shadow: 0 12px 22px rgba(0, 0, 0, 0.10);
+}
+
+@media (max-width: 860px) {
+
+    .specBoard {
+        padding: 5rem 1.2rem 9rem;
+    }
+
+    .board {
+        width: 100%;
+        height: 640px;
+        margin-top: 2.6rem;
+    }
+
+    .tile {
+        border-radius: 14px;
+    }
+
+    .tile--center {
+        width: 44%;
+        height: 42%;
+        left: 0%;
+        top: 32%;
+    }
+
+    .tile--van {
+        width: 50%;
+        height: 28%;
+        left: 36%;
+        top: 30%;
+    }
+
+    .tile--palette {
+        width: 40%;
+        height: 40%;
+        left: 38%;
+        top: -8%;
+    }
+
+    .tile--pool {
+        width: 48%;
+        height: 30%;
+        left: 3%;
+        top: 78%;
+    }
+
+    .tile--surfer {
+        width: 40%;
+        height: 26%;
+        left: 46%;
+        top: 84%;
+    }
+
+    .tile--fermentina {
+        width: 46%;
+        height: 30%;
+        left: 35%;
+        top: 56%;
+    }
+
+    .crumbs-overlay {
+        left: -40%;
+        top: 42%;
+        width: 1000px;
+        opacity: 0.72;
+    }
+
+    .circle-photo {
+        position: relative;
+        top: auto;
+        right: 22%;
+        margin: 2rem auto;
+        transform: none;
+    }
+
+    .boardText {
+        left: 30%;
+        bottom: -16%;
+        font-size: 1rem;
+    }
+
+    .brand-doodle--bread {
+        left: 5%;
+        top: -4%;
+    }
+
+    .brand-doodle--baguette {
+        right: 8%;
+        top: 24%;
+    }
+
+    .sp-h2 {
+        padding-bottom: 50px;
+    }
+}

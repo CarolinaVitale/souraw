@@ -8,6 +8,20 @@
     overflow: hidden;
 }
 
+.choosing-us::before {
+    content: "";
+    position: absolute;
+    top: 12%;
+    right: 50%;
+    width: 900px;
+    height: 900px;
+    background-image: url('../../assets/muneca1.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: 99;
+}
+
 .choosing-title {
     font-size: 4rem;
     margin-bottom: 2.5rem;
@@ -17,7 +31,7 @@
     gap: 0.7rem;
     line-height: 1.2;
     position: relative;
-    z-index: 2;
+    z-index: 99;
 }
 
 .biro {
@@ -134,7 +148,16 @@
 @media (max-width: 900px) {
     .choosing-us {
         padding: 2rem 1.2rem 0rem 1.2rem;
-            margin-bottom: 0;
+        margin-bottom: 0;
+    }
+
+    .choosing-us::before {
+        content: "";
+        position: absolute;
+        top: 56.5%;
+        right: 30%;
+        width: 400px;
+        height: 400px;
     }
 
     .cu-canvas {
