@@ -98,7 +98,9 @@
     width: 3px;
     transform: translateX(-50%) scaleY(var(--lineProgress));
     transform-origin: top;
-    background: rgb(247, 145, 195, 0.35);
+    background: rgb(93,
+            48,
+            255, 0.35);
     border-radius: 999px;
     pointer-events: none;
 }
@@ -117,11 +119,12 @@
 }
 
 .abt-dot {
-    width: 18px;
-    height: 18px;
+    opacity: 1;
+    width: 16px;
+    height: 16px;
     border-radius: 999px;
     background: var(--color-pink);
-    border: 2px solid var(--color-red);
+    border: 2px solid var(--color-purple);
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
     transform: scale(0.86);
     transition: transform 500ms ease, box-shadow 500ms ease;
@@ -259,6 +262,7 @@
 
     .abt-dot {
         margin: 0;
+        opacity: 1;
     }
 
     .abt-media {

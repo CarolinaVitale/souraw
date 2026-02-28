@@ -1,68 +1,103 @@
-import React from 'react';
-import './Orders.css';
-import pedidoImg from '../../assets/orders.webp';
-import { Calendar, Bread, Clock, CookingPot, WhatsappLogo } from '@phosphor-icons/react';
+import React, { useEffect, useRef } from "react";
+import "./Orders.css";
+import pedidoImg from "../../assets/orders.webp";
+import crumbsPng from "../../assets/crumbs2.PNG";
+import { Calendar, Bread, Clock, Fire, WhatsappLogo } from "@phosphor-icons/react";
+import PageBanner from "../../components/PageBanner/PageBanner";
+import bannerImage from "../../assets/banner4.jpg";
 
-const Pedidos = () => {
+const Orders = () => {
+    const sectionRef = useRef(null);
+
+    useEffect(() => {
+        const el = sectionRef.current;
+        if (!el) return;
+
+        const handleScroll = () => {
+            const rect = el.getBoundingClientRect();
+            const windowHeight = window.innerHeight;
+            const progress = 1 - rect.top / windowHeight;
+            const clamped = Math.max(0, Math.min(1, progress));
+
+            const y1 = (clamped - 0.5) * 30;
+            const y2 = (clamped - 0.5) * -20;
+
+            el.style.setProperty("--parallax-a", `${y1}px`);
+            el.style.setProperty("--parallax-b", `${y2}px`);
+        };
+
+        handleScroll();
+        window.addEventListener("scroll", handleScroll, { passive: true });
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
+
     return (
-        <section className="pedidos-section">
-            <div className="pedidos-text">
-                <h2 data-aos="fade-up">¿Quieres hacer un pedido?</h2>
+        <>
+            <PageBanner image={bannerImage} kicker="Baked for you..." title="FRESH & UNRUSHED" />
 
-                <p data-aos="fade-up" data-aos-delay="100">
-                    Cada producto necesita <strong>48 horas</strong> desde que comienzo a alimentar la masa madre.
-                </p>
-
-                <div className="pedidos-bullets" data-aos="fade-up" data-aos-delay="150">
-                    <p className="pedido-line">
-                        <Calendar className="pedido-icon" weight="light" />
-                        <strong>  Días de masas:</strong>&nbsp;lunes, miércoles y viernes.
-                    </p>
-                    <p className="pedido-line">
-                        <Bread className="pedido-icon" weight="light" />
-                        <strong>  Días de entrega:</strong>&nbsp;martes, jueves y sábado.
-                    </p>
-                    <p className="pedido-line">
-                        <CookingPot className="pedido-icon" weight="light" />
-                        <strong> Martes:</strong>&nbsp;solo Tequeños.
-                    </p>
+            <section className="pedidos-section" ref={sectionRef}>
+                <div className="orders-crumbsLayer">
+                    <img src={crumbsPng} alt="" className="orders-crumbs crumbs-a" />
+                    <img src={crumbsPng} alt="" className="orders-crumbs crumbs-b" />
                 </div>
 
-                <div className="pedidos-deadlines" data-aos="fade-up" data-aos-delay="200">
-                    <p className="pedido-line">
-                        <Clock className="pedido-icon" weight="light" />
-                        <strong> Haz tu pedido antes de:</strong>
+                <div className="pedidos-text">
+                    <h2>Want to place an order?</h2>
+
+                    <p>
+                        Everything here starts with the starter. I need <strong>48 hours</strong> from the moment I begin feeding it to the moment your order is ready.
                     </p>
-                    <ul className="pedido-list">
-                        <li><strong>DOMINGO 8:00 pm</strong> → para recibir el <strong>MARTES</strong></li>
-                        <li><strong>MARTES 8:00 pm</strong> → para recibir el <strong>JUEVES</strong></li>
-                        <li><strong>JUEVES 8:00 pm</strong> → para recibir el <strong>SÁBADO</strong></li>
-                    </ul>
+
+                    <div className="pedidos-bullets">
+                        <p className="pedido-line">
+                            <Calendar className="pedido-icon" weight="light" />
+                            <strong>Dough days:</strong>&nbsp;Monday, Wednesday, and Friday.
+                        </p>
+                        <p className="pedido-line">
+                            <Bread className="pedido-icon" weight="light" />
+                            <strong>Delivery days:</strong>&nbsp;Tuesday, Thursday, and Saturday.
+                        </p>
+                        <p className="pedido-line">
+                            <Fire className="pedido-icon" weight="light" />
+                            <strong>Tuesdays:</strong>&nbsp;Tequeños only.
+                        </p>
+                        <p className="pedido-line">
+                            <Clock className="pedido-icon" weight="light" />
+                            <strong>Order cutoffs:</strong>
+                        </p>
+                    </div>
+
+                    <div className="pedidos-deadlines">
+                        <ul className="pedido-list">
+                            <li><strong>SUNDAY 8:00 pm</strong> → delivery on <strong>TUESDAY</strong></li>
+                            <li><strong>TUESDAY 8:00 pm</strong> → delivery on <strong>THURSDAY</strong></li>
+                            <li><strong>THURSDAY 8:00 pm</strong> → delivery on <strong>SATURDAY</strong></li>
+                        </ul>
+                    </div>
+
+                    <p className="pedidos-sello">
+                        Same-day only: <strong>Freshly baked, always ♡</strong>
+                    </p>
+
+                    <h2>What are you craving today?</h2>
+
+                    <a
+                        href="https://wa.me/584121531299?text=Hi%2C%20I%27d%20love%20to%20place%20an%20order%20%E2%99%A1"
+                        className="pedidos-button"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <WhatsappLogo size={22} weight="light" style={{ marginRight: 6 }} />
+                        order here ♡
+                    </a>
                 </div>
 
-                <p data-aos="fade-up" data-aos-delay="250" className="pedidos-sello">
-                    Solo productos del día: <strong > NUNCA DE AYER, SIEMPRE DE HOY ♡</strong>
-                </p>
-
-                <h2 data-aos="zoom-in" data-aos-delay="300">¿Qué se te antoja hoy?</h2>
-                <a
-                    href="https://wa.me/584121531299?text=Hola%2C%20quisiera%20hacer%20un%20pedido%20%E2%99%A1"
-                    className="pedidos-button"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    data-aos="zoom-in"
-                    data-aos-delay="350"
-                >
-                    <WhatsappLogo size={22} weight="light" style={{ marginRight: 6, verticalAlign: 'text-bottom' }} />
-                    pídelo aquí ♡
-                </a>
-            </div>
-
-            <div className="pedidos-image">
-                <img data-aos="fade-left" src={pedidoImg} alt="Bolsas de pan SOURAW" />
-            </div>
-        </section>
+                <div className="pedidos-image">
+                    <img src={pedidoImg} alt="SOURAW bread bags" />
+                </div>
+            </section>
+        </>
     );
 };
 
-export default Pedidos;
+export default Orders;
