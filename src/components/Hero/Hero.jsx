@@ -3,8 +3,8 @@ import "./Hero.css";
 import doll from '../../assets/doll.png';
 import { Link } from "react-router-dom";
 import { ShoppingBag, BookOpen, WhatsappLogo } from "@phosphor-icons/react";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faInstagram, faTiktok } from '@fortawesome/free-brands-svg-icons';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import { faInstagram, faTiktok } from '@fortawesome/free-brands-svg-icons';
 
 
 const Hero = () => {
@@ -38,7 +38,7 @@ const Hero = () => {
                         </Link> */}
 
                         <a
-                            href="https://wa.me/584121531299?text=Hola%2C%20quisiera%20hacer%20un%20pedido%20♡"
+                            href="https://wa.me/584121531299?text=Hi%2C%20I%27d%20love%20to%20place%20an%20order%20%E2%99%A1"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="heroOverlay-btn"
@@ -48,7 +48,7 @@ const Hero = () => {
                     </div>
 
 
-                    <div className="social-icons">
+                    {/* <div className="social-icons">
                         <a
                             href="https://instagram.com/souraw.cv"
                             target="_blank"
@@ -65,7 +65,7 @@ const Hero = () => {
                         >
                             <FontAwesomeIcon icon={faTiktok} size="2x" />
                         </a>
-                    </div>
+                    </div> */}
 
                 </div>
             </div>

@@ -2,9 +2,10 @@ import React, { useEffect, useRef } from "react";
 import "./Orders.css";
 import pedidoImg from "../../assets/orders.webp";
 import crumbsPng from "../../assets/crumbs2.PNG";
-import { Calendar, Bread, Clock, Fire, WhatsappLogo } from "@phosphor-icons/react";
+import { Calendar, Bread, Clock, Fire } from "@phosphor-icons/react";
 import PageBanner from "../../components/PageBanner/PageBanner";
-import bannerImage from "../../assets/banner4.jpg";
+import bannerImage from "../../assets/banner4.webp";
+import DeliveryCalendar from "../../components/DeliveryCalendar/DeliveryCalendar";
 
 const Orders = () => {
     const sectionRef = useRef(null);
@@ -45,22 +46,27 @@ const Orders = () => {
                     <h2>Want to place an order?</h2>
 
                     <p>
-                        Everything here starts with the starter. I need <strong>48 hours</strong> from the moment I begin feeding it to the moment your order is ready.
+                        Everything here starts with my starter. I need <strong>48 hours</strong> from the first feeding to the moment your order is ready.
                     </p>
+
+                    <DeliveryCalendar />
 
                     <div className="pedidos-bullets">
                         <p className="pedido-line">
                             <Calendar className="pedido-icon" weight="light" />
-                            <strong>Dough days:</strong>&nbsp;Monday, Wednesday, and Friday.
+                            <strong>Prep days:</strong>&nbsp;Monday, Wednesday, and Friday.
                         </p>
+
                         <p className="pedido-line">
                             <Bread className="pedido-icon" weight="light" />
                             <strong>Delivery days:</strong>&nbsp;Tuesday, Thursday, and Saturday.
                         </p>
+
                         <p className="pedido-line">
                             <Fire className="pedido-icon" weight="light" />
                             <strong>Tuesdays:</strong>&nbsp;Tequeños only.
                         </p>
+
                         <p className="pedido-line">
                             <Clock className="pedido-icon" weight="light" />
                             <strong>Order cutoffs:</strong>
@@ -76,7 +82,7 @@ const Orders = () => {
                     </div>
 
                     <p className="pedidos-sello">
-                        Same-day only: <strong>Freshly baked, always ♡</strong>
+                        No same-day orders — <strong>freshly baked, always <i className="fa-regular fa-heart"></i></strong>
                     </p>
 
                     <h2>What are you craving today?</h2>
@@ -87,8 +93,7 @@ const Orders = () => {
                         target="_blank"
                         rel="noopener noreferrer"
                     >
-                        <WhatsappLogo size={22} weight="light" style={{ marginRight: 6 }} />
-                        order here ♡
+                        let's bake something <i className="fa-regular fa-heart"></i>
                     </a>
                 </div>
 

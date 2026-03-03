@@ -5,7 +5,7 @@ import otros from '../../data/otros';
 import ProductCard from '../../components/ProductCard/ProductCard';
 import './Catalog.css';
 import PageBanner from '../../components/PageBanner/PageBanner';
-import bannerImage from '../../assets/banner3.jpg'
+import bannerImage from '../../assets/banner3.webp'
 
 // import { Link } from 'react-router-dom'
 

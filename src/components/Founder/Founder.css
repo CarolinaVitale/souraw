@@ -207,8 +207,8 @@
     }
 
     .fs-avatarWrap {
-        top: 50px;
-        left: 50px;
+        top: 30px;
+        left: -30px;
         transform: translateX(250%);
     }
 }

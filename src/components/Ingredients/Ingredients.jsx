@@ -77,19 +77,22 @@ export default function Ingredients() {
                 <header className="sk-heading">
                     <p className="sk-kicker">Why Sourdough?</p>
                     <h2 className="sk-h2">
-                        Real benefits, naturally <i className="fa-solid fa-heart"></i>
+                        Real benefits, naturally <i className="fa-solid fa-heart" />
                     </h2>
                 </header>
 
-                <div
-                    ref={stageRef}
-                    className={`sk-stage ${inView ? "is-inview" : ""}`}
-                >
-                    <img
-                        className="sk-center"
-                        src={breadPng}
-                        alt="Souraw sourdough"
-                    />
+                <div ref={stageRef} className={`sk-stage ${inView ? "is-inview" : ""}`}>
+                    {/* ✅ Safari fix: centrado fijo + float en un inner (no se anima el transform del centro) */}
+                    <div className="sk-centerWrap" aria-hidden="true">
+                        <div className="sk-centerFloat">
+                            <img
+                                className="sk-centerImg"
+                                src={breadPng}
+                                alt="Souraw sourdough"
+                                draggable="false"
+                            />
+                        </div>
+                    </div>
 
                     {ITEMS.map((it) => (
                         <div

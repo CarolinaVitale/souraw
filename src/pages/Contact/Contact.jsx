@@ -22,7 +22,8 @@ const Contact = () => {
 Reach out on WhatsApp, Instagram, or TikTok.                    </p>
 
                     <div className="contact-icons">
-                        <a href="https://wa.me/584121531299?text=Hola%2C%20quisiera%20hacer%20un%20pedido%20♡" target="_blank" rel="noopener noreferrer">
+                        <a 
+                            href="https://wa.me/584121531299?text=Hi%2C%20I%27d%20love%20to%20place%20an%20order%20%E2%99%A1" target="_blank" rel="noopener noreferrer">
                             <FaWhatsapp />
                         </a>
                         <a href="https://www.instagram.com/souraw.cv" target="_blank" rel="noopener noreferrer">

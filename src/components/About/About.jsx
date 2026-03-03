@@ -10,9 +10,11 @@ import venezuela from "../../assets/martino.jpg";
 import tampa from "../../assets/viaje.jpg";
 import founder from "../../assets/founder2.png";
 import founder2 from "../../assets/founder.png";
+import family from "../../assets/family.jpeg";
+import bread from "../../assets/result.jpeg";
 
 import PageBanner from "../../components/PageBanner/PageBanner";
-import aboutImage from "../../assets/banner1.jpg";
+import aboutImage from "../../assets/banner1.webp";
 
 const TIMELINE = [
     {
@@ -65,6 +67,23 @@ const TIMELINE = [
         year: "",
         title: "",
         body: [
+            "The last two years haven’t been easy. There’s been a lot of trial and error, frustration, deep breaths in the middle of the night, dough ending up in the trash, moments where I wanted to quit — and moments where I chose not to.",
+        ],
+        image: bread,
+    },
+    {
+        year: "",
+        title: "",
+        body: [
+            "Somewhere along the way, my father told me that my Nonna — his mother — also used to bake bread. That felt like a whisper from the past. Like a thread connecting generations. Like something in my blood quietly waiting to wake up.",
+        ],
+        image: family,
+    },
+    {
+        year: "",
+        title: "",
+        body: [
+            "But Souraw is more than sourdough — as powerful as that already is.",
             "It is a tribute to my roots.",
             "It is the connection I found with my mother during one of the quietest, hardest seasons of my life.",
             "It is discovering who I am.",

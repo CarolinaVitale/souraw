@@ -47,16 +47,19 @@ const ReviewsForm = () => {
                     required
                 />
 
-                <select
-                    value={rating}
-                    onChange={(e) => setRating(Number(e.target.value))}
-                >
-                    <option value={5}>★★★★★</option>
-                    <option value={4}>★★★★☆</option>
-                    <option value={3}>★★★☆☆</option>
-                    <option value={2}>★★☆☆☆</option>
-                    <option value={1}>★☆☆☆☆</option>
-                </select>
+                <div className="selectWrap">
+                    <select
+                        className="select-stars"
+                        value={rating}
+                        onChange={(e) => setRating(Number(e.target.value))}
+                    >
+                        <option value={5}>★★★★★</option>
+                        <option value={4}>★★★★☆</option>
+                        <option value={3}>★★★☆☆</option>
+                        <option value={2}>★★☆☆☆</option>
+                        <option value={1}>★☆☆☆☆</option>
+                    </select>
+                </div>
 
                 <textarea
                     className="review-textarea"

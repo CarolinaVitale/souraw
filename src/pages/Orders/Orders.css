@@ -122,14 +122,13 @@
 }
 
 .pedidos-image img {
-    max-width: 100%;
-    border-radius: 6px;
+    width: 40vw;
+    border-radius: 3px;
 }
 
 @media (max-width: 768px) {
-    .pedidos-section {
-        flex-direction: column;
-        padding: 2rem 1rem;
+    .pedidos-text {
+        padding: 0;
     }
 
     .orders-crumbs {
@@ -138,12 +137,16 @@
 
     .crumbs-a {
         left: -25%;
-        top: -16%;
+        top: -10%;
         transform: rotate(-20deg);
     }
 
     .crumbs-b {
         right: -45%;
-        top: 37%;
+        top: 57%;
+    }
+
+    .pedidos-image img{
+        width: 300px;
     }
 }

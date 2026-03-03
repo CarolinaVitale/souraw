@@ -45,7 +45,7 @@ function Navbar() {
                                 ABOUT
                             </Link>
                         </li>
-                        {/* <li className='nav-item'>
+                        <li className='nav-item'>
                             <Link
                                 to='/products'
                                 className='nav-links'
@@ -53,7 +53,7 @@ function Navbar() {
                             >
                                 PRODUCTS
                             </Link>
-                        </li> */}
+                        </li>
 
                         <li className='nav-item'>
                             <Link
@@ -77,7 +77,7 @@ function Navbar() {
                                 REVIEWS
                             </Link>
                         </li>
-                        {/* <li className='nav-item'>
+                        <li className='nav-item'>
                             <Link
                                 to='/orders'
                                 className='nav-links'
@@ -85,7 +85,7 @@ function Navbar() {
                             >
                                 ORDERS
                             </Link>
-                        </li> */}
+                        </li>
                     </ul>
                 </div>
             </nav>

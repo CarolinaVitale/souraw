@@ -10,7 +10,7 @@ const ProductCard = ({ image, name, description, ingredients, price }) => {
                 <p className="product-description">{description}</p>
                 {ingredients && (
                     <p className="product-description">
-                        <span className="label">Ingredientes: </span> {ingredients}
+                        <span className="label">Ingredients: </span> {ingredients}
                     </p>
                 )}
                 {/* {price && (

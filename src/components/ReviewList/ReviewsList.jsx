@@ -38,6 +38,8 @@ const ReviewsList = () => {
         <>
             <PageBanner image={reviewImage} kicker="Love notes..." title="FROM OUR COMMUNITY" />
             <section className="reviews-section">
+                <h2>Baked, tasted, remembered <i className="fa-regular fa-heart"></i></h2>
+
                 <div className="reviews-container">
                     {reviews.map((review) => (
                         <div key={review.id} className="review-card" data-aos="zoom-in-up" data-aos-delay="100">
