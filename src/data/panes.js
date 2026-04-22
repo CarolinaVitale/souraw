@@ -5,7 +5,7 @@ const panes = [
         description:
             "The one that started it all. Naturally leavened and long-fermented for 24 hours for a crackly crust, an airy crumb, and that gentle tang only real sourdough has. Simple. Honest. Alive.",
         ingredients:
-            "Wheat flour, water, sourdough starter, bran, salt. No commercial yeast. No sugar added. 100% sourdough.",
+            "Wheat flour, water, sourdough starter, salt. No commercial yeast. No sugar added. 100% sourdough.",
         price: "$6.5 (1kg) BCV rate",
         image: require("../assets/clasico.webp"),
     },
@@ -15,7 +15,7 @@ const panes = [
         description:
             "Slow food, daily bread. A 24-hour fermentation with whole grain flours for a deeper flavor, a hearty bite, and a more nourishing loaf. Comfort that feels good.",
         ingredients:
-            "Wheat flour, whole wheat flour, water, sourdough starter, bran, salt. No commercial yeast. No sugar added. 100% sourdough.",
+            "Wheat flour, whole wheat flour, water, sourdough starter, salt. No commercial yeast. No sugar added. 100% sourdough.",
         price: "$10 (1.200kg) BCV rate",
         image: require("../assets/integral.webp"),
     },
