@@ -2,7 +2,7 @@
 const otros = [
     {
         image: require('../assets/hoagie.webp'),
-        name: 'Sourdough Hoagies',
+        name: 'Hoagies',
         description:
             'Long, naturally leavened rolls with a light, airy crumb and a tender crust. Perfect for sandwiches or toasting. Artisan texture, real fermentation, real flavor.',
         ingredients:
@@ -18,7 +18,7 @@ const otros = [
     },
     {
         image: require('../assets/tequenos.webp'),
-        name: 'Sourdough Tequeños',
+        name: 'Tequeños',
         description:
             'Crispy outside, creamy buffalo cheese inside. Made with butter-rich dough and naturally leavened for deeper flavor. Delivered par-baked so you can finish them golden in your air fryer.',
         ingredients:
@@ -34,7 +34,7 @@ const otros = [
     },
     {
         image: require('../assets/pizza.webp'),
-        name: 'Sourdough Margherita',
+        name: 'Pizza Margherita',
         description:
             'Naturally leavened crust, house tomato sauce, and fresh mozzarella. Simple ingredients, bold flavor. Light, balanced, and full of character.',
         ingredients:
@@ -50,7 +50,7 @@ const otros = [
     },
     {
         image: require('../assets/pan-dulce.webp'),
-        name: 'Sweet Milk Bread',
+        name: 'Sweet Milk Buns',
         description:
             'Soft, fluffy, and gently sweet. Perfect with coffee, breakfast, or an afternoon pause. Small-batch, honest, and made with care.',
         ingredients:
