@@ -103,7 +103,7 @@
 
 @media (max-width: 768px) {
     .hero {
-        min-height: 95vh;
+        min-height: 90vh;
         padding: 7rem 1.2rem 3rem;
         align-items: flex-end;
         background:
@@ -145,8 +145,8 @@
     .hero-doll {
         width: 125px;
         left: auto;
-        right: 3.2rem;
-        bottom: 311px;
+        right: 1rem;
+        bottom: 322px;
         opacity: 1;
     }
 }
