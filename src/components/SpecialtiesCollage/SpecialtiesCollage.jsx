@@ -2,12 +2,12 @@ import React from "react";
 import { motion } from "framer-motion";
 import "./SpecialtiesCollage.css";
 
-import imgA from "../../assets/special5.jpg";
-import imgB from "../../assets/special4.jpg";
-import imgC from "../../assets/special7.jpg";
-import imgD from "../../assets/special6.jpg";
-import imgE from "../../assets/special11.jpeg";
-import circular from "../../assets/special8.jpg";
+import imgA from "../../assets/prices/cookies.webp";
+import imgB from "../../assets/prices/4-roots.webp";
+import imgC from "../../assets/prices/chocolate-babka.webp";
+import imgD from "../../assets/prices/focaccia.webp";
+import imgE from "../../assets/prices/classic.webp";
+import circular from "../../assets/prices/tiramisu.webp";
 import fermentina from "../../assets/fermentina.gif";
 
 import baguetteDoodle from "../../assets/element-baguette.png";

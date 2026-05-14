@@ -25,7 +25,7 @@ const Hero = () => {
                 </p>
 
                 <div className="hero-actions">
-                    <Link to="/orders" className="hero-btn hero-btn-main">
+                    <Link to="/prices" className="hero-btn hero-btn-main">
                         orders <ShoppingBag size={18} weight="light" />
                     </Link>
 

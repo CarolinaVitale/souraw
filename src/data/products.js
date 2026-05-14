@@ -201,7 +201,7 @@ export const products = [
         category: "tenderSweets",
         name: "Tiramisu",
         size: "individual",
-        priceUSD: 9,
+        priceUSD: 0,
         featured: true,
         available: true,
         badge: "Coming Soon",

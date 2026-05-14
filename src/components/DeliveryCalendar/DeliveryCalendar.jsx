@@ -151,8 +151,8 @@ export default function DeliveryCalendar({ onSelectDelivery }) {
                 </div>
 
                 <div className="deliveryCal-grid">
-                    {["S", "M", "T", "W", "T", "F", "S"].map((d) => (
-                        <div key={d} className="deliveryCal-dow">
+                    {["S", "M", "T", "W", "T", "F", "S"].map((d, index) => (
+                        <div key={`${d}-${index}`} className="deliveryCal-dow">
                             {d}
                         </div>
                     ))}
