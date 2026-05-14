@@ -1,55 +1,72 @@
-import React from 'react';
-import panes from '../../data/panes';
-import dulces from '../../data/dulces';
-import otros from '../../data/otros';
-import ProductCard from '../../components/ProductCard/ProductCard';
-import './Catalog.css';
-import PageBanner from '../../components/PageBanner/PageBanner';
-import bannerImage from '../../assets/banner3.webp'
+import React from "react";
+import { categories, getProductsByCategory } from "../../data/products";
+import ProductCard from "../../components/ProductCard/ProductCard";
+import PageBanner from "../../components/PageBanner/PageBanner";
+import bannerImage from "../../assets/banner3.webp";
+import "./Catalog.css";
 
-// import { Link } from 'react-router-dom'
+const Catalog = () => {
+    const catalogTitles = {
+        wildLoaves: "Crust & Crumb",
+        slowCravings: "Slow Cravings",
+        hearthPizzas: "Hearth Pizzas",
+        tenderSweets: "Sweet Pauses",
+    };
 
-const Catalog = () => (
+    return (
+        <>
+            <PageBanner
+                image={bannerImage}
+                kicker="Special selection"
+                title="MENU"
+            />
 
-    <>
-        <PageBanner image={bannerImage} kicker="Our Bread..." title="SLOWLY MADE. WILDLY SOURAW" />
+            <section className="catalog">
+                <div className="catalog-intro" data-aos="fade-up">
+                    <p>Our menu</p>
+                    <h1>Made slowly, meant to be savored.</h1>
+                    <span>
+                        A quiet collection of sourdough breads, cravings, pizzas and sweet pauses —
+                        crafted with real fermentation, patience and intention.
+                    </span>
+                </div>
 
-        <section className="catalog">
-            <h2 data-aos='fade-up'>Crust & Crumb <i className="fa-solid fa-heart"></i></h2>
-            <div className="catalog-grid" data-aos='fade-up' data-aos-delay="100">
-                {panes.map((product) => (
-                    <ProductCard key={product.id} {...product} />
-                ))}
-            </div>
+                {categories.map((category) => {
+                    const products = getProductsByCategory(category.id);
+                    if (!products.length) return null;
 
-            <h2 data-aos='fade-up'>Slow Cravings <i className="fa-solid fa-heart"></i></h2>
-            <div className="catalog-grid" data-aos='fade-up' data-aos-delay="100">
-                {otros.map((product) => (
-                    <ProductCard key={product.id} {...product} />
-                ))}
-            </div>
+                    return (
+                        <section className="catalog-section" key={category.id}>
+                            <div className="catalog-section-header" data-aos="fade-up">
+                                <p>SOURAW selection</p>
+                                <h2>{catalogTitles[category.id] || category.title}</h2>
+                            </div>
 
-            <h2 data-aos='fade-up'>Sweet Pauses <i className="fa-solid fa-heart"></i></h2>
-            <div className="catalog-grid" data-aos='fade-up' data-aos-delay="100">
-                {dulces.map((product) => (
-                    <ProductCard key={product.id} {...product} />
-                ))}
-            </div>
+                            <div className="catalog-grid" data-aos="fade-up" data-aos-delay="100">
+                                {products.map((product) => (
+                                    <ProductCard
+                                        key={product.id}
+                                        {...product}
+                                        image={product.catalogImage}
+                                    />
+                                ))}
+                            </div>
+                        </section>
+                    );
+                })}
 
-            {/* <h2 data-aos='fade-up'>Lista de precios</h2>
-        ˝<div className='catalogo-price-image' data-aos='fade-up' data-aos-delay="100">
-            <img src={ listaPrecios } alt='lista-de-precios'/>
-        </div> */}
+                <div className="catalog-cta" data-aos="fade-up">
+                    <p>
+                        Freshly baked for Tampa locals ♡
+                    </p>
 
-            {/* <div className="list-button">
-            <Link to="/lista-de-precios" className="catalog-button">
-                ver lista de precios ♡
-            </Link>
-        </div> */}
-
-        </section>
-    </>
-
-);
+                    <a href="/orders" className="catalog-order-btn">
+                        ORDER HERE
+                    </a>
+                </div>
+            </section>
+        </>
+    );
+};
 
 export default Catalog;

@@ -1,48 +1,127 @@
 .catalog {
-    padding: 6rem 2rem;
-    background-color: var(--color-pink);
-    background-size: 1000px;
-    background-repeat: repeat;
+    padding: 6rem 5vw;
+    background: var(--color-bg);
 }
 
-.catalog h1 {
-    font-family: 'Nauryz', cursive;
+.catalog-intro {
+    max-width: 780px;
+    margin: 0 auto 6rem;
+    text-align: center;
+}
+
+.catalog-intro p,
+.catalog-section-header p {
+    font-family: "Biro", cursive;
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
     color: var(--color-red);
-    font-size: xx-large;
-    border-bottom: 1px solid var(--color-red);
+    margin: 0 0 0.5rem;
 }
 
-.catalog h2 {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 2.5rem;
+.catalog-intro h1 {
+    font-family: "Montserrat", sans-serif;
+    font-size: clamp(2.3rem, 6vw, 5rem);
+    line-height: 0.95;
+    text-transform: uppercase;
     color: var(--color-gray-dark);
-    margin-bottom: 2rem;
-    text-align: center;
+    margin: 0 0 1.5rem;
+    letter-spacing: -0.05em;
 }
 
-.list-button {
-    text-align: center;
+.catalog-intro span {
+    display: block;
+    font-family: "Montserrat", sans-serif;
+    font-size: clamp(0.95rem, 1.5vw, 1.15rem);
+    line-height: 1.7;
+    color: var(--color-gray-dark);
+    max-width: 620px;
+    margin: 0 auto;
+}
+
+.catalog-section {
+    margin-bottom: 7rem;
+}
+
+.catalog-section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    gap: 2rem;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid rgba(54, 54, 54, 0.18);
+    padding-bottom: 1rem;
+}
+
+.catalog-section-header h2 {
+    font-family: "Montserrat", sans-serif;
+    font-size: clamp(2rem, 5vw, 4.5rem);
+    line-height: 0.95;
+    text-transform: uppercase;
+    color: var(--color-gray-dark);
+    margin: 0;
+    letter-spacing: -0.05em;
 }
 
 .catalog-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 2rem;
-    justify-content: flex-start;
-    margin-bottom: 4rem;
-    align-items: stretch;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(1.25rem, 3vw, 3rem);
 }
 
-@media (min-width: 600px) {
-    .product-card {
-        flex: 1 1 calc(50% - 2rem);
-        max-width: calc(50% - 2rem);
+.catalog-cta {
+    margin-top: 6rem;
+    text-align: center;
+    padding-top: 4rem;
+    border-top: 1px solid rgba(54, 54, 54, 0.12);
+}
+
+.catalog-cta p {
+    font-family: "Montserrat", sans-serif;
+    font-size: 0.95rem;
+    color: rgba(54, 54, 54, 0.72);
+    margin-bottom: 1.5rem;
+}
+
+.catalog-order-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 2.5rem;
+    border-radius: 3px;
+    background: var(--color-red);
+    color: var(--color-bg);
+    text-decoration: none;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    font-size: 0.85rem;
+    transition: all 0.3s ease;
+}
+
+.catalog-order-btn:hover {
+    transform: translateY(-2px);
+    opacity: 0.92;
+}
+
+@media (min-width: 1000px) {
+    .catalog-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
     }
 }
 
-@media (min-width: 900px) {
-    .product-card {
-        flex: 1 1 calc(33.33% - 2rem);
-        max-width: calc(33.33% - 2rem);
+@media (max-width: 768px) {
+    .catalog {
+        padding: 4rem 1.25rem;
+    }
+
+    .catalog-section {
+        margin-bottom: 5rem;
+    }
+
+    .catalog-section-header {
+        display: block;
+    }
+
+    .catalog-grid {
+        grid-template-columns: 1fr;
     }
 }

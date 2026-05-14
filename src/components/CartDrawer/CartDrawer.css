@@ -1,0 +1,230 @@
+.cart-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(54, 54, 54, 0.25);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease;
+    z-index: 1500;
+}
+
+.cart-overlay.open {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.cart-drawer {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: min(430px, 100%);
+    height: 95vh;
+    background: var(--color-bg);
+    z-index: 1600;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    box-shadow: -20px 0 40px rgba(0, 0, 0, 0.12);
+    overflow: hidden;
+}
+
+.cart-drawer.open {
+    transform: translateX(0);
+}
+
+.cart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    flex-shrink: 0;
+}
+
+.cart-header h2 {
+    font-family: "Montserrat", sans-serif;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    color: var(--color-red);
+    margin: 0;
+}
+
+.cart-close {
+    background: transparent;
+    border: none;
+    font-size: 2rem;
+    color: var(--color-red);
+    cursor: pointer;
+}
+
+.cart-empty {
+    margin-top: 4rem;
+    text-align: center;
+    font-family: "Montserrat", sans-serif;
+    color: var(--color-gray-dark);
+}
+
+.cart-empty p {
+    font-weight: 800;
+    font-size: 1.2rem;
+}
+
+.cart-empty span {
+    font-family: "Biro", cursive;
+    font-size: 1.7rem;
+}
+
+.cart-items {
+    flex: 1;
+    overflow-y: auto;
+    padding-right: 0.5rem;
+    min-height: 0;
+}
+
+.cart-item {
+    display: grid;
+    grid-template-columns: 95px 1fr;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(54, 54, 54, 0.14);
+}
+
+.cart-item-img {
+    width: 95px;
+    height: 95px;
+    object-fit: cover;
+    border-radius: 3px;
+}
+
+.cart-item-info h3 {
+    margin: 0 0 0.3rem;
+    font-family: "Montserrat", sans-serif;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    color: var(--color-gray-dark);
+}
+
+.cart-item-info p {
+    margin: 0 0 0.5rem;
+    font-family: "Montserrat", sans-serif;
+    font-size: 0.85rem;
+    color: var(--color-gray-dark);
+    opacity: 0.75;
+}
+
+.cart-item-info span {
+    display: block;
+    margin-bottom: 0.7rem;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 800;
+    color: var(--color-red);
+}
+
+.cart-qty {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin-bottom: 0.7rem;
+}
+
+.cart-qty button {
+    width: 28px;
+    height: 28px;
+    border: 1px solid var(--color-gray-dark);
+    background: transparent;
+    color: var(--color-gray-dark);
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.cart-qty strong {
+    font-family: "Montserrat", sans-serif;
+}
+
+.cart-remove,
+.cart-clear {
+    background: transparent;
+    border: none;
+    color: var(--color-gray-dark);
+    opacity: 0.7;
+    font-family: "Montserrat", sans-serif;
+    font-size: 0.8rem;
+    text-decoration: underline;
+    cursor: pointer;
+    padding: 0;
+}
+
+.cart-footer {
+    flex-shrink: 0;
+    padding-top: 1.2rem;
+    border-top: 1px solid rgba(54, 54, 54, 0.14);
+    background: var(--color-bg);
+}
+
+.cart-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    font-family: "Montserrat", sans-serif;
+    color: var(--color-gray-dark);
+}
+
+.cart-total span {
+    font-weight: 700;
+}
+
+.cart-total strong {
+    font-size: 1.4rem;
+    color: var(--color-red);
+}
+
+.cart-checkout {
+    display: block;
+    width: 100%;
+    text-align: center;
+    background: var(--color-red);
+    color: var(--color-bg);
+    border: 2px solid var(--color-red);
+    text-decoration: none;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 800;
+    padding: 0.9rem 1rem;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.cart-checkout:hover {
+    background: transparent;
+    color: var(--color-red);
+}
+
+.cart-clear {
+    display: block;
+    margin: 0 auto;
+}
+
+@media (max-width: 640px) {
+    .cart-drawer {
+        width: 100%;
+        padding: 1.5rem;
+        right: auto;
+        box-sizing: border-box;
+        height: 100vh;
+    }
+
+    .cart-header {
+        padding: 1rem 1.5rem 0rem 2rem;
+    }
+
+    .cart-item {
+        grid-template-columns: 80px 1fr;
+    }
+
+    .cart-item-img {
+        width: 80px;
+        height: 80px;
+    }
+}

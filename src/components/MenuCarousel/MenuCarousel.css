@@ -1,5 +1,5 @@
 .menu-carousel {
-    background-color: var(--color-green);
+    background-color: var(--color-bg);
     background-repeat: repeat;
     background-size: 500px auto;
     padding: 4rem 1.5rem;
@@ -28,8 +28,8 @@
 
 .catalog-button {
     background-color: transparent;
-    color: var(--color-yellow);
-    border: 2px solid var(--color-yellow);
+    color: var(--color-red);
+    border: 2px solid var(--color-red);
     font-family: 'Montserrat', sans-serif;
     font-weight: 600;
     padding: 0.8rem 2rem;
@@ -43,8 +43,8 @@
 }
 
 .catalog-button:hover {
-    background-color: var(--color-yellow);
-    color: var(--color-green);
+    background-color: var(--color-red);
+    color: var(--color-bg);
     transform: translateY(-2px);
 }
 

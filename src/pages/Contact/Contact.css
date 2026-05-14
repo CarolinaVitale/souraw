@@ -4,11 +4,6 @@
     color: var(--color-gray-dark);
 }
 
-.christmas-decor {
-    display: block;
-    width: 100%;
-}
-
 .contact-wrapper {
     display: flex;
     justify-content: space-between;

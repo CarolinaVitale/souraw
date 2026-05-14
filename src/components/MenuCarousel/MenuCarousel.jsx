@@ -8,20 +8,20 @@ import 'swiper/css/pagination';
 import { Link } from 'react-router-dom'
 
 // Imágenes desde assets
-import menu10 from '../../assets/4-raices.webp';
-import menu11 from '../../assets/hojaldre.webp';
-import menu12 from '../../assets/hoagie.webp';
-import menu1 from '../../assets/clasico.webp';
-import menu2 from '../../assets/integral.webp';
-// import menu3 from '../assets/tocineta-cebolla.webp';
-// import menu4 from '../assets/aji-tocineta.webp';
-// import menu5 from '../assets/queso.png';
-import menu6 from '../../assets/cuernitos.webp';
-import menu7 from '../../assets/tequenos.webp';
-import menu8 from '../../assets/focaccia.webp';
-import menu9 from '../../assets/pizza.webp';
+import menu10 from '../../assets/prices/cookies.webp';
+import menu11 from '../../assets/prices/classic.webp';
+import menu12 from '../../assets/prices/focaccia.webp';
+import menu1 from '../../assets/prices/laminated.webp';
+import menu2 from '../../assets/prices/4-roots.webp';
+import menu3 from '../../assets/prices/tiramisu.webp';
+import menu4 from '../../assets/prices/sandwich-loaf.webp';
+import menu5 from '../../assets/prices/whole-wheat.webp';
+import menu6 from '../../assets/prices/tiramisu.webp';
+import menu7 from '../../assets/prices/mini-croissants.webp';
+import menu8 from '../../assets/prices/chocolate-babka.webp';
+import menu9 from '../../assets/prices/sweet-buns.webp';
 
-const images = [menu10, menu11, menu12, menu1, menu2, menu6, menu7, menu8, menu9];
+const images = [menu10, menu11, menu12, menu3, menu4, menu5, menu1, menu2, menu6, menu7, menu8, menu9];
 
 const MenuCarousel = () => {
     return (

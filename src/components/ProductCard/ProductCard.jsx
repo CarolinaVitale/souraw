@@ -1,25 +1,31 @@
-import React from 'react';
-import './ProductCard.css';
+import React from "react";
+import "./ProductCard.css";
 
-const ProductCard = ({ image, name, description, ingredients, price }) => {
+const ProductCard = ({ image, name, weight, description, ingredients }) => {
     return (
-        <div className="product-card">
-            <img src={image} alt={name} className="product-image" />
+        <article className="product-card">
+            <div className="product-image-wrap">
+                <img src={image} alt={name} className="product-image" />
+            </div>
+
             <div className="product-info">
-                <h3 className="product-name">{name}</h3>
-                <p className="product-description">{description}</p>
+                <div className="product-heading">
+                    <h3 className="product-name">{name}</h3>
+                    {weight && <span className="product-weight">{weight}</span>}
+                </div>
+
+                {description && (
+                    <p className="product-description">{description}</p>
+                )}
+
                 {ingredients && (
-                    <p className="product-description">
-                        <span className="label">Ingredients: </span> {ingredients}
+                    <p className="product-ingredients">
+                        <span>Ingredients</span>
+                        {ingredients}
                     </p>
                 )}
-                {/* {price && (
-                    <p className="product-description">
-                        <span className="label">Precio: </span> {price}
-                    </p>
-                )} */}
             </div>
-        </div>
+        </article>
     );
 };
 

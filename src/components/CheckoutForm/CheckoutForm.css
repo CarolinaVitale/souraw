@@ -1,0 +1,127 @@
+.checkout-form-wrap {
+    overflow-y: auto;
+    max-height: 45vh;
+    margin-top: 1.5rem;
+    padding-right: 0.4rem;
+    border-top: 1px solid rgba(54, 54, 54, 0.14);
+    padding-top: 1.5rem;
+}
+
+.checkout-form-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+.checkout-form-header h3 {
+    margin: 0;
+    font-family: "Montserrat", sans-serif;
+    font-size: 1.1rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    color: var(--color-red);
+}
+
+.checkout-form-header button {
+    background: transparent;
+    border: none;
+    color: var(--color-red);
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.checkout-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.checkout-form input,
+.checkout-form textarea {
+    width: auto;
+    border: 1px solid var(--color-red);
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 3px;
+    padding: 0.85rem 0rem 0.85rem 0.5rem;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+    color: var(--color-red);
+    outline: none;
+}
+
+.checkout-form textarea {
+    min-height: 90px;
+    resize: none;
+}
+
+.checkout-form input::placeholder,
+.checkout-form textarea::placeholder {
+    color: var(--color-red);
+    opacity: 0.75;
+}
+
+.checkout-summary {
+    background: rgba(255, 255, 255, 0.45);
+    padding: 1rem;
+    border-radius: 3px;
+    font-family: "Montserrat", sans-serif;
+    color: var(--color-gray-dark);
+}
+
+.checkout-summary strong {
+    color: var(--color-red);
+}
+
+.checkout-summary pre {
+    white-space: pre-wrap;
+    font-family: "Montserrat", sans-serif;
+    font-size: 0.8rem;
+    line-height: 1.5;
+    margin: 0.7rem 0;
+}
+
+.checkout-summary p {
+    margin: 0;
+    font-weight: 800;
+    color: var(--color-red);
+}
+
+.checkout-submit {
+    border: 2px solid var(--color-red);
+    background: var(--color-red);
+    color: var(--color-bg);
+    font-family: "Montserrat", sans-serif;
+    font-weight: 800;
+    padding: 0.85rem 1.2rem;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.checkout-submit:hover {
+    background: transparent;
+    color: var(--color-red);
+}
+
+.checkout-submit:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.checkout-success,
+.checkout-error {
+    font-family: "Montserrat", sans-serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-align: center;
+    margin: 0.4rem 0 0;
+}
+
+.checkout-success {
+    color: var(--color-green);
+}
+
+.checkout-error {
+    color: var(--color-red);
+}

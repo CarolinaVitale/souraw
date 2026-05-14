@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import "./Orders.css";
-import pedidoImg from "../../assets/orders.webp";
+import pedidoImg from "../../assets/prices/cookie-box.webp";
 import crumbsPng from "../../assets/crumbs2.PNG";
 import { Calendar, Bread, Clock, Fire } from "@phosphor-icons/react";
 import PageBanner from "../../components/PageBanner/PageBanner";

@@ -1,74 +1,41 @@
 import React from "react";
 import "./Hero.css";
-import doll from '../../assets/doll.png';
+import doll from "../../assets/doll.png";
 import { Link } from "react-router-dom";
-import { ShoppingBag, BookOpen, WhatsappLogo } from "@phosphor-icons/react";
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-// import { faInstagram, faTiktok } from '@fortawesome/free-brands-svg-icons';
-
+import { ShoppingBag, BookOpen } from "@phosphor-icons/react";
 
 const Hero = () => {
     return (
-        <section
-            className="heroOverlay"
-        >
-            <div className="heroOverlay-inner">
-                <div className="heroOverlay-card">
-                    <div className="heroOverlay-eyebrow"><i className="fa-regular fa-heart"></i></div>
+        <section className="hero">
+            <div className="hero-content">
+                <p className="hero-kicker">100% sourdough</p>
 
-                    <img src={doll} className='hero-doll' alt='illustration' />
+                <h1 className="hero-title">
+                    Untamed.
+                    <br />
+                    Unrushed.
+                    <br />
+                    Unapologetic.
+                </h1>
 
-                    <h1 className="heroOverlay-title">untamed • unrushed • unapologetic</h1>
+                <p className="hero-subtitle">
+                    Crafted with intention, patience, and real fermentation.
+                    Bread that nourishes the body and holds space for slow,
+                    meaningful moments.
+                </p>
 
-                    <p className="heroOverlay-subtitle">
-                        100% sourdough, crafted with intention and patience <i className="fa-regular fa-heart"></i> Breads that nourish the body, hold space for special moments, and tell stories of well-being <i className="fa-regular fa-heart"></i>
-                    </p>
+                <div className="hero-actions">
+                    <Link to="/orders" className="hero-btn hero-btn-main">
+                        orders <ShoppingBag size={18} weight="light" />
+                    </Link>
 
-                    <div className="heroOverlay-actions">
-                        <Link to="/orders" className="heroOverlay-btn">
-                            orders <ShoppingBag size={20} weight="light" />
-                        </Link>
-
-                        <Link to="/products" className="heroOverlay-btn">
-                            produts <BookOpen size={20} weight="light" />
-                        </Link>
-
-                        {/* <Link to="/lista-de-precios" className="heroOverlay-btn">
-                            prices <Tag size={20} weight="light" />
-                        </Link> */}
-
-                        <a
-                            href="https://wa.me/584121531299?text=Hi%2C%20I%27d%20love%20to%20place%20an%20order%20%E2%99%A1"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="heroOverlay-btn"
-                        >
-                            WhatsApp <WhatsappLogo size={20} weight="light" />
-                        </a>
-                    </div>
-
-
-                    {/* <div className="social-icons">
-                        <a
-                            href="https://instagram.com/souraw.cv"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            aria-label="Instagram"
-                        >
-                            <FontAwesomeIcon icon={faInstagram} size="2x" />
-                        </a>
-                        <a
-                            href="https://www.tiktok.com/@souraw.cv"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            aria-label="TikTok"
-                        >
-                            <FontAwesomeIcon icon={faTiktok} size="2x" />
-                        </a>
-                    </div> */}
-
+                    <Link to="/products" className="hero-btn">
+                        products <BookOpen size={18} weight="light" />
+                    </Link>
                 </div>
             </div>
+
+            <img src={doll} className="hero-doll" alt="SOURAW illustration" />
         </section>
     );
 };
