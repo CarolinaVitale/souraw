@@ -151,8 +151,17 @@ const Prices = () => {
                         <i className="fa-solid fa-truck"></i>
                         Delivery depends on location</p>
                     <p className="prices-intro">
-                        <i className="fa-solid fa-location-dot"> </i>
-                         Pickup at Canopy at Citrus Park</p>
+                        <i className="fa-solid fa-location-dot"></i>
+
+                        <a
+                            href="https://maps.app.goo.gl/kKkQV9Y1zXHMPY6a6"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="pickup-link"
+                        >
+                            Pickup at Canopy at Citrus Park
+                        </a>
+                    </p>
                 </section>
             </main>
         </>

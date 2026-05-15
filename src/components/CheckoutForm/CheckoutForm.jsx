@@ -15,7 +15,6 @@ const CheckoutForm = ({ onClose }) => {
     });
 
     const [status, setStatus] = useState("");
-
     const [isSending, setIsSending] = useState(false);
 
     const formatUSD = (price) =>
@@ -40,6 +39,19 @@ const CheckoutForm = ({ onClose }) => {
             ...prev,
             [name]: value,
         }));
+    };
+
+    const handleThankYouClose = () => {
+        clearCart();
+        onClose();
+    };
+
+    const handleClose = () => {
+        if (status === "success") {
+            handleThankYouClose();
+        } else {
+            onClose();
+        }
     };
 
     const handleSubmit = async (e) => {
@@ -68,17 +80,7 @@ const CheckoutForm = ({ onClose }) => {
                 process.env.REACT_APP_EMAILJS_PUBLIC_KEY
             );
 
-            {
-                status === "success" && (
-                    <p className="checkout-success">
-                        Thank you for trusting us ♡ We’ll contact you soon to confirm the details.
-                    </p>
-                )
-            }            clearCart();
-
-            setTimeout(() => {
-                onClose();
-            }, 1800);
+            setStatus("success");
         } catch (error) {
             console.error("EmailJS error:", error.text || error);
             alert(error.text || "EmailJS error");
@@ -92,76 +94,92 @@ const CheckoutForm = ({ onClose }) => {
         <div className="checkout-form-wrap">
             <div className="checkout-form-header">
                 <h3>Checkout</h3>
-                <button type="button" onClick={onClose}>
+                <button type="button" onClick={handleClose}>
                     ×
                 </button>
             </div>
 
-            <form className="checkout-form" onSubmit={handleSubmit}>
-                <input
-                    type="text"
-                    name="name"
-                    placeholder="Name *"
-                    value={formData.name}
-                    onChange={handleChange}
-                    required
-                />
+            {status === "success" ? (
+                <section className="order-thank-you">
+                    <p className="order-thank-you-kicker">Order received</p>
 
-                <input
-                    type="email"
-                    name="email"
-                    placeholder="Email *"
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
-                />
+                    <h2>Thank you for trusting SOURAW ♡</h2>
 
-                <input
-                    type="tel"
-                    name="phone"
-                    placeholder="Phone number *"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    required
-                />
-
-                <input
-                    type="text"
-                    name="deliveryDate"
-                    placeholder="Preferred delivery date"
-                    value={formData.deliveryDate}
-                    onChange={handleChange}
-                />
-
-                <textarea
-                    name="notes"
-                    placeholder="Notes / allergies / special requests"
-                    value={formData.notes}
-                    onChange={handleChange}
-                />
-
-                <div className="checkout-summary">
-                    <strong>Order:</strong>
-                    <pre>{orderDetails}</pre>
-                    <p>Total: {formatUSD(cartTotal)}</p>
-                </div>
-
-                <button className="checkout-submit" type="submit" disabled={isSending}>
-                    {isSending ? "sending..." : "place order"}
-                </button>
-
-                {status === "success" && (
-                    <p className="checkout-success">
-                        Order sent successfully ♡
+                    <p>
+                        Your order is now part of our next bake.
+                        <br />
+                        We’ll review the details and send your confirmation soon.
                     </p>
-                )}
 
-                {status === "error" && (
-                    <p className="checkout-error">
-                        Something went wrong. Please try again.
-                    </p>
-                )}
-            </form>
+                    <button
+                        type="button"
+                        className="order-thank-you-button"
+                        onClick={handleThankYouClose}
+                    >
+                        close
+                    </button>
+                </section>
+            ) : (
+                <form className="checkout-form" onSubmit={handleSubmit}>
+                    <input
+                        type="text"
+                        name="name"
+                        placeholder="Name *"
+                        value={formData.name}
+                        onChange={handleChange}
+                        required
+                    />
+
+                    <input
+                        type="email"
+                        name="email"
+                        placeholder="Email *"
+                        value={formData.email}
+                        onChange={handleChange}
+                        required
+                    />
+
+                    <input
+                        type="tel"
+                        name="phone"
+                        placeholder="Phone number *"
+                        value={formData.phone}
+                        onChange={handleChange}
+                        required
+                    />
+
+                    <input
+                        type="text"
+                        name="deliveryDate"
+                        placeholder="Preferred delivery date"
+                        value={formData.deliveryDate}
+                        onChange={handleChange}
+                    />
+
+                    <textarea
+                        name="notes"
+                        placeholder="Notes / allergies / special requests"
+                        value={formData.notes}
+                        onChange={handleChange}
+                    />
+
+                    <div className="checkout-summary">
+                        <strong>Order:</strong>
+                        <pre>{orderDetails}</pre>
+                        <p>Total: {formatUSD(cartTotal)}</p>
+                    </div>
+
+                    <button className="checkout-submit" type="submit" disabled={isSending}>
+                        {isSending ? "sending..." : "place order"}
+                    </button>
+
+                    {status === "error" && (
+                        <p className="checkout-error">
+                            Something went wrong. Please try again.
+                        </p>
+                    )}
+                </form>
+            )}
         </div>
     );
 };
