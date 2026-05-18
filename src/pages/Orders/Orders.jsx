@@ -87,12 +87,8 @@ const Orders = () => {
 
                     <h2>What are you craving today?</h2>
 
-                    <a
-                        href="https://wa.me/584121531299?text=Hi%2C%20I%27d%20love%20to%20place%20an%20order%20%E2%99%A1"
-                        className="pedidos-button"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
+
+                    <a href="/prices" className="pedidos-button">
                         let's bake something <i className="fa-regular fa-heart"></i>
                     </a>
                 </div>

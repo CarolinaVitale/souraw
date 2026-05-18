@@ -60,7 +60,7 @@ const Catalog = () => {
                         Freshly baked for Tampa locals ♡
                     </p>
 
-                    <a href="/orders" className="catalog-order-btn">
+                    <a href="/prices" className="catalog-order-btn">
                         ORDER HERE
                     </a>
                 </div>
