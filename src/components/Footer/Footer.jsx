@@ -1,6 +1,6 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faInstagram, faWhatsapp, faTiktok } from '@fortawesome/free-brands-svg-icons';
+import { faInstagram, faTiktok } from '@fortawesome/free-brands-svg-icons';
 import './Footer.css';
 import { Link } from 'react-router-dom';
 
@@ -27,17 +27,17 @@ const Footer = () => {
                 >
                     <FontAwesomeIcon icon={faTiktok} size="lg" />
                 </a>
-                <a
+                {/* <a
                     href="https://wa.me/584121531299?text=Hi%2C%20I%27d%20love%20to%20place%20an%20order%20%E2%99%A1"
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="WhatsApp"
                 >
                     <FontAwesomeIcon icon={faWhatsapp} size="lg" />
-                </a>
+                </a> */}
             </div>
 
-            <p className="footer-copy"> © {new Date().getFullYear()}  SOURAW. Todos los derechos reservados.</p>
+            <p className="footer-copy"> © {new Date().getFullYear()}  SOURAW. All rights reserved.</p>
 
             <div className='created'>
                 <small className='created-by'> website by
