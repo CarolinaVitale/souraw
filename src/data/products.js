@@ -45,15 +45,15 @@ export const products = [
         available: true,
     },
     {
-        id: "4-roots-bread",
+        id: "5-roots-bread",
         category: "wildLoaves",
-        name: "4 Roots",
+        name: "5 Roots",
         size: "1.1kg",
         priceUSD: 16,
         description:
-            "White + whole wheat flour, naturally leavened, and finished with sesame, sunflower, pumpkin, and oats.",
+            "A naturally leavened white and whole wheat sourdough layered with sesame, sunflower, pumpkin, poppy seeds, and oats throughout the crumb and over the crust.",
         ingredients:
-            "Wheat flour, whole wheat flour, sourdough starter, water, sesame seeds, sunflower seeds, pumpkin seeds, oats, salt.",
+            "Wheat flour, whole wheat flour, sourdough starter, water, sesame seeds, sunflower seeds, pumpkin seeds, poppy seeds, oats, salt.",
         catalogImage: require("../assets/prices/4-roots.webp"),
         priceImage: require("../assets/prices/4-roots.webp"),
         featured: true,
@@ -74,28 +74,28 @@ export const products = [
         featured: true,
         available: true,
     },
-    {
-        id: "hoagies-bread",
-        category: "slowCravings",
-        name: "Hoagie Rolls",
-        size: "4 pcs",
-        priceUSD: 9,
-        description:
-            "Long, naturally leavened rolls with a light, airy crumb and a tender crust. Perfect for sandwiches or toasting.",
-        ingredients:
-            "Wheat flour, sourdough starter, water, whole wheat flour, butter, sugar, salt. No commercial yeast.",
-        catalogImage: require("../assets/prices/hoagies.webp"),
-        priceImage: require("../assets/prices/hoagies.webp"),
-        featured: false,
-        available: false,
-    },
+    // {
+    //     id: "hoagies-bread",
+    //     category: "slowCravings",
+    //     name: "Hoagie Rolls",
+    //     size: "4 pcs",
+    //     priceUSD: 9,
+    //     description:
+    //         "Long, naturally leavened rolls with a light, airy crumb and a tender crust. Perfect for sandwiches or toasting.",
+    //     ingredients:
+    //         "Wheat flour, sourdough starter, water, whole wheat flour, butter, sugar, salt. No commercial yeast.",
+    //     catalogImage: require("../assets/prices/hoagies.webp"),
+    //     priceImage: require("../assets/prices/hoagies.webp"),
+    //     featured: false,
+    //     available: false,
+    // },
     {
         id: "cachitos-bread",
         category: "slowCravings",
         name: "CACHITOS",
         size: "8 pcs",
         description:
-            "Soft, golden sourdough cachitos with a delicate sweetness and a savory ham filling. Comforting, nostalgic, and baked fresh for slow mornings.",
+            "Soft, golden sourdough cachitos with a delicate sweetness and a savory ham and bacon filling. Comforting, nostalgic, and baked fresh for slow mornings.",
         ingredients:
             "Wheat flour, milk, ham, bacon, butter, sugar, egg yolks, sourdough starter, salt.",
         priceUSD: 40,
@@ -126,7 +126,7 @@ export const products = [
         size: "10 pcs",
         priceUSD: 11,
         description:
-            "Crispy outside, creamy buffalo cheese inside. Delivered par-baked so you can finish them golden in your air fryer.",
+            "Crispy outside, creamy fresh cheese inside. Delivered par-baked so you can finish them golden in your air fryer.",
         ingredients:
             "Wheat flour, sourdough starter, water, butter, egg, sugar, salt, buffalo cheese.",
         catalogImage: require("../assets/prices/tequenos.webp"),
@@ -217,8 +217,8 @@ export const products = [
         name: "Chocolate Chip Cookies",
         prices: [
             {
-                label: "Box of 8",
-                priceUSD: 15,
+                label: "Box of 12",
+                priceUSD: 20,
             },
             {
                 label: "Box of 24",
@@ -229,7 +229,7 @@ export const products = [
         available: true,
         badge: "New",
         description: "Crispy edges, soft centers, and pools of melted dark chocolate. Slow-made, generously filled, and finished with flaky sea salt for the perfect sweet-salty bite.",
-        ingredients: "Wheat flour, dark chocolate chips, butter, brown sugar, sugar, vanilla, baking soda, baking powder, salt, eggs.",
+        ingredients: "Wheat flour, dark chocolate chips, butter, brown sugar, sugar, vanilla, baking soda, salt, eggs.",
         catalogImage: require("../assets/prices/cookies.webp"),
         priceImage: require("../assets/prices/cookies.webp"),
     }
