@@ -15,6 +15,7 @@ import 'aos/dist/aos.css';
 import { auth } from './firebase';
 import { signInAnonymously } from 'firebase/auth';
 import Prices from './pages/Prices/Prices';
+import SourawFinds from './pages/SourawFinds/SourawFinds';
 
 function App() {
   useEffect(() => {
@@ -36,11 +37,12 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
-        <Route path="/products" element={<Catalog />} />
+        <Route path="/menu" element={<Catalog />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/reviews" element={<Reviews />} />
-        <Route path="/orders" element={<Orders />} />
-        <Route path="/prices" element={<Prices />} />
+        <Route path="/schedule" element={<Orders />} />
+        <Route path="/orders" element={<Prices />} />
+        <Route path="/souraw-finds" element={<SourawFinds/>}/>
       </Routes>
       <Footer />
     </Router>
