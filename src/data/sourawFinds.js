@@ -1,25 +1,11 @@
 export const sourawFind = [
     {
-        id: "dutch-oven",
-        category: "bread making",
-        name: "Dutch Oven",
-        image: require("../assets/amazon/dutch-oven.webp"),
-        link: "https://amzn.to/4uaHztK",
-    },
-    {
-        id: "tiramisu-containers",
+        id: "bread-bag",
         category: "Packaging",
-        name: "Tiramisu Containers",
-        image: require("../assets/amazon/tiramisu-container.webp"),
-        link: "https://amzn.to/4dEoLMU",
+        name: "Paper Bread Bags",
+        image: require("../assets/amazon/bread-bag.webp"),
+        link: "https://amzn.to/4vjMKsi",
     },
-    {
-        id: "thermal-printer",
-        category: "Packaging",
-        name: "Thermal Printer",
-        image: require("../assets/amazon/thermal-printer.webp"),
-        link: "https://amzn.to/4nSOK80",
-    }, 
     {
         id: "pink-label",
         category: "Packaging",
@@ -42,12 +28,12 @@ export const sourawFind = [
         link: "https://amzn.to/4o32nlh",
     },
     {
-        id: "deli-paper",
+        id: "thermal-printer",
         category: "Packaging",
-        name: "Deli Paper",
-        image: require("../assets/amazon/deli-paper-12x12inches.webp"),
-        link: "https://amzn.to/430xxA3",
-    },
+        name: "Thermal Printer",
+        image: require("../assets/amazon/thermal-printer.webp"),
+        link: "https://amzn.to/4nSOK80",
+    }, 
     {
         id: "label-holder",
         category: "Packaging",
@@ -56,11 +42,18 @@ export const sourawFind = [
         link: "https://amzn.to/3RyPqDE",
     },
     {
-        id: "bread-bag",
+        id: "deli-paper",
         category: "Packaging",
-        name: "Paper Bread Bags",
-        image: require("../assets/amazon/bread-bag.webp"),
-        link: "https://amzn.to/4wYvAly",
+        name: "Deli Paper",
+        image: require("../assets/amazon/deli-paper-12x12inches.webp"),
+        link: "https://amzn.to/430xxA3",
+    },
+    {
+        id: "tiramisu-containers",
+        category: "Packaging",
+        name: "Tiramisu Containers",
+        image: require("../assets/amazon/tiramisu-container.webp"),
+        link: "https://amzn.to/4dEoLMU",
     },
     {
         id: "cookie-box",
@@ -68,5 +61,12 @@ export const sourawFind = [
         name: "Cookie Box",
         image: require("../assets/amazon/cookie-box.webp"),
         link: "https://amzn.to/3RBpmHY",
+    },
+    {
+        id: "dutch-oven",
+        category: "bread making",
+        name: "Dutch Oven",
+        image: require("../assets/amazon/dutch-oven.webp"),
+        link: "https://amzn.to/4uaHztK",
     },
 ];
