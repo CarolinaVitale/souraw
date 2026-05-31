@@ -91,6 +91,13 @@
     text-align: center;
 }
 
+.favorite-description {
+    font-size: 0.85rem;
+    color: rgba(54, 54, 54, 0.7);
+    margin-bottom: 16px;
+    line-height: 1.4;
+}
+
 /* IMAGE */
 
 .favorite-image-wrapper {
@@ -124,8 +131,8 @@
 }
 
 .favorite-info p {
-    font-size: 0.95rem;
-    line-height: 1.6;
+    font-size: 0.85rem;
+    line-height: 1.4;
     margin-bottom: 18px;
     color: var(--color-gray-dark, #363636);
     opacity: 0.85;
