@@ -16,6 +16,7 @@ import { auth } from './firebase';
 import { signInAnonymously } from 'firebase/auth';
 import Prices from './pages/Prices/Prices';
 import SourawFinds from './pages/SourawFinds/SourawFinds';
+import ActivateStarter from "./pages/ActivateStarter/ActivateStarter";
 
 function App() {
   useEffect(() => {
@@ -43,6 +44,7 @@ function App() {
         <Route path="/schedule" element={<Orders />} />
         <Route path="/orders" element={<Prices />} />
         <Route path="/souraw-finds" element={<SourawFinds/>}/>
+        <Route path="/activate-starter" element={<ActivateStarter />} />
       </Routes>
       <Footer />
     </Router>
