@@ -93,6 +93,13 @@ export const sourawFind = [
         link: "https://amzn.to/4uaHztK",
     },
     {
+        id: "kitchenaid",
+        category: "Sourdough Essentials",
+        name: "KitchenAid",
+        image: require("../assets/amazon/kitchenaid.webp"),
+        link: "https://amzn.to/3QaBqzD",
+    },
+    {
         id: "deli-paper",
         category: "Packaging",
         name: "Deli Paper",
