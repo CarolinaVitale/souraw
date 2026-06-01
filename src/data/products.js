@@ -227,11 +227,33 @@ export const products = [
         ],
         featured: true,
         available: true,
-        badge: "New",
         description: "Crispy edges, soft centers, and pools of melted dark chocolate. Slow-made, generously filled, and finished with flaky sea salt for the perfect sweet-salty bite.",
-        ingredients: "Wheat flour, dark chocolate chips, butter, brown sugar, sugar, vanilla, baking soda, salt, eggs.",
+        ingredients: "Wheat flour, dark chocolate chips, butter, brown sugar, sugar, eggs, vanilla, baking soda, salt.",
         catalogImage: require("../assets/prices/cookies.webp"),
         priceImage: require("../assets/prices/cookies.webp"),
+    },
+
+    {
+        id: "cookies-sweet",
+        category: "tenderSweets",
+        name: "Snickerdoodles",
+        prices: [
+            {
+                label: "Box of 15",
+                priceUSD: 12,
+            },
+            {
+                label: "Box of 30",
+                priceUSD: 20,
+            },
+        ],
+        featured: true,
+        available: true,
+        badge: "New",
+        description: "Soft, buttery cookies rolled in cinnamon sugar and baked until lightly crisp on the edges and tender in the center. Simple, nostalgic, and impossible to stop at just one.",
+        ingredients: "Flour, sugar, butter, vanilla, cream cheese, eggs, cornstarch, cream of tartar, baking soda, baking powder, salt.",
+        catalogImage: require("../assets/prices/snickerdoodles.webp"),
+        priceImage: require("../assets/prices/snickerdoodles.webp"),
     }
 ];
 
