@@ -25,11 +25,11 @@ const Hero = () => {
                 </p>
 
                 <div className="hero-actions">
-                    <Link to="/prices" className="hero-btn hero-btn-main">
+                    <Link to="/orders" className="hero-btn hero-btn-main">
                         orders <ShoppingBag size={18} weight="light" />
                     </Link>
 
-                    <Link to="/products" className="hero-btn">
+                    <Link to="/menu" className="hero-btn">
                         products <BookOpen size={18} weight="light" />
                     </Link>
                 </div>

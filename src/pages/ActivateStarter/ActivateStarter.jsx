@@ -30,7 +30,7 @@ const steps = [
 const ActivateStarter = () => {
     return (
         <>
-            <PageBanner image={bannerImage} kicker="Let's wake her up" title="WELCOME TO THE JOURNEY" />
+            <PageBanner image={bannerImage} kicker="Let's wake it up" title="WELCOME TO THE JOURNEY" />
 
             <main className="starter-page">
 
