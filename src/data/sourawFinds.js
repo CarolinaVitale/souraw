@@ -7,6 +7,14 @@ export const sourawFind = [
         image: require("../assets/amazon/bread-bag.webp"),
         link: "https://amzn.to/4vjMKsi",
     },
+        {
+        id: "starter-bag",
+        category: "Packaging",
+        name: "Paper Starter Bags",
+        description: "Dimensions: 5.5 x 7.8 in",
+        image: require("../assets/amazon/paper-bag-starter.webp"),
+        link: "https://amzn.to/4uYy0z9",
+    },
     {
         id: "pink-label",
         category: "Labels",
