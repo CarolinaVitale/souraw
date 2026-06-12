@@ -94,6 +94,13 @@ export const sourawFind = [
         link: "https://amzn.to/3RBpmHY",
     },
     {
+        id: "bread-lame",
+        category: "Sourdough Essentials",
+        name: "Bread Lame",
+        image: require("../assets/amazon/bread-lame.webp"),
+        link: "https://amzn.to/4e2BBGo",
+    },
+    {
         id: "dutch-oven",
         category: "Sourdough Essentials",
         name: "Dutch Oven",

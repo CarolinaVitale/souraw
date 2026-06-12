@@ -1,5 +1,4 @@
-// src/pages/Favorites/Favorites.jsx
-import React from "react";
+import React, { useState } from "react";
 import "./SourawFinds.css";
 import { sourawFind } from "../../data/sourawFinds";
 import PageBanner from "../../components/PageBanner/PageBanner";
@@ -24,6 +23,8 @@ const categories = [
 ];
 
 const Favorites = () => {
+    const [activeCategory, setActiveCategory] = useState("All");
+
     return (
         <>
             <PageBanner
@@ -35,60 +36,108 @@ const Favorites = () => {
             <main className="favorites-page">
                 <section className="favorites-hero">
                     <h6 className="favorites-kicker">Souraw Finds</h6>
+
                     <h1>Things I use and love</h1>
 
                     <p>
-                        A small curated corner with tools, packaging, and everyday favorites
-                        I use in my baking process and small business workflow.
+                        A small curated corner with tools, packaging, and
+                        everyday favorites I use in my baking process and
+                        small business workflow.
                     </p>
 
                     <p className="affiliate-disclosure">
-                        Some links on this page are affiliate links, which means I may earn
-                        a small commission at no extra cost to you.
+                        Some links on this page are affiliate links, which
+                        means I may earn a small commission at no extra cost
+                        to you.
                     </p>
                 </section>
 
-                {categories.map((category) => {
-                    const filteredItems = sourawFind.filter(
-                        (item) => item.category === category.key
-                    );
+                <nav className="finds-nav">
+                    <button
+                        className={activeCategory === "All" ? "active" : ""}
+                        onClick={() => setActiveCategory("All")}
+                    >
+                        All
+                    </button>
 
-                    if (filteredItems.length === 0) return null;
+                    {categories.map((category) => (
+                        <button
+                            key={category.key}
+                            className={
+                                activeCategory === category.key
+                                    ? "active"
+                                    : ""
+                            }
+                            onClick={() =>
+                                setActiveCategory(category.key)
+                            }
+                        >
+                            {category.title}
+                        </button>
+                    ))}
+                </nav>
 
-                    return (
-                        <section className="finds-category" key={category.key}>
-                            <div className="finds-category-header">
-                                <p>{category.kicker}</p>
-                                <h2>{category.title}</h2>
-                            </div>
+                {categories
+                    .filter(
+                        (category) =>
+                            activeCategory === "All" ||
+                            category.key === activeCategory
+                    )
+                    .map((category) => {
+                        const filteredItems = sourawFind.filter(
+                            (item) => item.category === category.key
+                        );
 
-                            <div className="favorites-grid">
-                                {filteredItems.map((item) => (
-                                    <article className="favorite-card" key={item.id}>
-                                        <div className="favorite-image-wrapper">
-                                            <img src={item.image} alt={item.name} />
-                                        </div>
+                        if (filteredItems.length === 0) return null;
 
-                                        <div className="favorite-info">
-                                            <h3>{item.name}</h3>
+                        return (
+                            <section
+                                className="finds-category"
+                                key={category.key}
+                            >
+                                <div className="finds-category-header">
+                                    <p>{category.kicker}</p>
 
-                                            {item.description && <p>{item.description}</p>}
+                                    <h2>{category.title}</h2>
+                                </div>
 
-                                            <a
-                                                href={item.link}
-                                                target="_blank"
-                                                rel="noopener noreferrer sponsored"
-                                                className="favorite-link"
-                                            >
-                                                find it here ↗
-                                            </a>
-                                        </div>
-                                    </article>
-                                ))}
-                            </div>
-                        </section>
-                    );
-                })}
+                                <div className="favorites-grid">
+                                    {filteredItems.map((item) => (
+                                        <article
+                                            className="favorite-card"
+                                            key={item.id}
+                                        >
+                                            <div className="favorite-image-wrapper">
+                                                <img
+                                                    src={item.image}
+                                                    alt={item.name}
+                                                />
+                                            </div>
+
+                                            <div className="favorite-info">
+                                                <h3>{item.name}</h3>
+
+                                                {item.description && (
+                                                    <p>
+                                                        {item.description}
+                                                    </p>
+                                                )}
+
+                                                <a
+                                                    href={item.link}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer sponsored"
+                                                    className="favorite-link"
+                                                >
+                                                    find it here ↗
+                                                </a>
+                                            </div>
+                                        </article>
+                                    ))}
+                                </div>
+                            </section>
+                        );
+                    })}
             </main>
         </>
     );
