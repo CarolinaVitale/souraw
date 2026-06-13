@@ -232,7 +232,6 @@ export const products = [
         catalogImage: require("../assets/prices/cookies.webp"),
         priceImage: require("../assets/prices/cookies.webp"),
     },
-
     {
         id: "cookies-sweet",
         category: "tenderSweets",
