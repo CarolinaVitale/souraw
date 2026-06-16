@@ -98,8 +98,15 @@
     text-align: center;
 }
 
+.pedidos-button-wrap {
+    display: block;
+    width: fit-content;
+    margin: 0 auto;
+    margin-top: 50px;
+}
+
 .pedidos-button {
-    display: inline-block;
+    display: block;
     margin-top: 1.5rem;
     padding: 0.8rem 2rem;
     border: 2px solid var(--color-red);

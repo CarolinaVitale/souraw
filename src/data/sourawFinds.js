@@ -114,7 +114,7 @@ export const sourawFind = [
         category: "Sourdough Essentials",
         name: "Bread Lame",
         image: require("../assets/amazon/bread-lame.webp"),
-        link: "https://amzn.to/4e2BBGo",
+        link: "https://www.amazon.com/dp/B0DHWT89RM?ref=t_ac_view_request_product_image&campaignId=amzn1.campaign.X65ITQB8LJCV&linkCode=tr1&tag=sourawfinds-20&linkId=amzn1.campaign.X65ITQB8LJCV_1781452105892",
     },
     {
         id: "bench-scraper",

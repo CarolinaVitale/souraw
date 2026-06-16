@@ -17,6 +17,7 @@ import { signInAnonymously } from 'firebase/auth';
 import Prices from './pages/Prices/Prices';
 import SourawFinds from './pages/SourawFinds/SourawFinds';
 import ActivateStarter from "./pages/ActivateStarter/ActivateStarter";
+import UnrushedLab from "./pages/UnrushedLab/UnrushedLab";
 
 function App() {
   useEffect(() => {
@@ -25,7 +26,6 @@ function App() {
       once: true,
     });
 
-    // 👇 Inicia sesión anónima apenas arranca la app
     signInAnonymously(auth).catch((error) => {
       console.error("Error al iniciar sesión anónima:", error);
     });
@@ -45,6 +45,7 @@ function App() {
         <Route path="/orders" element={<Prices />} />
         <Route path="/souraw-finds" element={<SourawFinds/>}/>
         <Route path="/activate-starter" element={<ActivateStarter />} />
+        <Route path="/unrushed-lab" element={<UnrushedLab />} />
       </Routes>
       <Footer />
     </Router>

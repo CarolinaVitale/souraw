@@ -53,6 +53,16 @@ const Prices = () => {
                     <p className="prices-intro">
                         Naturally fermented breads and slow-made comfort food.
                     </p>
+
+                    <p className="prices-intro">
+                        <i className="fa-solid fa-bag-shopping"></i>{" "}
+                        Orders are available for <strong>Thursday pickup</strong> at Canopy at Citrus Park.
+                    </p>
+
+                    <p className="prices-intro">
+                        <i className="fa-regular fa-clock"></i>{" "}
+                        Please place your order by <strong>Tuesday at 8:00 pm</strong>.
+                    </p>
                 </section>
 
                 <section className="prices-section featured-section">
@@ -159,7 +169,7 @@ const Prices = () => {
                             rel="noopener noreferrer"
                             className="pickup-link"
                         >
-                            Pickup at Canopy at Citrus Park
+                            Thursday pickup at Canopy at Citrus Park
                         </a>
                     </p>
                 </section>

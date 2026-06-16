@@ -2,8 +2,8 @@ import React, { useEffect, useMemo, useState } from "react";
 import "./DeliveryCalendar.css";
 import dollCalendar from "../../assets/calendar-girl.png";
 
-const DELIVERY_DOW = new Set([2, 4, 6]); // Tue(2), Thu(4), Sat(6)
-const CUTOFF_HOUR = 20; // 8:00 PM
+const DELIVERY_DOW = new Set([4]); 
+const CUTOFF_HOUR = 20;
 
 function startOfDay(d) {
     return new Date(d.getFullYear(), d.getMonth(), d.getDate(), 0, 0, 0, 0);
@@ -142,11 +142,10 @@ export default function DeliveryCalendar({ onSelectDelivery }) {
 
             <div className="deliveryCal">
                 <div className="deliveryCal-head">
-                    <p className="deliveryCal-kicker">Pick a delivery day</p>
+                    <p className="deliveryCal-kicker">Weekly delivery</p>
                     <h3 className="deliveryCal-title">{monthLabel}</h3>
                     <p className="deliveryCal-sub">
-                        Delivery days are <strong>Tuesday</strong>, <strong>Thursday</strong>, and{" "}
-                        <strong>Saturday</strong>.
+                        Delivery day is <strong>Thursday</strong>.
                     </p>
                 </div>
 

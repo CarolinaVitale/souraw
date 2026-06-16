@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import "./Founder.css";
 import founderImg from "../../assets/founder3.png";
-import videoSrc from "../../assets/founder-video.mp4";
+import videoSrc from "../../assets/founder-video.MP4";
 import stampImg from "../../assets/souraw-stamp.png";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";

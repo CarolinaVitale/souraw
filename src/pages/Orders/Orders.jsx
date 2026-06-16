@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from "react";
 import "./Orders.css";
 import pedidoImg from "../../assets/prices/cookie-box.webp";
 import crumbsPng from "../../assets/crumbs2.PNG";
-import { Calendar, Bread, Clock, Fire } from "@phosphor-icons/react";
+import { Bread, Clock } from "@phosphor-icons/react";
 import PageBanner from "../../components/PageBanner/PageBanner";
 import bannerImage from "../../assets/banner4.webp";
 import DeliveryCalendar from "../../components/DeliveryCalendar/DeliveryCalendar";
@@ -46,39 +46,21 @@ const Orders = () => {
                     <h2>Want to place an order?</h2>
 
                     <p>
-                        Everything here starts with my starter. I need <strong>48 hours</strong> from the first feeding to the moment your order is ready.
+                        Orders are baked fresh each week and delivered every <strong>Thursday</strong>. To allow enough time for fermentation and baking, please place your order by <strong>Tuesday at 8:00 pm</strong>.
                     </p>
 
                     <DeliveryCalendar />
 
                     <div className="pedidos-bullets">
                         <p className="pedido-line">
-                            <Calendar className="pedido-icon" weight="light" />
-                            <strong>Prep days:</strong>&nbsp;Monday, Wednesday, and Friday.
-                        </p>
-
-                        <p className="pedido-line">
                             <Bread className="pedido-icon" weight="light" />
-                            <strong>Delivery days:</strong>&nbsp;Tuesday, Thursday, and Saturday.
-                        </p>
-
-                        <p className="pedido-line">
-                            <Fire className="pedido-icon" weight="light" />
-                            <strong>Tuesdays:</strong>&nbsp;Tequeños only.
+                            <strong>Delivery day:</strong>&nbsp;Thursday.
                         </p>
 
                         <p className="pedido-line">
                             <Clock className="pedido-icon" weight="light" />
-                            <strong>Order cutoffs:</strong>
+                            <strong>Order deadline:</strong>&nbsp;Tuesday at 8:00 pm.
                         </p>
-                    </div>
-
-                    <div className="pedidos-deadlines">
-                        <ul className="pedido-list">
-                            <li><strong>SUNDAY 8:00 pm</strong> → delivery on <strong>TUESDAY</strong></li>
-                            <li><strong>TUESDAY 8:00 pm</strong> → delivery on <strong>THURSDAY</strong></li>
-                            <li><strong>THURSDAY 8:00 pm</strong> → delivery on <strong>SATURDAY</strong></li>
-                        </ul>
                     </div>
 
                     <p className="pedidos-sello">
@@ -87,10 +69,13 @@ const Orders = () => {
 
                     <h2>What are you craving today?</h2>
 
+                    <div className="pedidos-button-wrap">
+                        <a href="/orders" className="pedidos-button">
+                            let's bake something <i className="fa-regular fa-heart"></i>
+                        </a>
+                    </div>
 
-                    <a href="/prices" className="pedidos-button">
-                        let's bake something <i className="fa-regular fa-heart"></i>
-                    </a>
+
                 </div>
 
                 <div className="pedidos-image">
