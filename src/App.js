@@ -18,6 +18,7 @@ import Prices from './pages/Prices/Prices';
 import SourawFinds from './pages/SourawFinds/SourawFinds';
 import ActivateStarter from "./pages/ActivateStarter/ActivateStarter";
 import UnrushedLab from "./pages/UnrushedLab/UnrushedLab";
+import DIY from "./pages/DIY/DIY";
 
 function App() {
   useEffect(() => {
@@ -46,6 +47,8 @@ function App() {
         <Route path="/souraw-finds" element={<SourawFinds/>}/>
         <Route path="/activate-starter" element={<ActivateStarter />} />
         <Route path="/unrushed-lab" element={<UnrushedLab />} />
+        <Route path="/diy" element={<DIY />} />
+
       </Routes>
       <Footer />
     </Router>

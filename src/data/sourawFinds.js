@@ -131,6 +131,13 @@ export const sourawFind = [
         description: "A versatile baking set with 2 sheet pans and 2 cooling racks — a staple for bread, cookies, and pastries | Dimensions: 17.7 x 1.4 x 1.1 in",
         image: require("../assets/amazon/baking-sheet.webp"),
         link: "https://amzn.to/4xwwoyk",
+    }, {
+        id: "parchment-paper",
+        category: "Sourdough Essentials",
+        name: "Parchment Paper",
+        description: "Dimensions: 45 ft x 12 in",
+        image: require("../assets/amazon/parchment-paper.webp"),
+        link: "https://amzn.to/3QU4Sdu",
     },
     {
         id: "dutch-oven",
