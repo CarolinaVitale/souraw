@@ -128,6 +128,137 @@
     line-height: 1.7;
 }
 
+.bag-guide__section-header {
+    max-width: 760px;
+    margin: 0 auto 34px;
+    text-align: center;
+}
+
+.bag-guide__section-header span {
+    display: block;
+    font-family: "Biro", cursive;
+    font-size: 2.4rem;
+    margin-bottom: 8px;
+}
+
+.bag-guide__section-header h2 {
+    font-size: clamp(2rem, 5vw, 4rem);
+    line-height: 0.95;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+}
+
+.bag-guide__section-header p {
+    line-height: 1.7;
+}
+
+.bag-guide__result {
+    max-width: 1100px;
+    margin: 90px auto 0;
+}
+
+.bag-guide__result-card {
+    background: #fff8ef;
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 34px;
+    align-items: center;
+    padding: 28px;
+    border-radius: 3px;
+}
+
+.bag-guide__result-card img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: 3px;
+}
+
+.bag-guide__result-card h3 {
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+}
+
+.bag-guide__result-card p {
+    line-height: 1.7;
+}
+
+.bag-guide__materials {
+    max-width: 1100px;
+    margin: 90px auto 0;
+}
+
+.materials-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 22px;
+}
+
+.material-card {
+    background: #fff8ef;
+    color: #363636;
+    text-decoration: none;
+    border-radius: 3px;
+    overflow: hidden;
+    transition: transform 0.25s ease;
+}
+
+.material-card:hover {
+    transform: translateY(-4px);
+}
+
+.material-card img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    background: #f3e6d3;
+}
+
+.material-card h3 {
+    padding: 18px 18px 6px;
+    font-size: 1rem;
+    text-transform: uppercase;
+}
+
+.material-card p {
+    padding: 0 18px;
+    font-size: 0.85rem;
+    line-height: 1.5;
+}
+
+.material-card span {
+    display: block;
+    padding: 16px 18px 20px;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 700;
+}
+
+.materials-cta {
+    display: block;
+    width: fit-content;
+    margin: 34px auto 0;
+    background: #363636;
+    color: #ffe8cf;
+    text-decoration: none;
+    padding: 14px 24px;
+    border-radius: 3px;
+    text-transform: uppercase;
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    font-weight: 700;
+}
+
+@media (max-width: 800px) {
+
+    .bag-guide__result-card,
+    .materials-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
 @media (max-width: 800px) {
     .bag-guide {
         padding: 90px 5vw;

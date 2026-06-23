@@ -1,14 +1,17 @@
 import "./BagGuide.css";
 import { steps } from "../../data/steps";
 import PageBanner from "../../components/PageBanner/PageBanner";
-import bannerImage from "../../assets/diy/step1.png";
+import bannerImage from "../../assets/diy/banner.webp";
+import finalBagImage from "../../assets/diy/finalBagImage.webp";
+import { sourawFind } from "../../data/sourawFinds";
 
+const materialIds = ["kraft-paper", "punch", "bag-handle", "stamp"];
+
+const materials = sourawFind.filter((item) => materialIds.includes(item.id));
 
 export default function BagGuide() {
     return (
-
         <>
-
             <PageBanner
                 image={bannerImage}
                 kicker="The DIY Corner"
@@ -20,7 +23,8 @@ export default function BagGuide() {
                     <h2 className="bag-guide__kicker">Souraw DIY</h2>
                     <h1>How to Make a Kraft Bag</h1>
                     <p>
-                        A simple square-base kraft bag made for an 8 x 8 inch box.
+                        A square-base kraft bag made for cookie boxes, gifts,
+                        and handmade packaging.
                     </p>
                 </div>
 
@@ -39,8 +43,6 @@ export default function BagGuide() {
                     </div>
                 </div>
 
-
-
                 <div className="bag-guide__grid">
                     {steps.map((step) => (
                         <article className="bag-step" key={step.number}>
@@ -57,34 +59,67 @@ export default function BagGuide() {
                     ))}
                 </div>
 
-                <div className="bag-guide__details">
-                    <br/>
-                    <br />
-                    <div>
-                        <span>Paper size</span>
-                        <strong>31" x 15"</strong>
+                <section className="bag-guide__result">
+                    <div className="bag-guide__section-header">
+                        <span>Made by hand</span>
+                        <h2>The Final Bag</h2>
                     </div>
-                    <div>
-                        <span>Final base</span>
-                        <strong>Approx. 8.5" x 6.5"</strong>
+
+                    <div className="bag-guide__result-card">
+                        <img src={finalBagImage} alt="Finished kraft bag" />
+
+                        <div>
+                            <h3>Simple. Square. Handmade.</h3>
+                            <p>
+                                A kraft bag with a clean square base, perfect
+                                for cookie boxes, small gifts, and packaging
+                                that feels intentional.
+                            </p>
+                        </div>
                     </div>
-                    <div>
-                        <span>Final height</span>
-                        <strong>Approx. 15"</strong>
+                </section>
+
+                <section className="bag-guide__materials">
+                    <div className="bag-guide__section-header">
+                        <span>Shop the project</span>
+                        <h2>The Tools Behind This Project</h2>
+                        <p>
+                            Everything I used to create this bag, gathered in
+                            one place.
+                        </p>
                     </div>
-                </div>
+
+                    <div className="materials-grid">
+                        {materials.map((item) => (
+                            <a
+                                key={item.id}
+                                href={item.link}
+                                target="_blank"
+                                rel="noopener noreferrer sponsored"
+                                className="material-card"
+                            >
+                                <img src={item.image} alt={item.name} />
+                                <h3>{item.name}</h3>
+                                {item.description && <p>{item.description}</p>}
+                                <span>find it here ↗</span>
+                            </a>
+                        ))}
+                    </div>
+
+                    <a href="/souraw-finds" className="materials-cta">
+                        Explore SOURAW Finds →
+                    </a>
+                </section>
 
                 <div className="bag-guide__note">
                     <h3>Important tips</h3>
                     <p>
-                        Keep your folds sharp, align every seam carefully, and use only the amount of glue needed.
-                        The cleaner the folds, the more professional the bag will look.
+                        Keep your folds sharp, align every seam carefully, and
+                        use only the amount of glue needed. The cleaner the
+                        folds, the more professional the bag will look.
                     </p>
                 </div>
-
             </section>
-            
-
         </>
     );
 }

@@ -6,14 +6,19 @@ import bannerImage from "../../assets/amazon/seeds-bread.webp";
 
 const categories = [
     {
-        key: "Labels",
-        title: "Labels",
-        kicker: "little details",
+        key: "Craft",
+        title: "Maker's Corner",
+        kicker: "create & customize",
     },
     {
         key: "Packaging",
         title: "Packaging",
         kicker: "pack it cute",
+    },
+    {
+        key: "Labels",
+        title: "Labels",
+        kicker: "little details",
     },
     {
         key: "Sourdough Essentials",
