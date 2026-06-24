@@ -55,8 +55,8 @@ function Navbar() {
                             </Link>
                         </li>
                         <li className="nav-item">
-                            <Link to="/menu" className="nav-links" onClick={closeMobileMenu}>
-                                MENU
+                            <Link to="/diy" className="nav-links" onClick={closeMobileMenu}>
+                                DIY
                             </Link>
                         </li>
                         <li className="nav-item">
@@ -65,11 +65,6 @@ function Navbar() {
                             </Link>
                         </li>
 
-                        <li className="nav-item">
-                            <Link to="/schedule" className="nav-links" onClick={closeMobileMenu}>
-                                SCHEDULE
-                            </Link>
-                        </li>
 
                         <li className="nav-item nav-more">
                             <button
@@ -81,6 +76,11 @@ function Navbar() {
                             </button>
 
                             <div className={moreOpen ? "nav-dropdown open" : "nav-dropdown"}>
+
+                                <Link to="/menu" className="nav-links" onClick={closeMobileMenu}>
+                                    MENU
+                                </Link>
+
                                 <Link to="/about" className="nav-dropdown-link" onClick={closeMobileMenu}>
                                     ABOUT
                                 </Link>
@@ -89,9 +89,14 @@ function Navbar() {
                                     CONTACT
                                 </Link>
 
+                                <Link to="/schedule" className="nav-links" onClick={closeMobileMenu}>
+                                    SCHEDULE
+                                </Link>
+
                                 <Link to="/reviews" className="nav-dropdown-link" onClick={closeMobileMenu}>
                                     REVIEWS
                                 </Link>
+                                
                             </div>
                         </li>
 

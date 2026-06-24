@@ -4,6 +4,7 @@ import PageBanner from "../../components/PageBanner/PageBanner";
 import bannerImage from "../../assets/diy/banner.webp";
 import finalBagImage from "../../assets/diy/finalBagImage.webp";
 import { sourawFind } from "../../data/sourawFinds";
+import purpleHandleBagImage from "../../assets/diy/finalBagRopeHandles.webp";
 
 const materialIds = ["kraft-paper", "punch", "bag-handle", "stamp"];
 
@@ -59,22 +60,71 @@ export default function BagGuide() {
                     ))}
                 </div>
 
-                <section className="bag-guide__result">
-                    <div className="bag-guide__section-header">
-                        <span>Made by hand</span>
-                        <h2>The Final Bag</h2>
+                <div className="bag-guide__result-card">
+                    <div className="bag-guide__result-images">
+                        <img
+                            src={finalBagImage}
+                            alt="Finished kraft bag with glued handles"
+                        />
+
+                        <img
+                            src={purpleHandleBagImage}
+                            alt="Finished kraft bag with rope handles"
+                        />
                     </div>
 
-                    <div className="bag-guide__result-card">
-                        <img src={finalBagImage} alt="Finished kraft bag" />
+                    <div>
+                        <h3>Simple. Square. Handmade.</h3>
 
+                        <p>
+                            This bag can be finished in two different ways:
+                            with glued paper handles or with punched holes
+                            and rope handles for a more premium look.
+                        </p>
+                    </div>
+                </div>
+
+                <section className="bag-guide__handles">
+                    <div className="bag-guide__section-header">
+                        <span>Optional finish</span>
+                        <h2>Another Handle Option</h2>
+                        <p>
+                            You can also punch holes and add rope handles for a more polished
+                            finish.
+                        </p>
+                    </div>
+
+                    <div className="bag-guide__handles-card">
                         <div>
-                            <h3>Simple. Square. Handmade.</h3>
+                            <h3>Option 2: Rope Handles</h3>
                             <p>
-                                A kraft bag with a clean square base, perfect
-                                for cookie boxes, small gifts, and packaging
-                                that feels intentional.
+                                Instead of gluing the handles, mark two holes on each side of
+                                the bag, punch them carefully, and insert the rope handles
+                                through the holes.
                             </p>
+
+                            <ul>
+                                <li>Mark the handle placement.</li>
+                                <li>Punch two holes on each side.</li>
+                                <li>Thread the rope through the holes.</li>
+                                <li>Tie or secure the ends inside the bag.</li>
+                            </ul>
+                        </div>
+
+                        <div className="bag-guide__handles-tools">
+                            {materials
+                                .filter((item) => ["punch", "bag-handle"].includes(item.id))
+                                .map((item) => (
+                                    <a
+                                        key={item.id}
+                                        href={item.link}
+                                        target="_blank"
+                                        rel="noopener noreferrer sponsored"
+                                    >
+                                        <img src={item.image} alt={item.name} />
+                                        <span>{item.name}</span>
+                                    </a>
+                                ))}
                         </div>
                     </div>
                 </section>
