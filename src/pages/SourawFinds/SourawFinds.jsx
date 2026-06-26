@@ -11,6 +11,11 @@ const categories = [
         kicker: "create & customize",
     },
     {
+        key: "starter",
+        title: "Starter Essentials",
+        subtitle: "everything you need to activate and maintain your sourdough starter",
+    },
+    {
         key: "Packaging",
         title: "Packaging",
         kicker: "pack it cute",

@@ -77,7 +77,7 @@ function Navbar() {
 
                             <div className={moreOpen ? "nav-dropdown open" : "nav-dropdown"}>
 
-                                <Link to="/menu" className="nav-links" onClick={closeMobileMenu}>
+                                <Link to="/menu" className="nav-dropdown-link" onClick={closeMobileMenu}>
                                     MENU
                                 </Link>
 
@@ -89,7 +89,7 @@ function Navbar() {
                                     CONTACT
                                 </Link>
 
-                                <Link to="/schedule" className="nav-links" onClick={closeMobileMenu}>
+                                <Link to="/schedule" className="nav-dropdown-link" onClick={closeMobileMenu}>
                                     SCHEDULE
                                 </Link>
 
