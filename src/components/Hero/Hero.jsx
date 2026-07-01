@@ -1,6 +1,6 @@
 import React from "react";
 import "./Hero.css";
-import doll from "../../assets/doll.png";
+import doll from "../../assets/face-logo.webp";
 import { Link } from "react-router-dom";
 import { ShoppingBag, BookOpen } from "@phosphor-icons/react";
 

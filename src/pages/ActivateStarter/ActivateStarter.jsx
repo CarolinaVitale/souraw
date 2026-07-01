@@ -162,7 +162,7 @@ export default function ActivateStarter() {
         <>
             <PageBanner
                 image={bannerImage}
-                kicker="A little piece of SOURAW"
+                kicker="A little piece of Souraw"
                 title="WELCOME TO THE FAMILY"
             />
 
