@@ -625,7 +625,8 @@ svg {
     }
 
     .starter-fermentina-face {
-        right: 0.8rem;
+        width: 150px;
+        right: 0.2rem;
     }
 
     .starter-story,
