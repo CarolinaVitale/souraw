@@ -9,12 +9,6 @@ import kingArthurImage from "../../assets/starter/king-arthur.webp";
 import allTrumpsImage from "../../assets/starter/all-trumps.webp";
 import ryeImage from "../../assets/starter/rye-flour.webp";
 
-// Replace these with your real photos when you have them
-import day1Image from "../../assets/starter/day1.webp";
-import day2Image from "../../assets/starter/day2.webp";
-import day3Image from "../../assets/starter/day3.webp";
-import readyImage from "../../assets/starter/ready.webp";
-
 import sleepyImage from "../../assets/starter/sleepy.webp";
 import wakingImage from "../../assets/starter/waking.webp";
 import peakImage from "../../assets/starter/peak.webp";
@@ -22,46 +16,16 @@ import hungryImage from "../../assets/starter/hungry.webp";
 
 import fermentinaFace from "../../assets/starter/fermentinaFace.png";
 
-const recommendedIds = ["flour", "glass-jar", "scale", "spatula", "rubber-band"];
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHeart } from "@fortawesome/free-solid-svg-icons";
+
+import { starterTimeline } from "../../data/starterTimeline";
+
+const recommendedIds = ["flour", "glass-jar", "scale", "spatula", "marker", "nitrile-gloves"];
 
 const recommendedTools = sourawFind.filter((item) =>
     recommendedIds.includes(item.id)
 );
-
-const steps = [
-    {
-        day: "Day 1",
-        title: "Wake it up",
-        image: day1Image,
-        diary: "Today I'm sleepy. Don't worry if I don't bubble yet.",
-        text: "Place 20g of dehydrated starter in a clean jar. Add 25g of warm filtered water and let it soften for about 30 minutes. Then add 25g of flour and mix well.",
-        tip: "It may look quiet today. That is totally normal.",
-    },
-    {
-        day: "Day 2",
-        title: "First feeding",
-        image: day2Image,
-        diary: "I'm starting to wake up. Can you see tiny bubbles?",
-        text: "Keep 25g of the mixture and discard the rest. Feed with 25g water and 25g flour. Mix well, cover loosely, and keep it warm.",
-        tip: "Tiny bubbles count. We are building strength, not rushing.",
-    },
-    {
-        day: "Day 3+",
-        title: "Watch, don't rush",
-        image: day3Image,
-        diary: "I'm getting stronger. Almost there.",
-        text: "Pay attention to how long it takes to rise after feeding. Once it doubles consistently, keep 25g starter and feed 25g water + 25g flour again.",
-        tip: "Read your starter, not the clock.",
-    },
-    {
-        day: "Ready",
-        title: "Let's bake",
-        image: readyImage,
-        diary: "I'm hungry. Let's bake.",
-        text: "When your starter rises predictably, develops bubbles, smells pleasantly tangy, and reaches its peak after feeding, it is ready to bake with.",
-        tip: "Peak activity is the sweet spot.",
-    },
-];
 
 const starterStates = [
     {
@@ -249,37 +213,50 @@ export default function ActivateStarter() {
                         <span>The activation journey</span>
                         <h2>One day at a time</h2>
                         <p>
-                            Don’t compare your starter to Instagram. Watch the bubbles, the
+                            Don’t compare your starter. Watch the bubbles, the
                             smell, the rise, and the rhythm.
                         </p>
                     </div>
 
                     <div className="starter-timeline">
-                        {steps.map((step) => (
-                            <article className="starter-step-card" key={step.day}>
-                                <div className="starter-step-image">
-                                    <img src={step.image} alt={`${step.day} sourdough starter`} />
+                        {starterTimeline.map((section) => (
+                            <div className="starter-day-section" key={section.day}>
+                                <div className="starter-day-header">
+                                    <span>{section.day}</span>
+                                    <h3>{section.subtitle}</h3>
                                 </div>
 
-                                <div>
-                                    <div className="starter-step-day">
-                                        <span>{step.day}</span>
-                                    </div>
+                                {section.steps.map((step) => (
+                                    <article className="starter-step-card" key={`${section.day}-${step.step}`}>
+                                        <div className="starter-step-image">
+                                            <img src={step.image} alt={`${section.day} ${step.step}`} />
+                                        </div>
 
-                                    <h3>{step.title}</h3>
+                                        <div>
+                                            <div className="starter-step-day">
+                                                <small>
+                                                    <FontAwesomeIcon icon={faHeart} /> {step.step}
+                                                </small>
+                                            </div>
 
-                                    <div className="starter-diary">
-                                        <strong>Fermentina’s diary</strong>
-                                        <p>{step.diary}</p>
-                                    </div>
+                                            <h3>{step.title}</h3>
 
-                                    <p>{step.text}</p>
+                                            <div className="starter-diary">
+                                                <strong>Fermentina’s diary</strong>
+                                                <p>{step.diary}</p>
+                                            </div>
 
-                                    <div className="fermentina-tip">
-                                        <strong>Fermentina says:</strong> {step.tip}
-                                    </div>
-                                </div>
-                            </article>
+                                            <div className="starter-step-text">
+                                                {step.text}
+                                            </div>
+
+                                            <div className="fermentina-tip">
+                                                <strong>Fermentina says:</strong> {step.tip}
+                                            </div>
+                                        </div>
+                                    </article>
+                                ))}
+                            </div>
                         ))}
                     </div>
                 </section>
@@ -318,7 +295,7 @@ export default function ActivateStarter() {
                     </div>
 
                     <div className="starter-myth">
-                        <strong>The biggest sourdough myth:</strong>
+                        <strong>The biggest sourdough myth: </strong>
                         Your starter is not ready simply because it doubled. The best moment
                         to bake is usually at peak activity — when it stops rising and
                         before it starts to fall.
@@ -401,7 +378,7 @@ export default function ActivateStarter() {
                     </ul>
                 </section>
 
-                
+
                 <section className="starter-dont">
                     <div className="starter-section-header">
                         <span>Read your starter</span>
@@ -446,11 +423,11 @@ export default function ActivateStarter() {
                                 fermentation, especially while your starter is waking up.
                             </p>
                         </div>
-
                         <div>
-                            <strong>Don't seal the jar tightly.</strong>
+                        <strong>Don’t eyeball it.</strong>
                             <p>
-                                Your starter needs room to breathe while it ferments.
+                                If you want consistent results, measure by weight—not by cups. Pair it with consistent feeding times, and your starter will become much more predictable.
+
                             </p>
                         </div>
 

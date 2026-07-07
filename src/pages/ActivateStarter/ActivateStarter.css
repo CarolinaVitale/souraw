@@ -704,3 +704,136 @@ svg {
         text-align: center;
     }
 }
+
+.starter-step-day small {
+    display: block;
+    margin-top: 0.6rem;
+    color: #e53d23;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+}
+
+.starter-step-text p {
+    margin: 0 0 1rem;
+    line-height: 1.8;
+}
+
+.starter-step-text strong {
+    font-weight: 800;
+}
+
+.starter-ingredients {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0;
+}
+
+.starter-ingredients li {
+    position: relative;
+    padding-left: 1.8rem;
+    margin-bottom: 0.7rem;
+    line-height: 1.5;
+    font-weight: 700;
+}
+
+.starter-ingredients li::before {
+    content: "+";
+    position: absolute;
+    left: 0;
+    color: #e53d23;
+    font-weight: 900;
+}
+
+.starter-big-quote {
+    margin: 2rem 0;
+    padding: 1.5rem;
+
+    background: #363636;
+    color: #FFE8CF;
+
+    border-radius: 3px;
+
+    font-size: clamp(1.4rem, 2.8vw, 2rem);
+    font-weight: 800;
+    line-height: 1.2;
+    text-align: center;
+}
+
+.starter-day-section {
+    margin-bottom: 3rem;
+}
+
+.starter-day-header {
+    text-align: center;
+    margin: 5rem auto 2.5rem;
+}
+
+.starter-day-header span {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #f6bc3f;
+    color: #363636;
+
+    padding: .8rem 1.8rem;
+
+    border-radius: 3px;
+
+    font-size: 1rem;
+    font-weight: 900;
+
+    letter-spacing: .15em;
+    text-transform: uppercase;
+
+    box-shadow: 0 8px 20px rgba(0, 0, 0, .08);
+}
+
+.starter-day-header h3 {
+    font-size: clamp(2.8rem, 6vw, 5rem);
+    margin: .8rem 0 0;
+    line-height: .95;
+}
+
+.starter-day-header h3 {
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    margin: 1rem 0 0;
+    line-height: 1;
+}
+
+.starter-step-day small {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    background: #ffe8cf;
+    color: #e53d23;
+    padding: 0.45rem 0.8rem;
+    border-radius: 3px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.75rem;
+}
+
+.starter-step-text p {
+    margin: 0 0 1rem;
+    line-height: 1.8;
+}
+
+.starter-details {
+    margin: 1rem 0 1.5rem;
+    padding: 1.2rem;
+    background: #ffe8cf;
+    border-left: 5px solid #f6bc3f;
+    border-radius: 3px;
+}
+
+.starter-details summary {
+    cursor: pointer;
+    font-weight: 800;
+    color: #e53d23;
+}
+
+.starter-details p {
+    margin-top: 1rem;
+}
