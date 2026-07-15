@@ -176,7 +176,7 @@ exports.stripeWebhook = onRequest(
         emailPayload = {
           from: fromEmail.value(),
           to: customerEmail,
-          subject: "Your SOURAW starter is on its way ♡",
+          subject: "Your dehydrated sourdough starter is being prepared ♡",
           html: buildDehydratedStarterEmail({ customerName }),
         };
       }
@@ -272,35 +272,48 @@ function buildDehydratedStarterEmail({ customerName }) {
           <p style="margin:0;font-size:11px;letter-spacing:3px;text-transform:uppercase;font-weight:800;">untamed &bull; unrushed &bull; unapologetic</p>
         </div>
 
-        <h1 style="margin:0 0 28px;font-size:50px;line-height:.95;text-transform:uppercase;font-weight:900;color:#363636;">
-          Your starter<br />is on its way &#9825;
+        <h1 style="margin:0 0 28px;font-size:48px;line-height:.95;text-transform:uppercase;font-weight:900;color:#363636;">
+          Your dehydrated<br />sourdough starter<br />is being prepared &#9825;
         </h1>
 
-        <p style="font-size:18px;line-height:1.8;margin:0 0 20px;">Hi ${escapeHtml(customerName)},</p>
-
         <p style="font-size:18px;line-height:1.8;margin:0 0 20px;">
-          Thank you for ordering SOURAW dehydrated starter.
+          Hi ${escapeHtml(customerName)},
         </p>
 
         <p style="font-size:18px;line-height:1.8;margin:0 0 20px;">
-          Your starter will be packed and shipped with care.
+          Thank you for ordering a <strong>SOURAW dehydrated sourdough starter</strong>.
+        </p>
+
+        <p style="font-size:18px;line-height:1.8;margin:0 0 20px;">
+          I'm carefully preparing your package so everything is ready for its journey.
+        </p>
+
+        <p style="font-size:18px;line-height:1.8;margin:0 0 20px;">
+          As soon as it's on its way, you'll receive another email with your shipping confirmation and tracking details.
         </p>
 
         <p style="font-size:18px;line-height:1.8;margin:0 0 38px;">
-          Once it arrives, give it time to wake up slowly. It has been resting, and now we bring it back to life.
+          When it arrives, you'll find a QR code inside the package with simple step-by-step instructions to help you bring your starter back to life.
         </p>
 
         <div style="background:#fff7ef;padding:30px;margin-bottom:40px;">
-          <p style="margin:0 0 15px;font-size:20px;font-weight:900;">A tiny beginning. A living process.</p>
-          <p style="margin:0;font-size:17px;line-height:1.8;">No rush.<br />No pressure.<br />Just flour, water, time, and attention.</p>
+          <p style="margin:0 0 15px;font-size:20px;font-weight:900;">
+            A tiny beginning. A living process.
+          </p>
+          <p style="margin:0;font-size:17px;line-height:1.8;">
+            No rush.<br />
+            No pressure.<br />
+            Just flour, water, time, and attention.
+          </p>
         </div>
 
-        <p style="font-size:17px;line-height:1.9;margin:0 0 20px;">
-          Keep an eye on your inbox for shipping updates.
+        <p style="font-size:18px;line-height:1.8;margin:0 0 8px;">
+          See you very soon,
         </p>
 
-        <p style="font-size:18px;line-height:1.8;margin:0 0 8px;">Happy baking,</p>
-        <p style="font-size:24px;font-weight:900;margin:0 0 56px;">Carola &#9825;</p>
+        <p style="font-size:24px;font-weight:900;margin:0 0 56px;">
+          Carola &#9825;
+        </p>
 
         <div style="text-align:center;border-top:1px solid rgba(54,54,54,.15);padding-top:28px;">
           <p style="margin:0 0 10px;font-size:11px;text-transform:uppercase;letter-spacing:3px;font-weight:900;">SOURAW</p>

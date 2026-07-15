@@ -2,7 +2,7 @@
 import React from "react";
 import "./ActivateStarter.css";
 import PageBanner from "../../components/PageBanner/PageBanner";
-import bannerImage from "../../assets/fermentina.webp";
+import bannerImage from "../../assets/activated-starter.png";
 import { sourawFind } from "../../data/sourawFinds";
 
 import kingArthurImage from "../../assets/starter/king-arthur.webp";
@@ -19,7 +19,7 @@ import fermentinaFace from "../../assets/starter/fermentinaFace.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 
-import { starterTimeline } from "../../data/starterTimeline";
+import { starterTimeline, readySteps } from "../../data/starterTimeline";
 
 const recommendedIds = ["flour", "glass-jar", "scale", "spatula", "marker", "nitrile-gloves"];
 
@@ -283,22 +283,65 @@ export default function ActivateStarter() {
                 </section>
 
                 <section className="starter-ready">
-                    <h2>How do I know it’s ready?</h2>
+                    <div className="starter-section-header starter-ready-header">
+                        <span>Read the peak</span>
+                        <h2>How do I know it’s ready?</h2>
 
-                    <p>Your starter is ready when it:</p>
+                        <p>
+                            Your starter is ready when it reaches peak activity—not simply
+                            because it doubled in size.
+                        </p>
+                    </div>
 
                     <div className="starter-signs">
-                        <div>rises after feeding</div>
-                        <div>has visible bubbles</div>
-                        <div>smells pleasantly tangy</div>
-                        <div>reaches peak activity</div>
+                        <div>Rises predictably after feeding</div>
+                        <div>Has visible bubbles</div>
+                        <div>Smells pleasantly tangy</div>
+                        <div>Reaches its highest point</div>
+                    </div>
+
+                    <div className="starter-ready-steps">
+                        {readySteps.map((step) => (
+                            <article className="starter-step-card" key={step.step}>
+                                <div className="starter-step-image">
+                                    <img
+                                        src={step.image}
+                                        alt={`${step.step}: ${step.title}`}
+                                    />
+                                </div>
+
+                                <div>
+                                    <div className="starter-step-day">
+                                        <small>
+                                            <FontAwesomeIcon icon={faHeart} />
+                                            {step.step}
+                                        </small>
+                                    </div>
+
+                                    <h3>{step.title}</h3>
+
+                                    <div className="starter-diary">
+                                        <strong>Fermentina’s diary</strong>
+                                        <p>{step.diary}</p>
+                                    </div>
+
+                                    <div className="starter-step-text">
+                                        {step.text}
+                                    </div>
+
+                                    <div className="fermentina-tip">
+                                        <strong>Fermentina says:</strong> {step.tip}
+                                    </div>
+                                </div>
+                            </article>
+                        ))}
                     </div>
 
                     <div className="starter-myth">
                         <strong>The biggest sourdough myth: </strong>
                         Your starter is not ready simply because it doubled. The best moment
-                        to bake is usually at peak activity — when it stops rising and
-                        before it starts to fall.
+                        to bake is usually at peak activity—when it has stopped rising and
+                        before it begins to fall significantly.
                     </div>
                 </section>
 

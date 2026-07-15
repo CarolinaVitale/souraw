@@ -15,7 +15,6 @@ import day5CrumbImage from "../assets/starter/day5-crumb.webp";
 import day5FinalImage from "../assets/starter/day5-final.webp";
 import readyImage from "../assets/starter/ready.webp";
 import readyImage2 from "../assets/starter/ready2.webp";
-import hungryImage from "../assets/starter/hungry-day.webp";
 
 export const starterTimeline = [
 
@@ -466,60 +465,36 @@ export const starterTimeline = [
             },
         ],
     },
+    
+];
+
+export const readySteps = [
     {
-        day: "Ready",
-        subtitle: "Find the peak.",
-        steps: [
-            {
-                step: "Peak time",
-                title: "Find the peak",
-                image: readyImage,
-                diary: "I'm at my strongest point!",
-                text: (
-                    <p>
-                        Your starter is ready when it has reached its highest point and
-                        has stopped rising. This is peak activity — not simply the moment
-                        it doubles in size.
-                    </p>
-                ),
-                tip: "The best baking window is when I stop rising, before I start falling.",
-            },
-            {
-                step: "Still unsure?",
-                title: "Wait a few millimeters",
-                image: readyImage2,
-                diary: "If you're not sure, watch me a little longer.",
-                text: (
-                    <p>
-                        If you are not sure whether your starter has stopped growing,
-                        wait until it begins to fall just a few millimeters. That tiny
-                        drop tells you it already reached its peak.
-                    </p>
-                ),
-                tip: "A tiny fall is okay. Don’t wait until I collapse completely.",
-            },
-        ],
+        step: "Peak time",
+        title: "Find the peak",
+        image: readyImage,
+        diary: "I'm at my strongest point!",
+        text: (
+            <p>
+                Your starter is ready when it has reached its highest point and
+                has stopped rising. This is peak activity — not simply the moment
+                it doubles in size.
+            </p>
+        ),
+        tip: "The best baking window is when I stop rising, before I start falling.",
     },
     {
-        day: "Hungry",
-        subtitle: "Time for another meal.",
-        steps: [
-            {
-                step: "Too far",
-                title: "When it is very hungry",
-                image: hungryImage,
-                diary: "I waited too long. Feed me!",
-                text: (
-                    <p>
-                        If your starter has fallen a lot, looks flatter, has shrinking
-                        bubbles, or smells much more acidic, it has passed its best baking
-                        window. Feed it again and try to catch the peak next time.
-                    </p>
-                ),
-                tip: "Passed peak doesn’t mean ruined. It just means it’s time to feed again.",
-            },
-       
-
-        ],
+        step: "Still unsure?",
+        title: "Wait a few millimeters",
+        image: readyImage2,
+        diary: "If you're not sure, watch me a little longer.",
+        text: (
+            <p>
+                If you are not sure whether your starter has stopped growing,
+                wait until it begins to fall just a few millimeters. That tiny
+                drop tells you it already reached its peak.
+            </p>
+        ),
+        tip: "A tiny fall is okay. Don’t wait until I collapse completely.",
     },
 ];

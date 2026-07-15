@@ -838,3 +838,22 @@ svg {
 .starter-details p {
     margin-top: 1rem;
 }
+
+.starter-ready-header {
+    margin-top: 0;
+}
+
+.starter-ready-steps {
+    display: grid;
+    gap: 1.2rem;
+    margin-top: 2rem;
+}
+
+.starter-ready .starter-step-card {
+    background: #ffe8cf;
+}
+
+.starter-ready .starter-diary,
+.starter-ready .fermentina-tip {
+    background: #fff6ec;
+}

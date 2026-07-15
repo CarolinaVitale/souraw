@@ -55,8 +55,8 @@ function Navbar() {
                             </Link>
                         </li>
                         <li className="nav-item">
-                            <Link to="/diy" className="nav-links" onClick={closeMobileMenu}>
-                                DIY
+                            <Link to="/unrushed-lab" className="nav-links" onClick={closeMobileMenu}>
+                                DEHYDRATED STARTER
                             </Link>
                         </li>
                         <li className="nav-item">
@@ -64,7 +64,11 @@ function Navbar() {
                                 SOURAW FINDS 
                             </Link>
                         </li>
-
+                        <li className="nav-item">
+                            <Link to="/diy" className="nav-links" onClick={closeMobileMenu}>
+                                DIY
+                            </Link>
+                        </li>
 
                         <li className="nav-item nav-more">
                             <button
