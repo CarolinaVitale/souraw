@@ -1,78 +1,222 @@
+@import "../../styles/variables.css";
+
 .menu-carousel {
-    background-color: var(--color-bg);
-    background-repeat: repeat;
-    background-size: 500px auto;
-    padding: 4rem 1.5rem;
-    text-align: center;
-    color: var(--color-gray-dark);
+    position: relative;
+    overflow: hidden;
+    background: var(--color-gray-dark);
+    padding: clamp(5rem, 9vw, 8rem) 0 6rem;
+    color: var(--color-bg);
 }
 
-.menu-title {
-    font-family: 'Biro', cursive;
-    font-size: 5rem;
-    font-weight: lighter;
-    margin-bottom: 2rem;
+.menu-carousel::before {
+    content: "FRESH";
+    position: absolute;
+    right: -0.08em;
+    top: -0.12em;
+    color: transparent;
+    font-family: "Montserrat", sans-serif;
+    font-size: clamp(8rem, 22vw, 20rem);
+    font-weight: 900;
+    letter-spacing: -0.08em;
+    -webkit-text-stroke: 2px rgba(255, 232, 207, 0.08);
+    pointer-events: none;
+}
+
+.menu-carousel-head {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(280px, 0.45fr);
+    gap: clamp(2rem, 6vw, 6rem);
+    align-items: end;
+    width: min(1200px, calc(100% - 3rem));
+    margin: 0 auto 3rem;
+    text-align: left;
+}
+
+.menu-kicker {
+    margin: 0 0 0.4rem;
+    color: var(--color-pink);
+    font-family: "Biro", cursive;
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    line-height: 1;
+}
+
+.menu-carousel h2 {
+    max-width: 8ch;
+    margin: 0;
     color: var(--color-bg);
+    font-family: "Montserrat", sans-serif;
+    font-size: clamp(3.8rem, 8vw, 8rem);
+    font-weight: 900;
+    letter-spacing: -0.06em;
+    line-height: 0.86;
+    text-transform: uppercase;
+    text-shadow: 4px 5px 0 var(--color-red);
+}
+
+.menu-carousel-head > p {
+    margin: 0 0 0.3rem;
+    font-family: "Montserrat", sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.65;
+}
+
+.menu-swiper {
+    padding: 1rem max(1.5rem, calc((100vw - 1200px) / 2)) 4rem !important;
+}
+
+.menu-product-card {
+    position: relative;
+    overflow: hidden;
+    border: 3px solid var(--color-bg);
+    border-radius: 4px;
+    background: var(--color-bg);
+    box-shadow: 9px 10px 0 var(--color-red);
+    color: var(--color-gray-dark);
+    transform: rotate(-1deg);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.menu-product-card-2 {
+    box-shadow: 9px 10px 0 var(--color-purple);
+    transform: rotate(1deg);
+}
+
+.menu-product-card-3 {
+    box-shadow: 9px 10px 0 var(--color-yellow);
+}
+
+.menu-product-card:hover {
+    box-shadow: 4px 5px 0 var(--color-pink);
+    transform: translateY(-7px) rotate(0);
 }
 
 .menu-slide-img {
+    display: block;
     width: 100%;
-    height: auto;
-    border-radius: 3px;
+    aspect-ratio: 4 / 4.7;
     object-fit: cover;
+    border-bottom: 3px solid var(--color-gray-dark);
 }
 
-.catalog-button-wrapper {
-    margin-top: 3rem;
+.menu-product-number {
+    position: absolute;
+    z-index: 3;
+    top: 0.8rem;
+    right: 0.8rem;
+    border: 2px solid var(--color-gray-dark);
+    border-radius: 999px;
+    background: var(--color-yellow);
+    padding: 0.45rem 0.65rem;
+    font-family: "Montserrat", sans-serif;
+    font-size: 0.68rem;
+    font-weight: 900;
+}
+
+.menu-product-copy {
+    padding: 1rem 1.1rem 1.2rem;
+    text-align: left;
+}
+
+.menu-product-copy h3 {
+    margin: 0;
+    font-family: "Montserrat", sans-serif;
+    font-size: 1.25rem;
+    font-weight: 900;
+    line-height: 1;
+    text-transform: uppercase;
+}
+
+.menu-product-copy p {
+    margin: 0.5rem 0 0;
+    font-family: "Montserrat", sans-serif;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
 }
 
 .catalog-button {
-    background-color: transparent;
-    color: var(--color-red);
-    border: 2px solid var(--color-red);
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 600;
-    padding: 0.8rem 2rem;
-    font-size: 1rem;
-    border-radius: 3px;
-    cursor: pointer;
-    transition: transform 0.15s ease, background-color 0.2s ease;
-    text-decoration: none;
-    display: inline-flex;
+    display: flex;
+    width: fit-content;
     align-items: center;
+    gap: 0.7rem;
+    margin: 0 auto;
+    border: 3px solid var(--color-bg);
+    border-radius: 999px;
+    background: var(--color-red);
+    box-shadow: 5px 6px 0 var(--color-bg);
+    padding: 0.95rem 1.25rem;
+    color: var(--color-bg);
+    font-family: "Montserrat", sans-serif;
+    font-size: 0.78rem;
+    font-weight: 900;
+    letter-spacing: 0.06em;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
 }
 
 .catalog-button:hover {
-    background-color: var(--color-red);
-    color: var(--color-bg);
-    transform: translateY(-2px);
+    box-shadow: 2px 3px 0 var(--color-bg);
+    transform: translate(3px, 3px) rotate(-1deg);
 }
 
-.swiper-button-prev,
-.swiper-button-next {
-    color: var(--color-red) !important;
-    width: 0.5 !important;
-    height: 0.5 !important;
-    padding-top: 20px;
+.catalog-button span {
+    font-size: 1.25rem;
+    line-height: 0;
 }
 
-.swiper-pagination-bullet {
-    background-color: #999 !important;
+.menu-carousel .swiper-button-prev,
+.menu-carousel .swiper-button-next {
+    width: 48px;
+    height: 48px;
+    border: 2px solid var(--color-gray-dark);
+    border-radius: 50%;
+    background: var(--color-yellow);
+    color: var(--color-gray-dark) !important;
+    box-shadow: 3px 4px 0 var(--color-red);
+}
+
+.menu-carousel .swiper-button-prev::after,
+.menu-carousel .swiper-button-next::after {
+    font-size: 1rem;
+    font-weight: 900;
+}
+
+.menu-carousel .swiper-pagination-bullet {
+    background: var(--color-bg) !important;
+    opacity: 0.4 !important;
+}
+
+.menu-carousel .swiper-pagination-bullet-active {
+    background: var(--color-yellow) !important;
     opacity: 1 !important;
-    margin: 0 4px !important;
 }
 
-.swiper-pagination-bullet-active {
-    background-color: var(--color-bg) !important;
-}
-
-@media (max-width: 768px) {
-    .menu-title {
-        font-size: 3rem;
+@media (max-width: 760px) {
+    .menu-carousel-head {
+        grid-template-columns: 1fr;
+        width: calc(100% - 2.2rem);
     }
 
-    .swiper-button-prev,
-    .swiper-button-next {
-        top: 35%;
+    .menu-carousel h2 {
+        font-size: clamp(3rem, 15vw, 4.6rem);
+    }
+
+    .menu-carousel-head > p {
+        margin-top: -0.5rem;
+    }
+
+    .menu-swiper {
+        padding-left: 1.1rem !important;
+        padding-right: 1.1rem !important;
+    }
+
+    .catalog-button {
+        width: calc(100% - 2.2rem);
+        justify-content: center;
     }
 }

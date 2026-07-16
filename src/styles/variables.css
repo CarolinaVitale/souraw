@@ -5,4 +5,14 @@
     --color-green: rgb(0, 139, 70);
     --color-yellow: rgb(246, 188, 63);
     --color-gray-dark: #363636;
-    --color-purple: rgb(93, 48, 255); }
+    --color-purple: rgb(93, 48, 255);
+    --color-blue: #0aa8ff;
+    --color-turquoise: #0096a6;
+    --color-wine: #c1272d;
+
+    /* Shared editorial-banner foundation */
+    --banner-purple-deep: #5122ee;
+    --banner-purple-base: #5d30ff;
+    --banner-purple-bright: #6633ff;
+    --banner-ink: #ffe8cf;
+}

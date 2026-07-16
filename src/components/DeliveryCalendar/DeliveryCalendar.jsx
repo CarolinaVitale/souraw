@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useState } from "react";
 import "./DeliveryCalendar.css";
-import dollCalendar from "../../assets/calendar-girl.png";
+import dollCalendar from "../../assets/brand-elements/calendar-girl.png";
 
 const DELIVERY_DOW = new Set([4]); 
 const CUTOFF_HOUR = 20;

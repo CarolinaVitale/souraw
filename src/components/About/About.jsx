@@ -13,7 +13,6 @@ import founder2 from "../../assets/founder.png";
 import family from "../../assets/family.jpeg";
 import bread from "../../assets/result.jpeg";
 
-import PageBanner from "../../components/PageBanner/PageBanner";
 import aboutImage from "../../assets/banner1.webp";
 
 const TIMELINE = [
@@ -183,11 +182,46 @@ export default function AboutTimeline() {
 
     return (
         <>
-            <PageBanner image={aboutImage} kicker="Our Story..." title="HOW WE GOT HERE" />
+            <section className="about-hero">
+                <div className="about-hero-word" aria-hidden="true">ROOTS</div>
+
+                <div className="about-hero-copy">
+                    <p className="about-script">memory, heritage & healing</p>
+                    <h1>
+                        Bread brought
+                        <span>me home.</span>
+                    </h1>
+                    <a href="#about" className="about-pill about-pill-red">
+                        Read my story <span aria-hidden="true">↓</span>
+                    </a>
+                </div>
+
+                <div className="about-hero-visual">
+                    <div className="about-photo-frame">
+                        <img src={aboutImage} alt="Carolina, founder and baker behind SOURAW" />
+                    </div>
+                    <span className="about-sticker about-sticker-pink">founder + baker</span>
+                    <span className="about-sticker about-sticker-yellow">baked slowly</span>
+                </div>
+            </section>
+
+            <p className="photo-banner-summary">
+                A story about searching for belonging, finding patience in
+                fermentation, and discovering that our roots have a way of waking up.
+            </p>
+
+            <div className="about-ribbon" aria-hidden="true">
+                <div>
+                    <span>VENEZUELA • ITALIAN ROOTS • MADRID • TAMPA • FERMENTINA • </span>
+                    <span>VENEZUELA • ITALIAN ROOTS • MADRID • TAMPA • FERMENTINA • </span>
+                </div>
+            </div>
 
             <section className="abt" id="about">
+                <div className="abt-background-word" aria-hidden="true">STORY</div>
                 <div className="abt-wrap">
-                    <h3 className="abt-title-p">{`<p>HELLO WORLD</p>`}</h3>
+                    <p className="about-script">from Acarigua to Tampa</p>
+                    <h2 className="abt-heading">My story, made slowly.</h2>
                     <p className="abt-body-p">
                         If you’re here, it means you want to know a little more about me. So here is my story.
                     </p>
@@ -211,6 +245,7 @@ export default function AboutTimeline() {
                                             </div>
 
                                             <div className="abt-content">
+                                                <span className="abt-index">{String(idx + 1).padStart(2, "0")}</span>
                                                 <div className="abt-year">{item.year}</div>
                                                 <h3 className="abt-title">{item.title}</h3>
                                                 {Array.isArray(item.body) ? (
@@ -229,6 +264,7 @@ export default function AboutTimeline() {
                                     ) : (
                                         <>
                                             <div className="abt-content abt-content--right">
+                                                <span className="abt-index">{String(idx + 1).padStart(2, "0")}</span>
                                                 <div className="abt-year">{item.year}</div>
                                                 <h3 className="abt-title">{item.title}</h3>
                                                 {Array.isArray(item.body) ? (
@@ -261,10 +297,11 @@ export default function AboutTimeline() {
                     </div>
 
                     <div className="abt-end">
+                        <p className="about-script">if you made it this far...</p>
                         <p className="abt-p">If you’ve read this far, thank you. Truly.</p>
                         <p className="abt-p">I’ve always been a little dramatic — and I wouldn’t have it any other way.</p>
                         <p className="abt-p">Welcome to this world of sourdough experiments, heart, and history.</p>
-                        <p className="abt-title-p">
+                        <p className="abt-end-title">
                             This is Souraw <i className="fa-regular fa-heart" />
                         </p>
                     </div>

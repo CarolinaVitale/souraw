@@ -1,97 +1,74 @@
 import React, { useRef, useState } from "react";
+import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
+import { FaPause, FaPlay } from "react-icons/fa";
 import "./Founder.css";
 import founderImg from "../../assets/founder3.png";
 import videoSrc from "../../assets/founder-video.MP4";
-import stampImg from "../../assets/souraw-stamp.png";
-import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
+import stampImg from "../../assets/brand-elements/souraw-stamp.png";
 
-const FounderSpotlight = () => {
+const ease = [0.22, 1, 0.36, 1];
+
+export default function FounderSpotlight() {
     const videoRef = useRef(null);
-    const [isPlaying, setIsPlaying] = useState(false);
-    const [isClosed, setIsClosed] = useState(false);
+    const [isPlaying, setIsPlaying] = useState(true);
 
     const togglePlay = async () => {
-        const v = videoRef.current;
-        if (!v) return;
+        const video = videoRef.current;
+        if (!video) return;
 
-        if (v.paused) {
+        if (video.paused) {
             try {
-                await v.play();
-                setIsPlaying(true);
+                await video.play();
             } catch {
                 setIsPlaying(false);
             }
         } else {
-            v.pause();
-            setIsPlaying(false);
+            video.pause();
         }
     };
 
-    const close = () => {
-        const v = videoRef.current;
-        if (v) v.pause();
-        setIsPlaying(false);
-        setIsClosed(true);
-    };
-
-    if (isClosed) return null;
-
-    const ease = [0.22, 1, 0.36, 1];
-
     return (
-        <section className="fs">
+        <section className="fs" aria-labelledby="founder-title">
+            <span className="fs-background-word" aria-hidden="true">ROOTS</span>
+
             <div className="fs-inner">
-                <div className="fs-left">
-                    <div className="fs-hand">
-                        Hi! I’m <br />
-                        <span>Carolina!</span>
+                <motion.div
+                    className="fs-copy"
+                    initial={{ opacity: 0, y: 24 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.3 }}
+                    transition={{ duration: 0.85, ease }}
+                >
+                    <p className="fs-hand">Hi! I’m Carolina.</p>
+                    <p className="fs-kicker">the hands behind SOURAW</p>
+                    <h2 id="founder-title">Bread brought me home.</h2>
+
+                    <p className="fs-lead">
+                        SOURAW was born from discomfort, heartbreak, and the need
+                        to feel better — physically and emotionally.
+                    </p>
+
+                    <div className="fs-story-note">
+                        <p>Fermentation taught me patience.</p>
+                        <p>Bread taught me resilience.</p>
+                        <p>My roots reminded me who I am.</p>
+                        <strong>Memory, heritage, and healing — baked slowly.</strong>
                     </div>
 
-                    <div className="fs-avatarWrap">
-                        <img className="fs-avatar" src={founderImg} alt="Founder" />
-                    </div>
+                    <Link to="/about" className="fs-cta">
+                        read my story <span aria-hidden="true">↗</span>
+                    </Link>
+                </motion.div>
 
-                    <motion.div
-                        className="fs-card"
-                        initial={{ opacity: 0, y: 18 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true, amount: 0.35, margin: "0px 0px -15% 0px" }}
-                        transition={{ duration: 0.9, ease }}
-                    >
-                        <p className="fs-text">Souraw was born from discomfort.</p>
-                        <p className="fs-text">From heartbreak.</p>
-                        <p className="fs-text">From wanting to feel better — physically and emotionally.</p>
-                        <br />
-                        <p className="fs-text">Fermentation taught me patience.</p>
-                        <p className="fs-text">Bread taught me resilience.</p>
-                        <p className="fs-text">My roots reminded me who I am.</p>
-                        <br />
-                        <p className="fs-text">Souraw is not just bread.</p>
-                        <p className="fs-text">It is memory, heritage, and healing — baked slowly.</p>
-                        <br />
-                        <br />
-
-                        <Link to="/about" className="fs-cta">
-                            READ MY STORY
-                        </Link>
-                    </motion.div>
-
-                    {stampImg && <img className="fs-stamp" src={stampImg} alt="Stamp" />}
-                </div>
-
-                <div className="fs-right">
-                    <motion.div
-                        className="fs-videoFrame"
-                        initial={{ opacity: 0, y: 18, scale: 0.985 }}
-                        whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                        viewport={{ once: true, amount: 0.45, margin: "0px 0px -20% 0px" }}
-                        transition={{ duration: 0.95, ease, delay: 0.12 }}
-                    >
-                        <button className="fs-close" onClick={close} aria-label="Close">
-                            <i className="fa-solid fa-x fa-xl"></i>
-                        </button>
-
+                <motion.div
+                    className="fs-scene"
+                    initial={{ opacity: 0, y: 28, rotate: 1.5 }}
+                    whileInView={{ opacity: 1, y: 0, rotate: 0 }}
+                    viewport={{ once: true, amount: 0.3 }}
+                    transition={{ duration: 0.95, ease, delay: 0.1 }}
+                >
+                    <div className="fs-videoFrame">
                         <video
                             ref={videoRef}
                             className="fs-video"
@@ -101,17 +78,32 @@ const FounderSpotlight = () => {
                             muted
                             loop
                             preload="metadata"
+                            onPlay={() => setIsPlaying(true)}
+                            onPause={() => setIsPlaying(false)}
                             onClick={togglePlay}
                         />
 
-                        <button className="fs-play" onClick={togglePlay} aria-label={isPlaying ? "Pause" : "Play"}>
-                            {isPlaying ? <i className="fa-solid fa-pause fa-xl"></i> : <i className="fa-solid fa-play fa-xl"></i>}
+                        <button
+                            type="button"
+                            className="fs-play"
+                            onClick={togglePlay}
+                            aria-label={isPlaying ? "Pause founder video" : "Play founder video"}
+                        >
+                            {isPlaying ? <FaPause aria-hidden="true" /> : <FaPlay aria-hidden="true" />}
                         </button>
-                    </motion.div>
-                </div>
+                    </div>
+
+                    <div className="fs-founder-card">
+                        <img src={founderImg} alt="Carolina, founder of SOURAW" />
+                        <span>Carolina<br />founder + baker</span>
+                    </div>
+
+                    <span className="fs-label fs-label-memory" aria-hidden="true">memory</span>
+                    <span className="fs-label fs-label-healing" aria-hidden="true">healing</span>
+                    <span className="fs-scene-arrow" aria-hidden="true">↙</span>
+                    <img className="fs-stamp" src={stampImg} alt="" aria-hidden="true" />
+                </motion.div>
             </div>
         </section>
     );
-};
-
-export default FounderSpotlight;
+}

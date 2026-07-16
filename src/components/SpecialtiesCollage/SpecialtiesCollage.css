@@ -5,40 +5,86 @@
 }
 
 .specBoard {
+    position: relative;
+    isolation: isolate;
     background:
         radial-gradient(900px 520px at 18% 22%, rgba(247, 145, 195, .12), transparent 55%),
         radial-gradient(900px 520px at 78% 62%, rgba(93, 48, 255, .08), transparent 58%),
-        #f6bc3f;;
+        #f6bc3f;
 
     padding: 6rem 1.6rem 7rem;
     color: var(--color-gray-dark);
     overflow: hidden;
 }
 
+.specBoard::before {
+    content: "BAKED";
+    position: absolute;
+    z-index: -1;
+    left: 50%;
+    top: 52%;
+    color: transparent;
+    font-family: "Montserrat", sans-serif;
+    font-size: clamp(10rem, 28vw, 27rem);
+    font-weight: 900;
+    letter-spacing: -0.09em;
+    line-height: 0.75;
+    -webkit-text-stroke: 2px rgba(54, 54, 54, 0.12);
+    transform: translate(-50%, -50%) rotate(-4deg);
+    white-space: nowrap;
+    pointer-events: none;
+}
+
 .specBoard-wrap {
+    position: relative;
+    z-index: 1;
     width: min(1200px, 100%);
     margin: 0 auto;
 }
 
 .specBoard-head {
-    text-align: center;
-    margin-bottom: 3.2rem;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(260px, 0.45fr);
+    column-gap: clamp(2rem, 6vw, 6rem);
+    align-items: end;
+    margin-bottom: 2.2rem;
 }
 
 .sp-kicker {
-    margin: -15px 0;
+    grid-column: 1 / -1;
+    margin: 0 0 0.3rem;
     font-family: "Biro", cursive;
-    font-size: 1.8rem;
-    opacity: 0.85;
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    color: var(--color-red);
+    transform: rotate(-1deg);
 }
 
 .sp-h2 {
     margin: 0;
     font-family: "Montserrat", sans-serif;
     font-weight: 900;
-    letter-spacing: .02em;
+    letter-spacing: -0.06em;
     text-transform: uppercase;
-    font-size: clamp(1.6rem, 2.2vw, 2.2rem);
+    font-size: clamp(3.8rem, 8vw, 8rem);
+    line-height: 0.86;
+    text-align: left;
+    text-shadow: 4px 5px 0 var(--color-bg);
+}
+
+.sp-h2 span {
+    display: inline-block;
+    color: var(--color-pink);
+    -webkit-text-stroke: 2px var(--color-gray-dark);
+    transform: rotate(8deg);
+}
+
+.sp-intro {
+    max-width: 38ch;
+    margin: 0 0 0.4rem;
+    font-family: "Montserrat", sans-serif;
+    font-size: 1rem;
+    font-weight: 650;
+    line-height: 1.6;
 }
 
 .board {
@@ -285,6 +331,37 @@
     box-shadow: 0 12px 22px rgba(0, 0, 0, 0.10);
 }
 
+.specBoard-cta {
+    display: flex;
+    width: fit-content;
+    align-items: center;
+    gap: 0.7rem;
+    margin: 3.5rem auto 0;
+    border: 3px solid var(--color-gray-dark);
+    border-radius: 999px;
+    background: var(--color-bg);
+    box-shadow: 5px 6px 0 var(--color-gray-dark);
+    padding: 0.95rem 1.25rem;
+    color: var(--color-gray-dark);
+    font-family: "Montserrat", sans-serif;
+    font-size: 0.78rem;
+    font-weight: 900;
+    letter-spacing: 0.06em;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.specBoard-cta:hover {
+    box-shadow: 2px 3px 0 var(--color-gray-dark);
+    transform: translate(3px, 3px) rotate(-1deg);
+}
+
+.specBoard-cta span {
+    font-size: 1.25rem;
+    line-height: 0;
+}
+
 @media (max-width: 860px) {
 
     .specBoard {
@@ -376,5 +453,40 @@
 
     .sp-h2 {
         padding-bottom: 50px;
+    }
+
+}
+
+@media (max-width: 620px) {
+    .specBoard {
+        padding-left: 1.1rem;
+        padding-right: 1.1rem;
+    }
+
+    .specBoard::before {
+        top: 48%;
+        font-size: clamp(8rem, 42vw, 13rem);
+        -webkit-text-stroke-width: 1.5px;
+    }
+
+    .sp-h2 {
+        padding-bottom: 0;
+        font-size: clamp(3rem, 15vw, 4.6rem);
+    }
+
+    .specBoard-cta {
+        width: 100%;
+        justify-content: center;
+        margin-top: 10rem;
+    }
+}
+
+@media (max-width: 620px) {
+    .specBoard-head {
+        grid-template-columns: 1fr;
+    }
+
+    .sp-intro {
+        margin-top: 1.4rem;
     }
 }

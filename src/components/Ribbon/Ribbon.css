@@ -3,7 +3,7 @@
 .ribbon {
     width: 100%;
     overflow: hidden;
-    background: var(--color-yellow);
+    background: var(--color-purple);
     padding: 0.8rem 0;
 }
 
@@ -23,7 +23,7 @@
     font-weight: 800;
     font-size: 0.9rem;
     letter-spacing: 0.06em;
-    color: var(--color-gray-dark);
+    color: var(--color-bg);
     white-space: nowrap;
     padding-right: 3rem;
     /* espacio entre items */

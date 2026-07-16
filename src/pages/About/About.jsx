@@ -5,10 +5,10 @@ import AboutTimeline from '../../components/About/About';
 
 const About = () => {
     return (
-        <section className="about-page">
+        <main className="about-page">
             <AboutTimeline />
             <WhySourdough />
-        </section>
+        </main>
     );
 };
 

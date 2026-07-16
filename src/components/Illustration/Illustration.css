@@ -1,13 +1,131 @@
+@import "../../styles/variables.css";
+
 .follow-us {
-    background-image: url('../../assets/followus-bg2.webp');
-    background-size: auto 100%;
-    background-position: center;
-    background-color: var(--color-gray-dark);
-    background-repeat: no-repeat;
-    text-align: center;
-    padding: 10rem 2rem;
-    font-family: 'Montserrat', sans-serif;
-    color: var(--color-purple);
     position: relative;
-    z-index: 1;
+    isolation: isolate;
+    display: flex;
+    min-height: 610px;
+    overflow: hidden;
+    align-items: center;
+    flex-direction: column;
+    justify-content: flex-start;
+    background-color: var(--color-gray-dark);
+    background-image: url("../../assets/followus-bg2.webp");
+    background-position: center bottom 2rem;
+    background-repeat: no-repeat;
+    background-size: min(80vw, 920px) auto;
+    padding: clamp(4.5rem, 8vw, 7rem) 1.5rem 18rem;
+    color: var(--color-bg);
+    text-align: center;
+}
+
+.follow-us::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    background:
+        linear-gradient(
+            to bottom,
+            var(--color-gray-dark) 0%,
+            rgba(54, 54, 54, 0.92) 7%,
+            rgba(54, 54, 54, 0.38) 17%,
+            transparent 29%
+        ),
+        radial-gradient(circle at 18% 36%, rgba(247, 145, 195, 0.23) 0 9%, transparent 27%),
+        radial-gradient(circle at 84% 32%, rgba(93, 48, 255, 0.24) 0 9%, transparent 29%);
+}
+
+.follow-us-kicker {
+    margin: 0 0 0.4rem;
+    color: var(--color-yellow);
+    font-family: "Biro", cursive;
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    line-height: 1;
+    transform: rotate(-2deg);
+}
+
+.follow-us h2 {
+    margin: 0;
+    color: var(--color-bg);
+    font-family: "Montserrat", sans-serif;
+    font-size: clamp(4rem, 10vw, 9rem);
+    font-weight: 900;
+    letter-spacing: -0.07em;
+    line-height: 0.85;
+    text-transform: uppercase;
+    text-shadow: 4px 5px 0 var(--color-red);
+}
+
+.follow-us-copy {
+    max-width: 48ch;
+    margin: 1.4rem 0 0;
+    font-family: "Montserrat", sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.6;
+}
+
+.follow-us-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.7rem;
+    margin-top: 1.6rem;
+    border: 3px solid var(--color-bg);
+    border-radius: 999px;
+    background: var(--color-red);
+    box-shadow: 5px 6px 0 var(--color-bg);
+    padding: 0.95rem 1.25rem;
+    color: var(--color-bg);
+    font-family: "Montserrat", sans-serif;
+    font-size: 0.78rem;
+    font-weight: 900;
+    letter-spacing: 0.06em;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.follow-us-cta:hover {
+    box-shadow: 2px 3px 0 var(--color-bg);
+    transform: translate(3px, 3px) rotate(-1deg);
+}
+
+.follow-us-cta span {
+    font-size: 1.25rem;
+    line-height: 0;
+}
+
+.follow-us-note {
+    position: absolute;
+    right: 7vw;
+    bottom: 5rem;
+    color: var(--color-pink);
+    font-family: "Biro", cursive;
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    transform: rotate(-6deg);
+}
+
+@media (max-width: 620px) {
+    .follow-us {
+        min-height: 650px;
+        background-position: center bottom 3rem;
+        background-size: 150vw auto;
+        padding: 4.5rem 1.1rem 19rem;
+    }
+
+    .follow-us h2 {
+        font-size: clamp(3.8rem, 19vw, 5.5rem);
+    }
+
+    .follow-us-cta {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .follow-us-note {
+        right: 1.2rem;
+        bottom: 0.8rem;
+        font-size: 1.4rem;
+    }
 }

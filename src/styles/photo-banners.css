@@ -1,0 +1,239 @@
+/*
+ * Shared photo-led treatment for internal page banners.
+ * Individual page styles still control typography, buttons and content below.
+ */
+#root .menu-hero,
+#root .reviews-hero,
+#root .finds-hero,
+#root .diy-hero,
+#root .about-hero,
+#root .schedule-hero,
+#root .lab-page-hero {
+    position: relative;
+    isolation: isolate;
+    display: flex;
+    min-height: clamp(720px, 92vh, 940px);
+    align-items: flex-end;
+    overflow: hidden;
+    padding: clamp(10rem, 15vw, 13rem) 7vw clamp(5rem, 8vw, 7rem);
+    background: var(--color-gray-dark, #363636);
+    color: var(--color-bg, #ffe8cf);
+}
+
+#root .menu-hero::before,
+#root .reviews-hero::before,
+#root .finds-hero::before,
+#root .diy-hero::before,
+#root .about-hero::before,
+#root .schedule-hero::before,
+#root .lab-page-hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background:
+        linear-gradient(90deg, rgba(38, 30, 29, 0.86) 0%, rgba(38, 30, 29, 0.68) 37%, rgba(38, 30, 29, 0.18) 68%, transparent 100%),
+        linear-gradient(0deg, rgba(38, 30, 29, 0.4) 0%, transparent 45%);
+    pointer-events: none;
+}
+
+#root .menu-hero-word,
+#root .reviews-hero-word,
+#root .finds-hero-word,
+#root .diy-hero-word,
+#root .about-hero-word,
+#root .schedule-hero-word,
+#root .lab-hero-word,
+#root .menu-sticker,
+#root .reviews-sticker,
+#root .finds-sticker,
+#root .finds-sparkle,
+#root .diy-sticker,
+#root .diy-scissors,
+#root .about-sticker,
+#root .schedule-sticker-pink,
+#root .schedule-sticker-yellow,
+#root .lab-sticker {
+    display: none;
+}
+
+#root .menu-hero-copy,
+#root .reviews-hero-copy,
+#root .finds-hero-copy,
+#root .diy-hero-copy,
+#root .about-hero-copy,
+#root .schedule-hero-copy,
+#root .lab-page-hero-copy {
+    position: relative;
+    z-index: 3;
+    width: min(720px, 56%);
+    max-width: 720px;
+    min-width: 0;
+}
+
+#root .menu-hero-visual,
+#root .reviews-hero-visual,
+#root .finds-hero-scene,
+#root .diy-hero-scene,
+#root .about-hero-visual,
+#root .schedule-hero-visual,
+#root .lab-page-hero-visual {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    transform: none;
+}
+
+#root .menu-photo-frame,
+#root .reviews-photo-frame,
+#root .finds-photo-frame,
+#root .diy-hero-frame,
+#root .about-photo-frame,
+#root .schedule-photo-frame,
+#root .lab-hero-frame {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    overflow: hidden;
+    border: 0;
+    background: var(--color-gray-dark, #363636);
+    box-shadow: none;
+    transform: none;
+}
+
+#root .menu-photo-frame img,
+#root .reviews-photo-frame img,
+#root .finds-photo-frame img,
+#root .diy-hero-frame img,
+#root .about-photo-frame img,
+#root .schedule-photo-frame img,
+#root .lab-hero-frame img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    aspect-ratio: auto;
+    object-fit: cover;
+}
+
+#root .menu-photo-frame img { object-position: 58% center; }
+#root .reviews-photo-frame img { object-position: 58% center; }
+#root .finds-photo-frame img { object-position: 62% center; }
+#root .diy-hero-frame img { object-position: 58% center; }
+#root .about-photo-frame img { object-position: 60% center; }
+#root .schedule-photo-frame img { object-position: 62% center; }
+#root .lab-hero-frame img { object-position: 58% center; }
+
+/* The Finds headline is intentionally taller than the other banner titles.
+ * Tighter vertical breathing room keeps the yellow information strip aligned
+ * with the rest of the internal-page heroes without reducing the type. */
+@media (min-width: 951px) {
+    #root .finds-hero {
+        padding-top: clamp(9rem, 12vw, 11rem);
+        padding-bottom: clamp(4rem, 6vw, 5rem);
+    }
+}
+
+#root .photo-banner-summary {
+    position: relative;
+    z-index: 10;
+    max-width: none;
+    margin: 0;
+    padding: 1.25rem 7vw;
+    border-top: 4px solid var(--color-gray-dark, #363636);
+    border-bottom: 3px solid var(--color-gray-dark, #363636);
+    background: var(--color-yellow, #f6bc3f);
+    color: var(--color-gray-dark, #363636);
+    font-family: "Montserrat", sans-serif;
+    font-size: clamp(0.9rem, 1.2vw, 1.05rem);
+    font-weight: 750;
+    line-height: 1.55;
+    text-align: center;
+}
+
+#root .photo-banner-meta .photo-banner-summary {
+    border-bottom: 0;
+}
+
+#root .photo-banner-meta .affiliate-disclosure {
+    position: static;
+    width: 100%;
+    min-height: 0;
+    margin: 0;
+    border-top: 3px solid var(--color-gray-dark);
+}
+
+@media (max-width: 950px) {
+    #root .menu-hero,
+    #root .reviews-hero,
+    #root .finds-hero,
+    #root .diy-hero,
+    #root .about-hero,
+    #root .schedule-hero,
+    #root .lab-page-hero {
+        min-height: 820px;
+        padding-bottom: 5rem;
+    }
+
+    #root .menu-hero-copy,
+    #root .reviews-hero-copy,
+    #root .finds-hero-copy,
+    #root .diy-hero-copy,
+    #root .about-hero-copy,
+    #root .schedule-hero-copy,
+    #root .lab-page-hero-copy {
+        width: min(720px, 78%);
+    }
+}
+
+@media (max-width: 640px) {
+    #root .menu-hero,
+    #root .reviews-hero,
+    #root .finds-hero,
+    #root .diy-hero,
+    #root .about-hero,
+    #root .schedule-hero,
+    #root .lab-page-hero {
+        min-height: 720px;
+        gap: 0;
+        padding: 9.5rem 1.1rem 4rem;
+    }
+
+    #root .menu-hero::before,
+    #root .reviews-hero::before,
+    #root .finds-hero::before,
+    #root .diy-hero::before,
+    #root .about-hero::before,
+    #root .schedule-hero::before,
+    #root .lab-page-hero::before {
+        background:
+            linear-gradient(0deg, rgba(38, 30, 29, 0.9) 0%, rgba(38, 30, 29, 0.57) 48%, rgba(38, 30, 29, 0.08) 82%),
+            linear-gradient(90deg, rgba(38, 30, 29, 0.35), transparent 78%);
+    }
+
+    #root .menu-hero-copy,
+    #root .reviews-hero-copy,
+    #root .finds-hero-copy,
+    #root .diy-hero-copy,
+    #root .about-hero-copy,
+    #root .schedule-hero-copy,
+    #root .lab-page-hero-copy {
+        width: 100%;
+    }
+
+    #root .photo-banner-summary {
+        padding: 1rem 1.1rem;
+        text-align: left;
+    }
+
+    #root .menu-photo-frame img { object-position: 54% center; }
+    #root .reviews-photo-frame img { object-position: 54% center; }
+    #root .finds-photo-frame img { object-position: 58% center; }
+    #root .diy-hero-frame img { object-position: 54% center; }
+    #root .about-photo-frame img { object-position: 58% center; }
+    #root .schedule-photo-frame img { object-position: 58% center; }
+    #root .lab-hero-frame img { object-position: 55% center; }
+}

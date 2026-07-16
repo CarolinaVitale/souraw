@@ -104,23 +104,7 @@ function Navbar() {
                             </div>
                         </li>
 
-                        <li className="nav-item mobile-only">
-                            <Link to="/about" className="nav-links" onClick={closeMobileMenu}>
-                                ABOUT
-                            </Link>
-                        </li>
-
-                        <li className="nav-item mobile-only">
-                            <Link to="#" className="nav-links" onClick={openContact}>
-                                CONTACT
-                            </Link>
-                        </li>
-
-                        <li className="nav-item mobile-only">
-                            <Link to="/reviews" className="nav-links" onClick={closeMobileMenu}>
-                                REVIEWS
-                            </Link>
-                        </li>
+                        
                     </ul>
                     <button
                         className="cart-button"

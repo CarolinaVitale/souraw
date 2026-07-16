@@ -61,6 +61,8 @@ export default function ContactDrawer({ isOpen, onClose }) {
             <button className="cd-overlay" onClick={onClose} aria-label="Close" />
 
             <aside className="cd-panel" role="dialog" aria-modal="true" aria-label="Contact">
+                <span className="cd-bgWord" aria-hidden="true">TALK</span>
+
                 <div className="cd-topbar">
                     <button type="button" className="cd-backBtn" onClick={onClose} aria-label="Back">
                         <span className="cd-backIcon" aria-hidden="true"><i className="fa-solid fa-heart"></i></span>
@@ -69,7 +71,9 @@ export default function ContactDrawer({ isOpen, onClose }) {
                 </div>
 
                 <div className="cd-header">
+                    <p className="cd-kicker">A little note from you</p>
                     <h2 className="cd-title">Contact</h2>
+                    <span className="cd-sticker" aria-hidden="true">SAY HELLO</span>
                 </div>
 
                 <div className="cd-intro">
@@ -105,7 +109,7 @@ export default function ContactDrawer({ isOpen, onClose }) {
                             className="cd-input"
                             type="text"
                             name="reason"
-                            placeholder="Suject *"
+                            placeholder="Subject"
                         />
                     </label>
 
@@ -132,7 +136,7 @@ export default function ContactDrawer({ isOpen, onClose }) {
                     )}
 
                     <button type="submit" className="cd-submit" disabled={status === "sending"}>
-                        {status === "sending" ? "Sending..." : "Submit"}
+                        {status === "sending" ? "Sending..." : "Send it ↗"}
                     </button>
                 </form>
             </aside>

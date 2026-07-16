@@ -3,10 +3,10 @@ import ReviewsList from "../components/ReviewList/ReviewsList";
 
 
 const ReviewsPage = () => (
-    <div>
+    <main className="reviews-page">
         <ReviewsList />
         <ReviewForm />
-    </div>
+    </main>
 );
 
 export default ReviewsPage;

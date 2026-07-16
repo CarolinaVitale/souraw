@@ -1,156 +1,113 @@
 import React, { useState } from "react";
+import { ArrowUpRight, Heart, Sparkle } from "@phosphor-icons/react";
 import "./SourawFinds.css";
 import { sourawFind } from "../../data/sourawFinds";
-import PageBanner from "../../components/PageBanner/PageBanner";
-import bannerImage from "../../assets/amazon/seeds-bread.webp";
+import heroImage from "../../assets/amazon/seeds-bread.webp";
 
 const categories = [
-    {
-        key: "Craft",
-        title: "Maker's Corner",
-        kicker: "create & customize",
-    },
-    {
-        key: "starter",
-        title: "Starter Essentials",
-        subtitle: "everything you need to activate and maintain your sourdough starter",
-    },
-    {
-        key: "Packaging",
-        title: "Packaging",
-        kicker: "pack it cute",
-    },
-    {
-        key: "Labels",
-        title: "Labels",
-        kicker: "little details",
-    },
-    {
-        key: "Sourdough Essentials",
-        title: "Crust & Crumb",
-        kicker: "make it perfect",
-    },
+    { key: "Craft", title: "Maker's Corner", kicker: "create & customize" },
+    { key: "starter", title: "Starter Essentials", kicker: "feed it well" },
+    { key: "Packaging", title: "Packaging", kicker: "pack it cute" },
+    { key: "Labels", title: "Labels", kicker: "little details" },
+    { key: "Sourdough Essentials", title: "Crust & Crumb", kicker: "make it perfect" },
 ];
 
-const Favorites = () => {
+export default function SourawFinds() {
     const [activeCategory, setActiveCategory] = useState("All");
 
+    const visibleCategories = categories.filter(
+        (category) => activeCategory === "All" || category.key === activeCategory
+    );
+
     return (
-        <>
-            <PageBanner
-                image={bannerImage}
-                kicker="Maybe you need this"
-                title="SOURAW ESSENTIALS"
-            />
+        <main className="favorites-page">
+            <section className="finds-hero" aria-labelledby="finds-title">
+                <div className="finds-hero-word" aria-hidden="true">FINDS</div>
 
-            <main className="favorites-page">
-                <section className="favorites-hero">
-                    <h6 className="favorites-kicker">Souraw Finds</h6>
+                <div className="finds-hero-copy">
+                    <p className="favorites-kicker">SOURAW finds</p>
+                    <h1 id="finds-title">Little things<br /><span>I actually use.</span></h1>
+                    <a href="#finds-shop" className="finds-jump">
+                        browse my favorites <ArrowUpRight size={19} weight="bold" />
+                    </a>
+                </div>
 
-                    <h1>Things I use and love</h1>
+                <div className="finds-hero-scene" aria-hidden="true">
+                    <div className="finds-photo-frame">
+                        <img src={heroImage} alt="" />
+                    </div>
+                    <span className="finds-sticker finds-sticker-loved">tried + loved ♡</span>
+                    <span className="finds-sticker finds-sticker-use">things I really use</span>
+                    <Sparkle className="finds-sparkle" weight="fill" />
+                </div>
 
-                    <p>
-                        A small curated corner with tools, packaging, and
-                        everyday favorites I use in my baking process and
-                        small business workflow.
-                    </p>
+            </section>
 
-                    <p className="affiliate-disclosure">
-                        Some links on this page are affiliate links, which
-                        means I may earn a small commission at no extra cost
-                        to you.
-                    </p>
-                </section>
+            <div className="photo-banner-meta">
+                <p className="photo-banner-summary">
+                    Tools, packaging, and everyday favorites from my baking
+                    process and small-business workflow.
+                </p>
+                <p className="affiliate-disclosure">
+                    <Heart size={17} weight="fill" aria-hidden="true" />
+                    Some links are affiliate links. I may earn a small commission
+                    at no extra cost to you.
+                </p>
+            </div>
 
-                <nav className="finds-nav">
-                    <button
-                        className={activeCategory === "All" ? "active" : ""}
-                        onClick={() => setActiveCategory("All")}
-                    >
-                        All
+            <div id="finds-shop" className="finds-shop">
+                <nav className="finds-nav" aria-label="Filter SOURAW finds">
+                    <button className={activeCategory === "All" ? "active" : ""} onClick={() => setActiveCategory("All")}>
+                        All finds
                     </button>
-
                     {categories.map((category) => (
                         <button
                             key={category.key}
-                            className={
-                                activeCategory === category.key
-                                    ? "active"
-                                    : ""
-                            }
-                            onClick={() =>
-                                setActiveCategory(category.key)
-                            }
+                            className={activeCategory === category.key ? "active" : ""}
+                            onClick={() => setActiveCategory(category.key)}
                         >
                             {category.title}
                         </button>
                     ))}
                 </nav>
 
-                {categories
-                    .filter(
-                        (category) =>
-                            activeCategory === "All" ||
-                            category.key === activeCategory
-                    )
-                    .map((category) => {
-                        const filteredItems = sourawFind.filter(
-                            (item) => item.category === category.key
-                        );
+                {visibleCategories.map((category, categoryIndex) => {
+                    const filteredItems = sourawFind.filter((item) => item.category === category.key);
+                    if (filteredItems.length === 0) return null;
 
-                        if (filteredItems.length === 0) return null;
-
-                        return (
-                            <section
-                                className="finds-category"
-                                key={category.key}
-                            >
-                                <div className="finds-category-header">
+                    return (
+                        <section className="finds-category" key={category.key}>
+                            <header className="finds-category-header">
+                                <div>
                                     <p>{category.kicker}</p>
-
                                     <h2>{category.title}</h2>
                                 </div>
+                                <span>{String(filteredItems.length).padStart(2, "0")} favorites</span>
+                            </header>
 
-                                <div className="favorites-grid">
-                                    {filteredItems.map((item) => (
-                                        <article
-                                            className="favorite-card"
-                                            key={item.id}
-                                        >
-                                            <div className="favorite-image-wrapper">
-                                                <img
-                                                    src={item.image}
-                                                    alt={item.name}
-                                                />
-                                            </div>
-
-                                            <div className="favorite-info">
-                                                <h3>{item.name}</h3>
-
-                                                {item.description && (
-                                                    <p>
-                                                        {item.description}
-                                                    </p>
-                                                )}
-
-                                                <a
-                                                    href={item.link}
-                                                    target="_blank"
-                                                    rel="noopener noreferrer sponsored"
-                                                    className="favorite-link"
-                                                >
-                                                    find it here ↗
-                                                </a>
-                                            </div>
-                                        </article>
-                                    ))}
-                                </div>
-                            </section>
-                        );
-                    })}
-            </main>
-        </>
+                            <div className="favorites-grid">
+                                {filteredItems.map((item, itemIndex) => (
+                                    <article
+                                        className={`favorite-card favorite-card-${((itemIndex + categoryIndex) % 4) + 1}`}
+                                        key={item.id}
+                                    >
+                                        <div className="favorite-image-wrapper">
+                                            <img src={item.image} alt={item.name} loading="lazy" />
+                                        </div>
+                                        <div className="favorite-info">
+                                            <h3>{item.name}</h3>
+                                            {item.description && <p>{item.description}</p>}
+                                            <a href={item.link} target="_blank" rel="noopener noreferrer sponsored" className="favorite-link">
+                                                find it here <ArrowUpRight size={17} weight="bold" />
+                                            </a>
+                                        </div>
+                                    </article>
+                                ))}
+                            </div>
+                        </section>
+                    );
+                })}
+            </div>
+        </main>
     );
-};
-
-export default Favorites;
+}

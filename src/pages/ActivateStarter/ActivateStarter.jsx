@@ -14,7 +14,7 @@ import wakingImage from "../../assets/starter/waking.webp";
 import peakImage from "../../assets/starter/peak.webp";
 import hungryImage from "../../assets/starter/hungry.webp";
 
-import fermentinaFace from "../../assets/starter/fermentinaFace.png";
+import fermentinaFace from "../../assets/brand-elements/fermentinaFace.png";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";

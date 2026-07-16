@@ -9,6 +9,7 @@ import Contact from './pages/Contact/Contact';
 import Reviews from './pages/Reviews';
 import Orders from './pages/Orders/Orders';
 import './App.css';
+import './styles/photo-banners.css';
 import ScrollToTop from './components/ScrollToTop';
 import AOS from 'aos';
 import 'aos/dist/aos.css';

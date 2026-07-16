@@ -3,17 +3,25 @@ import Hero from '../components/Hero/Hero';
 import Carousel from '../components/MenuCarousel/MenuCarousel';
 import Illustration from '../components/Illustration/Illustration';
 import Ribbon from '../components/Ribbon/Ribbon';
+import HomeStarterFeature from '../components/HomeConversion/HomeStarterFeature';
+import HomePathways from '../components/HomeConversion/HomePathways';
+import HomeInstagramFeed from '../components/HomeConversion/HomeInstagramFeed';
 import Founder from '../components/Founder/Founder';
 import SpecialtiesCollage from '../components/SpecialtiesCollage/SpecialtiesCollage';
-import RealIngredients from '../components/Ingredients/Ingredients';
+import ChoosingUs from '../components/ChoosingUs/ChoosingUs';
 
 const Home = () => {
     return (
         <>
             <Hero />
-            <Ribbon />
+            <div id="home-after-hero">
+                <Ribbon />
+            </div>
+            <HomeStarterFeature />
+            <HomePathways />
+            <HomeInstagramFeed />
             <Founder />
-            <RealIngredients />
+            <ChoosingUs />
             <SpecialtiesCollage />
             <Carousel />
             <Illustration />
@@ -22,7 +30,3 @@ const Home = () => {
 };
 
 export default Home;
-
-
-
-

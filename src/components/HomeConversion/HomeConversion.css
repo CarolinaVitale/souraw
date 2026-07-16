@@ -1,0 +1,1074 @@
+@import "../../styles/variables.css";
+
+.home-section-kicker {
+    margin: 0 0 0.65rem;
+    color: var(--color-red);
+    font-family: "Montserrat", sans-serif;
+    font-size: 0.72rem;
+    font-weight: 900;
+    letter-spacing: 0.13em;
+    line-height: 1.2;
+    text-transform: uppercase;
+}
+
+.home-primary-link,
+.home-path-link {
+    display: inline-flex;
+    min-height: 48px;
+    align-items: center;
+    justify-content: center;
+    gap: 0.7rem;
+    border: 3px solid var(--color-gray-dark);
+    border-radius: 999px;
+    font-family: "Montserrat", sans-serif;
+    font-size: 0.78rem;
+    font-weight: 900;
+    letter-spacing: 0.06em;
+    line-height: 1;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.home-primary-link span,
+.home-path-link span {
+    font-size: 1.2rem;
+    line-height: 0;
+}
+
+.home-starter-feature {
+    position: relative;
+    isolation: isolate;
+    display: grid;
+    grid-template-columns: minmax(0, 0.78fr) minmax(360px, 0.68fr);
+    gap: clamp(2.5rem, 7vw, 7rem);
+    min-height: 880px;
+    overflow: hidden;
+    align-items: center;
+    background:
+        radial-gradient(circle at 84% 18%, rgba(246, 188, 63, 0.85) 0 11%, transparent 31%),
+        radial-gradient(circle at 10% 88%, rgba(247, 145, 195, 0.5) 0 10%, transparent 30%),
+        var(--color-bg);
+    padding: clamp(5rem, 9vw, 8rem) 7vw;
+    color: var(--color-gray-dark);
+}
+
+.home-starter-background-word {
+    position: absolute;
+    z-index: -1;
+    left: 50%;
+    bottom: 0.02em;
+    color: transparent;
+    font-family: "Montserrat", sans-serif;
+    font-size: clamp(7rem, 18vw, 17rem);
+    font-weight: 900;
+    letter-spacing: -0.08em;
+    line-height: 0.75;
+    -webkit-text-stroke: 2px rgba(229, 61, 35, 0.13);
+    transform: translateX(-50%) rotate(-3deg);
+    white-space: nowrap;
+}
+
+.home-starter-copy {
+    position: relative;
+    z-index: 4;
+    max-width: 690px;
+}
+
+.home-starter-hand {
+    margin: 0 0 0.7rem;
+    color: var(--color-red);
+    font-family: "Biro", cursive;
+    font-size: clamp(2rem, 4vw, 3.4rem);
+    line-height: 1;
+    transform: rotate(-2deg);
+}
+
+.home-starter-copy h2 {
+    max-width: 7.2ch;
+    margin: 0;
+    color: var(--color-gray-dark);
+    font-family: "Montserrat", sans-serif;
+    font-size: clamp(3.8rem, 7.5vw, 7.5rem);
+    font-weight: 900;
+    letter-spacing: -0.06em;
+    line-height: 0.86;
+    text-shadow: 4px 5px 0 var(--color-pink);
+    text-transform: uppercase;
+}
+
+.home-starter-copy > p:not(.home-starter-hand) {
+    max-width: 47ch;
+    margin: 1.5rem 0 0;
+    font-family: "Montserrat", sans-serif;
+    font-size: clamp(1rem, 1.5vw, 1.15rem);
+    font-weight: 600;
+    line-height: 1.65;
+}
+
+.home-feature-actions {
+    margin-top: 2rem;
+}
+
+.home-starter-copy .home-primary-link {
+    background: var(--color-red);
+    box-shadow: 5px 6px 0 var(--color-gray-dark);
+    padding: 0.95rem 1.25rem;
+    color: var(--color-bg);
+}
+
+.home-starter-copy .home-primary-link:hover {
+    box-shadow: 2px 3px 0 var(--color-gray-dark);
+    transform: translate(3px, 3px) rotate(-1deg);
+}
+
+.home-starter-scene {
+    position: relative;
+    z-index: 3;
+    width: min(100%, 500px);
+    justify-self: center;
+    padding: 3rem 1.8rem;
+}
+
+.home-starter-image-wrap {
+    position: relative;
+    display: block;
+    width: min(100%, 405px);
+    margin: auto;
+    overflow: hidden;
+    border: 3px solid var(--color-gray-dark);
+    border-radius: 5px;
+    background: #fff7ef;
+    box-shadow: 15px 18px 0 var(--color-purple), 0 28px 55px rgba(54, 54, 54, 0.18);
+    color: var(--color-bg);
+    text-decoration: none;
+    transform: rotate(4deg);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.home-starter-image-wrap:hover {
+    box-shadow: 9px 11px 0 var(--color-purple), 0 22px 44px rgba(54, 54, 54, 0.18);
+    transform: rotate(1deg) translateY(-7px);
+}
+
+.home-starter-image-wrap img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 5.15;
+    object-fit: cover;
+}
+
+.home-starter-shipping,
+.home-starter-label {
+    border: 2px solid var(--color-gray-dark);
+    box-shadow: 4px 4px 0 var(--color-gray-dark);
+    font-family: "Montserrat", sans-serif;
+    font-size: 0.68rem;
+    font-weight: 900;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.home-starter-shipping {
+    position: absolute;
+    left: 1rem;
+    bottom: 1rem;
+    border-radius: 999px;
+    background: var(--color-red);
+    padding: 0.65rem 0.85rem;
+    color: var(--color-bg);
+}
+
+.home-starter-label {
+    position: absolute;
+    z-index: 5;
+    padding: 0.55rem 0.75rem;
+    color: var(--color-gray-dark);
+}
+
+.home-starter-label-number {
+    top: 0.8rem;
+    left: -0.5rem;
+    background: var(--color-yellow);
+    transform: rotate(-7deg);
+}
+
+.home-starter-label-ritual {
+    right: -1rem;
+    bottom: 7rem;
+    background: var(--color-pink);
+    transform: rotate(7deg);
+}
+
+.home-starter-arrow {
+    position: absolute;
+    z-index: 5;
+    right: -0.8rem;
+    top: 22%;
+    color: var(--color-red);
+    font-family: "Montserrat", sans-serif;
+    font-size: 5rem;
+    font-weight: 900;
+    line-height: 1;
+    -webkit-text-stroke: 2px var(--color-gray-dark);
+    transform: rotate(-8deg);
+    animation: home-starter-arrow-bob 3.8s ease-in-out infinite;
+}
+
+@keyframes home-starter-arrow-bob {
+    0%, 100% { translate: 0 0; }
+    50% { translate: 0 9px; }
+}
+
+.home-pathways {
+    position: relative;
+    overflow: hidden;
+    background: var(--color-gray-dark);
+    padding: clamp(5rem, 9vw, 8rem) 5vw clamp(7rem, 11vw, 10rem);
+    color: var(--color-bg);
+}
+
+.home-pathways::before {
+    content: "EXPLORE";
+    position: absolute;
+    right: -0.06em;
+    top: 0.02em;
+    color: transparent;
+    font-family: "Montserrat", sans-serif;
+    font-size: clamp(8rem, 23vw, 22rem);
+    font-weight: 900;
+    letter-spacing: -0.08em;
+    -webkit-text-stroke: 2px rgba(255, 232, 207, 0.07);
+    pointer-events: none;
+}
+
+.home-pathways-head {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(250px, 0.4fr);
+    column-gap: clamp(2rem, 6vw, 6rem);
+    align-items: end;
+    width: min(1200px, 100%);
+    margin: 0 auto 4rem;
+}
+
+.home-pathways-head p {
+    grid-column: 1 / -1;
+    margin: 0 0 0.4rem;
+    color: var(--color-pink);
+    font-family: "Biro", cursive;
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    line-height: 1;
+}
+
+.home-pathways-head h2 {
+    max-width: 8ch;
+    margin: 0;
+    color: var(--color-bg);
+    font-family: "Montserrat", sans-serif;
+    font-size: clamp(4rem, 8vw, 8rem);
+    font-weight: 900;
+    letter-spacing: -0.06em;
+    line-height: 0.85;
+    text-shadow: 4px 5px 0 var(--color-red);
+    text-transform: uppercase;
+}
+
+.home-pathways-head > span {
+    margin-bottom: 0.35rem;
+    font-family: "Montserrat", sans-serif;
+    font-size: 1rem;
+    font-weight: 650;
+    line-height: 1.55;
+}
+
+.home-pathways-grid {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: clamp(1.4rem, 2.8vw, 2.5rem);
+    width: min(1240px, 100%);
+    margin: 0 auto;
+}
+
+.home-pathway {
+    position: relative;
+    display: flex;
+    min-width: 0;
+    min-height: 650px;
+    overflow: hidden;
+    flex-direction: column;
+    border: 3px solid var(--color-bg);
+    border-radius: 5px;
+    box-shadow: 10px 12px 0 var(--color-red);
+    padding: 1rem;
+    color: var(--color-gray-dark);
+    rotate: -1.5deg;
+    transition: box-shadow 0.3s ease, translate 0.3s ease, rotate 0.3s ease;
+}
+
+.home-pathway:nth-child(2) {
+    box-shadow: 10px 12px 0 var(--color-purple);
+    rotate: 1.2deg;
+    translate: 0 2.5rem;
+}
+
+.home-pathway:nth-child(3) {
+    box-shadow: 10px 12px 0 var(--color-yellow);
+    rotate: -0.8deg;
+    translate: 0 -0.8rem;
+}
+
+.home-pathway:hover {
+    box-shadow: 5px 6px 0 var(--color-pink);
+    rotate: 0deg;
+    translate: 0 -7px;
+}
+
+.home-pathway:nth-child(2):hover {
+    translate: 0 calc(2.5rem - 7px);
+}
+
+.home-pathway-green { background: var(--color-green); color: var(--color-bg); }
+.home-pathway-pink { background: var(--color-pink); }
+.home-pathway-yellow { background: var(--color-yellow); }
+
+.home-pathway-number {
+    position: absolute;
+    z-index: 4;
+    top: 1.75rem;
+    right: 1.75rem;
+    display: inline-flex;
+    width: 44px;
+    height: 44px;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid var(--color-gray-dark);
+    border-radius: 50%;
+    background: var(--color-bg);
+    color: var(--color-gray-dark);
+    font-family: "Montserrat", sans-serif;
+    font-size: 0.72rem;
+    font-weight: 900;
+}
+
+.home-pathway-image-link {
+    display: block;
+    overflow: hidden;
+    border: 2px solid var(--color-gray-dark);
+    border-radius: 3px;
+}
+
+.home-pathway-media {
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 3.05;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.home-pathway:hover .home-pathway-media {
+    transform: scale(1.035);
+}
+
+.home-pathway-content {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    padding: 1.4rem 0.35rem 0.35rem;
+}
+
+.home-pathway-green .home-section-kicker { color: var(--color-yellow); }
+
+.home-pathway h3 {
+    max-width: 9ch;
+    margin: 0;
+    color: inherit;
+    font-family: "Montserrat", sans-serif;
+    font-size: clamp(2.2rem, 3.4vw, 4rem);
+    font-weight: 900;
+    letter-spacing: -0.05em;
+    line-height: 0.9;
+    text-transform: uppercase;
+}
+
+.home-pathway-content > p:not(.home-section-kicker) {
+    margin: 1rem 0 0;
+    color: inherit;
+    font-family: "Montserrat", sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    line-height: 1.55;
+}
+
+.home-pathway .home-path-link {
+    align-self: flex-start;
+    margin-top: auto;
+    border-color: var(--color-gray-dark);
+    background: var(--color-bg);
+    box-shadow: 4px 5px 0 var(--color-gray-dark);
+    padding: 0.8rem 1rem;
+    color: var(--color-gray-dark);
+}
+
+.home-pathway .home-path-link:hover {
+    box-shadow: 2px 2px 0 var(--color-gray-dark);
+    transform: translate(2px, 3px);
+}
+
+.home-instagram {
+    position: relative;
+    z-index: 2;
+    isolation: isolate;
+    display: grid;
+    grid-template-columns: minmax(0, 0.78fr) minmax(340px, 0.72fr);
+    gap: clamp(2rem, 5vw, 6rem);
+    align-items: center;
+    min-height: min(880px, 92vh);
+    overflow: clip;
+    overflow-clip-margin: 1.5rem;
+    background:
+        radial-gradient(circle at 82% 17%, rgba(246, 188, 63, 0.98) 0 13%, transparent 31%),
+        radial-gradient(circle at 12% 83%, rgba(247, 145, 195, 0.92) 0 13%, transparent 34%),
+        linear-gradient(128deg, var(--color-purple) 0 42%, #a253f3 58%, var(--color-red) 100%);
+    padding: clamp(4.5rem, 8vw, 7rem) 7vw 6.5rem;
+    color: var(--color-bg);
+}
+
+.home-instagram::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    opacity: 0.16;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
+    mix-blend-mode: soft-light;
+    pointer-events: none;
+}
+
+.home-instagram-copy {
+    position: relative;
+    z-index: 4;
+    max-width: 720px;
+}
+
+.home-instagram-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
+    margin: 0 0 1.2rem;
+    border: 2px solid var(--color-gray-dark);
+    border-radius: 999px;
+    background: var(--color-yellow);
+    padding: 0.65rem 1rem;
+    color: var(--color-gray-dark);
+    font-family: "Montserrat", sans-serif;
+    font-size: 0.78rem;
+    font-weight: 900;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transform: rotate(-2deg);
+}
+
+.home-instagram-eyebrow svg {
+    font-size: 1.1rem;
+}
+
+.home-instagram h2 {
+    max-width: 7.8ch;
+    color: var(--color-bg);
+    font-size: clamp(3.8rem, 7.2vw, 8rem);
+    text-wrap: balance;
+    text-shadow: 4px 5px 0 var(--color-gray-dark);
+}
+
+.home-instagram-intro {
+    max-width: 45ch;
+    margin: 1.7rem 0 0;
+    color: var(--color-bg);
+    font-family: "Montserrat", sans-serif;
+    font-size: clamp(1rem, 1.5vw, 1.22rem);
+    font-weight: 700;
+    line-height: 1.6;
+}
+
+.home-instagram-follow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin-top: 2rem;
+    border: 3px solid var(--color-gray-dark);
+    border-radius: 999px;
+    background: var(--color-bg);
+    box-shadow: 5px 6px 0 var(--color-gray-dark);
+    padding: 0.95rem 1.25rem;
+    color: var(--color-gray-dark);
+    font-family: "Montserrat", sans-serif;
+    font-size: 0.82rem;
+    font-weight: 900;
+    letter-spacing: 0.04em;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.home-instagram-follow span {
+    font-size: 1.35rem;
+    line-height: 0;
+}
+
+.home-instagram-follow:hover {
+    box-shadow: 2px 3px 0 var(--color-gray-dark);
+    transform: translate(3px, 3px) rotate(-1deg);
+}
+
+.home-instagram-stage {
+    position: relative;
+    z-index: 3;
+    width: min(100%, 500px);
+    justify-self: center;
+    padding: 3rem 2rem;
+}
+
+.home-instagram-post {
+    position: relative;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    width: min(100%, 390px);
+    margin: auto;
+    border: 3px solid var(--color-gray-dark);
+    border-radius: 20px;
+    background: #fffaf3;
+    box-shadow: 16px 20px 0 rgba(54, 54, 54, 0.82), 0 28px 60px rgba(26, 6, 46, 0.28);
+    color: var(--color-gray-dark);
+    text-decoration: none;
+    transform: rotate(-5deg);
+    animation: home-instagram-float 5.5s ease-in-out infinite;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.home-instagram-post:hover {
+    box-shadow: 10px 13px 0 rgba(54, 54, 54, 0.88), 0 24px 50px rgba(26, 6, 46, 0.28);
+    transform: rotate(-1.5deg) translateY(-8px) scale(1.01);
+}
+
+.home-instagram-topbar,
+.home-instagram-actions,
+.home-instagram-caption {
+    padding: 1rem;
+}
+
+.home-instagram-topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 2px solid var(--color-gray-dark);
+}
+
+.home-instagram-profile {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+}
+
+.home-instagram-profile strong,
+.home-instagram-caption strong {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 900;
+    color: var(--color-gray-dark);
+}
+
+.home-instagram-profile strong {
+    display: block;
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.1;
+}
+
+.home-instagram-profile span:not(.home-instagram-avatar) {
+    display: block;
+    margin-top: 0.18rem;
+    font-family: "Montserrat", sans-serif;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: rgba(54, 54, 54, 0.62);
+}
+
+.home-instagram-avatar {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    flex: 0 0 42px;
+    border-radius: 999px;
+    border: 2px solid var(--color-gray-dark);
+    background: var(--color-red);
+    color: var(--color-bg);
+    font-family: "Montserrat", sans-serif;
+    font-size: 1.05rem;
+    font-weight: 900;
+}
+
+.home-instagram-dots {
+    font-family: "Montserrat", sans-serif;
+    font-size: 1.35rem;
+    font-weight: 900;
+    letter-spacing: 0.12em;
+    color: var(--color-gray-dark);
+}
+
+.home-instagram-media {
+    position: relative;
+    aspect-ratio: 4 / 4.8;
+    background: var(--color-gray-dark);
+}
+
+.home-instagram-media img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.home-instagram-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    border-top: 2px solid var(--color-gray-dark);
+    padding-bottom: 0.45rem;
+    font-size: 1.35rem;
+}
+
+.home-instagram-save {
+    margin-left: auto;
+}
+
+.home-instagram-caption {
+    margin: 0;
+    padding-top: 0.35rem;
+    font-family: "Montserrat", sans-serif;
+    font-size: 0.82rem;
+    font-weight: 500;
+    line-height: 1.45;
+}
+
+.home-instagram-sticker,
+.home-instagram-arrow,
+.home-instagram-heart {
+    position: absolute;
+    z-index: 5;
+    display: inline-block;
+    color: var(--color-gray-dark);
+    font-family: "Montserrat", sans-serif;
+    font-weight: 900;
+    text-transform: uppercase;
+}
+
+.home-instagram-sticker {
+    border: 2px solid var(--color-gray-dark);
+    box-shadow: 4px 4px 0 var(--color-gray-dark);
+    padding: 0.55rem 0.8rem;
+    font-size: 0.66rem;
+    letter-spacing: 0.08em;
+    white-space: nowrap;
+}
+
+.home-instagram-sticker-new {
+    top: 0.8rem;
+    right: -0.8rem;
+    background: var(--color-yellow);
+    transform: rotate(8deg);
+    animation: home-instagram-bob 3.6s ease-in-out infinite;
+}
+
+.home-instagram-sticker-date {
+    right: -2.2rem;
+    bottom: 8rem;
+    background: var(--color-pink);
+    transform: rotate(-7deg);
+    animation: home-instagram-bob 4.2s ease-in-out -1s infinite;
+}
+
+.home-instagram-sticker-check {
+    left: -2.4rem;
+    bottom: 13.5rem;
+    background: var(--color-green);
+    color: var(--color-bg);
+    transform: rotate(6deg);
+    animation: home-instagram-bob 4.6s ease-in-out -2s infinite;
+}
+
+.home-instagram-arrow {
+    font-size: clamp(3rem, 6vw, 5.5rem);
+    line-height: 1;
+    -webkit-text-stroke: 2px var(--color-bg);
+}
+
+.home-instagram-arrow-one {
+    top: 5.5rem;
+    left: -2.2rem;
+    transform: rotate(19deg);
+    animation: home-instagram-wiggle 5s ease-in-out infinite;
+}
+
+.home-instagram-arrow-two {
+    right: -1rem;
+    bottom: 1.8rem;
+    transform: rotate(-24deg);
+    animation: home-instagram-wiggle 6s ease-in-out -2s infinite;
+}
+
+.home-instagram-heart {
+    top: 45%;
+    right: -2rem;
+    color: var(--color-red);
+    font-size: 5rem;
+    line-height: 1;
+    -webkit-text-stroke: 2px var(--color-gray-dark);
+    transform: rotate(11deg);
+    animation: home-instagram-heartbeat 2.8s ease-in-out infinite;
+}
+
+.home-instagram-orbit {
+    position: absolute;
+    z-index: 0;
+    border: 3px dashed rgba(255, 232, 207, 0.55);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.home-instagram-orbit-one {
+    top: -18rem;
+    right: -12rem;
+    width: 48rem;
+    height: 48rem;
+    animation: home-instagram-spin 38s linear infinite;
+}
+
+.home-instagram-orbit-two {
+    left: -17rem;
+    bottom: -19rem;
+    width: 39rem;
+    height: 39rem;
+    animation: home-instagram-spin 31s linear reverse infinite;
+}
+
+.home-instagram-bread-crew {
+    position: absolute;
+    z-index: 1;
+    right: -3vw;
+    bottom: 0.8rem;
+    width: clamp(250px, 38vw, 620px);
+    opacity: 0.38;
+    pointer-events: none;
+    transform: rotate(-2deg);
+}
+
+.home-instagram-marquee {
+    position: absolute;
+    z-index: 6;
+    left: -2%;
+    bottom: -0.65rem;
+    display: flex;
+    width: 104%;
+    overflow: hidden;
+    border-top: 3px solid var(--color-gray-dark);
+    border-bottom: 3px solid var(--color-gray-dark);
+    background: var(--color-yellow);
+    color: var(--color-gray-dark);
+    font-family: "Montserrat", sans-serif;
+    font-size: 0.76rem;
+    font-weight: 900;
+    letter-spacing: 0.12em;
+    line-height: 1;
+    text-transform: uppercase;
+    transform: rotate(-1deg);
+}
+
+.home-instagram-marquee-track {
+    display: flex;
+    width: max-content;
+    animation: home-instagram-marquee 24s linear infinite;
+    will-change: transform;
+}
+
+.home-instagram-marquee-group {
+    display: flex;
+    flex: 0 0 auto;
+}
+
+.home-instagram-marquee span {
+    flex: 0 0 auto;
+    padding: 0.85rem 0;
+    white-space: nowrap;
+}
+
+@keyframes home-instagram-float {
+    0%, 100% { transform: rotate(-5deg) translateY(0); }
+    50% { transform: rotate(-3.5deg) translateY(-10px); }
+}
+
+@keyframes home-instagram-bob {
+    0%, 100% { translate: 0 0; }
+    50% { translate: 0 -8px; }
+}
+
+@keyframes home-instagram-wiggle {
+    0%, 100% { rotate: -3deg; }
+    50% { rotate: 7deg; }
+}
+
+@keyframes home-instagram-heartbeat {
+    0%, 100% { scale: 1; }
+    50% { scale: 1.12; }
+}
+
+@keyframes home-instagram-spin {
+    to { transform: rotate(360deg); }
+}
+
+@keyframes home-instagram-marquee {
+    to { transform: translateX(-50%); }
+}
+
+.home-finds-strip {
+    display: grid;
+    grid-template-columns: minmax(180px, 0.45fr) minmax(0, 1fr) auto;
+    gap: clamp(1rem, 3vw, 2.4rem);
+    align-items: center;
+    background: var(--color-yellow);
+    padding: clamp(2rem, 5vw, 4rem) 6vw;
+    color: var(--color-gray-dark);
+}
+
+.home-finds-strip img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 3px;
+}
+
+.home-finds-strip h2 {
+    font-size: clamp(2.2rem, 5vw, 5.4rem);
+}
+
+@media (max-width: 980px) {
+    .home-starter-feature,
+    .home-instagram,
+    .home-finds-strip {
+        grid-template-columns: 1fr;
+    }
+
+    .home-instagram {
+        min-height: auto;
+        gap: 1rem;
+        padding-bottom: 7rem;
+    }
+
+    .home-instagram-copy {
+        max-width: 760px;
+    }
+
+    .home-instagram h2 {
+        max-width: 9ch;
+    }
+
+    .home-instagram-stage {
+        margin-top: 0.5rem;
+    }
+
+    .home-starter-feature {
+        grid-template-columns: 1fr;
+        min-height: auto;
+        gap: 1rem;
+        padding-top: 5rem;
+    }
+
+    .home-starter-copy h2 {
+        max-width: 8ch;
+    }
+
+    .home-starter-scene {
+        margin-top: 1rem;
+    }
+
+    .home-pathways-head {
+        grid-template-columns: 1fr;
+    }
+
+    .home-pathways-head > span {
+        margin-top: 1.2rem;
+    }
+
+    .home-pathways-grid {
+        grid-template-columns: 1fr;
+        gap: 2.2rem;
+    }
+
+    .home-pathway,
+    .home-pathway:nth-child(2),
+    .home-pathway:nth-child(3) {
+        width: min(100%, 720px);
+        min-height: auto;
+        margin: 0 auto;
+        rotate: 0deg;
+        translate: 0 0;
+    }
+
+    .home-pathway-content {
+        min-height: 330px;
+    }
+
+    .home-pathway h3 {
+        font-size: clamp(2.7rem, 8vw, 4.6rem);
+    }
+}
+
+@media (max-width: 620px) {
+    .home-starter-feature,
+    .home-instagram {
+        padding-left: 1.1rem;
+        padding-right: 1.1rem;
+    }
+
+    .home-starter-copy h2,
+    .home-instagram h2 {
+        font-size: clamp(2.6rem, 13vw, 4.4rem);
+        line-height: 0.92;
+    }
+
+    .home-instagram {
+        gap: 0.5rem;
+        padding-top: 4rem;
+        padding-bottom: 5.5rem;
+    }
+
+    .home-instagram-stage {
+        width: 100%;
+        padding: 2.5rem 0.9rem 2rem;
+    }
+
+    .home-instagram-post {
+        width: min(88vw, 350px);
+        box-shadow: 10px 13px 0 rgba(54, 54, 54, 0.82), 0 22px 40px rgba(26, 6, 46, 0.26);
+    }
+
+    .home-instagram-sticker-new {
+        top: 0.8rem;
+        right: 0;
+    }
+
+    .home-instagram-sticker-date {
+        right: 0;
+        bottom: 4.8rem;
+    }
+
+    .home-instagram-sticker-check {
+        left: 0;
+        bottom: 10.5rem;
+    }
+
+    .home-instagram-arrow-one {
+        top: 6rem;
+        left: -0.5rem;
+    }
+
+    .home-instagram-arrow-two,
+    .home-instagram-heart {
+        display: none;
+    }
+
+    .home-instagram-bread-crew {
+        right: -16vw;
+        width: 105vw;
+        opacity: 0.22;
+    }
+
+    .home-instagram-follow {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .home-feature-actions {
+        flex-direction: column;
+    }
+
+    .home-primary-link,
+    .home-path-link {
+        width: 100%;
+    }
+
+    .home-pathways {
+        padding: 4.5rem 1.1rem 6rem;
+    }
+
+    .home-pathway {
+        padding: 1rem;
+    }
+
+    .home-pathways-head h2,
+    .home-finds-strip h2 {
+        font-size: clamp(3rem, 15vw, 4.6rem);
+    }
+
+    .home-starter-scene {
+        width: 100%;
+        padding: 3rem 0.8rem;
+    }
+
+    .home-starter-image-wrap {
+        width: min(88vw, 360px);
+        box-shadow: 10px 12px 0 var(--color-purple), 0 22px 42px rgba(54, 54, 54, 0.18);
+    }
+
+    .home-starter-label-number {
+        left: 0;
+    }
+
+    .home-starter-label-ritual {
+        right: 0;
+        bottom: 5rem;
+    }
+
+    .home-starter-arrow {
+        right: 0;
+        font-size: 3.8rem;
+    }
+
+    .home-pathway-content {
+        min-height: 360px;
+    }
+
+    .home-instagram-topbar,
+    .home-instagram-actions,
+    .home-instagram-caption {
+        padding: 0.85rem;
+    }
+
+    .home-finds-strip {
+        padding: 2rem 1rem;
+    }
+
+    .home-finds-strip img {
+        height: 260px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .home-starter-arrow,
+    .home-instagram-post,
+    .home-instagram-sticker,
+    .home-instagram-arrow,
+    .home-instagram-heart,
+    .home-instagram-orbit,
+    .home-instagram-marquee-track {
+        animation: none;
+    }
+}

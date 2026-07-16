@@ -1,9 +1,8 @@
 import React, { useEffect, useRef } from "react";
 import "./Orders.css";
 import pedidoImg from "../../assets/prices/cookie-box.webp";
-import crumbsPng from "../../assets/crumbs2.PNG";
+import crumbsPng from "../../assets/brand-elements/crumbs2.PNG";
 import { Bread, Clock } from "@phosphor-icons/react";
-import PageBanner from "../../components/PageBanner/PageBanner";
 import bannerImage from "../../assets/banner4.webp";
 import DeliveryCalendar from "../../components/DeliveryCalendar/DeliveryCalendar";
 
@@ -33,56 +32,120 @@ const Orders = () => {
     }, []);
 
     return (
-        <>
-            <PageBanner image={bannerImage} kicker="Baked for you..." title="FRESH & UNRUSHED" />
+        <main className="schedule-page">
+            <section className="schedule-hero">
+                <div className="schedule-hero-word" aria-hidden="true">THURSDAY</div>
 
-            <section className="pedidos-section" ref={sectionRef}>
+                <div className="schedule-hero-copy">
+                    <p className="schedule-script">good bread needs a little planning</p>
+                    <h1>
+                        Fresh takes
+                        <span>time.</span>
+                    </h1>
+                    <a href="#weekly-rhythm" className="schedule-pill schedule-pill-red">
+                        Check the calendar <span aria-hidden="true">↓</span>
+                    </a>
+                </div>
+
+                <div className="schedule-hero-visual">
+                    <div className="schedule-photo-frame">
+                        <img src={bannerImage} alt="Fresh SOURAW order ready for the week" />
+                    </div>
+                    <span className="schedule-sticker schedule-sticker-pink">delivery Thursday</span>
+                    <span className="schedule-sticker schedule-sticker-yellow">order by Tuesday · 8pm</span>
+                </div>
+            </section>
+
+            <p className="photo-banner-summary">
+                Pick your Thursday, order by Tuesday evening, and let slow
+                fermentation do what it does best.
+            </p>
+
+            <div className="schedule-ribbon" aria-hidden="true">
+                <div>
+                    <span>PLAN IT • FERMENT IT • BAKE IT • SHARE IT • EVERY THURSDAY • </span>
+                    <span>PLAN IT • FERMENT IT • BAKE IT • SHARE IT • EVERY THURSDAY • </span>
+                    <span>PLAN IT • FERMENT IT • BAKE IT • SHARE IT • EVERY THURSDAY • </span>
+                    <span>PLAN IT • FERMENT IT • BAKE IT • SHARE IT • EVERY THURSDAY • </span>
+                    <span>PLAN IT • FERMENT IT • BAKE IT • SHARE IT • EVERY THURSDAY • </span>
+
+                </div>
+            </div>
+
+            <section className="pedidos-section" id="weekly-rhythm" ref={sectionRef}>
+                <div className="schedule-background-word" aria-hidden="true">SLOW</div>
                 <div className="orders-crumbsLayer">
                     <img src={crumbsPng} alt="" className="orders-crumbs crumbs-a" />
                     <img src={crumbsPng} alt="" className="orders-crumbs crumbs-b" />
                 </div>
 
-                <div className="pedidos-text">
-                    <h2>Want to place an order?</h2>
+                <header className="schedule-section-header">
+                    <p className="schedule-script">our weekly rhythm</p>
+                    <h2>Pick a Thursday.</h2>
 
                     <p>
                         Orders are baked fresh each week and delivered every <strong>Thursday</strong>. To allow enough time for fermentation and baking, please place your order by <strong>Tuesday at 8:00 pm</strong>.
                     </p>
+                </header>
+
+                <div className="schedule-steps">
+                    <article>
+                        <span>01</span>
+                        <h3>Choose</h3>
+                        <p>Select an available Thursday on the calendar.</p>
+                    </article>
+                    <article>
+                        <span>02</span>
+                        <h3>Order</h3>
+                        <p>Place your order before Tuesday at 8:00 PM.</p>
+                    </article>
+                    <article>
+                        <span>03</span>
+                        <h3>Enjoy</h3>
+                        <p>Receive your fresh SOURAW order on Thursday.</p>
+                    </article>
+                </div>
+
+                <div className="schedule-main-grid">
+                    <div className="pedidos-text">
 
                     <DeliveryCalendar />
 
                     <div className="pedidos-bullets">
-                        <p className="pedido-line">
+                        <div className="pedido-line">
                             <Bread className="pedido-icon" weight="light" />
-                            <strong>Delivery day:</strong>&nbsp;Thursday.
-                        </p>
+                            <p><strong>Delivery day</strong><br />Thursday</p>
+                        </div>
 
-                        <p className="pedido-line">
+                        <div className="pedido-line">
                             <Clock className="pedido-icon" weight="light" />
-                            <strong>Order deadline:</strong>&nbsp;Tuesday at 8:00 pm.
-                        </p>
+                            <p><strong>Order deadline</strong><br />Tuesday at 8:00 PM</p>
+                        </div>
                     </div>
 
                     <p className="pedidos-sello">
-                        No same-day orders — <strong>freshly baked, always <i className="fa-regular fa-heart"></i></strong>
+                        No same-day orders — freshly baked, always <i className="fa-regular fa-heart"></i>
                     </p>
-
-                    <h2>What are you craving today?</h2>
-
-                    <div className="pedidos-button-wrap">
-                        <a href="/orders" className="pedidos-button">
-                            let's bake something <i className="fa-regular fa-heart"></i>
-                        </a>
                     </div>
 
-
-                </div>
-
-                <div className="pedidos-image">
-                    <img src={pedidoImg} alt="SOURAW bread bags" />
+                    <aside className="pedidos-image">
+                        <div>
+                            <img src={pedidoImg} alt="SOURAW cookie box" />
+                        </div>
+                        <span className="schedule-sticker schedule-sticker-photo">worth the wait</span>
+                    </aside>
                 </div>
             </section>
-        </>
+
+            <section className="schedule-cta">
+                <div className="schedule-cta-word" aria-hidden="true">CRAVING?</div>
+                <p className="schedule-script">your Thursday is waiting</p>
+                <h2>What are you craving today?</h2>
+                <a href="/orders" className="schedule-pill schedule-pill-cream">
+                    Let's bake something <span aria-hidden="true">↗</span>
+                </a>
+            </section>
+        </main>
     );
 };
 

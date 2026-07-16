@@ -1,18 +1,18 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./Ingredients.css";
 
-import breadPng from "../../assets/break-.webp";
-import arrowTL from "../../assets/arrow-up-left.png";
-import arrowTR from "../../assets/arrow-up-right.png";
-import arrowBL from "../../assets/arrow-down-left.png";
-import arrowBR from "../../assets/arrow-down-right.png";
+import breadPng from "../../assets/brand-elements/break-.webp";
+import arrowTL from "../../assets/brand-elements/arrow-up-left.png";
+import arrowTR from "../../assets/brand-elements/arrow-up-right.png";
+import arrowBL from "../../assets/brand-elements/arrow-down-left.png";
+import arrowBR from "../../assets/brand-elements/arrow-down-right.png";
 
 const ITEMS = [
     {
         id: "digest",
         title: "Digest better",
         text: "Long fermentation helps break down gluten proteins.",
-        pos: { left: "18%", top: "10%" },
+        pos: { left: "18%", top: "14%" },
         arrow: { src: arrowTL, w: 90, rot: 0, x: 90, y: 8 },
         delay: 0.05,
         align: "left",
@@ -21,7 +21,7 @@ const ITEMS = [
         id: "noadd",
         title: "No additives",
         text: "Flour. Water. Salt. Time. Nothing artificial.",
-        pos: { left: "98%", top: "30%" },
+        pos: { left: "96%", top: "28%" },
         arrow: { src: arrowTR, w: 70, rot: 30, x: 10, y: -38 },
         delay: 0.18,
         align: "right",
@@ -30,7 +30,7 @@ const ITEMS = [
         id: "lighter",
         title: "Feel lighter",
         text: "Less bloating. Less heaviness. More comfort.",
-        pos: { left: "20%", top: "54%" },
+        pos: { left: "20%", top: "56%" },
         arrow: { src: arrowBL, w: 100, rot: 20, x: 130, y: -5 },
         delay: 0.31,
         align: "left",
@@ -39,7 +39,7 @@ const ITEMS = [
         id: "energy",
         title: "Steady energy",
         text: "A gentler glycemic response vs. conventional bread.",
-        pos: { left: "88%", top: "64%" },
+        pos: { left: "88%", top: "66%" },
         arrow: { src: arrowBR, w: 100, rot: 20, x: -40, y: -5 },
         delay: 0.44,
         align: "right",
@@ -75,10 +75,14 @@ export default function Ingredients() {
         <section className="sk">
             <div className="sk-wrap">
                 <header className="sk-heading">
-                    <p className="sk-kicker">Why Sourdough?</p>
+                    <p className="sk-kicker">Why sourdough?</p>
                     <h2 className="sk-h2">
-                        Real benefits, naturally <i className="fa-solid fa-heart" />
+                        The slow way<br />hits different. <span aria-hidden="true">♡</span>
                     </h2>
+                    <p className="sk-heading-copy">
+                        Time does the heavy lifting: simpler ingredients, real fermentation,
+                        and bread that feels as good as it tastes.
+                    </p>
                 </header>
 
                 <div ref={stageRef} className={`sk-stage ${inView ? "is-inview" : ""}`}>
@@ -97,7 +101,7 @@ export default function Ingredients() {
                     {ITEMS.map((it) => (
                         <div
                             key={it.id}
-                            className={`sk-item sk-${it.align}`}
+                            className={`sk-item sk-item--${it.id} sk-${it.align}`}
                             style={{
                                 left: it.pos.left,
                                 top: it.pos.top,

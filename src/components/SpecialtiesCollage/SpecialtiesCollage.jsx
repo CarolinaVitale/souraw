@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import "./SpecialtiesCollage.css";
 
 import imgA from "../../assets/prices/cookies.webp";
@@ -10,9 +11,9 @@ import imgE from "../../assets/prices/classic.webp";
 import circular from "../../assets/prices/tiramisu.webp";
 import fermentina from "../../assets/fermentina.gif";
 
-import baguetteDoodle from "../../assets/element-baguette.png";
-import breadDoodle from "../../assets/bread-illustration.png";
-import crumbs from "../../assets/crumbs.PNG";
+import baguetteDoodle from "../../assets/brand-elements/element-baguette.png";
+import breadDoodle from "../../assets/brand-elements/bread-illustration.png";
+import crumbs from "../../assets/brand-elements/crumbs.PNG";
 
 const BOARD = [
     { id: "van", src: imgA, alt: "Souraw specialty 1", className: "tile tile--van", washi: "washi--pink" },
@@ -51,10 +52,14 @@ export default function SpecialtiesCollage() {
                     viewport={{ once: true, amount: 0.6 }}
                     transition={{ duration: 0.8, ease: "easeOut" }}
                 >
-                    <p className="sp-kicker">Why Sourdough?</p>
+                    <p className="sp-kicker">small batch, big mood</p>
                     <h2 className="sp-h2">
-                        FROM OUR OVEN <i className="fa-solid fa-heart" aria-hidden="true" />
+                        What’s baking? <span aria-hidden="true">♡</span>
                     </h2>
+                    <p className="sp-intro">
+                        The classics, the experiments, and whatever the starter
+                        convinced us to make next.
+                    </p>
                 </motion.header>
 
                 <motion.div
@@ -110,6 +115,10 @@ export default function SpecialtiesCollage() {
                         made with time.
                     </motion.div>
                 </motion.div>
+
+                <Link to="/menu" className="specBoard-cta">
+                    see what’s on the menu <span aria-hidden="true">↗</span>
+                </Link>
             </div>
         </section>
     );
