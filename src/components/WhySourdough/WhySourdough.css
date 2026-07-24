@@ -70,6 +70,8 @@
 
 @media (max-width: 720px) {
     .why-sourdough {
+        box-sizing: border-box;
+        width: 100%;
         min-height: 100vh;
         padding: 5rem 1.2rem;
     }
@@ -84,12 +86,21 @@
 
     .text-overlay {
         width: 100%;
+        max-width: 100%;
+        min-width: 0;
         padding: 2rem 1.2rem;
         box-shadow: 8px 9px 0 var(--about-yellow, #f6bc3f);
         transform: none;
     }
 
     .why-sourdough h2 {
-        font-size: clamp(3rem, 14vw, 4.8rem);
+        max-width: 100%;
+        font-size: clamp(2.35rem, 10vw, 3.5rem);
+        overflow-wrap: anywhere;
+    }
+
+    .text-overlay > p:not(.about-script) {
+        max-width: 100%;
+        overflow-wrap: anywhere;
     }
 }

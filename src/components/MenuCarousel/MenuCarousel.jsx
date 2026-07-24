@@ -28,7 +28,7 @@ const products = [
     { image: tiramisu, name: "tiramisu", note: "the sweet side of SOURAW" },
     { image: sandwich, name: "sandwich loaf", note: "soft / everyday / slow" },
     { image: wholeWheat, name: "whole wheat", note: "nutty / nourishing" },
-    { image: croissants, name: "mini croissants", note: "tiny but mighty" },
+    { image: croissants, name: "butter rolls", note: "tiny but mighty" },
     { image: babka, name: "chocolate babka", note: "swirled / rich / fermented" },
     { image: sweetBuns, name: "sweet buns", note: "pillowy / sticky / worth it" },
 ];

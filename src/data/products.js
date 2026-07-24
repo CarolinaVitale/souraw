@@ -107,7 +107,7 @@ export const products = [
     {
         id: "mini-croissants",
         category: "slowCravings",
-        name: "Mini Croissants",
+        name: "Butter Rolls",
         size: "16 pcs",
         priceUSD: 12,
         description:

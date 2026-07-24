@@ -193,6 +193,8 @@
     }
 
     .product-name {
-        font-size: clamp(2rem, 10vw, 3rem);
+        max-width: 100%;
+        font-size: clamp(1.75rem, 7.5vw, 2.35rem);
+        overflow-wrap: anywhere;
     }
 }

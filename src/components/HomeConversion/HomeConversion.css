@@ -944,6 +944,12 @@
         line-height: 0.92;
     }
 
+    .home-starter-copy h2 {
+        max-width: 100%;
+        font-size: clamp(2.35rem, 10vw, 3.35rem);
+        overflow-wrap: anywhere;
+    }
+
     .home-instagram {
         gap: 0.5rem;
         padding-top: 4rem;

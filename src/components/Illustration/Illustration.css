@@ -115,7 +115,9 @@
     }
 
     .follow-us h2 {
-        font-size: clamp(3.8rem, 19vw, 5.5rem);
+        max-width: 100%;
+        font-size: clamp(3rem, 14.5vw, 4.5rem);
+        overflow-wrap: anywhere;
     }
 
     .follow-us-cta {
