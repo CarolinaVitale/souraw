@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { ArrowUpRight } from "@phosphor-icons/react";
 import heroImage from "../../assets/untamed-studio/studio-hero.jpg";
 import customToteImage from "../../assets/untamed-studio/custom-tote.jpg";
@@ -9,6 +8,7 @@ import sushiMatImage from "../../assets/untamed-studio/custom-sushi-mat.jpg";
 import totePortfolioImage from "../../assets/untamed-studio/custom-tote-portfolio.jpg";
 import cuttingBoardImage from "../../assets/untamed-studio/personalized-cutting-board.jpg";
 import studioStampImage from "../../assets/untamed-studio/souraw-studio-stamp.png";
+import { openContactDrawer } from "../../utils/contactDrawer";
 // Hidden until these catalog categories are ready to publish.
 // import kraftBagImage from "../../assets/diy/finalBagImage.webp";
 // import ropeBagImage from "../../assets/diy/finalBagRopeHandles.webp";
@@ -260,9 +260,9 @@ export default function UntamedStudio() {
                             be happy to talk it through with you.
                         </p>
                     </div>
-                    <Link to="/contact" className="studio-pill studio-pill-cream">
+                    <button type="button" className="studio-pill studio-pill-cream" onClick={openContactDrawer}>
                         Contact the studio <ArrowUpRight size={19} weight="bold" />
-                    </Link>
+                    </button>
                 </aside>
             </section>
 
@@ -295,9 +295,9 @@ export default function UntamedStudio() {
                 <p className="studio-script">your idea can live here</p>
                 <h2>Need something completely custom?</h2>
                 <p>Tell me what you are imagining and we can build the right piece together.</p>
-                <Link to="/contact" className="studio-pill studio-pill-cream">
+                <button type="button" className="studio-pill studio-pill-cream" onClick={openContactDrawer}>
                     Start a custom order <ArrowUpRight size={19} weight="bold" />
-                </Link>
+                </button>
             </section>
         </main>
     );

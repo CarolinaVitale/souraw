@@ -5,6 +5,7 @@ import logo from "../../assets/logo-header.png";
 import ContactDrawer from "../ContactDrawer/ContactDrawer";
 import CartDrawer from "../CartDrawer/CartDrawer";
 import { useCart } from "../../context/CartContext";
+import { CONTACT_DRAWER_EVENT } from "../../utils/contactDrawer";
 
 function Navbar() {
     const [click, setClick] = useState(false);
@@ -42,6 +43,17 @@ function Navbar() {
             document.body.style.overflow = "";
         };
     }, [click]);
+
+    useEffect(() => {
+        const handleContactRequest = () => {
+            setClick(false);
+            setMoreOpen(false);
+            setContactOpen(true);
+        };
+
+        window.addEventListener(CONTACT_DRAWER_EVENT, handleContactRequest);
+        return () => window.removeEventListener(CONTACT_DRAWER_EVENT, handleContactRequest);
+    }, []);
 
     return (
         <>

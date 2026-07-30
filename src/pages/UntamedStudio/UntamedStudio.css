@@ -121,6 +121,8 @@
     box-shadow: 7px 8px 0 var(--studio-dark);
     padding: .9rem 1.4rem;
     color: var(--studio-dark);
+    cursor: pointer;
+    font-family: inherit;
     font-size: .74rem;
     font-weight: 900;
     letter-spacing: .06em;
