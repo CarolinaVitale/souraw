@@ -25,7 +25,7 @@ const pathways = [
         kicker: "unrushed lab",
         title: "Start slow. Keep going.",
         text: "Digital resources for curious bakers learning sourdough with less waste and more intention.",
-        to: "/unrushed-lab",
+        to: "/starter",
         cta: "visit the lab",
     },
     {

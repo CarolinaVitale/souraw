@@ -5,11 +5,11 @@ import { sourawFind } from "../../data/sourawFinds";
 import heroImage from "../../assets/amazon/seeds-bread.webp";
 
 const categories = [
+    { key: "Sourdough Essentials", title: "Crust & Crumb", kicker: "make it perfect" },
+    { key: "Labels", title: "Labels", kicker: "little details" },
+    { key: "Packaging", title: "Packaging", kicker: "pack it cute" },
     { key: "Craft", title: "Maker's Corner", kicker: "create & customize" },
     { key: "starter", title: "Starter Essentials", kicker: "feed it well" },
-    { key: "Packaging", title: "Packaging", kicker: "pack it cute" },
-    { key: "Labels", title: "Labels", kicker: "little details" },
-    { key: "Sourdough Essentials", title: "Crust & Crumb", kicker: "make it perfect" },
 ];
 
 export default function SourawFinds() {

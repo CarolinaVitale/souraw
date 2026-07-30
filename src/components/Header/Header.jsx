@@ -36,17 +36,31 @@ function Navbar() {
         return () => window.removeEventListener("scroll", changeBackground);
     }, []);
 
+    useEffect(() => {
+        document.body.style.overflow = click ? "hidden" : "";
+        return () => {
+            document.body.style.overflow = "";
+        };
+    }, [click]);
+
     return (
         <>
-            <nav className={navbar ? "navbar active" : "navbar"}>
+            <nav className={navbar || click ? "navbar active" : "navbar"}>
                 <div className="navbar-container">
                     <Link to="/" className="navbar-logo" onClick={closeMobileMenu}>
                         <img className="logo" src={logo} alt="logo" />
                     </Link>
 
-                    <div className="menu-icon" onClick={handleClick}>
-                        <i className={click ? "fas fa-times" : "fas fa-bars"} />
-                    </div>
+                    <button
+                        type="button"
+                        className={click ? "menu-icon is-open" : "menu-icon"}
+                        onClick={handleClick}
+                        aria-label={click ? "Close navigation" : "Open navigation"}
+                        aria-expanded={click}
+                    >
+                        <span />
+                        <span />
+                    </button>
 
                     <ul className={click ? "nav-menu active" : "nav-menu"}>
                         <li className="nav-item">
@@ -55,8 +69,8 @@ function Navbar() {
                             </Link>
                         </li>
                         <li className="nav-item">
-                            <Link to="/unrushed-lab" className="nav-links" onClick={closeMobileMenu}>
-                                DEHYDRATED STARTER
+                            <Link to="/starter" className="nav-links" onClick={closeMobileMenu}>
+                                STARTER
                             </Link>
                         </li>
                         <li className="nav-item">
@@ -75,11 +89,14 @@ function Navbar() {
                                 type="button"
                                 className="nav-links nav-more-btn"
                                 onClick={() => setMoreOpen(!moreOpen)}
+                                aria-expanded={moreOpen}
                             >
-                                MORE <i className="fa-solid fa-chevron-down nav-chevron"></i>
+                                <span>MORE</span>
+                                <span className="nav-more-mark" aria-hidden="true">+</span>
                             </button>
 
                             <div className={moreOpen ? "nav-dropdown open" : "nav-dropdown"}>
+                                <p className="nav-dropdown-label">Keep exploring</p>
 
                                 <Link to="/menu" className="nav-dropdown-link" onClick={closeMobileMenu}>
                                     MENU
@@ -87,6 +104,10 @@ function Navbar() {
 
                                 <Link to="/about" className="nav-dropdown-link" onClick={closeMobileMenu}>
                                     ABOUT
+                                </Link>
+
+                                <Link to="/untamed-studio" className="nav-dropdown-link" onClick={closeMobileMenu}>
+                                    UNTAMED STUDIO
                                 </Link>
 
                                 <Link to="#" className="nav-dropdown-link" onClick={openContact}>

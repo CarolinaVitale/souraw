@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import Home from './pages/Home';
@@ -20,6 +20,7 @@ import SourawFinds from './pages/SourawFinds/SourawFinds';
 import ActivateStarter from "./pages/ActivateStarter/ActivateStarter";
 import UnrushedLab from "./pages/UnrushedLab/UnrushedLab";
 import DIY from "./pages/DIY/DIY";
+import UntamedStudio from "./pages/UntamedStudio/UntamedStudio";
 
 function App() {
   useEffect(() => {
@@ -47,8 +48,10 @@ function App() {
         <Route path="/orders" element={<Prices />} />
         <Route path="/souraw-finds" element={<SourawFinds/>}/>
         <Route path="/activate-starter" element={<ActivateStarter />} />
-        <Route path="/unrushed-lab" element={<UnrushedLab />} />
+        <Route path="/starter" element={<UnrushedLab />} />
+        <Route path="/unrushed-lab" element={<Navigate to="/starter" replace />} />
         <Route path="/diy" element={<DIY />} />
+        <Route path="/untamed-studio" element={<UntamedStudio />} />
       </Routes>
       <Footer />
     </Router>

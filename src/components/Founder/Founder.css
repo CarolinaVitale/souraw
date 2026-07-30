@@ -327,30 +327,52 @@
 
     .fs-scene {
         width: 100%;
-        padding: 3.5rem 0.8rem 3.5rem;
+        padding: 3rem 0 3.5rem;
     }
 
     .fs-videoFrame {
-        width: min(88vw, 360px);
+        width: min(100%, 380px);
         margin: auto;
-        box-shadow: 10px 12px 0 var(--color-gray-dark), 0 20px 40px rgba(70, 10, 7, 0.28);
+        border: 0;
+        border-radius: 26px;
+        background: transparent;
+        box-shadow: 0 9px 0 var(--color-pink);
+        transform: none;
+    }
+
+    .fs-videoFrame:hover {
+        transform: none;
     }
 
     .fs-founder-card {
-        left: 0;
+        top: 1rem;
+        left: 0.55rem;
+        border: 0;
+        border-radius: 999px;
+        box-shadow: none;
+        padding: 0.45rem 0.75rem 0.45rem 0.45rem;
+        transform: none;
     }
 
     .fs-founder-card img {
         width: 54px;
         height: 54px;
+        border: 0;
     }
 
     .fs-label-memory {
-        right: 0;
+        top: 29%;
+        right: 0.4rem;
     }
 
     .fs-label-healing {
-        left: 0;
+        left: 0.4rem;
+    }
+
+    .fs-label {
+        border: 0;
+        border-radius: 999px;
+        box-shadow: none;
     }
 
     .fs-scene-arrow {

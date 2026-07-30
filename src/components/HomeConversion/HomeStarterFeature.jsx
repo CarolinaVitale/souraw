@@ -16,7 +16,7 @@ export default function HomeStarterFeature() {
                     with the instructions included in your package.
                 </p>
                 <div className="home-feature-actions">
-                    <Link to="/unrushed-lab" className="home-primary-link">
+                    <Link to="/starter" className="home-primary-link">
                         get my starter <span aria-hidden="true">↗</span>
                     </Link>
                 </div>
@@ -32,7 +32,7 @@ export default function HomeStarterFeature() {
                 <span className="home-starter-arrow" aria-hidden="true">↘</span>
 
                 <Link
-                    to="/unrushed-lab"
+                    to="/starter"
                     className="home-starter-image-wrap"
                     aria-label="Shop dehydrated SOURAW starter"
                 >

@@ -331,9 +331,9 @@
     translate: 0 calc(2.5rem - 7px);
 }
 
-.home-pathway-green { background: var(--color-green); color: var(--color-bg); }
-.home-pathway-pink { background: var(--color-pink); }
-.home-pathway-yellow { background: var(--color-yellow); }
+.home-pathway-green { --path-accent: var(--color-green); background: var(--color-green); color: var(--color-bg); }
+.home-pathway-pink { --path-accent: var(--color-pink); background: var(--color-pink); }
+.home-pathway-yellow { --path-accent: var(--color-yellow); background: var(--color-yellow); }
 
 .home-pathway-number {
     position: absolute;
@@ -1015,8 +1015,80 @@
         padding: 4.5rem 1.1rem 6rem;
     }
 
-    .home-pathway {
-        padding: 1rem;
+    .home-pathways-grid {
+        gap: 0;
+    }
+
+    .home-pathway,
+    .home-pathway:nth-child(2),
+    .home-pathway:nth-child(3) {
+        display: block;
+        width: 100%;
+        min-height: 0;
+        overflow: visible;
+        border: 0;
+        border-radius: 0;
+        background: transparent;
+        box-shadow: none;
+        padding: 0 0 3.75rem;
+        color: var(--color-bg);
+    }
+
+    .home-pathway + .home-pathway {
+        border-top: 1px solid rgba(255, 232, 207, 0.18);
+        padding-top: 3.75rem;
+    }
+
+    .home-pathway-image-link {
+        overflow: hidden;
+        border: 0;
+        border-radius: 24px;
+        background: var(--path-accent);
+        box-shadow: 0 8px 0 var(--path-accent);
+    }
+
+    .home-pathway-media {
+        aspect-ratio: 16 / 10;
+    }
+
+    .home-pathway-number {
+        top: 0.8rem;
+        right: 0.8rem;
+        width: 40px;
+        height: 40px;
+        border-color: var(--color-gray-dark);
+        background: var(--path-accent);
+    }
+
+    .home-pathway + .home-pathway .home-pathway-number {
+        top: 4.55rem;
+    }
+
+    .home-pathway-content {
+        min-height: 0;
+        padding: 1.65rem 0.15rem 0;
+    }
+
+    .home-pathway .home-section-kicker,
+    .home-pathway-green .home-section-kicker {
+        color: var(--path-accent);
+    }
+
+    .home-pathway h3 {
+        max-width: 11ch;
+        color: var(--color-bg);
+        font-size: clamp(2.4rem, 11.5vw, 3.55rem);
+    }
+
+    .home-pathway-content > p:not(.home-section-kicker) {
+        max-width: 38ch;
+        color: rgba(255, 232, 207, 0.84);
+    }
+
+    .home-pathway .home-path-link {
+        width: auto;
+        margin-top: 1.6rem;
+        background: var(--path-accent);
     }
 
     .home-pathways-head h2,
