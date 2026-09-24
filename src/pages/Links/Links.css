@@ -13,6 +13,11 @@
         linear-gradient(135deg, var(--color-purple) 0%, #a253f3 28%, #d65d9e 65%, var(--color-red) 100%);
 }
 
+.top-heart {
+    margin-top: 10px;
+
+    color: var(--color-bg);
+}
 .souraw-links-shell {
     position: relative;
     max-width: 600px;
@@ -94,7 +99,7 @@
 }
 
 .souraw-links-daily {
-    color: #0aa8ff;
+    color: #9e34cf;
     --daily-y: 35px;
     /* Aumenta este valor para bajar más el texto. */
     transform: translateY(var(--daily-y));
@@ -117,8 +122,8 @@
     margin: 18px 0 14px;
     font-family: 'Biro', cursive;
     font-size: 28px;
-    color: var(--color-yellow);
-    transform: rotate(-3deg);
+    color: var(--color-red);
+    transform: rotate(-5deg);
 }
 
 .souraw-links-intro h1 {
@@ -294,6 +299,13 @@
     .souraw-links-social-grid a {
         padding: 16px 10px;
         gap: 8px;
+    }
+}
+
+@media (max-width: 780px) {
+    .souraw-links-avatar {
+        --logo-x: -2px;
+        --logo-y: 29px;
     }
 }
 

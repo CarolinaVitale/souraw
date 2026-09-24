@@ -20,6 +20,7 @@ export default function Links() {
             </div>
             <div className="souraw-links-shell">
                 <header className="souraw-links-intro">
+                    <h1><i className="fa-solid fa-heart top-heart"></i></h1>
                     <h1>
                         <span className="souraw-links-heading-line"><span className="souraw-links-daily">Your daily</span> <img className="souraw-links-avatar" src={face} alt="" /></span>
                         <span className="souraw-links-heading-accent">dose of SOURAW.</span>
