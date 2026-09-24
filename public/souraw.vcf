@@ -1,0 +1,12 @@
+BEGIN:VCARD
+VERSION:3.0
+N:SOURAW;;;;
+FN:SOURAW
+ORG:SOURAW
+TITLE:Artisan Bakery
+TEL;TYPE=WORK,VOICE:+18134853547
+item1.URL:https://www.instagram.com/souraw.us
+item1.X-ABLabel:Instagram
+URL:https://souraw.com
+EMAIL;TYPE=INTERNET,WORK:contact@souraw.com
+END:VCARD

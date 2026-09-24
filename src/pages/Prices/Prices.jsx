@@ -156,7 +156,7 @@ const Prices = () => {
                 <div className="order-pickup-copy">
                     <MapPin size={38} weight="fill" />
                     <p>Thursday pickup at Canopy at Citrus Park. Delivery availability depends on location.</p>
-                    <a href="https://maps.app.goo.gl/kKkQV9Y1zXHMPY6a6" target="_blank" rel="noopener noreferrer">
+                    <a href="https://maps.app.goo.gl/t2PzM3bLoNRQuSvt9" target="_blank" rel="noopener noreferrer">
                         open pickup location <ArrowUpRight size={18} weight="bold" />
                     </a>
                 </div>

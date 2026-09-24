@@ -21,6 +21,8 @@ import ActivateStarter from "./pages/ActivateStarter/ActivateStarter";
 import UnrushedLab from "./pages/UnrushedLab/UnrushedLab";
 import DIY from "./pages/DIY/DIY";
 import UntamedStudio from "./pages/UntamedStudio/UntamedStudio";
+import UntamedStudioFinds from "./pages/UntamedStudioFinds/UntamedStudioFinds";
+import Links from './pages/Links/Links';
 
 function App() {
   useEffect(() => {
@@ -43,6 +45,7 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/menu" element={<Catalog />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/links" element={<Links />} />
         <Route path="/reviews" element={<Reviews />} />
         <Route path="/schedule" element={<Orders />} />
         <Route path="/orders" element={<Prices />} />
@@ -52,6 +55,7 @@ function App() {
         <Route path="/unrushed-lab" element={<Navigate to="/starter" replace />} />
         <Route path="/diy" element={<DIY />} />
         <Route path="/untamed-studio" element={<UntamedStudio />} />
+        <Route path="/untamed-studio-finds" element={<UntamedStudioFinds />} />
       </Routes>
       <Footer />
     </Router>

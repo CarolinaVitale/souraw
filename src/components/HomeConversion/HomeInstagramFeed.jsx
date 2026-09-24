@@ -10,7 +10,7 @@ import "./HomeConversion.css";
 import instagramPostImage from "../../assets/instagram-starter-lab.png";
 import breadCrew from "../../assets/followus-bg2.webp";
 
-const instagramUrl = "https://instagram.com/souraw.cv";
+const instagramUrl = "https://instagram.com/souraw.us";
 
 export default function HomeInstagramFeed() {
     return (
@@ -21,7 +21,7 @@ export default function HomeInstagramFeed() {
             <div className="home-instagram-copy" data-aos="fade-up">
                 <p className="home-instagram-eyebrow">
                     <FaInstagram aria-hidden="true" />
-                    @souraw.cv
+                    @souraw.us
                 </p>
                 <h2 id="home-instagram-title">Watch SOURAW happen.</h2>
                 <p className="home-instagram-intro">
@@ -35,7 +35,7 @@ export default function HomeInstagramFeed() {
                     rel="noopener noreferrer"
                     className="home-instagram-follow"
                 >
-                    follow @souraw.cv <span aria-hidden="true">↗</span>
+                    follow @souraw.us <span aria-hidden="true">↗</span>
                 </a>
             </div>
 
@@ -58,13 +58,13 @@ export default function HomeInstagramFeed() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="home-instagram-post"
-                    aria-label="Open @souraw.cv on Instagram"
+                    aria-label="Open @souraw.us on Instagram"
                 >
                     <div className="home-instagram-topbar">
                         <div className="home-instagram-profile">
                             <span className="home-instagram-avatar">S</span>
                             <div>
-                                <strong>souraw.cv</strong>
+                                <strong>souraw.us</strong>
                                 <span>Unrushed Lab</span>
                             </div>
                         </div>
@@ -83,7 +83,7 @@ export default function HomeInstagramFeed() {
                     </div>
 
                     <p className="home-instagram-caption">
-                        <strong>souraw.cv</strong> The slow, messy, beautiful part of SOURAW.
+                        <strong>souraw.us</strong> The slow, messy, beautiful part of SOURAW.
                     </p>
                 </a>
             </div>

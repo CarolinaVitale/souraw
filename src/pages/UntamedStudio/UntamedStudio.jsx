@@ -1,30 +1,33 @@
 import React from "react";
 import { ArrowUpRight } from "@phosphor-icons/react";
-import heroImage from "../../assets/untamed-studio/studio-hero.jpg";
-import customToteImage from "../../assets/untamed-studio/custom-tote.jpg";
-import luckyCatDishImage from "../../assets/untamed-studio/lucky-cat-dish.jpg";
-import sushiMatSleevesImage from "../../assets/untamed-studio/custom-sushi-mat-sleeves.jpg";
-import sushiMatImage from "../../assets/untamed-studio/custom-sushi-mat.jpg";
-import totePortfolioImage from "../../assets/untamed-studio/custom-tote-portfolio.jpg";
-import cuttingBoardImage from "../../assets/untamed-studio/personalized-cutting-board.jpg";
-import studioStampImage from "../../assets/untamed-studio/souraw-studio-stamp.png";
+import heroImage from "../../assets/untamed-studio/studio-hero.webp";
+import customToteImage from "../../assets/untamed-studio/custom-tote.webp";
+import luckyCatDishImage from "../../assets/untamed-studio/lucky-cat-dish.webp";
+import sushiMatSleevesImage from "../../assets/untamed-studio/custom-sushi-mat-sleeves.webp";
+import sushiMatImage from "../../assets/untamed-studio/custom-sushi-mat.webp";
+import totePortfolioImage from "../../assets/untamed-studio/custom-tote-portfolio.webp";
+import cuttingBoardImage from "../../assets/untamed-studio/personalized-cutting-board.webp";
+import studioStampImage from "../../assets/untamed-studio/souraw-studio-stamp.webp";
 import { openContactDrawer } from "../../utils/contactDrawer";
 // Hidden until these catalog categories are ready to publish.
 // import kraftBagImage from "../../assets/diy/finalBagImage.webp";
 // import ropeBagImage from "../../assets/diy/finalBagRopeHandles.webp";
 // import labelsImage from "../../assets/diy/step11.webp";
 // import cardsImage from "../../assets/diy/step10.webp";
-import monAmourImage from "../../assets/untamed-studio/mon-amour.jpg";
-import inBoccaAlLupoImage from "../../assets/untamed-studio/in-bocca-al-lupo.jpg";
+import monAmourImage from "../../assets/untamed-studio/mon-amour.webp";
+import inBoccaAlLupoImage from "../../assets/untamed-studio/in-bocca-al-lupo.webp";
+import spoonablePackagingImage from "../../assets/untamed-studio/spoonable-packaging.webp";
+import luckyCatToteImage from "../../assets/untamed-studio/lucky-cat-tote.webp";
+import wovenFaceLabelImage from "../../assets/untamed-studio/woven-face-label.webp";
+import wovenStudioLabelsImage from "../../assets/untamed-studio/woven-studio-labels.webp";
+import spoonableStickerRollImage from "../../assets/untamed-studio/spoonable-sticker-roll.webp";
 import "./UntamedStudio.css";
 
-// Filters can return when more than one catalog category is published.
-// const filters = [
-//     { id: "all", label: "All pieces" },
-//     { id: "packaging", label: "Packaging" },
-//     { id: "paper", label: "Paper + stickers" },
-//     { id: "wearables", label: "Bags + pouches" },
-// ];
+const studioCategories = [
+    { id: "parties", label: "Parties", note: "little details for big celebrations" },
+    { id: "apparel", label: "Apparel", note: "made to wear, carry & keep" },
+    { id: "stickers", label: "Stickers", note: "small details, loud personality" },
+];
 
 const products = [
     /* Hidden until these products are ready to publish.
@@ -94,6 +97,7 @@ const products = [
 const portfolioPieces = [
     {
         id: "lucky-cat-dish",
+        category: "parties",
         title: "Lucky cat trinket dish",
         note: "A tiny custom detail for everyday rituals.",
         image: luckyCatDishImage,
@@ -101,6 +105,7 @@ const portfolioPieces = [
     },
     {
         id: "sushi-mat-sleeves",
+        category: "parties",
         title: "Custom sushi mat sleeves",
         note: "Illustrated packaging made for a hands-on event.",
         image: sushiMatSleevesImage,
@@ -108,23 +113,74 @@ const portfolioPieces = [
     },
     {
         id: "sushi-mat",
+        category: "parties",
         title: "Personalized sushi mat",
         note: "A useful object turned into a branded keepsake.",
         image: sushiMatImage,
         layout: "portrait",
     },
     {
+        id: "lucky-cat-party-tote",
+        category: "parties",
+        title: "Personalized lucky cat tote",
+        note: "A custom piece made for celebrating together.",
+        image: luckyCatToteImage,
+        layout: "portrait",
+    },
+    {
         id: "custom-tote-work",
+        category: "apparel",
         title: "In bocca al lupo tote",
         note: "Custom artwork pressed one piece at a time.",
         image: totePortfolioImage,
         layout: "wide",
     },
     {
+        id: "lucky-cat-apparel-tote",
+        category: "apparel",
+        title: "Personalized lucky cat tote",
+        note: "A name, an illustration, and a piece made just for you.",
+        image: luckyCatToteImage,
+        layout: "portrait",
+    },
+    {
+        id: "woven-face-label",
+        category: "apparel",
+        title: "Custom woven label",
+        note: "A small signature detail made for every finished piece.",
+        image: wovenFaceLabelImage,
+        layout: "portrait",
+    },
+    {
+        id: "woven-studio-labels",
+        category: "apparel",
+        title: "Untamed Studio woven labels",
+        note: "The finishing touch that makes handmade work feel complete.",
+        image: wovenStudioLabelsImage,
+        layout: "portrait",
+    },
+    {
         id: "personalized-board",
+        category: "parties",
         title: "Personalized cutting set",
         note: "Names, colors, and a little personality built in.",
         image: cuttingBoardImage,
+        layout: "portrait",
+    },
+    {
+        id: "spoonable-packaging",
+        category: "stickers",
+        title: "Spoonable cookie packaging",
+        note: "A custom detail designed around the product.",
+        image: spoonablePackagingImage,
+        layout: "portrait",
+    },
+    {
+        id: "spoonable-sticker-roll",
+        category: "stickers",
+        title: "Spoonable cookie sticker roll",
+        note: "Custom labels ready to bring every package to life.",
+        image: spoonableStickerRollImage,
         layout: "portrait",
     },
 ];
@@ -133,7 +189,13 @@ export default function UntamedStudio() {
     return (
         <main className="studio-page">
             <section className="studio-hero" aria-labelledby="studio-title">
-                <img className="studio-hero-image" src={heroImage} alt="Handmade SOURAW kraft bag" />
+                <img
+                    className="studio-hero-image"
+                    src={heroImage}
+                    alt="Handmade SOURAW kraft bag"
+                    decoding="async"
+                    fetchPriority="high"
+                />
                 <div className="studio-hero-shade" />
                 <div className="studio-hero-word" aria-hidden="true">STUDIO</div>
 
@@ -143,9 +205,14 @@ export default function UntamedStudio() {
                         Untamed
                         <span>Studio.</span>
                     </h1>
-                    <a href="#studio-work" className="studio-pill studio-pill-red">
-                        See what I've made <span aria-hidden="true">↓</span>
-                    </a>
+                    <div className="studio-hero-actions">
+                        <a href="#studio-work" className="studio-pill studio-pill-red">
+                            See what I've made <span aria-hidden="true">↓</span>
+                        </a>
+                        <a href="/untamed-studio-finds" className="studio-pill studio-pill-cream">
+                            Shop my tools <ArrowUpRight size={17} weight="bold" />
+                        </a>
+                    </div>
                 </div>
 
                 <span className="studio-hero-sticker studio-hero-sticker-pink">cut with care</span>
@@ -177,12 +244,16 @@ export default function UntamedStudio() {
                     src={monAmourImage}
                     alt=""
                     aria-hidden="true"
+                    loading="lazy"
+                    decoding="async"
                 />
                 <img
                     className="studio-sketch studio-sketch-in-bocca"
                     src={inBoccaAlLupoImage}
                     alt=""
                     aria-hidden="true"
+                    loading="lazy"
+                    decoding="async"
                 />
                 <header className="studio-catalog-header">
                     <div>
@@ -196,57 +267,52 @@ export default function UntamedStudio() {
                     </p>
                 </header>
 
-                {/* Filters stay hidden until the other catalog categories are published.
-                <div className="studio-filters" aria-label="Filter studio products">
-                    {filters.map((filter) => (
-                        <button
-                            type="button"
-                            key={filter.id}
-                            className={activeFilter === filter.id ? "is-active" : ""}
-                            onClick={() => setActiveFilter(filter.id)}
-                        >
-                            {filter.label}
-                        </button>
-                    ))}
-                </div>
-                */}
+                <div className="studio-category-boards">
+                    {studioCategories.map((category) => {
+                        const categoryPieces = portfolioPieces.filter(
+                            (piece) => piece.category === category.id
+                        );
 
-                <div className="studio-moodboard" aria-label="A mood board of recent custom work">
-                    <div className="studio-mood-paper studio-mood-paper-purple" aria-hidden="true" />
-                    <div className="studio-mood-paper studio-mood-paper-yellow" aria-hidden="true" />
-                    <div className="studio-mood-paper studio-mood-paper-pink" aria-hidden="true" />
-                    <div className="studio-mood-grid-lines" aria-hidden="true" />
+                        return (
+                            <section
+                                className={`studio-category-board studio-category-board-${category.id}`}
+                                aria-labelledby={`studio-category-${category.id}`}
+                                key={category.id}
+                            >
+                                <header className="studio-category-heading">
+                                    <p className="studio-script">{category.note}</p>
+                                    <h3 id={`studio-category-${category.id}`}>{category.label}</h3>
+                                </header>
 
-                    <p className="studio-mood-script studio-mood-script-top" aria-hidden="true">
-                        scraps, ideas &amp; little obsessions
-                    </p>
-                    <p className="studio-mood-script studio-mood-script-bottom" aria-hidden="true">
-                        made by hand, kept a little wild
-                    </p>
+                                <div className={`studio-category-collage studio-category-collage-${category.id}`}>
+                                    {categoryPieces.map((piece) => (
+                                        <figure
+                                            className={`studio-category-piece studio-category-piece-${piece.id}`}
+                                            key={piece.id}
+                                        >
+                                            <img
+                                                src={piece.image}
+                                                alt={piece.title}
+                                                loading="lazy"
+                                                decoding="async"
+                                            />
+                                        </figure>
+                                    ))}
 
-                    {portfolioPieces.map((piece, index) => (
-                        <figure
-                            className={`studio-mood-piece studio-mood-piece-${piece.id}`}
-                            key={piece.id}
-                        >
-                            <div className="studio-mood-photo">
-                                <img src={piece.image} alt={piece.title} loading={index < 3 ? "eager" : "lazy"} />
-                            </div>
-                        </figure>
-                    ))}
-
-                    <img
-                        className="studio-mood-stamp"
-                        src={studioStampImage}
-                        alt=""
-                        aria-hidden="true"
-                    />
-                    <div className="studio-mood-swatches" aria-hidden="true">
-                        <span /><span /><span /><span />
-                    </div>
-                    <span className="studio-mood-tape studio-mood-tape-one" aria-hidden="true" />
-                    <span className="studio-mood-tape studio-mood-tape-two" aria-hidden="true" />
-                    <span className="studio-mood-heart" aria-hidden="true">♡</span>
+                                    {category.id === "apparel" && (
+                                        <img
+                                            className="studio-category-stamp"
+                                            src={studioStampImage}
+                                            alt=""
+                                            aria-hidden="true"
+                                            loading="lazy"
+                                            decoding="async"
+                                        />
+                                    )}
+                                </div>
+                            </section>
+                        );
+                    })}
                 </div>
 
                 <aside className="studio-construction" aria-labelledby="studio-construction-title">

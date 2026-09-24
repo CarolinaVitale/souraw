@@ -122,6 +122,10 @@ function Navbar() {
                                     UNTAMED STUDIO
                                 </Link>
 
+                                <Link to="/untamed-studio-finds" className="nav-dropdown-link" onClick={closeMobileMenu}>
+                                    STUDIO FINDS
+                                </Link>
+
                                 <Link to="#" className="nav-dropdown-link" onClick={openContact}>
                                     CONTACT
                                 </Link>
@@ -132,6 +136,9 @@ function Navbar() {
 
                                 <Link to="/reviews" className="nav-dropdown-link" onClick={closeMobileMenu}>
                                     REVIEWS
+                                </Link>
+                                <Link to="/links" className="nav-dropdown-link" onClick={closeMobileMenu}>
+                                    SOURAW LINKS
                                 </Link>
                                 
                             </div>

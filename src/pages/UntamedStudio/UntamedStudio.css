@@ -131,6 +131,13 @@
     transition: box-shadow .2s ease, transform .2s ease;
 }
 
+.studio-hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: .85rem;
+}
+
 .studio-pill:hover {
     box-shadow: 3px 4px 0 var(--studio-dark);
     transform: translate(4px, 4px);
@@ -330,6 +337,42 @@
 .studio-filters button.is-active {
     background: var(--studio-dark);
     color: var(--studio-cream);
+}
+
+.studio-category-filters {
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.studio-category-filters button {
+    min-width: 150px;
+    border-width: 3px;
+    box-shadow: 4px 5px 0 var(--studio-dark);
+    transition: box-shadow .2s ease, transform .2s ease;
+}
+
+.studio-category-filters button:nth-child(1) {
+    background: var(--studio-yellow);
+}
+
+.studio-category-filters button:nth-child(2) {
+    background: var(--studio-pink);
+}
+
+.studio-category-filters button:nth-child(3) {
+    background: var(--studio-blue);
+}
+
+.studio-category-filters button:hover,
+.studio-category-filters button.is-active {
+    box-shadow: 2px 3px 0 var(--studio-dark);
+    color: var(--studio-dark);
+    transform: translate(2px, 2px) rotate(-1deg);
+}
+
+.studio-category-filters button.is-active {
+    outline: 3px solid var(--studio-dark);
+    outline-offset: 3px;
 }
 
 .studio-grid {
@@ -669,62 +712,23 @@
     transform: rotate(.5deg);
 }
 
-.studio-mood-grid-lines {
-    position: absolute;
-    z-index: -3;
-    top: 8%;
-    left: 7%;
-    width: 43%;
-    height: 43%;
-    opacity: .15;
-    background-image:
-        linear-gradient(var(--studio-red) 2px, transparent 2px),
-        linear-gradient(90deg, var(--studio-red) 2px, transparent 2px);
-    background-size: 62px 62px;
-    transform: rotate(-4deg);
-}
-
-.studio-mood-paper {
-    position: absolute;
-    z-index: -2;
-    pointer-events: none;
-}
-
-.studio-mood-paper-purple {
-    top: 2%;
-    right: 8%;
-    width: 34%;
-    height: 43%;
-    background: var(--studio-purple);
-    clip-path: polygon(5% 3%, 96% 0, 100% 92%, 8% 100%, 0 34%);
-    transform: rotate(3deg);
-}
-
-.studio-mood-paper-yellow {
-    left: 3%;
-    bottom: 3%;
-    width: 60%;
-    height: 42%;
-    background: var(--studio-yellow);
-    clip-path: polygon(2% 10%, 96% 0, 100% 90%, 5% 100%);
-    transform: rotate(-2deg);
-}
-
-.studio-mood-paper-pink {
-    right: 2%;
-    bottom: 4%;
-    width: 38%;
-    aspect-ratio: 1;
-    border-radius: 50%;
-    background: var(--studio-pink);
-    opacity: .88;
-}
-
 .studio-mood-piece {
     position: absolute;
     z-index: 3;
     margin: 0;
     filter: drop-shadow(13px 15px 0 rgba(54, 54, 54, .22));
+    animation: studio-piece-in .45s ease both;
+}
+
+@keyframes studio-piece-in {
+    from {
+        opacity: 0;
+        transform: translateY(18px) rotate(0);
+    }
+
+    to {
+        opacity: 1;
+    }
 }
 
 .studio-mood-photo {
@@ -870,6 +874,51 @@
     transform: rotate(-5deg);
 }
 
+.studio-mood-piece-spoonable-stickers {
+    top: 6%;
+    left: 33%;
+    z-index: 6;
+    width: 35%;
+    transform: rotate(-2.5deg);
+}
+
+.studio-mood-piece-spoonable-stickers .studio-mood-photo {
+    border: 15px solid var(--studio-cream);
+    border-bottom-width: 46px;
+}
+
+.studio-moodboard-apparel,
+.studio-moodboard-stickers {
+    height: clamp(760px, 62vw, 920px);
+}
+
+.studio-moodboard-apparel .studio-mood-piece-custom-tote-work {
+    top: 12%;
+    bottom: auto;
+    left: 17%;
+    width: 64%;
+}
+
+.studio-moodboard-apparel .studio-mood-stamp {
+    top: 61%;
+    left: 67%;
+}
+
+.studio-moodboard-apparel .studio-mood-script-bottom {
+    right: 8%;
+    bottom: 8%;
+}
+
+.studio-moodboard-stickers .studio-mood-stamp {
+    top: 58%;
+    left: 15%;
+}
+
+.studio-moodboard-stickers .studio-mood-script-bottom {
+    right: 8%;
+    bottom: 10%;
+}
+
 .studio-mood-stamp {
     position: absolute;
     z-index: 9;
@@ -905,40 +954,6 @@
     transform: rotate(4deg);
 }
 
-.studio-mood-swatches {
-    position: absolute;
-    z-index: 8;
-    left: 0%;
-    bottom: 35%;
-    display: flex;
-    gap: .65rem;
-    transform: rotate(-90deg);
-}
-
-.studio-mood-swatches span {
-    width: 36px;
-    height: 36px;
-    border: 2px solid var(--studio-dark);
-    border-radius: 50%;
-    box-shadow: 3px 3px 0 var(--studio-dark);
-}
-
-.studio-mood-swatches span:nth-child(1) {
-    background: var(--studio-red);
-}
-
-.studio-mood-swatches span:nth-child(2) {
-    background: var(--studio-yellow);
-}
-
-.studio-mood-swatches span:nth-child(3) {
-    background: var(--studio-pink);
-}
-
-.studio-mood-swatches span:nth-child(4) {
-    background: var(--studio-purple);
-}
-
 .studio-mood-tape {
     position: absolute;
     z-index: 10;
@@ -960,18 +975,6 @@
     transform: rotate(-12deg);
 }
 
-.studio-mood-heart {
-    position: absolute;
-    z-index: 8;
-    right: 1%;
-    top: 46%;
-    color: var(--studio-red);
-    font-family: "Biro", cursive;
-    font-size: clamp(5rem, 9vw, 9rem);
-    line-height: 1;
-    transform: rotate(12deg);
-}
-
 @keyframes studio-stamp-float {
 
     0%,
@@ -982,6 +985,191 @@
     50% {
         transform: rotate(-8deg) translateY(-10px);
     }
+}
+
+.studio-category-boards {
+    width: min(1320px, 100%);
+    margin: 2rem auto 0;
+}
+
+.studio-category-board {
+    position: relative;
+    padding: clamp(4.5rem, 8vw, 7rem) 0 clamp(6rem, 10vw, 9rem);
+    border-top: 2px solid rgba(54, 54, 54, .16);
+}
+
+.studio-category-board:first-child {
+    border-top: 0;
+}
+
+.studio-category-heading {
+    position: relative;
+    z-index: 4;
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.studio-category-heading .studio-script {
+    max-width: 15ch;
+    margin: 0 0 .35rem;
+    color: var(--studio-red);
+    font-size: clamp(1.8rem, 3vw, 3.2rem);
+}
+
+.studio-category-heading h3 {
+    margin: 0;
+    font-size: clamp(4rem, 9vw, 9.5rem);
+    font-weight: 900;
+    letter-spacing: -.075em;
+    line-height: .78;
+    text-transform: uppercase;
+}
+
+.studio-category-board-apparel .studio-category-heading {
+    flex-direction: row-reverse;
+}
+
+.studio-category-board-apparel .studio-category-heading .studio-script {
+    color: var(--studio-purple);
+    text-align: right;
+}
+
+.studio-category-board-stickers .studio-category-heading .studio-script {
+    color: var(--studio-blue);
+}
+
+.studio-category-collage {
+    position: relative;
+    width: 100%;
+}
+
+.studio-category-collage-parties {
+    height: clamp(820px, 72vw, 1050px);
+}
+
+.studio-category-collage-apparel {
+    height: clamp(760px, 64vw, 930px);
+}
+
+.studio-category-collage-stickers {
+    height: clamp(680px, 58vw, 850px);
+}
+
+.studio-category-piece {
+    position: absolute;
+    z-index: 2;
+    margin: 0;
+    overflow: hidden;
+    background: #f4ede4;
+    box-shadow: 0 18px 38px rgba(54, 54, 54, .13);
+    animation: studio-piece-in .55s ease both;
+}
+
+.studio-category-piece img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform .55s ease;
+}
+
+.studio-category-piece:hover img {
+    transform: scale(1.025);
+}
+
+.studio-category-piece-lucky-cat-dish {
+    top: 18%;
+    left: 2%;
+    width: 25%;
+    aspect-ratio: 3 / 4;
+}
+
+.studio-category-piece-sushi-mat-sleeves {
+    top: 0;
+    left: 27%;
+    z-index: 3;
+    width: 30%;
+    aspect-ratio: 3 / 4;
+}
+
+.studio-category-piece-sushi-mat {
+    top: 24%;
+    left: 47%;
+    z-index: 4;
+    width: 27%;
+    aspect-ratio: 3 / 4;
+}
+
+.studio-category-piece-personalized-board {
+    top: 49%;
+    right: 0;
+    z-index: 5;
+    width: 24%;
+    aspect-ratio: 3 / 4;
+}
+
+.studio-category-piece-lucky-cat-party-tote {
+    top: 2%;
+    right: 1%;
+    width: 24%;
+    aspect-ratio: 3 / 4;
+}
+
+.studio-category-piece-custom-tote-work {
+    top: 27%;
+    left: 2%;
+    width: 46%;
+    aspect-ratio: 4 / 3;
+}
+
+.studio-category-piece-lucky-cat-apparel-tote {
+    top: 0;
+    left: 37%;
+    width: 28%;
+    aspect-ratio: 9 / 16;
+}
+
+.studio-category-piece-woven-face-label {
+    top: 34%;
+    left: 57%;
+    z-index: 4;
+    width: 23%;
+    aspect-ratio: 9 / 16;
+}
+
+.studio-category-piece-woven-studio-labels {
+    top: 4%;
+    right: 0;
+    width: 25%;
+    aspect-ratio: 9 / 16;
+}
+
+.studio-category-piece-spoonable-packaging {
+    top: 16%;
+    left: 10%;
+    width: 37%;
+    aspect-ratio: 3 / 4;
+}
+
+.studio-category-piece-spoonable-sticker-roll {
+    top: 0;
+    right: 13%;
+    width: 40%;
+    aspect-ratio: 2 / 3;
+}
+
+.studio-category-stamp {
+    position: absolute;
+    z-index: 5;
+    right: 8%;
+    bottom: 2%;
+    width: clamp(145px, 18vw, 230px);
+    height: auto;
+    filter: drop-shadow(7px 8px 0 rgba(54, 54, 54, .15));
+    animation: studio-stamp-float 7s ease-in-out infinite;
 }
 
 .studio-construction {
@@ -1273,9 +1461,129 @@
         font-size: 2rem;
     }
 
+    .studio-category-boards {
+        margin-top: 1rem;
+    }
+
+    .studio-category-board {
+        padding: 4.5rem 0 5.5rem;
+    }
+
+    .studio-category-heading,
+    .studio-category-board-apparel .studio-category-heading {
+        display: block;
+        margin-bottom: 2.5rem;
+    }
+
+    .studio-category-board-apparel .studio-category-heading .studio-script {
+        text-align: left;
+    }
+
+    .studio-category-heading .studio-script {
+        max-width: 100%;
+        font-size: 1.65rem;
+    }
+
+    .studio-category-heading h3 {
+        font-size: clamp(3.8rem, 18vw, 5.4rem);
+    }
+
+    .studio-category-collage-parties {
+        height: 1180px;
+    }
+
+    .studio-category-piece-lucky-cat-dish {
+        top: 0;
+        left: 0;
+        width: 48%;
+    }
+
+    .studio-category-piece-sushi-mat-sleeves {
+        top: 8%;
+        left: auto;
+        right: 0;
+        width: 47%;
+    }
+
+    .studio-category-piece-sushi-mat {
+        top: 38%;
+        right: auto;
+        left: 5%;
+        width: 48%;
+    }
+
+    .studio-category-piece-personalized-board {
+        top: 46%;
+        right: 0;
+        width: 45%;
+    }
+
+    .studio-category-piece-lucky-cat-party-tote {
+        top: 72%;
+        right: 21%;
+        width: 58%;
+    }
+
+    .studio-category-collage-apparel {
+        height: 1080px;
+    }
+
+    .studio-category-piece-custom-tote-work {
+        top: 0;
+        left: 3%;
+        width: 94%;
+    }
+
+    .studio-category-piece-lucky-cat-apparel-tote {
+        top: 31%;
+        left: 0;
+        width: 48%;
+    }
+
+    .studio-category-piece-woven-studio-labels {
+        top: 29%;
+        right: 0;
+        width: 47%;
+    }
+
+    .studio-category-piece-woven-face-label {
+        top: 67%;
+        left: 24%;
+        width: 52%;
+    }
+
+    .studio-category-stamp {
+        right: 0;
+        bottom: -5%;
+        width: 135px;
+    }
+
+    .studio-category-collage-stickers {
+        height: 720px;
+    }
+
+    .studio-category-piece-spoonable-packaging {
+        top: 0;
+        left: 0;
+        width: 49%;
+    }
+
+    .studio-category-piece-spoonable-sticker-roll {
+        top: 12%;
+        right: 0;
+        width: 48%;
+    }
+
     .studio-filters {
         display: grid;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: .55rem;
+    }
+
+    .studio-category-filters button {
+        min-width: 0;
+        padding: .7rem .35rem;
+        font-size: .6rem;
     }
 
     .studio-grid {
@@ -1289,33 +1597,6 @@
 
     .studio-moodboard::before {
         inset: 0 -.35rem 1%;
-    }
-
-    .studio-mood-grid-lines {
-        top: 4%;
-        left: -12%;
-        width: 90%;
-        height: 25%;
-    }
-
-    .studio-mood-paper-purple {
-        top: 18%;
-        right: -12%;
-        width: 78%;
-        height: 27%;
-    }
-
-    .studio-mood-paper-yellow {
-        left: -10%;
-        bottom: 14%;
-        width: 100%;
-        height: 28%;
-    }
-
-    .studio-mood-paper-pink {
-        right: -28%;
-        bottom: 0;
-        width: 84%;
     }
 
     .studio-mood-piece {
@@ -1354,6 +1635,54 @@
         width: 58%;
     }
 
+    .studio-mood-piece-spoonable-stickers {
+        top: 10%;
+        left: 10%;
+        width: 78%;
+    }
+
+    .studio-moodboard-apparel {
+        height: 760px;
+    }
+
+    .studio-moodboard-apparel .studio-mood-piece-custom-tote-work {
+        top: 17%;
+        bottom: auto;
+        left: 5%;
+        width: 90%;
+    }
+
+    .studio-moodboard-apparel .studio-mood-stamp {
+        top: 60%;
+        left: 50%;
+        width: 190px;
+    }
+
+    .studio-moodboard-apparel .studio-mood-script-bottom {
+        right: auto;
+        bottom: 5%;
+        left: 6%;
+        width: 88%;
+        transform: rotate(-3deg);
+    }
+
+    .studio-moodboard-stickers {
+        height: 1000px;
+    }
+
+    .studio-moodboard-stickers .studio-mood-stamp {
+        top: 68%;
+        left: -2%;
+        width: 185px;
+    }
+
+    .studio-moodboard-stickers .studio-mood-script-bottom {
+        right: 4%;
+        bottom: 6%;
+        width: 76%;
+        transform: rotate(-5deg);
+    }
+
     .studio-mood-piece figcaption {
         max-width: 88%;
     }
@@ -1384,24 +1713,6 @@
         width: 60%;
         font-size: 1.65rem;
         transform: rotate(-60deg);
-    }
-
-    .studio-mood-swatches {
-        left: auto;
-        right: 75%;
-        bottom: 12%;
-        gap: .45rem;
-    }
-
-    .studio-mood-swatches span {
-        width: 27px;
-        height: 27px;
-    }
-
-    .studio-mood-heart {
-        top: 43%;
-        right: 2%;
-        font-size: 5rem;
     }
 
     .studio-mood-tape-one {

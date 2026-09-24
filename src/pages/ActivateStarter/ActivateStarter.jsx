@@ -569,7 +569,7 @@ export default function ActivateStarter() {
 
                     <div className="starter-support-actions">
                         <a
-                            href="https://instagram.com/souraw.cv"
+                            href="https://instagram.com/souraw.us"
                             target="_blank"
                             rel="noreferrer"
                         >

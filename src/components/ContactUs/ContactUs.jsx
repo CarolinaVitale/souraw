@@ -17,7 +17,7 @@ const ContactUs = () => {
                         Write to us and let’s start sharing sourdough with purpose
                     </p>
                     <a
-                        href="https://wa.me/584121531299?text=Hola%2C%20quisiera%20hacer%20un%20pedido%20♡"
+                        href="https://wa.me/18134853547?text=Hola%2C%20quisiera%20hacer%20un%20pedido%20♡"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="contact-button"
