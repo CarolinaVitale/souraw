@@ -14,9 +14,18 @@
 }
 
 .top-heart {
+    display: inline-block;
+    transform-origin: center;
+    animation: links-heartbeat 2.8s ease-in-out infinite;
     margin-top: 10px;
 
     color: var(--color-bg);
+}
+@keyframes links-heartbeat {
+    0%, 40%, 100% { transform: scale(1); }
+    12% { transform: scale(1.12); }
+    22% { transform: scale(1); }
+    30% { transform: scale(1.08); }
 }
 .souraw-links-shell {
     position: relative;
@@ -186,6 +195,13 @@
     font-weight: 800;
 }
 
+.souraw-links-emphasis {
+    color: #c1272d;
+    font-size: 1.2em;
+    font-weight: 900;
+    letter-spacing: .03em;
+}
+
 .souraw-links-label>span {
     display: block;
     margin-top: 5px;
@@ -312,6 +328,7 @@
 
 @media (prefers-reduced-motion: reduce) {
 
+    .top-heart,
     .souraw-links-orbit,
     .souraw-links-bubble {
         animation: none;

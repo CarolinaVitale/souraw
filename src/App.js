@@ -16,6 +16,7 @@ import 'aos/dist/aos.css';
 import { auth } from './firebase';
 import { signInAnonymously } from 'firebase/auth';
 import Prices from './pages/Prices/Prices';
+import OrderSelection from './pages/Prices/OrderSelection';
 import SourawFinds from './pages/SourawFinds/SourawFinds';
 import ActivateStarter from "./pages/ActivateStarter/ActivateStarter";
 import UnrushedLab from "./pages/UnrushedLab/UnrushedLab";
@@ -48,7 +49,9 @@ function App() {
         <Route path="/links" element={<Links />} />
         <Route path="/reviews" element={<Reviews />} />
         <Route path="/schedule" element={<Orders />} />
-        <Route path="/orders" element={<Prices />} />
+        <Route path="/orders" element={<OrderSelection />} />
+        <Route path="/orders/sourdough" element={<Prices />} />
+        <Route path="/orders/sweets" element={<Prices sweets />} />
         <Route path="/souraw-finds" element={<SourawFinds/>}/>
         <Route path="/activate-starter" element={<ActivateStarter />} />
         <Route path="/starter" element={<UnrushedLab />} />

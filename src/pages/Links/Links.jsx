@@ -5,9 +5,9 @@ import face from '../../assets/brand-elements/face-pink.png';
 import './Links.css';
 
 const destinations = [
-    { to: '/orders', title: 'Order something good', description: 'Your next sourdough obsession starts here.', icon: FaShoppingBag, color: 'red' },
+    { href: '/souraw.vcf', download: 'SOURAW.vcf', title: 'Save our CONTACT', emphasis: 'CONTACT', description: 'Keep SOURAW a tap away.', icon: FaAddressCard, color: 'cream' },
+    { to: '/orders', title: 'ORDERS', emphasis: 'ORDERS', description: 'Your next sourdough obsession starts here.', icon: FaShoppingBag, color: 'red' },
     { to: '/souraw-finds', title: 'SOURAW finds', description: 'The tools & little things we love.', icon: FaHeart, color: 'yellow' },
-    { href: '/souraw.vcf', download: 'SOURAW.vcf', title: 'Save our contact', description: 'Keep SOURAW a tap away.', icon: FaAddressCard, color: 'cream' },
 ];
 
 export default function Links() {
@@ -30,10 +30,10 @@ export default function Links() {
                 </header>
 
                 <nav className="souraw-links-list" aria-label="Explore SOURAW">
-                    {destinations.map(({ to, href, download, title, description, icon: Icon, color }) => {
+                    {destinations.map(({ to, href, download, title, emphasis, description, icon: Icon, color }) => {
                         const content = <>
                             <span className="souraw-links-icon"><Icon aria-hidden="true" /></span>
-                            <span className="souraw-links-label"><strong>{title}</strong><span>{description}</span></span>
+                            <span className="souraw-links-label"><strong>{emphasis ? <>{title.slice(0, title.indexOf(emphasis))}<span className="souraw-links-emphasis">{emphasis}</span></> : title}</strong><span>{description}</span></span>
                             <FaArrowRight className="souraw-links-arrow" aria-hidden="true" />
                         </>;
                         const className = `souraw-links-card souraw-links-card--${color}`;

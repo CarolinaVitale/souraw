@@ -207,8 +207,8 @@ export const products = [
         badge: "Coming Soon",
         description: "Crafted with espresso-soaked savoiardi infused with a subtle touch of liqueur, velvety mascarpone cream, and finished with an exceptional gourmet cocoa. Rich, delicate, and deeply nostalgic — a dessert inspired by my Italian roots and made slowly, the SOURAW way.",
         ingredients: "Mascarpone, coffee, egg yolks, sugar, savoiardi biscuits, liqueur, gourmet cocoa powder.",
-        catalogImage: require("../assets/prices/tiramisu.webp"),
-        priceImage: require("../assets/prices/tiramisu.webp"),
+        catalogImage: require("../assets/prices/classic-tiramisu.jpg"),
+        priceImage: require("../assets/prices/classic-tiramisu.jpg"),
     }, 
 
     {
@@ -229,11 +229,11 @@ export const products = [
         available: true,
         description: "Crispy edges, soft centers, and pools of melted dark chocolate. Slow-made, generously filled, and finished with flaky sea salt for the perfect sweet-salty bite.",
         ingredients: "Wheat flour, dark chocolate chips, butter, brown sugar, sugar, eggs, vanilla, baking soda, salt.",
-        catalogImage: require("../assets/prices/cookies.webp"),
-        priceImage: require("../assets/prices/cookies.webp"),
+        catalogImage: require("../assets/prices/chocolate-chip-box.jpg"),
+        priceImage: require("../assets/prices/chocolate-chip-box.jpg"),
     },
     {
-        id: "cookies-sweet",
+        id: "snickerdoodles-sweet",
         category: "tenderSweets",
         name: "Snickerdoodles",
         prices: [

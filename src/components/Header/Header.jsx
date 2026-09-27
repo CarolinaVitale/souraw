@@ -80,19 +80,21 @@ function Navbar() {
                                 ORDERS
                             </Link>
                         </li>
+                        {/* Temporarily hidden; the /starter page remains available.
                         <li className="nav-item">
                             <Link to="/starter" className="nav-links" onClick={closeMobileMenu}>
                                 STARTER
                             </Link>
                         </li>
+                        */}
                         <li className="nav-item">
                             <Link to="/souraw-finds" className="nav-links" onClick={closeMobileMenu}>
                                 SOURAW FINDS 
                             </Link>
                         </li>
                         <li className="nav-item">
-                            <Link to="/diy" className="nav-links" onClick={closeMobileMenu}>
-                                DIY
+                            <Link to="/menu" className="nav-links" onClick={closeMobileMenu}>
+                                MENU
                             </Link>
                         </li>
 
@@ -109,11 +111,7 @@ function Navbar() {
 
                             <div className={moreOpen ? "nav-dropdown open" : "nav-dropdown"}>
                                 <p className="nav-dropdown-label">Keep exploring</p>
-
-                                <Link to="/menu" className="nav-dropdown-link" onClick={closeMobileMenu}>
-                                    MENU
-                                </Link>
-
+                                
                                 <Link to="/about" className="nav-dropdown-link" onClick={closeMobileMenu}>
                                     ABOUT
                                 </Link>
@@ -122,23 +120,28 @@ function Navbar() {
                                     UNTAMED STUDIO
                                 </Link>
 
+                                <Link to="/reviews" className="nav-dropdown-link" onClick={closeMobileMenu}>
+                                    REVIEWS
+                                </Link>
+
                                 <Link to="/untamed-studio-finds" className="nav-dropdown-link" onClick={closeMobileMenu}>
                                     STUDIO FINDS
                                 </Link>
 
-                                <Link to="#" className="nav-dropdown-link" onClick={openContact}>
-                                    CONTACT
+                                <Link to="/souraw-finds" className="nav-dropdown-link" onClick={closeMobileMenu}>
+                                    SOURAW FINDS
+                                </Link>
+
+                                <Link to="/diy" className="nav-dropdown-link" onClick={closeMobileMenu}>
+                                    DIY
                                 </Link>
 
                                 <Link to="/schedule" className="nav-dropdown-link" onClick={closeMobileMenu}>
                                     SCHEDULE
                                 </Link>
 
-                                <Link to="/reviews" className="nav-dropdown-link" onClick={closeMobileMenu}>
-                                    REVIEWS
-                                </Link>
-                                <Link to="/links" className="nav-dropdown-link" onClick={closeMobileMenu}>
-                                    SOURAW LINKS
+                                <Link to="#" className="nav-dropdown-link" onClick={openContact}>
+                                    CONTACT
                                 </Link>
                                 
                             </div>

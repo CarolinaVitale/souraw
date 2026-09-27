@@ -3,8 +3,8 @@ import Hero from '../components/Hero/Hero';
 import Carousel from '../components/MenuCarousel/MenuCarousel';
 import Illustration from '../components/Illustration/Illustration';
 import Ribbon from '../components/Ribbon/Ribbon';
-import HomeStarterFeature from '../components/HomeConversion/HomeStarterFeature';
-import HomePathways from '../components/HomeConversion/HomePathways';
+// import HomeStarterFeature from '../components/HomeConversion/HomeStarterFeature';
+// import HomePathways from '../components/HomeConversion/HomePathways';
 import HomeInstagramFeed from '../components/HomeConversion/HomeInstagramFeed';
 import Founder from '../components/Founder/Founder';
 import SpecialtiesCollage from '../components/SpecialtiesCollage/SpecialtiesCollage';
@@ -17,10 +17,11 @@ const Home = () => {
             <div id="home-after-hero">
                 <Ribbon />
             </div>
-            <HomeStarterFeature />
-            <HomePathways />
-            <HomeInstagramFeed />
             <Founder />
+            {/* <HomeStarterFeature /> */}
+            {/* Pick your path includes Unrushed Lab and Find the little things. */}
+            {/* <HomePathways /> */}
+            <HomeInstagramFeed />
             <ChoosingUs />
             <SpecialtiesCollage />
             <Carousel />
