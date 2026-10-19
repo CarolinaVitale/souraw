@@ -1,44 +1,40 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { FaAddressCard, FaInstagram, FaTiktok, FaArrowRight, FaShoppingBag, FaHeart } from 'react-icons/fa';
+import { FaAddressCard, FaInstagram, FaTiktok, FaArrowRight, FaShoppingBag, FaHeart, FaEtsy } from 'react-icons/fa';
 import face from '../../assets/brand-elements/face-pink.png';
 import './Links.css';
 
 const destinations = [
     { href: '/souraw.vcf', download: 'SOURAW.vcf', title: 'Save our CONTACT', emphasis: 'CONTACT', description: 'Keep SOURAW a tap away.', icon: FaAddressCard, color: 'cream' },
     { to: '/orders', title: 'ORDERS', emphasis: 'ORDERS', description: 'Your next sourdough obsession starts here.', icon: FaShoppingBag, color: 'red' },
+    { href: 'https://souraw.etsy.com', external: true, title: 'Shop on ETSY', emphasis: 'ETSY', description: 'Visit our SOURAW shop on Etsy.', icon: FaEtsy, color: 'cream' },
     { to: '/souraw-finds', title: 'SOURAW finds', description: 'The tools & little things we love.', icon: FaHeart, color: 'yellow' },
 ];
 
 export default function Links() {
     return (
         <main className="souraw-links-page">
-            <div className="souraw-links-background" aria-hidden="true">
-                <span className="souraw-links-orbit souraw-links-orbit--pink" />
-                <span className="souraw-links-orbit souraw-links-orbit--blue" />
-                <span className="souraw-links-bubble souraw-links-bubble--pink" />
-            </div>
             <div className="souraw-links-shell">
                 <header className="souraw-links-intro">
-                    <h1><i className="fa-solid fa-heart top-heart"></i></h1>
-                    <h1>
-                        <span className="souraw-links-heading-line"><span className="souraw-links-daily">Your daily</span> <img className="souraw-links-avatar" src={face} alt="" /></span>
-                        <span className="souraw-links-heading-accent">dose of SOURAW.</span>
-                    </h1>
-                    <p className="souraw-links-kicker">a little bit of everything</p>
-                    <p>Bread, finds & good things. All in one place.</p>
+                    <p className="souraw-links-eyebrow">THE SOURAW EDIT / GOOD THINGS, GATHERED.</p>
+                    <h1>Your daily<br />dose of <span>SOURAW.</span></h1>
+                    <div className="souraw-links-intro-note">
+                        <p>Bread, finds &amp; good things.<br />A little bit of everything. All in one place.</p>
+                        <img className="souraw-links-avatar" src={face} alt="" />
+                    </div>
                 </header>
 
                 <nav className="souraw-links-list" aria-label="Explore SOURAW">
-                    {destinations.map(({ to, href, download, title, emphasis, description, icon: Icon, color }) => {
+                    {destinations.map(({ to, href, download, external, title, emphasis, description, icon: Icon, color }, index) => {
                         const content = <>
+                            <span className="souraw-links-number" aria-hidden="true">0{index + 1}</span>
                             <span className="souraw-links-icon"><Icon aria-hidden="true" /></span>
                             <span className="souraw-links-label"><strong>{emphasis ? <>{title.slice(0, title.indexOf(emphasis))}<span className="souraw-links-emphasis">{emphasis}</span></> : title}</strong><span>{description}</span></span>
                             <FaArrowRight className="souraw-links-arrow" aria-hidden="true" />
                         </>;
                         const className = `souraw-links-card souraw-links-card--${color}`;
                         return to ? <Link key={title} to={to} className={className}>{content}</Link> :
-                            <a key={title} href={href} download={download} className={className}>{content}</a>;
+                            <a key={title} href={href} download={download} target={external ? '_blank' : undefined} rel={external ? 'noopener noreferrer' : undefined} className={className}>{content}</a>;
                     })}
                 </nav>
 
