@@ -1,3 +1,4 @@
+import BrandSticker from '../../components/BrandSticker/BrandSticker';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import bread from '../../assets/prices/sourdough-selection.jpg';
@@ -12,9 +13,13 @@ export default function OrderSelection() {
                 <h1>What sounds good?</h1>
                 <p>A fresh loaf or a little treat. Start here.</p>
             </header>
+            <BrandSticker name="bakedForYou" className="souraw-sticker--selection-note" eager />
             <div className="order-selection-grid">
                 <Link to="/orders/sourdough" className="order-selection-card order-selection-card--bread">
-                    <img src={bread} alt="SOURAW sourdough loaf" />
+                    <span className="order-selection-photo">
+                        <img src={bread} alt="SOURAW sourdough loaf" />
+                        <BrandSticker name="wrappedBaguette" className="souraw-sticker--selection-bread" eager />
+                    </span>
                     <div>
                         
                         <h2>Sourdough</h2>
@@ -23,7 +28,10 @@ export default function OrderSelection() {
                     </div>
                 </Link>
                 <Link to="/orders/sweets" className="order-selection-card order-selection-card--sweets">
-                    <img src={cookies} alt="Chocolate chip cookie" />
+                    <span className="order-selection-photo">
+                        <img src={cookies} alt="Chocolate chip cookie" />
+                        <BrandSticker name="cookieBox" className="souraw-sticker--selection-cookies" eager />
+                    </span>
                     <div>
                         
                         <h2>Cookies & sweets</h2>

@@ -69,8 +69,8 @@ export const products = [
             "Rustic, golden, and deeply satisfying. A moist crumb with a crisp exterior, finished with extra virgin olive oil.",
         ingredients:
             "Wheat flour, water, sourdough starter, rosemary, extra virgin olive oil, salt.",
-        catalogImage: require("../assets/prices/focaccia.webp"),
-        priceImage: require("../assets/prices/focaccia.webp"),
+        catalogImage: require("../assets/prices/focaccia.optimized.webp"),
+        priceImage: require("../assets/prices/focaccia.optimized.webp"),
         featured: true,
         available: true,
     },

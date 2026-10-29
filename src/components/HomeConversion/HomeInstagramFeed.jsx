@@ -1,3 +1,4 @@
+import BrandSticker from '../BrandSticker/BrandSticker';
 import React from "react";
 import {
     FaInstagram,
@@ -7,8 +8,8 @@ import {
     FaRegPaperPlane,
 } from "react-icons/fa";
 import "./HomeConversion.css";
-import instagramPostImage from "../../assets/instagram-starter-lab.png";
-import breadCrew from "../../assets/followus-bg2.webp";
+import instagramPostImage from "../../assets/instagram-starter-lab.optimized.webp";
+import breadCrew from "../../assets/followus-bg2.optimized.webp";
 
 const instagramUrl = "https://instagram.com/souraw.us";
 
@@ -37,6 +38,7 @@ export default function HomeInstagramFeed() {
                 >
                     follow @souraw.us <span aria-hidden="true">↗</span>
                 </a>
+                <BrandSticker name="icedCoffeeGirl" className="souraw-sticker--instagram" />
             </div>
 
             <div className="home-instagram-stage" data-aos="fade-up" data-aos-delay="120">
@@ -72,7 +74,7 @@ export default function HomeInstagramFeed() {
                     </div>
 
                     <div className="home-instagram-media">
-                        <img src={instagramPostImage} alt="SOURAW starter behind the scenes" />
+                        <img loading="lazy" decoding="async" src={instagramPostImage} alt="SOURAW starter behind the scenes" />
                     </div>
 
                     <div className="home-instagram-actions" aria-hidden="true">
@@ -88,7 +90,7 @@ export default function HomeInstagramFeed() {
                 </a>
             </div>
 
-            <img
+            <img loading="lazy" decoding="async"
                 className="home-instagram-bread-crew"
                 src={breadCrew}
                 alt=""

@@ -1,3 +1,4 @@
+import BrandSticker from '../../components/BrandSticker/BrandSticker';
 import React, { useState } from "react";
 import { ArrowUpRight, Heart, Sparkle } from "@phosphor-icons/react";
 import "./SourawFinds.css";
@@ -30,6 +31,7 @@ export default function SourawFinds() {
                     <a href="#finds-shop" className="finds-jump">
                         browse my favorites <ArrowUpRight size={19} weight="bold" />
                     </a>
+                    <BrandSticker name="icedCoffee" className="souraw-sticker--finds" />
                 </div>
 
                 <div className="finds-hero-scene" aria-hidden="true">

@@ -1,3 +1,4 @@
+import BrandSticker from '../../components/BrandSticker/BrandSticker';
 import React, { useState } from "react";
 import { Clock, MapPin, ShoppingBag, ArrowUpRight } from "@phosphor-icons/react";
 import "./Prices.css";
@@ -93,6 +94,7 @@ const Prices = ({ sweets = false }) => {
                         <img src={sweets ? sweetsImage : breadImage} alt="" />
                     </div>
                 </div>
+                {!sweets && <BrandSticker name="packingBoxes" className="souraw-sticker--bread-hug" eager />}
             </section>
 
             <nav className="order-category-nav" aria-label="Order categories">
@@ -237,6 +239,7 @@ const Prices = ({ sweets = false }) => {
                 <div>
                     <p className="prices-section-kicker">Tampa locals only</p>
                     <h2 id="pickup-title">{sweets ? <>Pick up your<br />sweet things.</> : <>Meet me at<br />Canopy.</>}</h2>
+                    <BrandSticker name="breadHug" className="souraw-sticker--pickup" />
                 </div>
                 <div className="order-pickup-copy">
                     <MapPin size={38} weight="fill" />

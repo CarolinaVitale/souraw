@@ -116,9 +116,9 @@ function Navbar() {
                                     ABOUT
                                 </Link>
 
-                                <Link to="/untamed-studio" className="nav-dropdown-link" onClick={closeMobileMenu}>
+                                {/* <Link to="/untamed-studio" className="nav-dropdown-link" onClick={closeMobileMenu}>
                                     UNTAMED STUDIO
-                                </Link>
+                                </Link> */}
 
                                 <Link to="/reviews" className="nav-dropdown-link" onClick={closeMobileMenu}>
                                     REVIEWS
@@ -132,9 +132,9 @@ function Navbar() {
                                     SOURAW FINDS
                                 </Link>
 
-                                <Link to="/diy" className="nav-dropdown-link" onClick={closeMobileMenu}>
+                                {/* <Link to="/diy" className="nav-dropdown-link" onClick={closeMobileMenu}>
                                     DIY
-                                </Link>
+                                </Link> */}
 
                                 <Link to="/schedule" className="nav-dropdown-link" onClick={closeMobileMenu}>
                                     SCHEDULE

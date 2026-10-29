@@ -1,0 +1,33 @@
+.souraw-sticker { display: inline-block; width: var(--sticker-width, 140px); flex: 0 0 auto; pointer-events: none; user-select: none; vertical-align: middle; transform: rotate(var(--sticker-turn, -6deg)); position: relative; z-index: 3; }
+.souraw-sticker.souraw-sticker > img { display: block; width: 100%; height: auto; max-width: 100%; aspect-ratio: auto; object-fit: contain; border: 0; border-radius: 0; filter: drop-shadow(0 1px 0 rgba(44, 31, 22, .26)) drop-shadow(3px 5px 3px rgba(44, 31, 22, .19)); }
+.souraw-sticker--hero { position: absolute; top: 19%; right: 7%; --sticker-width: clamp(180px, 21vw, 290px); --sticker-turn: 8deg; }
+.order-selection { position: relative; }
+.order-selection .order-selection-card { position: relative; overflow: visible; }
+.souraw-sticker--selection-bread { position: absolute; bottom: -12px; left: 8px; --sticker-width: 78px; --sticker-turn: 13deg; }
+.souraw-sticker--selection-cookies { position: absolute; bottom: -10px; left: -8px; --sticker-width: 155px; --sticker-turn: -12deg; }
+.souraw-sticker--selection-note { position: absolute; right: 5vw; top: 142px; --sticker-width: 100px; --sticker-turn: 10deg; }
+.souraw-sticker--founder-heart { --sticker-width: 42px; margin: 0 0 8px 16px; --sticker-turn: 12deg; }
+.souraw-sticker--instagram { display: block; --sticker-width: 150px; --sticker-turn: -8deg; margin: 40px 0 0 38px; }
+.menu-carousel-head { position: relative; }
+.souraw-sticker--carousel { --sticker-width: 130px; --sticker-turn: 12deg; margin: 18px 0 -10px 20px; }
+.souraw-sticker--bread-hug { position: absolute; bottom: 35px; right: 5vw; --sticker-width: clamp(130px, 15vw, 195px); --sticker-turn: -9deg; }
+.souraw-sticker--pickup { display: block; --sticker-width: 170px; --sticker-turn: -7deg; margin: 28px 0 0 20px; }
+.souraw-sticker--story { display: block; --sticker-width: 190px; --sticker-turn: 6deg; margin: 28px auto; }
+.souraw-sticker--schedule-walk { display: block; --sticker-width: 110px; --sticker-turn: -7deg; margin: 30px 0 0 30px; }
+.souraw-sticker--contact { --sticker-width: min(330px, 80%); --sticker-turn: -7deg; }
+.souraw-sticker--finds { display: block; --sticker-width: 70px; --sticker-turn: 12deg; margin: 25px 0 0 30px; }
+@media (max-width: 1100px) {
+    .souraw-sticker--selection-note { position: relative; top: auto; right: auto; display: block; --sticker-width: 75px; margin: -10px auto 25px; }
+}
+@media (max-width: 700px) {
+    .souraw-sticker--hero { top: 125px; right: 20px; --sticker-width: 150px; }
+    .souraw-sticker--selection-bread { --sticker-width: 65px; left: 8px; bottom: -10px; }
+    .souraw-sticker--selection-cookies { --sticker-width: 125px; left: -4px; bottom: -8px; }
+    .souraw-sticker--instagram { --sticker-width: 110px; margin: 28px auto 5px; }
+    .souraw-sticker--carousel { --sticker-width: 95px; margin: 14px 0 0 18px; }
+    .souraw-sticker--bread-hug { --sticker-width: 105px; right: 20px; top: 120px; bottom: auto; }
+    .souraw-sticker--pickup { --sticker-width: 120px; }
+    .souraw-sticker--story { --sticker-width: 145px; }
+    .souraw-sticker--schedule-walk { --sticker-width: 85px; margin: 22px 0 0 20px; }
+    .souraw-sticker--finds { --sticker-width: 55px; }
+}

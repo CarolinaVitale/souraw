@@ -1,14 +1,14 @@
 import React from 'react';
 import './Contact.css';
 import { FaWhatsapp, FaInstagram, FaTiktok } from 'react-icons/fa';
-import contactIllustration from '../../assets/brand-elements/illustration-pizza.png';
+import BrandSticker from '../../components/BrandSticker/BrandSticker';
 
 const Contact = () => {
     return (
         <section className="contact-page">
             <div className="contact-wrapper">
                 <div className="contact-image">
-                    <img src={contactIllustration} alt="Ilustración de contacto" />
+                    <BrandSticker name="pouringCoffee" className="souraw-sticker--contact" eager />
                 </div>
 
                 <div className="contact-info">

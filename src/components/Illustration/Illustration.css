@@ -10,7 +10,7 @@
     flex-direction: column;
     justify-content: flex-start;
     background-color: var(--color-gray-dark);
-    background-image: url("../../assets/followus-bg2.webp");
+    background-image: url("../../assets/followus-bg2.optimized.webp");
     background-position: center bottom 2rem;
     background-repeat: no-repeat;
     background-size: min(80vw, 920px) auto;

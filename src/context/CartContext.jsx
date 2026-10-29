@@ -1,9 +1,21 @@
-import React, { createContext, useContext, useMemo, useState } from "react";
+import React, { createContext, useContext, useMemo, useState, useEffect } from "react";
 
 const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
-    const [cartItems, setCartItems] = useState([]);
+    const [cartItems, setCartItems] = useState(() => {
+        try {
+            const saved = JSON.parse(sessionStorage.getItem('souraw-payment-cart') || '[]');
+            return Array.isArray(saved) && saved.every((item) => item && typeof item.id === 'string' && Number.isFinite(item.priceUSD) && Number.isInteger(item.quantity) && item.quantity > 0) ? saved : [];
+        } catch { return []; }
+    });
+
+    useEffect(() => {
+        // Keep the current quantities when returning from a canceled payment.
+        if (sessionStorage.getItem('souraw-payment-cart')) {
+            sessionStorage.setItem('souraw-payment-cart', JSON.stringify(cartItems));
+        }
+    }, [cartItems]);
 
     const addToCart = (product, option = null) => {
         const cartId = option
@@ -64,6 +76,7 @@ export const CartProvider = ({ children }) => {
     };
 
     const clearCart = () => {
+        sessionStorage.removeItem('souraw-payment-cart');
         setCartItems([]);
     };
 

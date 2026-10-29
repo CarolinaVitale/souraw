@@ -1,0 +1,16 @@
+SOURAW — paquete web de producción
+
+Estado: backend de producción conectado y verificado el 28 de octubre de 2026.
+Firebase usa Stripe real y BAKERY_SITE_URL=https://souraw.com.
+Checkout real verificado por $8 USD; sesión cerrada sin cobrar. Firma del webhook validada.
+Pendiente: subir este paquete a Bluehost y verificar el carrito en la web pública.
+
+Bluehost:
+1. Haz una copia de los archivos actuales.
+2. Sube y extrae el ZIP en la carpeta del dominio donde está el index.html actual.
+3. index.html, .htaccess y static/ deben quedar al mismo nivel; no dentro de una carpeta build/.
+4. Conserva archivos de verificación y carpetas ajenas a esta web.
+5. Comprueba /orders y /orders/payment al abrir sus direcciones directamente.
+6. Comprueba que el carrito abre Stripe en modo real y con el importe correcto.
+
+Este ZIP contiene únicamente la web pública, sin claves secretas ni archivos de Firebase Functions.

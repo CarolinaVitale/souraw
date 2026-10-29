@@ -1,29 +1,59 @@
-import React, { useRef, useState } from "react";
+import BrandSticker from '../BrandSticker/BrandSticker';
+import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { FaPause, FaPlay } from "react-icons/fa";
 import "./Founder.css";
-import founderImg from "../../assets/founder3.png";
-import videoSrc from "../../assets/founder-video.MP4";
+import founderImg from "../../assets/founder3.optimized.webp";
+import videoSrc from "../../assets/founder-video.optimized.mp4";
 import stampImg from "../../assets/brand-elements/souraw-stamp.png";
+
+import videoPoster from "../../assets/founder-video-poster.webp";
 
 const ease = [0.22, 1, 0.36, 1];
 
 export default function FounderSpotlight() {
     const videoRef = useRef(null);
-    const [isPlaying, setIsPlaying] = useState(true);
+    const [isPlaying, setIsPlaying] = useState(false);
+    const [videoLoaded, setVideoLoaded] = useState(false);
+    const [autoplayAllowed, setAutoplayAllowed] = useState(false);
+    const userPaused = useRef(false);
+
+    useEffect(() => {
+        const video = videoRef.current;
+        const allowAutoplay = !window.matchMedia('(prefers-reduced-motion: reduce)').matches
+            && !navigator.connection?.saveData;
+        setAutoplayAllowed(allowAutoplay);
+        if (!video || !('IntersectionObserver' in window)) return;
+        const observer = new IntersectionObserver(([entry]) => {
+            if (!entry.isIntersecting) {
+                video.pause();
+                return;
+            }
+            if (allowAutoplay && !userPaused.current) {
+                setVideoLoaded(true);
+                if (video.getAttribute('src')) video.play().catch(() => setIsPlaying(false));
+            }
+        }, { threshold: 0.1 });
+        observer.observe(video);
+        return () => observer.disconnect();
+    }, []);
 
     const togglePlay = async () => {
         const video = videoRef.current;
         if (!video) return;
 
         if (video.paused) {
+            userPaused.current = false;
+            setVideoLoaded(true);
+            if (!video.getAttribute('src')) video.src = videoSrc;
             try {
                 await video.play();
             } catch {
                 setIsPlaying(false);
             }
         } else {
+            userPaused.current = true;
             video.pause();
         }
     };
@@ -40,7 +70,7 @@ export default function FounderSpotlight() {
                     viewport={{ once: true, amount: 0.3 }}
                     transition={{ duration: 0.85, ease }}
                 >
-                    <p className="fs-hand">Hi! I’m Carolina.</p>
+                    <p className="fs-hand">Hi! I’m Carolina.<BrandSticker name="heart" className="souraw-sticker--founder-heart" /></p>
                     <p className="fs-kicker">the hands behind SOURAW</p>
                     <h2 id="founder-title">Bread brought me home.</h2>
 
@@ -72,12 +102,13 @@ export default function FounderSpotlight() {
                         <video
                             ref={videoRef}
                             className="fs-video"
-                            src={videoSrc}
-                            autoPlay
+                            src={videoLoaded ? videoSrc : undefined}
+                            poster={videoPoster}
+                            autoPlay={autoplayAllowed}
                             playsInline
                             muted
                             loop
-                            preload="metadata"
+                            preload="none"
                             onPlay={() => setIsPlaying(true)}
                             onPause={() => setIsPlaying(false)}
                             onClick={togglePlay}
@@ -94,14 +125,14 @@ export default function FounderSpotlight() {
                     </div>
 
                     <div className="fs-founder-card">
-                        <img src={founderImg} alt="Carolina, founder of SOURAW" />
+                        <img loading="lazy" decoding="async" src={founderImg} alt="Carolina, founder of SOURAW" />
                         <span>Carolina<br />founder + baker</span>
                     </div>
 
                     <span className="fs-label fs-label-memory" aria-hidden="true">memory</span>
                     <span className="fs-label fs-label-healing" aria-hidden="true">healing</span>
                     <span className="fs-scene-arrow" aria-hidden="true">↙</span>
-                    <img className="fs-stamp" src={stampImg} alt="" aria-hidden="true" />
+                    <img loading="lazy" decoding="async" className="fs-stamp" src={stampImg} alt="" aria-hidden="true" />
                 </motion.div>
             </div>
         </section>

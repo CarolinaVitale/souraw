@@ -1,3 +1,4 @@
+import BrandSticker from '../BrandSticker/BrandSticker';
 import React from "react";
 import { Link } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -9,7 +10,7 @@ import "./MenuCarousel.css";
 
 import cookies from "../../assets/prices/cookies.webp";
 import classic from "../../assets/prices/classic.webp";
-import focaccia from "../../assets/prices/focaccia.webp";
+import focaccia from "../../assets/prices/focaccia.optimized.webp";
 import laminated from "../../assets/prices/laminated.webp";
 import roots from "../../assets/prices/4-roots.webp";
 import tiramisu from "../../assets/prices/tiramisu.webp";
@@ -40,6 +41,7 @@ export default function MenuCarousel() {
                 <div>
                     <p className="menu-kicker">from the oven</p>
                     <h2 id="menu-carousel-title">The oven has range.</h2>
+                    <BrandSticker name="croissant" className="souraw-sticker--carousel" />
                 </div>
                 <p>
                     Naturally leavened loaves, laminated things, sweets, and
@@ -63,7 +65,7 @@ export default function MenuCarousel() {
                     <SwiperSlide key={product.name}>
                         <article className={`menu-product-card menu-product-card-${(index % 3) + 1}`}>
                             <span className="menu-product-number">{String(index + 1).padStart(2, "0")}</span>
-                            <img src={product.image} alt={product.name} className="menu-slide-img" />
+                            <img loading="lazy" decoding="async" src={product.image} alt={product.name} className="menu-slide-img" />
                             <div className="menu-product-copy">
                                 <h3>{product.name}</h3>
                                 <p>{product.note}</p>

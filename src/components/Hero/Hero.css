@@ -29,7 +29,7 @@
     position: absolute;
     z-index: -3;
     inset: 0;
-    background: url("../../assets/hero-desktop.webp") center right / cover no-repeat;
+    background: url("../../assets/hero-desktop.optimized.webp") center right / cover no-repeat;
     animation: hero-photo-breathe 14s ease-in-out infinite alternate;
 }
 

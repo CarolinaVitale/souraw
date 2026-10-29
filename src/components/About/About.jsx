@@ -1,3 +1,4 @@
+import BrandSticker from '../BrandSticker/BrandSticker';
 // About.jsx
 import React, { useEffect, useRef } from "react";
 import "./About.css";
@@ -6,10 +7,10 @@ import baby from "../../assets/baby.jpg";
 import butterfly from "../../assets/butterfly.jpg";
 import newyork from "../../assets/new-york.jpg";
 import madrid from "../../assets/madrid.jpg";
-import venezuela from "../../assets/martino.jpg";
-import tampa from "../../assets/viaje.jpg";
+import venezuela from "../../assets/martino.optimized.webp";
+import tampa from "../../assets/viaje.optimized.webp";
 import founder from "../../assets/founder2.png";
-import founder2 from "../../assets/founder.png";
+import founder2 from "../../assets/founder.optimized.webp";
 import family from "../../assets/family.jpeg";
 import bread from "../../assets/result.jpeg";
 
@@ -222,6 +223,7 @@ export default function AboutTimeline() {
                 <div className="abt-wrap">
                     <p className="about-script">from Acarigua to Tampa</p>
                     <h2 className="abt-heading">My story, made slowly.</h2>
+                    <BrandSticker name="coffeeBreak" className="souraw-sticker--story" />
                     <p className="abt-body-p">
                         If you’re here, it means you want to know a little more about me. So here is my story.
                     </p>

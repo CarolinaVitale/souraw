@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
+import { bakeryPaymentsEnabled, callBakeryPayment } from "../../utils/bakeryPayments";
 import emailjs from "@emailjs/browser";
 import "./CheckoutForm.css";
 import { useCart } from "../../context/CartContext";
@@ -14,6 +15,7 @@ const CheckoutForm = ({ onClose }) => {
         notes: "",
     });
 
+    const checkoutAttempt = useRef(null);
     const [status, setStatus] = useState("");
     const [isSending, setIsSending] = useState(false);
 
@@ -62,6 +64,32 @@ const CheckoutForm = ({ onClose }) => {
         setIsSending(true);
         setStatus("");
 
+        if (bakeryPaymentsEnabled) {
+            try {
+                const payload = {
+                    items: cartItems.map(({ id, size, quantity }) => ({ id, size, quantity })),
+                    customer: formData,
+                };
+                const fingerprint = JSON.stringify(payload);
+                if (checkoutAttempt.current?.fingerprint !== fingerprint) {
+                    checkoutAttempt.current = { fingerprint, requestId: crypto.randomUUID() };
+                }
+                const { url } = await callBakeryPayment('createBakeryCheckout', {
+                    ...payload, requestId: checkoutAttempt.current.requestId,
+                });
+                const destination = new URL(url);
+                if (destination.protocol !== 'https:' || destination.hostname !== 'checkout.stripe.com') {
+                    throw new Error('Invalid payment destination');
+                }
+                sessionStorage.setItem('souraw-payment-cart', JSON.stringify(cartItems));
+                window.location.assign(url);
+            } catch (error) {
+                setStatus('error');
+                setIsSending(false);
+            }
+            return;
+        }
+
         const templateParams = {
             customer_name: formData.name,
             customer_email: formData.email,
@@ -93,9 +121,9 @@ const CheckoutForm = ({ onClose }) => {
     return (
         <div className="checkout-form-wrap">
             <div className="checkout-form-header">
-                <h3>Checkout</h3>
-                <button type="button" onClick={handleClose}>
-                    ×
+                <h3>Your details</h3>
+                <button type="button" onClick={handleClose} disabled={isSending}>
+                    ← Back to cart
                 </button>
             </div>
 
@@ -121,6 +149,7 @@ const CheckoutForm = ({ onClose }) => {
                 </section>
             ) : (
                 <form className="checkout-form" onSubmit={handleSubmit}>
+                    <fieldset disabled={isSending} style={{ border: 0, padding: 0, margin: 0, minWidth: 0, display: "contents" }}>
                     <input
                         type="text"
                         name="name"
@@ -169,15 +198,17 @@ const CheckoutForm = ({ onClose }) => {
                         <p>Total: {formatUSD(cartTotal)}</p>
                     </div>
 
+                    {bakeryPaymentsEnabled && <p>Tampa local orders only; we will confirm your requested date and pickup details.</p>}
                     <button className="checkout-submit" type="submit" disabled={isSending}>
-                        {isSending ? "sending..." : "place order"}
+                        {isSending ? (bakeryPaymentsEnabled ? "opening secure payment…" : "sending...") : (bakeryPaymentsEnabled ? "continue to payment" : "place order")}
                     </button>
 
                     {status === "error" && (
                         <p className="checkout-error">
-                            Something went wrong. Please try again.
+                            We could not complete this step. Please try again or contact SOURAW.
                         </p>
                     )}
+                    </fieldset>
                 </form>
             )}
         </div>

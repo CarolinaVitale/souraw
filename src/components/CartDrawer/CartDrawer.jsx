@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { createPortal } from "react-dom";
 import "./CartDrawer.css";
 import { useCart } from "../../context/CartContext";
 import CheckoutForm from "../CheckoutForm/CheckoutForm";
@@ -15,13 +16,18 @@ const CartDrawer = ({ isOpen, onClose }) => {
         clearCart,
     } = useCart();
 
+    useEffect(() => {
+        if (!isOpen || !cartItems.length) setCheckoutOpen(false);
+    }, [isOpen, cartItems.length]);
+
     const formatUSD = (price) =>
         Number(price).toLocaleString("en-US", {
             style: "currency",
             currency: "USD",
         });
 
-    return (
+    // Keep fixed panels outside the header: its backdrop filter creates a containing block.
+    return createPortal(
         <>
             <div
                 className={`cart-overlay ${isOpen ? "open" : ""}`}
@@ -30,7 +36,7 @@ const CartDrawer = ({ isOpen, onClose }) => {
 
             <aside className={`cart-drawer ${isOpen ? "open" : ""}`}>
                 <div className="cart-header">
-                    <h2>Your cart</h2>
+                    <h2>{checkoutOpen ? "Checkout" : "Your cart"}</h2>
                     <button className="cart-close" onClick={onClose}>
                         ×
                     </button>
@@ -41,8 +47,14 @@ const CartDrawer = ({ isOpen, onClose }) => {
                         <p>Your cart is empty.</p>
                         <span>Slow cravings start here ♡</span>
                     </div>
+                ) : checkoutOpen ? (
+                    <div className="cart-details-step">
+                        <p className="cart-step-label">Step 2 of 2 · Your details</p>
+                        <CheckoutForm onClose={() => setCheckoutOpen(false)} />
+                    </div>
                 ) : (
                     <>
+                        <p className="cart-step-label">Step 1 of 2 · Review your order</p>
                         <div className="cart-items">
                             {cartItems.map((item) => (
                                 <div className="cart-item" key={item.cartId}>
@@ -97,9 +109,6 @@ const CartDrawer = ({ isOpen, onClose }) => {
                                     continue to checkout
                                 </button>
 
-                                {checkoutOpen && (
-                                    <CheckoutForm onClose={() => setCheckoutOpen(false)} />
-                                )}
 
                             <button className="cart-clear" onClick={clearCart}>
                                 clear cart
@@ -108,7 +117,8 @@ const CartDrawer = ({ isOpen, onClose }) => {
                     </>
                 )}
             </aside>
-        </>
+        </>,
+        document.body
     );
 };
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { FaAddressCard, FaInstagram, FaTiktok, FaArrowRight, FaShoppingBag, FaHeart, FaEtsy } from 'react-icons/fa';
-import face from '../../assets/brand-elements/face-pink.png';
+import BrandSticker from '../../components/BrandSticker/BrandSticker';
 import './Links.css';
 
 const destinations = [
@@ -20,7 +20,7 @@ export default function Links() {
                     <h1>Your daily<br />dose of <span>SOURAW.</span></h1>
                     <div className="souraw-links-intro-note">
                         <p>Bread, finds &amp; good things.<br />A little bit of everything. All in one place.</p>
-                        <img className="souraw-links-avatar" src={face} alt="" />
+                        <BrandSticker name="coffeeBreak" className="souraw-links-intro-sticker" eager />
                     </div>
                 </header>
 
@@ -49,7 +49,10 @@ export default function Links() {
                         </a>
                     </div>
                 </section>
-                <Link className="souraw-links-home" to="/">Explore the whole SOURAW world <span aria-hidden="true">↗</span></Link>
+                <div className="souraw-links-outro">
+                    <Link className="souraw-links-home" to="/">Explore the whole SOURAW world <span aria-hidden="true">↗</span></Link>
+                    <BrandSticker name="goodThings" className="souraw-links-outro-sticker" />
+                </div>
                 <p className="souraw-links-signoff">untamed • unrushed • unapologetic</p>
             </div>
         </main>

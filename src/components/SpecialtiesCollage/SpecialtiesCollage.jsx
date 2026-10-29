@@ -6,14 +6,14 @@ import "./SpecialtiesCollage.css";
 import imgA from "../../assets/prices/cookies.webp";
 import imgB from "../../assets/prices/4-roots.webp";
 import imgC from "../../assets/prices/chocolate-babka.webp";
-import imgD from "../../assets/prices/focaccia.webp";
+import imgD from "../../assets/prices/focaccia.optimized.webp";
 import imgE from "../../assets/prices/classic.webp";
 import circular from "../../assets/prices/tiramisu.webp";
-import fermentina from "../../assets/fermentina.gif";
+import fermentina from "../../assets/fermentina.optimized.webp";
 
 import baguetteDoodle from "../../assets/brand-elements/element-baguette.png";
 import breadDoodle from "../../assets/brand-elements/bread-illustration.png";
-import crumbs from "../../assets/brand-elements/crumbs.PNG";
+import crumbs from "../../assets/brand-elements/crumbs.optimized.webp";
 
 const BOARD = [
     { id: "van", src: imgA, alt: "Souraw specialty 1", className: "tile tile--van", washi: "washi--pink" },
@@ -71,13 +71,13 @@ export default function SpecialtiesCollage() {
                 >
                     {/* crumbs */}
                     <div className="board-layer board-layer--crumbs" aria-hidden="true">
-                        <img src={crumbs} className="crumbs-overlay" alt="" />
+                        <img loading="lazy" decoding="async" src={crumbs} className="crumbs-overlay" alt="" />
                     </div>
 
                     {/* overlays */}
                     <div className="board-layer board-layer--overlays" aria-hidden="true">
-                        <img src={breadDoodle} className="brand-doodle brand-doodle--bread" alt="" />
-                        <img src={baguetteDoodle} className="brand-doodle brand-doodle--baguette" alt="" />
+                        <img loading="lazy" decoding="async" src={breadDoodle} className="brand-doodle brand-doodle--bread" alt="" />
+                        <img loading="lazy" decoding="async" src={baguetteDoodle} className="brand-doodle brand-doodle--baguette" alt="" />
                         <div className="doodle doodle--scribble" />
                         <div className="boardTag boardTag--right">BAKED UNRUSHED</div>
                     </div>
@@ -92,7 +92,7 @@ export default function SpecialtiesCollage() {
                             whileHover={hover}
                         >
                             <span className={`washi ${t.washi}`} aria-hidden="true" />
-                            <img src={t.src} alt={t.alt} loading="lazy" />
+                            <img src={t.src} alt={t.alt} loading="lazy" decoding="async" />
                         </motion.figure>
                     ))}
 
@@ -103,7 +103,7 @@ export default function SpecialtiesCollage() {
                         transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
                         whileHover={hover}
                     >
-                        <img src={circular} alt="Souraw specialty" loading="lazy" />
+                        <img src={circular} alt="Souraw specialty" loading="lazy" decoding="async" />
                     </motion.div>
 
                     {/* caption */}

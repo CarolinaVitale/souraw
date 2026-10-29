@@ -46,11 +46,12 @@
     margin: 0;
 }
 
-.souraw-links-avatar {
-    width: 92px;
-    height: 92px;
-    object-fit: contain;
-}
+.souraw-links-intro-sticker { --sticker-width: 140px; --sticker-turn: 8deg; margin: -18px 12px 0 0; }
+.souraw-links-intro-note p { flex: 1; min-width: 0; }
+.souraw-links-outro { display: flex; align-items: center; justify-content: space-between; gap: 30px; margin-top: 36px; }
+.souraw-links-outro .souraw-links-home { margin-top: 0; }
+.souraw-links-outro-sticker { --sticker-width: 200px; --sticker-turn: -7deg; margin: 8px 10px 0 0; }
+
 
 .souraw-links-list {
     border-top: 2px solid currentColor;
@@ -211,11 +212,10 @@
         font-size: 12px;
     }
 
-    .souraw-links-avatar {
-        width: 66px;
-        height: 66px;
-        transform: translateY(39px) translatex(-40px);
-    }
+    .souraw-links-intro-sticker { --sticker-width: 100px; margin: 0 3px 0 0; }
+    .souraw-links-outro { flex-direction: column; align-items: flex-start; gap: 24px; }
+    .souraw-links-outro-sticker { --sticker-width: 170px; align-self: flex-end; margin: 0 6px 0 0; }
+
 
     .souraw-links-card {
         gap: 12px;

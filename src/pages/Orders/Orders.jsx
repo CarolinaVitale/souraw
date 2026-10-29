@@ -1,7 +1,8 @@
+import BrandSticker from '../../components/BrandSticker/BrandSticker';
 import React, { useEffect, useRef } from "react";
 import "./Orders.css";
 import pedidoImg from "../../assets/prices/cookie-box.webp";
-import crumbsPng from "../../assets/brand-elements/crumbs2.PNG";
+import crumbsPng from "../../assets/brand-elements/crumbs2.optimized.webp";
 import { Bread, Clock } from "@phosphor-icons/react";
 import bannerImage from "../../assets/banner4.webp";
 import DeliveryCalendar from "../../components/DeliveryCalendar/DeliveryCalendar";
@@ -45,6 +46,7 @@ const Orders = () => {
                     <a href="#weekly-rhythm" className="schedule-pill schedule-pill-red">
                         Check the calendar <span aria-hidden="true">↓</span>
                     </a>
+                    <BrandSticker name="breadWalk" className="souraw-sticker--schedule-walk" />
                 </div>
 
                 <div className="schedule-hero-visual">

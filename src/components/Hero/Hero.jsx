@@ -1,3 +1,4 @@
+import BrandSticker from '../BrandSticker/BrandSticker';
 import React from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
@@ -12,15 +13,7 @@ const Hero = () => (
         <div className="hero-photo" aria-hidden="true" />
         <div className="hero-background-word" aria-hidden="true">SOURAW</div>
 
-        <motion.div
-            className="hero-sticker hero-sticker--time"
-            initial={{ opacity: 0, x: 24, rotate: 10 }}
-            animate={{ opacity: 1, x: 0, rotate: 4 }}
-            transition={{ delay: 1, duration: 0.7, ease: "easeOut" }}
-            aria-hidden="true"
-        >
-            made with time ↗
-        </motion.div>
+        <BrandSticker name="goodThings" className="souraw-sticker--hero" eager />
 
         <div className="hero-content">
             <p className="hero-kicker">

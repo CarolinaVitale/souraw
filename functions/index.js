@@ -29,6 +29,10 @@ const dehydratedStarterPaymentLinkId = defineString("DEHYDRATED_STARTER_PAYMENT_
   default: "",
 });
 
+const bakeryCheckout = require("./bakery-checkout");
+exports.createBakeryCheckout = bakeryCheckout.createBakeryCheckout;
+exports.getBakeryPayment = bakeryCheckout.getBakeryPayment;
+exports.bakeryStripeWebhook = require("./bakery-webhook").bakeryStripeWebhook;
 exports.stripeWebhook = onRequest(
   {
     region: "us-central1",
@@ -64,11 +68,16 @@ exports.stripeWebhook = onRequest(
     }
 
     const session = event.data.object;
+    // Bakery orders are fulfilled by their dedicated webhook.
+    if (session.metadata?.orderType === "bakery") {
+      res.status(200).json({ received: true, ignored: "bakery_order" });
+      return;
+    }
     const sessionId = session.id;
     const paymentLinkId =
       typeof session.payment_link === "string"
         ? session.payment_link
-        : session.payment_link?.id;
+        : session.payment_link?.id ?? null;
 
     const customerEmail =
       session.customer_details?.email || session.customer_email;

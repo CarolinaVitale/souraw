@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./ChoosingUs.css";
 
-import breadPng from "../../assets/brand-elements/break-.webp";
+import breadPng from "../../assets/brand-elements/break-.optimized.webp";
 import arrowTL from "../../assets/brand-elements/arrow-up-left.png";
 import arrowTR from "../../assets/brand-elements/arrow-up-right.png";
 import arrowBL from "../../assets/brand-elements/arrow-down-left.png";
