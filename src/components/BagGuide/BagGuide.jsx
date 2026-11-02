@@ -1,3 +1,4 @@
+import { AMAZON_STOREFRONT_URL } from "../../data/amazonStorefront";
 import "./BagGuide.css";
 import { steps } from "../../data/steps";
 import { ArrowUpRight, Scissors, Ruler } from "@phosphor-icons/react";
@@ -174,8 +175,8 @@ export default function BagGuide() {
                         ))}
                     </div>
 
-                    <a href="/souraw-finds" className="materials-cta">
-                        Explore SOURAW Finds <ArrowUpRight size={18} weight="bold" />
+                    <a href={AMAZON_STOREFRONT_URL} target="_blank" rel="noopener noreferrer sponsored" className="materials-cta">
+                        Shop our Amazon Storefront <ArrowUpRight size={18} weight="bold" />
                     </a>
                 </section>
 

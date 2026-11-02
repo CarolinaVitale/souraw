@@ -7,6 +7,8 @@ import CartDrawer from "../CartDrawer/CartDrawer";
 import { useCart } from "../../context/CartContext";
 import { CONTACT_DRAWER_EVENT } from "../../utils/contactDrawer";
 
+import { AMAZON_STOREFRONT_URL } from "../../data/amazonStorefront";
+
 function Navbar() {
     const [click, setClick] = useState(false);
     const [navbar, setNavbar] = useState(false);
@@ -88,13 +90,14 @@ function Navbar() {
                         </li>
                         */}
                         <li className="nav-item">
-                            <Link to="/souraw-finds" className="nav-links" onClick={closeMobileMenu}>
-                                SOURAW FINDS 
-                            </Link>
-                        </li>
-                        <li className="nav-item">
                             <Link to="/menu" className="nav-links" onClick={closeMobileMenu}>
                                 MENU
+                            </Link>
+                        </li>
+
+                        <li className="nav-item">
+                            <Link to="/about" className="nav-links" onClick={closeMobileMenu}>
+                                ABOUT
                             </Link>
                         </li>
 
@@ -112,10 +115,6 @@ function Navbar() {
                             <div className={moreOpen ? "nav-dropdown open" : "nav-dropdown"}>
                                 <p className="nav-dropdown-label">Keep exploring</p>
                                 
-                                <Link to="/about" className="nav-dropdown-link" onClick={closeMobileMenu}>
-                                    ABOUT
-                                </Link>
-
                                 {/* <Link to="/untamed-studio" className="nav-dropdown-link" onClick={closeMobileMenu}>
                                     UNTAMED STUDIO
                                 </Link> */}
@@ -124,13 +123,9 @@ function Navbar() {
                                     REVIEWS
                                 </Link>
 
-                                <Link to="/untamed-studio-finds" className="nav-dropdown-link" onClick={closeMobileMenu}>
-                                    STUDIO FINDS
-                                </Link>
-
-                                <Link to="/souraw-finds" className="nav-dropdown-link" onClick={closeMobileMenu}>
-                                    SOURAW FINDS
-                                </Link>
+                                <a href={AMAZON_STOREFRONT_URL} target="_blank" rel="noopener noreferrer sponsored" className="nav-dropdown-link" onClick={closeMobileMenu}>
+                                    AMAZON FINDS
+                                </a>
 
                                 {/* <Link to="/diy" className="nav-dropdown-link" onClick={closeMobileMenu}>
                                     DIY

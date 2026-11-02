@@ -1,3 +1,4 @@
+import { AMAZON_STOREFRONT_URL } from "../../data/amazonStorefront";
 import React from "react";
 import { Link } from "react-router-dom";
 import "./HomeConversion.css";
@@ -36,10 +37,18 @@ const pathways = [
         kicker: "like what I use?",
         title: "Find the little things.",
         text: "Tools, packaging, and everyday favorites from my baking process and small business workflow.",
-        to: "/souraw-finds",
-        cta: "shop SOURAW finds",
+        href: AMAZON_STOREFRONT_URL,
+        cta: "shop our Amazon Storefront",
     },
 ];
+
+function PathwayLink({ pathway, ...props }) {
+    return pathway.href ? (
+        <a {...props} href={pathway.href} target="_blank" rel="noopener noreferrer sponsored" />
+    ) : (
+        <Link {...props} to={pathway.to} />
+    );
+}
 
 export default function HomePathways() {
     return (
@@ -59,17 +68,17 @@ export default function HomePathways() {
                         key={pathway.number}
                     >
                         <span className="home-pathway-number">{pathway.number}</span>
-                        <Link to={pathway.to} className="home-pathway-image-link" tabIndex="-1" aria-hidden="true">
+                        <PathwayLink pathway={pathway} className="home-pathway-image-link" tabIndex="-1" aria-hidden="true">
                             <img className="home-pathway-media" src={pathway.image} alt="" />
-                        </Link>
+                        </PathwayLink>
 
                         <div className="home-pathway-content">
                             <p className="home-section-kicker">{pathway.kicker}</p>
                             <h3>{pathway.title}</h3>
                             <p>{pathway.text}</p>
-                            <Link to={pathway.to} className="home-path-link">
+                            <PathwayLink pathway={pathway} className="home-path-link">
                                 {pathway.cta} <span aria-hidden="true">↗</span>
-                            </Link>
+                            </PathwayLink>
                         </div>
                     </article>
                 ))}

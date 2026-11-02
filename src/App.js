@@ -18,7 +18,6 @@ import { auth } from './firebase';
 import { signInAnonymously } from 'firebase/auth';
 import Prices from './pages/Prices/Prices';
 import OrderSelection from './pages/Prices/OrderSelection';
-import SourawFinds from './pages/SourawFinds/SourawFinds';
 import ActivateStarter from "./pages/ActivateStarter/ActivateStarter";
 import UnrushedLab from "./pages/UnrushedLab/UnrushedLab";
 import DIY from "./pages/DIY/DIY";
@@ -54,7 +53,7 @@ function App() {
         <Route path="/orders/payment" element={<PaymentResult />} />
         <Route path="/orders/sourdough" element={<Prices />} />
         <Route path="/orders/sweets" element={<Prices sweets />} />
-        <Route path="/souraw-finds" element={<SourawFinds/>}/>
+        <Route path="/souraw-finds" element={<Navigate to="/links" replace />} />
         <Route path="/activate-starter" element={<ActivateStarter />} />
         <Route path="/starter" element={<UnrushedLab />} />
         <Route path="/unrushed-lab" element={<Navigate to="/starter" replace />} />

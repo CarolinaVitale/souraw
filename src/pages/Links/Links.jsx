@@ -3,12 +3,13 @@ import { Link } from 'react-router-dom';
 import { FaAddressCard, FaInstagram, FaTiktok, FaArrowRight, FaShoppingBag, FaHeart, FaEtsy } from 'react-icons/fa';
 import BrandSticker from '../../components/BrandSticker/BrandSticker';
 import './Links.css';
+import { AMAZON_STOREFRONT_URL } from '../../data/amazonStorefront';
 
 const destinations = [
-    { href: '/souraw.vcf', download: 'SOURAW.vcf', title: 'Save our CONTACT', emphasis: 'CONTACT', description: 'Keep SOURAW a tap away.', icon: FaAddressCard, color: 'cream' },
     { to: '/orders', title: 'ORDERS', emphasis: 'ORDERS', description: 'Your next sourdough obsession starts here.', icon: FaShoppingBag, color: 'red' },
+    { href: AMAZON_STOREFRONT_URL, external: true, title: 'Amazon Storefront', description: 'The tools & little things we love.', icon: FaHeart, color: 'yellow' },
     { href: 'https://souraw.etsy.com', external: true, title: 'Shop on ETSY', emphasis: 'ETSY', description: 'Visit our SOURAW shop on Etsy.', icon: FaEtsy, color: 'cream' },
-    { to: '/souraw-finds', title: 'SOURAW finds', description: 'The tools & little things we love.', icon: FaHeart, color: 'yellow' },
+    { href: '/souraw.vcf', download: 'SOURAW.vcf', title: 'Save our CONTACT', emphasis: 'CONTACT', description: 'Keep SOURAW a tap away.', icon: FaAddressCard, color: 'cream' },
 ];
 
 export default function Links() {
