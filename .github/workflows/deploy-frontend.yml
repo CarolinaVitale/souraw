@@ -122,6 +122,10 @@ jobs:
               fi
             done
             echo "put -O \"$TARGET_DIR\" build/index.html"
+            # Show what the remote really holds, so a wrong TARGET_DIR is visible in the log.
+            echo "pwd"
+            echo "cls -l \"$TARGET_DIR/index.html\" \"$TARGET_DIR/.htaccess\""
+            echo "cls -l \"$TARGET_DIR/static/js\""
             echo bye
           } > "$RUNNER_TEMP/upload.lftp"
           lftp -f "$RUNNER_TEMP/upload.lftp"
