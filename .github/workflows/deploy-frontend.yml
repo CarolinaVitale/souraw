@@ -1,0 +1,142 @@
+name: Deploy frontend to Bluehost
+
+on:
+  push:
+    branches: [master]
+    paths-ignore:
+      - "functions/**"
+      - "output/**"
+      - "**.md"
+  workflow_dispatch:
+
+# Never run two uploads at once; let a running deploy finish.
+concurrency:
+  group: deploy-production
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Frontend tests
+        run: CI=true npm test -- --watchAll=false
+      - name: Backend catalog parity test
+        run: node --test functions/bakery.test.js
+
+  deploy:
+    needs: test
+    # workflow_dispatch can start from any branch; only master may deploy.
+    if: github.ref == 'refs/heads/master'
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+
+      - name: Build
+        env:
+          CI: "true" # CRA treats ESLint warnings as errors
+          REACT_APP_BAKERY_PAYMENTS_ENABLED: ${{ secrets.REACT_APP_BAKERY_PAYMENTS_ENABLED }}
+          REACT_APP_DEHYDRATED_STARTER_LINK: ${{ secrets.REACT_APP_DEHYDRATED_STARTER_LINK }}
+          REACT_APP_EMAILJS_PUBLIC_KEY: ${{ secrets.REACT_APP_EMAILJS_PUBLIC_KEY }}
+          REACT_APP_EMAILJS_SERVICE_ID: ${{ secrets.REACT_APP_EMAILJS_SERVICE_ID }}
+          REACT_APP_EMAILJS_TEMPLATE_ID: ${{ secrets.REACT_APP_EMAILJS_TEMPLATE_ID }}
+          REACT_APP_EMAILJS_TEMPLATE_ID2: ${{ secrets.REACT_APP_EMAILJS_TEMPLATE_ID2 }}
+          REACT_APP_FIREBASE_API_KEY: ${{ secrets.REACT_APP_FIREBASE_API_KEY }}
+          REACT_APP_FIREBASE_APP_ID: ${{ secrets.REACT_APP_FIREBASE_APP_ID }}
+          REACT_APP_FIREBASE_AUTH_DOMAIN: ${{ secrets.REACT_APP_FIREBASE_AUTH_DOMAIN }}
+          REACT_APP_FIREBASE_MEASUREMENT_ID: ${{ secrets.REACT_APP_FIREBASE_MEASUREMENT_ID }}
+          REACT_APP_FIREBASE_MESSAGING_SENDER_ID: ${{ secrets.REACT_APP_FIREBASE_MESSAGING_SENDER_ID }}
+          REACT_APP_FIREBASE_PROJECT_ID: ${{ secrets.REACT_APP_FIREBASE_PROJECT_ID }}
+          REACT_APP_FIREBASE_STORAGE_BUCKET: ${{ secrets.REACT_APP_FIREBASE_STORAGE_BUCKET }}
+        run: npm run build
+
+      - name: Sanity check build output
+        env:
+          FIREBASE_PROJECT_ID: ${{ secrets.REACT_APP_FIREBASE_PROJECT_ID }}
+        run: |
+          test -f build/index.html
+          test -f build/.htaccess
+          test -d build/static
+          # Env vars must be baked into the bundle, otherwise the site ships broken.
+          test -n "$FIREBASE_PROJECT_ID"
+          grep -rqF "$FIREBASE_PROJECT_ID" build/static/js
+
+      - name: Configure SSH
+        env:
+          SSH_KEY: ${{ secrets.BLUEHOST_SSH_KEY }}
+          KNOWN_HOSTS: ${{ secrets.BLUEHOST_KNOWN_HOSTS }}
+        run: |
+          install -m 700 -d ~/.ssh
+          printf '%s\n' "$SSH_KEY" > ~/.ssh/deploy
+          chmod 600 ~/.ssh/deploy
+          printf '%s\n' "$KNOWN_HOSTS" > ~/.ssh/known_hosts
+
+      # Bluehost shared hosting has no shell, so rsync over SSH is not possible.
+      # SFTP works. lftp uploads only missing hashed files under static/ (25 MB of media),
+      # refreshes the small mutable files, and sends index.html last. No delete:
+      # old hashed chunks (cached pages) and unrelated files (.well-known) stay.
+      - name: Upload to Bluehost (SFTP)
+        env:
+          HOST: ${{ secrets.BLUEHOST_HOST }}
+          USER_NAME: ${{ secrets.BLUEHOST_USER }}
+          PORT: ${{ secrets.BLUEHOST_PORT }}
+          TARGET_DIR: ${{ secrets.BLUEHOST_TARGET_DIR }}
+        run: |
+          set -euo pipefail
+          test -n "$TARGET_DIR"
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq lftp
+          SSH_CMD="ssh -a -x -i $HOME/.ssh/deploy -o IdentitiesOnly=yes -o BatchMode=yes -o StrictHostKeyChecking=yes -o UserKnownHostsFile=$HOME/.ssh/known_hosts"
+          {
+            echo 'set cmd:fail-exit yes'
+            echo 'set net:max-retries 3'
+            echo 'set net:timeout 30'
+            echo 'set xfer:use-temp-file yes'
+            echo 'set xfer:temp-file-name "*.tmp"'
+            echo "set sftp:connect-program \"$SSH_CMD\""
+            echo "open -u \"$USER_NAME,unused\" -p ${PORT:-22} sftp://$HOST"
+            echo "mkdir -p -f \"$TARGET_DIR\""
+            echo "mirror -R --only-missing --no-perms build/static \"$TARGET_DIR/static\""
+            shopt -s nullglob dotglob
+            for p in build/*; do
+              name=$(basename "$p")
+              case "$name" in static|index.html) continue ;; esac
+              if [ -d "$p" ]; then
+                echo "mirror -R --no-perms \"$p\" \"$TARGET_DIR/$name\""
+              else
+                echo "put -O \"$TARGET_DIR\" \"$p\""
+              fi
+            done
+            echo "put -O \"$TARGET_DIR\" build/index.html"
+            echo bye
+          } > "$RUNNER_TEMP/upload.lftp"
+          lftp -f "$RUNNER_TEMP/upload.lftp"
+
+      - name: Smoke test
+        run: |
+          set -e
+          NEW_JS=$(grep -o 'static/js/main\.[a-z0-9]*\.js' build/index.html | head -n1)
+          test -n "$NEW_JS"
+          for i in 1 2 3 4 5 6; do
+            if curl -fsS "https://souraw.com/?v=$GITHUB_SHA" | grep -qF "$NEW_JS"; then
+              ok=1; break
+            fi
+            sleep 10
+          done
+          test "${ok:-0}" = 1
+          curl -fsS -o /dev/null https://souraw.com/orders/payment
+          curl -fsS -o /dev/null https://souraw.com/links
