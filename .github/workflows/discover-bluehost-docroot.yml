@@ -37,11 +37,11 @@ jobs:
           SSH_CMD="ssh -a -x -i $HOME/.ssh/deploy -o IdentitiesOnly=yes -o BatchMode=yes -o StrictHostKeyChecking=yes -o UserKnownHostsFile=$HOME/.ssh/known_hosts"
           LFTP_OPEN="set cmd:fail-exit yes; set net:max-retries 3; set net:timeout 30; set sftp:connect-program \"$SSH_CMD\"; open -u \"$USER_NAME,unused\" -p ${PORT:-22} sftp://$HOST"
 
-          echo "== home directory =="
-          lftp -c "$LFTP_OPEN; cls -l ."
+          echo "== public_html =="
+          lftp -c "$LFTP_OPEN; cls -l public_html"
 
-          echo "== index.html files (depth <= 3) =="
-          lftp -c "$LFTP_OPEN; find -d 3 ." > "$RUNNER_TEMP/tree.txt" || true
+          echo "== index.html files under public_html (depth <= 6) =="
+          lftp -c "$LFTP_OPEN; find -d 6 public_html" > "$RUNNER_TEMP/tree.txt" || true
           grep -E '(^|/)index\.html$' "$RUNNER_TEMP/tree.txt" | tee "$RUNNER_TEMP/index-files.txt"
 
           echo "== details of each (size/date) =="
