@@ -19,7 +19,7 @@ permissions:
 
 jobs:
   test:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
@@ -36,7 +36,7 @@ jobs:
     needs: test
     # workflow_dispatch can start from any branch; only master may deploy.
     if: github.ref == 'refs/heads/master'
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     environment: production
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -49,6 +49,7 @@ jobs:
       - name: Build
         env:
           CI: "true" # CRA treats ESLint warnings as errors
+          GENERATE_SOURCEMAP: "false" # do not publish source maps to the live site
           REACT_APP_BAKERY_PAYMENTS_ENABLED: ${{ secrets.REACT_APP_BAKERY_PAYMENTS_ENABLED }}
           REACT_APP_DEHYDRATED_STARTER_LINK: ${{ secrets.REACT_APP_DEHYDRATED_STARTER_LINK }}
           REACT_APP_EMAILJS_PUBLIC_KEY: ${{ secrets.REACT_APP_EMAILJS_PUBLIC_KEY }}
@@ -109,7 +110,9 @@ jobs:
             echo 'set xfer:temp-file-name "*.tmp"'
             echo "set sftp:connect-program \"$SSH_CMD\""
             echo "open -u \"$USER_NAME,unused\" -p ${PORT:-22} sftp://$HOST"
-            echo "mkdir -p -f \"$TARGET_DIR\""
+            # Guard: the live site already has an index.html in TARGET_DIR. If it is missing,
+            # TARGET_DIR is wrong (typo, test folder): fail before uploading anything.
+            echo "cat \"$TARGET_DIR/index.html\" > /dev/null"
             echo "mirror -R --only-missing --no-perms build/static \"$TARGET_DIR/static\""
             shopt -s nullglob dotglob
             for p in build/*; do
