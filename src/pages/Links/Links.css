@@ -53,6 +53,57 @@
 .souraw-links-outro-sticker { --sticker-width: 200px; --sticker-turn: -7deg; margin: 8px 10px 0 0; }
 
 
+.souraw-links-feature {
+    margin-bottom: 36px;
+    padding: clamp(18px, 4vw, 32px);
+    border: 2px solid var(--color-gray-dark);
+    border-radius: 20px;
+    background: var(--color-yellow);
+}
+
+.souraw-links-feature h2 {
+    margin: 0;
+    font-size: clamp(30px, 6vw, 52px);
+    line-height: 1;
+    letter-spacing: -.045em;
+}
+
+.souraw-links-feature p {
+    margin: 8px 0 18px;
+    font-size: 16px;
+}
+
+.souraw-links-feature ul {
+    display: grid;
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.souraw-links-feature a {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 6px 16px;
+    padding: 12px 14px;
+    border: 1px solid currentColor;
+    border-radius: 10px;
+    background: var(--color-bg);
+    color: inherit;
+    font-size: 16px;
+    text-decoration: none;
+}
+
+.souraw-links-feature a:hover {
+    background: var(--color-pink);
+}
+
+.souraw-links-feature a span {
+    font-size: 14px;
+}
+
 .souraw-links-list {
     border-top: 2px solid currentColor;
 }
