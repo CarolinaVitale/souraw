@@ -12,6 +12,12 @@ const destinations = [
     { href: '/souraw.vcf', download: 'SOURAW.vcf', title: 'Save our CONTACT', emphasis: 'CONTACT', description: 'Keep SOURAW a tap away.', icon: FaAddressCard, color: 'cream' },
 ];
 
+const munbynLinks = [
+    { href: 'https://munbyn.biz/4jaYFoR', title: 'Shop MUNBYN', code: 'MUNBYNAM' },
+    { href: 'https://munbyn.biz/3X28EEd', title: '403B printer on Amazon', code: 'MUNPRINT' },
+    { href: 'https://munbyn.biz/4zro5V9', title: 'Thermal labels on Amazon' },
+];
+
 export default function Links() {
     return (
         <main className="souraw-links-page">
@@ -24,6 +30,21 @@ export default function Links() {
                         <BrandSticker name="coffeeBreak" className="souraw-links-intro-sticker" eager />
                     </div>
                 </header>
+
+                <section className="souraw-links-feature" aria-labelledby="munbyn-title">
+                    <h2 id="munbyn-title">MUNBYN</h2>
+                    <p>Thermal label printer &amp; labels</p>
+                    <ul>
+                        {munbynLinks.map(({ href, title, code }) => (
+                            <li key={href}>
+                                <a href={href} target="_blank" rel="noopener noreferrer">
+                                    <strong>{title}</strong>
+                                    {code && <span>10% off with <b>{code}</b></span>}
+                                </a>
+                            </li>
+                        ))}
+                    </ul>
+                </section>
 
                 <nav className="souraw-links-list" aria-label="Explore SOURAW">
                     {destinations.map(({ to, href, download, external, title, emphasis, description, icon: Icon, color }, index) => {
