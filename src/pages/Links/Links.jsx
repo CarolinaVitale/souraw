@@ -14,8 +14,8 @@ const destinations = [
 
 const munbynLinks = [
     { href: 'https://munbyn.biz/4jaYFoR', title: 'Shop MUNBYN', code: 'MUNBYNAM' },
-    { href: 'https://munbyn.biz/3X28EEd', title: '403B printer on Amazon', code: 'MUNPRINT' },
-    { href: 'https://munbyn.biz/4zro5V9', title: 'Thermal labels on Amazon' },
+    { href: 'https://link.amazon/B0awflFe4', title: '403B printer on Amazon', code: 'MUNPRINT' },
+    { href: 'https://link.amazon/B09KpPOCX', title: 'Thermal labels on Amazon' },
 ];
 
 export default function Links() {
