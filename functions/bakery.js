@@ -14,6 +14,7 @@ const catalog = [
   ['snickerdoodles-sweet', 'Snickerdoodles', 'Box of 30', 2000],
   ['four-cookie-bag', 'Bag of 4 Cookies', '4 cookies · Chocolate chips', 700],
   ['four-cookie-bag', 'Bag of 4 Cookies', '4 cookies · Peanut butter chips', 700],
+  ['checkout-test', 'SOURAW checkout test', 'One test payment', 100],
 ];
 
 // Never accept names, prices or totals supplied by the browser.
@@ -28,6 +29,10 @@ function validateOrder(data) {
       throw new Error('An item is unavailable or its quantity is invalid.');
     }
     const [id, name, size, unitAmount] = match;
+    if (id === 'checkout-test' &&
+        (data.items.length !== 1 || item.quantity !== 1 || Date.now() >= Date.parse('2026-12-03T05:00:00Z'))) {
+      throw new Error('The checkout test is unavailable or must be purchased by itself.');
+    }
     const key = `${id}:${size}`;
     if (seen.has(key)) throw new Error('Duplicate item.');
     seen.add(key);
