@@ -26,16 +26,6 @@ test('correctly prices cookie variants', () => {
   assert.equal(validateOrder(order([{ id: 'cookies-sweet', size: 'Box of 24', quantity: 3 }])).total, 10800);
 });
 
-test('checkout test costs $1 and is restricted to one item before expiry', (t) => {
-  const sample = { id: 'checkout-test', size: 'One test payment', quantity: 1 };
-  const now = t.mock.method(Date, 'now', () => Date.parse('2026-12-03T04:59:59Z'));
-  assert.equal(validateOrder(order([sample])).total, 100);
-  assert.throws(() => validateOrder(order([{ ...sample, quantity: 2 }])));
-  assert.throws(() => validateOrder(order([sample, item])));
-  now.mock.mockImplementation(() => Date.parse('2026-12-03T05:00:00Z'));
-  assert.throws(() => validateOrder(order([sample])));
-});
-
 test('backend catalog matches the published featured product prices', () => {
   const source = fs.readFileSync(`${__dirname}/../src/data/products.js`, 'utf8');
   const products = vm.runInNewContext(source.replace(/export /g, '') + '\nproducts;', { require: (path) => path });

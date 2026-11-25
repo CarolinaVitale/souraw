@@ -9,7 +9,6 @@ import Contact from './pages/Contact/Contact';
 import Reviews from './pages/Reviews';
 import Orders from './pages/Orders/Orders';
 import PaymentResult from './pages/Orders/PaymentResult';
-import CheckoutTest from './pages/Orders/CheckoutTest';
 import './App.css';
 import './styles/photo-banners.css';
 import ScrollToTop from './components/ScrollToTop';
@@ -52,7 +51,6 @@ function App() {
         <Route path="/schedule" element={<Orders />} />
         <Route path="/orders" element={<OrderSelection />} />
         <Route path="/orders/payment" element={<PaymentResult />} />
-        <Route path="/orders/checkout-test" element={<CheckoutTest />} />
         <Route path="/orders/sourdough" element={<Prices />} />
         <Route path="/orders/sweets" element={<Prices sweets />} />
         <Route path="/souraw-finds" element={<Navigate to="/links" replace />} />
