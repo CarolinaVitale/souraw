@@ -13,23 +13,23 @@
     margin: 0 auto;
 }
 
-.souraw-links-eyebrow {
-    margin: 0 0 32px;
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: .16em;
+.souraw-links-masthead {
+    margin-bottom: 32px;
 }
 
+/* Title in dark gray with the yellow shadow; "SOURAW." in red with the pink marker (journal.css). */
 .souraw-links-intro h1 {
     margin: 0;
     font-size: clamp(56px, 10vw, 112px);
     font-weight: 900;
     line-height: .96;
     letter-spacing: -.07em;
+    text-shadow: 4px 5px 0 var(--color-yellow);
 }
 
-.souraw-links-intro h1 span {
-    color: var(--color-purple);
+.souraw-links-intro h1 .journal-marker {
+    display: inline-block;
+    color: #e53d23;
 }
 
 .souraw-links-intro-note {
@@ -48,17 +48,28 @@
 
 .souraw-links-intro-sticker { --sticker-width: 140px; --sticker-turn: 8deg; margin: -18px 12px 0 0; }
 .souraw-links-intro-note p { flex: 1; min-width: 0; }
-.souraw-links-outro { display: flex; align-items: center; justify-content: space-between; gap: 30px; margin-top: 36px; }
-.souraw-links-outro .souraw-links-home { margin-top: 0; }
-.souraw-links-outro-sticker { --sticker-width: 200px; --sticker-turn: -7deg; margin: 8px 10px 0 0; }
+.souraw-links-outro { margin-top: 36px; }
+.souraw-links-outro .souraw-links-home { margin: -11px 0; }
 
 
+/* MUNBYN: light cream paper with a thin border and yellow washi tape. */
 .souraw-links-feature {
-    margin-bottom: 36px;
-    padding: clamp(18px, 4vw, 32px);
-    border: 2px solid var(--color-gray-dark);
-    border-radius: 20px;
-    background: var(--color-yellow);
+    position: relative;
+    margin: 14px 0 36px;
+    padding: clamp(26px, 4vw, 36px) clamp(18px, 4vw, 32px) clamp(18px, 4vw, 28px);
+    border: 1.5px solid var(--color-gray-dark);
+    background: #fffaf4;
+}
+
+.souraw-links-feature::before {
+    content: "";
+    position: absolute;
+    top: -0.8rem;
+    left: 50%;
+    width: 5.5rem;
+    height: 1.6rem;
+    background: rgba(246, 188, 63, 0.7);
+    transform: translateX(-50%) rotate(-3deg);
 }
 
 .souraw-links-feature h2 {
@@ -84,24 +95,38 @@
 .souraw-links-feature a {
     display: flex;
     flex-wrap: wrap;
+    min-height: 48px;
+    box-sizing: border-box;
     align-items: center;
     justify-content: space-between;
     gap: 6px 16px;
-    padding: 12px 14px;
-    border: 1px solid currentColor;
-    border-radius: 10px;
+    padding: 10px 14px;
+    border: 1px solid var(--color-gray-dark);
     background: var(--color-bg);
     color: inherit;
     font-size: 16px;
     text-decoration: none;
+    transition: background .2s ease;
 }
 
 .souraw-links-feature a:hover {
-    background: var(--color-pink);
+    background: #fffaf4;
 }
 
 .souraw-links-feature a span {
     font-size: 14px;
+}
+
+/* Discount codes as yellow stickers. */
+.souraw-links-code {
+    display: inline-block;
+    margin-left: 4px;
+    border: 1.5px solid var(--color-gray-dark);
+    background: var(--color-yellow);
+    padding: 2px 7px;
+    font-weight: 900;
+    letter-spacing: .04em;
+    transform: rotate(-2deg);
 }
 
 .souraw-links-list {
@@ -110,6 +135,8 @@
 
 .souraw-links-card {
     display: flex;
+    min-height: 48px;
+    box-sizing: border-box;
     align-items: center;
     gap: 22px;
     padding: 26px 8px;
@@ -119,16 +146,21 @@
     transition: background .2s ease, padding .2s ease;
 }
 
+/* Row numbers in handwriting. */
 .souraw-links-number {
-    font-size: 11px;
     align-self: flex-start;
-    padding-top: 7px;
+    min-width: 1.6em;
+    color: #e53d23;
+    font-family: "Biro", cursive;
+    font-size: 22px;
+    line-height: 1;
+    padding-top: 4px;
 }
 
 .souraw-links-icon {
     display: flex;
     font-size: 22px;
-    color: var(--color-purple);
+    color: #e53d23;
 }
 
 .souraw-links-label {
@@ -159,7 +191,7 @@
 }
 
 .souraw-links-card:hover {
-    background: var(--color-pink);
+    background: #fffaf4;
     padding-left: 18px;
     padding-right: 18px;
 }
@@ -169,7 +201,7 @@
 }
 
 .souraw-links-page a:focus-visible {
-    outline: 3px solid var(--color-purple);
+    outline: 3px solid var(--color-gray-dark);
     outline-offset: 4px;
 }
 
@@ -201,7 +233,7 @@
 }
 
 .souraw-links-social-grid a:hover {
-    color: var(--color-purple);
+    color: #e53d23;
 }
 
 .souraw-links-social-grid svg {
@@ -225,9 +257,13 @@
 }
 
 .souraw-links-home {
+    /* 44px tall tap area without changing how it looks:
+       invisible padding, offset by the same negative margin. */
     display: inline-block;
+    padding: 11px 0;
     margin-top: 40px;
-    color: var(--color-purple);
+    color: #e53d23;
+    font-weight: 700;
     font-size: 13px;
     text-underline-offset: 5px;
     line-height: 1.7;
@@ -245,9 +281,12 @@
         padding: 128px 22px 40px;
     }
 
-    .souraw-links-eyebrow {
-        font-size: 8px;
-        margin-bottom: 26px;
+    .souraw-links-masthead {
+        margin-bottom: 22px;
+    }
+
+    .souraw-links-signoff {
+        font-size: 12px;
     }
 
     .souraw-links-intro h1 {
@@ -264,8 +303,6 @@
     }
 
     .souraw-links-intro-sticker { --sticker-width: 100px; margin: 0 3px 0 0; }
-    .souraw-links-outro { flex-direction: column; align-items: flex-start; gap: 24px; }
-    .souraw-links-outro-sticker { --sticker-width: 170px; align-self: flex-end; margin: 0 6px 0 0; }
 
 
     .souraw-links-card {
@@ -298,10 +335,29 @@
     }
 }
 
+/* Phone: compact top so ORDERS and Amazon show up with little scrolling
+   (MUNBYN stays first). Rows keep at least 48px to tap. */
+@media (max-width: 480px) {
+    .souraw-links-page { padding-top: 112px; }
+    .souraw-links-masthead { margin-bottom: 16px; }
+    .souraw-links-intro h1 { font-size: clamp(42px, 11vw, 50px); }
+    .souraw-links-intro-note { margin: 14px 0 22px; }
+    .souraw-links-intro-sticker { --sticker-width: 78px; }
+
+    .souraw-links-feature { margin-bottom: 22px; padding: 24px 16px 16px; }
+    .souraw-links-feature h2 { font-size: 28px; }
+    .souraw-links-feature p { margin: 4px 0 12px; font-size: 15px; }
+    .souraw-links-feature ul { gap: 6px; }
+    .souraw-links-feature a { padding: 8px 12px; gap: 4px 12px; font-size: 15px; }
+
+    .souraw-links-card { padding: 18px 0; }
+}
+
 @media (prefers-reduced-motion: reduce) {
 
     .souraw-links-card,
-    .souraw-links-arrow {
+    .souraw-links-arrow,
+    .souraw-links-feature a {
         transition: none;
     }
 }

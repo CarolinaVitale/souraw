@@ -1,5 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
+import "../../styles/journal.css";
 import "./ChoosingUs.css";
+import JournalMasthead from "../JournalMasthead/JournalMasthead";
+import useInViewOnce from "../../hooks/useInViewOnce";
 
 import breadPng from "../../assets/brand-elements/break-.optimized.webp";
 import arrowTL from "../../assets/brand-elements/arrow-up-left.png";
@@ -49,6 +52,7 @@ const ITEMS = [
 export default function Ingredients() {
     const stageRef = useRef(null);
     const [inView, setInView] = useState(false);
+    const [headingRef, headingInView] = useInViewOnce();
 
     useEffect(() => {
         const el = stageRef.current;
@@ -74,16 +78,23 @@ export default function Ingredients() {
     return (
         <section className="sk">
             <div className="sk-wrap">
-                <header className="sk-heading">
-                    <p className="sk-kicker">Why Sourdough?</p>
-                    <h2 className="sk-h2">
+                <JournalMasthead
+                    className="sk-masthead"
+                    left="The good stuff"
+                    center="N° 03 — Why sourdough"
+                    right="Naturally"
+                />
+
+                <header ref={headingRef} className={`sk-heading journal-reveal ${headingInView ? "is-inview" : ""}`}>
+                    <p className="sk-kicker reveal-up">Why Sourdough?</p>
+                    <h2 className="sk-h2 reveal-up" style={{ "--rd": "0.1s" }}>
                         Real benefits,<br />
                         <span>naturally.</span> <b aria-hidden="true">♡</b>
                     </h2>
                 </header>
 
                 <div ref={stageRef} className={`sk-stage ${inView ? "is-inview" : ""}`}>
-                    {/* ✅ Safari fix: centrado fijo + float en un inner (no se anima el transform del centro) */}
+                    {/* Fixed centering on the wrapper; the inner layer keeps Safari from re-centering. */}
                     <div className="sk-centerWrap" aria-hidden="true">
                         <div className="sk-centerFloat">
                             <img

@@ -6,7 +6,10 @@ import { Navigation, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import "../../styles/journal.css";
 import "./MenuCarousel.css";
+import JournalMasthead from "../JournalMasthead/JournalMasthead";
+import useInViewOnce from "../../hooks/useInViewOnce";
 
 import cookies from "../../assets/prices/cookies.webp";
 import classic from "../../assets/prices/classic.webp";
@@ -35,15 +38,26 @@ const products = [
 ];
 
 export default function MenuCarousel() {
+    const [headRef, headInView] = useInViewOnce();
+
     return (
         <section className="menu-carousel" aria-labelledby="menu-carousel-title">
-            <div className="menu-carousel-head">
+            <JournalMasthead
+                className="menu-masthead"
+                left="From the oven"
+                center="N° 04 — The menu"
+                right="Small batch"
+            />
+
+            <div ref={headRef} className={`menu-carousel-head journal-reveal ${headInView ? "is-inview" : ""}`}>
                 <div>
-                    <p className="menu-kicker">from the oven</p>
-                    <h2 id="menu-carousel-title">The oven has range.</h2>
-                    <BrandSticker name="croissant" className="souraw-sticker--carousel" />
+                    <p className="menu-kicker reveal-up">small batch, big mood</p>
+                    <h2 id="menu-carousel-title" className="reveal-up" style={{ "--rd": "0.1s" }}>The oven has range.</h2>
+                    <div className="reveal-up" style={{ "--rd": "0.3s" }}>
+                        <BrandSticker name="croissant" className="souraw-sticker--carousel" />
+                    </div>
                 </div>
-                <p>
+                <p className="reveal-up" style={{ "--rd": "0.2s" }}>
                     Naturally leavened loaves, laminated things, sweets, and
                     small-batch experiments — all made with intention.
                 </p>

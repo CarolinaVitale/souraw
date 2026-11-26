@@ -1,0 +1,285 @@
+@import "./variables.css";
+
+/* Shared "journal / magazine" pieces for the home sections. */
+
+/* Masthead: thick rule above, thin rule below, three small spaced labels. */
+.journal-masthead {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 1rem;
+    position: relative;
+    align-items: center;
+    padding: calc(0.85rem + 4px) 0 calc(0.85rem + 1px);
+    color: var(--color-gray-dark);
+    font-family: "Montserrat", sans-serif;
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+}
+
+/* Rules are pseudo-elements so they can draw in from the left. */
+.journal-masthead::before,
+.journal-masthead::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 100%;
+    background: var(--color-gray-dark);
+}
+
+.journal-masthead::before { top: 0; height: 4px; }
+.journal-masthead::after { bottom: 0; height: 1px; }
+
+/* Animated variant: rules start collapsed and extend once, when in view. */
+.journal-masthead--animated::before,
+.journal-masthead--animated::after {
+    clip-path: inset(0 100% 0 0);
+    transition: clip-path 0.9s cubic-bezier(0.25, 0.8, 0.3, 1);
+}
+
+.journal-masthead--animated::after { transition-delay: 0.15s; }
+
+.journal-masthead--animated.is-inview::before,
+.journal-masthead--animated.is-inview::after {
+    clip-path: inset(0 0 0 0);
+}
+
+.journal-masthead span:nth-child(2) { text-align: center; }
+.journal-masthead span:nth-child(3) { text-align: right; }
+
+/* Pink highlighter stroke behind a word. */
+.journal-marker {
+    position: relative;
+    z-index: 0;
+    justify-self: start;
+    color: var(--color-red);
+}
+
+.journal-marker::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    left: -0.08em;
+    right: -0.12em;
+    top: 0.3em;
+    height: 0.5em;
+    border-radius: 0.12em 0.3em 0.18em 0.35em;
+    background: rgba(247, 145, 195, 0.6);
+    transform: rotate(-2.5deg);
+}
+
+/* Polaroid: cream frame with a deeper bottom, washi tape on top.
+   Works with an <img> or a <video> as the first child. */
+.journal-polaroid {
+    position: relative;
+    margin: 0;
+    background: #fffaf3;
+    box-shadow: 0 12px 28px rgba(54, 54, 54, 0.14);
+    padding: 0.7rem 0.7rem 0;
+    color: var(--color-gray-dark);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.journal-polaroid > img,
+.journal-polaroid > video {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 4.4;
+    object-fit: cover;
+}
+
+.journal-polaroid figcaption {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.8rem;
+    padding: 0.7rem 0.2rem 0.9rem;
+    font-family: "Biro", cursive;
+    font-size: clamp(1.25rem, 1.8vw, 1.55rem);
+    line-height: 1.1;
+}
+
+.journal-polaroid figcaption small {
+    flex: none;
+    color: var(--color-red);
+    font-family: "Montserrat", sans-serif;
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+}
+
+/* Polaroid without a caption: keep the deeper bottom edge of the frame. */
+.journal-polaroid--plain {
+    padding-bottom: 2.4rem;
+}
+
+/* Washi tape, pink by default */
+.journal-polaroid::before {
+    content: "";
+    position: absolute;
+    z-index: 2;
+    top: -0.8rem;
+    left: 50%;
+    width: 5.5rem;
+    height: 1.6rem;
+    background: rgba(247, 145, 195, 0.62);
+    transform: translateX(-50%) rotate(var(--tape-tilt, -4deg));
+}
+
+.journal-polaroid--yellow-tape::before {
+    --tape-tilt: 3deg;
+    background: rgba(246, 188, 63, 0.7);
+}
+
+/* The tilt lives in a variable so the entrance can settle into it
+   and the hover can straighten it halfway. */
+.journal-polaroid { transform: rotate(var(--tilt, 0deg)); }
+.journal-polaroid--tilt-left { --tilt: -3deg; }
+.journal-polaroid--tilt-right { --tilt: 2.5deg; }
+
+/* Hover: straighten a little and lift 4px. */
+.journal-polaroid:hover {
+    transform: translateY(-4px) rotate(calc(var(--tilt, 0deg) / 2));
+    box-shadow: 0 18px 34px rgba(54, 54, 54, 0.18);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .journal-polaroid {
+        transition: none;
+    }
+
+    .journal-masthead--animated::before,
+    .journal-masthead--animated::after {
+        clip-path: none;
+        transition: none;
+    }
+}
+
+/* Phone: the number line ("N° 04 — The menu") on the first row,
+   the other two labels on the second. */
+@media (max-width: 620px) {
+    .journal-masthead {
+        grid-template-columns: 1fr 1fr;
+        row-gap: 0.55rem;
+        font-size: 0.62rem;
+        letter-spacing: 0.16em;
+    }
+
+    .journal-masthead span:nth-child(2) {
+        grid-column: 1 / -1;
+        grid-row: 1;
+        text-align: left;
+    }
+
+    .journal-masthead span:nth-child(1) {
+        grid-row: 2;
+    }
+
+    .journal-masthead span:nth-child(3) {
+        grid-row: 2;
+    }
+
+    /* No center label: keep the two side labels on a single row. */
+    .journal-masthead:has(> span:nth-child(2):empty) > span {
+        grid-row: auto;
+    }
+
+    .journal-masthead > span:empty {
+        display: none;
+    }
+}
+
+/* ------------------------------------------------------------------
+   Entrance animations ("handmade journal"), run once per section.
+   A section adds .journal-reveal, and .is-inview once it scrolls in.
+   Each element sets --rd (its delay); children inherit it.
+   Everything lives under no-preference: with reduced motion,
+   elements simply sit in their final place.
+   ------------------------------------------------------------------ */
+@media (prefers-reduced-motion: no-preference) {
+    /* Texts: fade in, rising about 12px. Uses `translate` so any
+       existing rotate() on the element is kept. */
+    .journal-reveal .reveal-up {
+        opacity: 0;
+    }
+
+    .journal-reveal.is-inview .reveal-up {
+        opacity: 1;
+        animation: journal-rise 0.7s cubic-bezier(0.25, 0.8, 0.3, 1) var(--rd, 0s) backwards;
+    }
+
+    /* Polaroids: drop in from a little above, straight and transparent,
+       then settle into their tilt (~0.6s). */
+    .journal-reveal .journal-polaroid {
+        opacity: 0;
+    }
+
+    .journal-reveal.is-inview .journal-polaroid {
+        opacity: 1;
+        animation: journal-polaroid-in 0.6s cubic-bezier(0.25, 0.8, 0.3, 1) var(--rd, 0s) backwards;
+    }
+
+    /* Washi tape: stretches sideways right after its polaroid lands. */
+    .journal-reveal.is-inview .journal-polaroid::before {
+        animation: journal-tape-in 0.35s cubic-bezier(0.3, 0.7, 0.3, 1) calc(var(--rd, 0s) + 0.5s) backwards;
+    }
+
+    /* Pink highlighter: drawn left to right (~0.5s) after its title appears.
+       Triggered by the marker itself (.is-drawn, see JournalMarker). */
+    .journal-marker::before {
+        clip-path: inset(0 100% 0 0);
+    }
+
+    .journal-marker.is-drawn::before {
+        clip-path: inset(0 0 0 0);
+        transition: clip-path 0.5s cubic-bezier(0.4, 0, 0.3, 1) calc(var(--rd, 0s) + 0.55s);
+    }
+
+    /* Hand-drawn SVG strokes: the line traces itself.
+       Paths use pathLength="1" so one dash covers any path. */
+    .journal-reveal .journal-draw path {
+        stroke-dasharray: 1;
+        stroke-dashoffset: 1;
+    }
+
+    .journal-reveal.is-inview .journal-draw path {
+        stroke-dashoffset: 0;
+        transition: stroke-dashoffset 0.9s cubic-bezier(0.45, 0, 0.3, 1) var(--draw-delay, 0.6s);
+    }
+
+    .journal-reveal.is-inview .journal-draw path + path {
+        transition-delay: calc(var(--draw-delay, 0.6s) + 0.6s);
+        transition-duration: 0.35s;
+    }
+}
+
+@keyframes journal-rise {
+    from {
+        opacity: 0;
+        translate: 0 12px;
+    }
+}
+
+@keyframes journal-polaroid-in {
+    from {
+        opacity: 0;
+        transform: translateY(-28px) rotate(0deg);
+    }
+
+    to {
+        opacity: 1;
+        transform: rotate(var(--tilt, 0deg));
+    }
+}
+
+@keyframes journal-tape-in {
+    from {
+        clip-path: inset(0 100% 0 0);
+    }
+
+    to {
+        clip-path: inset(0 0 0 0);
+    }
+}

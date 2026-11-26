@@ -7,7 +7,6 @@ import Ribbon from '../components/Ribbon/Ribbon';
 // import HomePathways from '../components/HomeConversion/HomePathways';
 import HomeInstagramFeed from '../components/HomeConversion/HomeInstagramFeed';
 import Founder from '../components/Founder/Founder';
-import SpecialtiesCollage from '../components/SpecialtiesCollage/SpecialtiesCollage';
 import ChoosingUs from '../components/ChoosingUs/ChoosingUs';
 
 const Home = () => {
@@ -23,7 +22,6 @@ const Home = () => {
             {/* <HomePathways /> */}
             <HomeInstagramFeed />
             <ChoosingUs />
-            <SpecialtiesCollage />
             <Carousel />
             <Illustration />
         </>

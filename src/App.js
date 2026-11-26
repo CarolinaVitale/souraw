@@ -7,7 +7,6 @@ import About from './pages/About/About';
 import Catalog from './pages/Catalog/Catalog';
 import Contact from './pages/Contact/Contact';
 import Reviews from './pages/Reviews';
-import Orders from './pages/Orders/Orders';
 import PaymentResult from './pages/Orders/PaymentResult';
 import './App.css';
 import './styles/photo-banners.css';
@@ -48,7 +47,8 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/links" element={<Links />} />
         <Route path="/reviews" element={<Reviews />} />
-        <Route path="/schedule" element={<Orders />} />
+        {/* /schedule was removed: old links (Instagram, bookmarks) land on the order page. */}
+        <Route path="/schedule" element={<Navigate to="/orders" replace />} />
         <Route path="/orders" element={<OrderSelection />} />
         <Route path="/orders/payment" element={<PaymentResult />} />
         <Route path="/orders/sourdough" element={<Prices />} />

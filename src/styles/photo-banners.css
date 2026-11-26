@@ -7,7 +7,6 @@
 #root .finds-hero,
 #root .diy-hero,
 #root .about-hero,
-#root .schedule-hero,
 #root .lab-page-hero {
     position: relative;
     isolation: isolate;
@@ -25,7 +24,6 @@
 #root .finds-hero::before,
 #root .diy-hero::before,
 #root .about-hero::before,
-#root .schedule-hero::before,
 #root .lab-page-hero::before {
     content: "";
     position: absolute;
@@ -42,7 +40,6 @@
 #root .finds-hero-word,
 #root .diy-hero-word,
 #root .about-hero-word,
-#root .schedule-hero-word,
 #root .lab-hero-word,
 #root .menu-sticker,
 #root .reviews-sticker,
@@ -51,8 +48,6 @@
 #root .diy-sticker,
 #root .diy-scissors,
 #root .about-sticker,
-#root .schedule-sticker-pink,
-#root .schedule-sticker-yellow,
 #root .lab-sticker {
     display: none;
 }
@@ -62,7 +57,6 @@
 #root .finds-hero-copy,
 #root .diy-hero-copy,
 #root .about-hero-copy,
-#root .schedule-hero-copy,
 #root .lab-page-hero-copy {
     position: relative;
     z-index: 3;
@@ -76,7 +70,6 @@
 #root .finds-hero-scene,
 #root .diy-hero-scene,
 #root .about-hero-visual,
-#root .schedule-hero-visual,
 #root .lab-page-hero-visual {
     position: absolute;
     inset: 0;
@@ -93,7 +86,6 @@
 #root .finds-photo-frame,
 #root .diy-hero-frame,
 #root .about-photo-frame,
-#root .schedule-photo-frame,
 #root .lab-hero-frame {
     width: 100%;
     height: 100%;
@@ -110,7 +102,6 @@
 #root .finds-photo-frame img,
 #root .diy-hero-frame img,
 #root .about-photo-frame img,
-#root .schedule-photo-frame img,
 #root .lab-hero-frame img {
     display: block;
     width: 100%;
@@ -124,7 +115,6 @@
 #root .finds-photo-frame img { object-position: 62% center; }
 #root .diy-hero-frame img { object-position: 58% center; }
 #root .about-photo-frame img { object-position: 60% center; }
-#root .schedule-photo-frame img { object-position: 62% center; }
 #root .lab-hero-frame img { object-position: 58% center; }
 
 /* The Finds headline is intentionally taller than the other banner titles.
@@ -172,7 +162,6 @@
     #root .finds-hero,
     #root .diy-hero,
     #root .about-hero,
-    #root .schedule-hero,
     #root .lab-page-hero {
         min-height: 820px;
         padding-bottom: 5rem;
@@ -183,7 +172,6 @@
     #root .finds-hero-copy,
     #root .diy-hero-copy,
     #root .about-hero-copy,
-    #root .schedule-hero-copy,
     #root .lab-page-hero-copy {
         width: min(720px, 78%);
     }
@@ -195,7 +183,6 @@
     #root .finds-hero,
     #root .diy-hero,
     #root .about-hero,
-    #root .schedule-hero,
     #root .lab-page-hero {
         min-height: 720px;
         gap: 0;
@@ -207,7 +194,6 @@
     #root .finds-hero::before,
     #root .diy-hero::before,
     #root .about-hero::before,
-    #root .schedule-hero::before,
     #root .lab-page-hero::before {
         background:
             linear-gradient(0deg, rgba(38, 30, 29, 0.9) 0%, rgba(38, 30, 29, 0.57) 48%, rgba(38, 30, 29, 0.08) 82%),
@@ -219,7 +205,6 @@
     #root .finds-hero-copy,
     #root .diy-hero-copy,
     #root .about-hero-copy,
-    #root .schedule-hero-copy,
     #root .lab-page-hero-copy {
         width: 100%;
     }
@@ -234,6 +219,5 @@
     #root .finds-photo-frame img { object-position: 58% center; }
     #root .diy-hero-frame img { object-position: 54% center; }
     #root .about-photo-frame img { object-position: 58% center; }
-    #root .schedule-photo-frame img { object-position: 58% center; }
     #root .lab-hero-frame img { object-position: 55% center; }
 }

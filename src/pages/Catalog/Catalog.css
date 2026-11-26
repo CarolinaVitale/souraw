@@ -36,8 +36,7 @@
     z-index: 8;
 }
 
-.menu-hero-word,
-.catalog-section-word {
+.menu-hero-word {
     position: absolute;
     color: transparent;
     font-family: "Montserrat", sans-serif;
@@ -167,12 +166,19 @@
     letter-spacing: .04em;
     text-decoration: none;
     text-transform: uppercase;
-    transition: transform .2s ease, box-shadow .2s ease;
+    transition: transform .18s ease-out, box-shadow .18s ease-out;
 }
 
+/* Hover: lifts a little. Click: sinks until it sits on its shadow. */
 .menu-pill:hover {
-    transform: translate(3px, 3px);
-    box-shadow: 4px 5px 0 var(--menu-dark);
+    transform: translate(-2px, -2px);
+    box-shadow: 9px 10px 0 var(--menu-dark);
+}
+
+.menu-pill:active {
+    transform: translate(7px, 8px);
+    box-shadow: 0 0 0 var(--menu-dark);
+    transition-duration: .06s;
 }
 
 .menu-pill-red { background: var(--menu-red); color: var(--menu-cream); }
@@ -182,50 +188,25 @@
     margin-top: clamp(1.75rem, 2.5vw, 2.6rem);
 }
 
-.menu-ribbon {
-    position: relative;
-    z-index: 10;
-    overflow: hidden;
-    border-top: 4px solid var(--menu-dark);
-    border-bottom: 4px solid var(--menu-dark);
-    background: var(--color-turquoise, #0096a6);
-    color: var(--menu-cream);
-    transform: rotate(-1deg) scale(1.02);
-}
-
-.menu-ribbon > div {
-    display: flex;
-    width: max-content;
-    animation: menu-marquee 28s linear infinite;
-}
-
-.menu-ribbon span {
-    padding: .8rem 0;
-    font-family: "Montserrat", sans-serif;
-    font-size: .88rem;
-    font-weight: 900;
-    letter-spacing: .1em;
-    white-space: nowrap;
-}
-
-@keyframes menu-marquee { to { transform: translateX(-50%); } }
-
 .catalog {
-    background: var(--menu-dark);
+    background: var(--color-bg);
 }
 
+/* --- Intro: plain cream, color only in the details --- */
 .catalog-intro {
-    padding: clamp(6rem, 10vw, 10rem) 6vw;
-    color: var(--menu-cream);
+    padding: clamp(5rem, 9vw, 8rem) 6vw clamp(3rem, 6vw, 5rem);
+    color: var(--menu-dark);
     text-align: center;
 }
 
-.catalog-intro .menu-script { color: var(--menu-pink); }
+.catalog-intro .menu-script { color: var(--menu-red); }
 
 .catalog-intro h1 {
     max-width: 1000px;
     margin: 0 auto;
+    color: var(--menu-dark);
     font-size: clamp(3.2rem, 7.5vw, 8rem);
+    text-shadow: 4px 5px 0 var(--color-yellow);
 }
 
 .catalog-intro > span {
@@ -233,102 +214,90 @@
     max-width: 690px;
     margin: 1.7rem auto 0;
     font-size: 1.05rem;
+    font-weight: 600;
     line-height: 1.6;
 }
 
+/* Category jump links: pills with a hard shadow, like the home buttons. */
 .catalog-category-nav {
     max-width: 1100px;
     margin: 3rem auto 0;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: .8rem;
+    gap: 1.1rem 1.2rem;
 }
 
 .catalog-category-nav a {
-    padding: .7rem 1rem;
-    border: 2px solid var(--menu-cream);
+    padding: .85rem 1.25rem;
+    border: 3px solid var(--menu-dark);
     border-radius: 999px;
-    color: var(--menu-cream);
-    font-size: .7rem;
+    background: var(--color-bg);
+    box-shadow: 5px 6px 0 var(--menu-dark);
+    color: var(--menu-dark);
+    font-size: .74rem;
     font-weight: 900;
     letter-spacing: .06em;
     text-decoration: none;
     text-transform: uppercase;
-    transition: background .2s ease, color .2s ease;
+    transition: transform .18s ease-out, box-shadow .18s ease-out;
 }
 
 .catalog-category-nav a:hover {
-    background: var(--menu-cream);
-    color: var(--menu-dark);
+    transform: translate(-2px, -2px);
+    box-shadow: 7px 8px 0 var(--menu-dark);
 }
 
+.catalog-category-nav a:active {
+    transform: translate(5px, 6px);
+    box-shadow: 0 0 0 var(--menu-dark);
+    transition-duration: .06s;
+}
+
+.catalog-category-nav a:focus-visible {
+    outline: 3px solid var(--menu-dark);
+    outline-offset: 4px;
+}
+
+/* --- Categories: plain cream; each keeps its color only as an accent
+   (washi tape, numbers, the thick rule of its header). --- */
 .catalog-section {
     position: relative;
-    padding: clamp(6rem, 9vw, 9rem) 5vw clamp(7rem, 10vw, 10rem);
-    overflow: hidden;
+    padding: clamp(4rem, 7vw, 6rem) 5vw clamp(6rem, 9vw, 8rem);
+    background: var(--color-bg);
+    color: var(--menu-dark);
     scroll-margin-top: 110px;
 }
 
-.catalog-section-1 { background: var(--menu-yellow); color: var(--menu-dark); }
-.catalog-section-2 { background: var(--menu-green); color: var(--menu-cream); }
-.catalog-section-3 { background: var(--menu-purple); color: var(--menu-cream); }
-.catalog-section-4 { background: var(--menu-pink); color: var(--menu-dark); }
-
-.catalog-section-word {
-    right: -3vw;
-    bottom: -2vw;
-    font-size: clamp(9rem, 20vw, 25rem);
-    -webkit-text-stroke-color: rgba(54, 54, 54, .11);
-}
-
-.catalog-section-2 .catalog-section-word,
-.catalog-section-3 .catalog-section-word {
-    -webkit-text-stroke-color: rgba(255, 232, 207, .13);
-}
+.catalog-section-1 { --cat: #f6bc3f; }
+.catalog-section-2 { --cat: #008b46; }
+.catalog-section-3 { --cat: #5d30ff; }
+.catalog-section-4 { --cat: var(--menu-pink); }
 
 .catalog-section-header {
-    position: relative;
-    z-index: 2;
     width: min(1380px, 100%);
-    margin: 0 auto clamp(2.5rem, 5vw, 4.5rem);
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    gap: 2rem;
-    padding-bottom: 1.5rem;
-    border-bottom: 4px solid currentColor;
+    margin: 0 auto clamp(2.5rem, 5vw, 4rem);
 }
 
-.catalog-section-header > div {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
+/* Magazine header: thick rule in the category color, thin dark rule below. */
+.catalog-masthead::before {
+    background: var(--cat);
 }
 
-.catalog-section-header span {
-    display: grid;
-    place-items: center;
-    width: 48px;
-    height: 48px;
-    border: 3px solid currentColor;
-    border-radius: 50%;
-    font-size: .72rem;
-    font-weight: 900;
+.catalog-masthead span:first-child {
+    color: var(--cat);
+    font-size: 0.85rem;
 }
 
-.catalog-section-header p {
-    margin: 0;
-    font-size: .72rem;
-    font-weight: 900;
-    letter-spacing: .12em;
-    text-transform: uppercase;
-}
-
-.catalog-section-header h2 {
-    max-width: 850px;
+.catalog-section-header .catalog-section-title {
+    margin: clamp(1.6rem, 3vw, 2.4rem) 0 0;
+    color: var(--menu-dark);
     font-size: clamp(3rem, 7vw, 7rem);
-    text-align: right;
+    text-shadow: 4px 5px 0 var(--color-yellow);
+}
+
+.catalog-section-title > span {
+    display: inline-block;
 }
 
 .catalog-grid {
@@ -342,24 +311,28 @@
     align-items: stretch;
 }
 
+/* Closing call: plain cream, title with the yellow shadow, red pill button. */
 .catalog-cta {
     position: relative;
-    padding: clamp(7rem, 12vw, 12rem) 6vw;
-    border-top: 5px solid var(--menu-dark);
-    background: var(--menu-red);
-    color: var(--menu-cream);
+    padding: clamp(6rem, 10vw, 10rem) 6vw;
+    border-top: 1px solid var(--menu-dark);
+    background: var(--color-bg);
+    color: var(--menu-dark);
     text-align: center;
 }
 
-.catalog-cta .menu-script { color: var(--menu-yellow); }
+.catalog-cta .menu-script { color: var(--menu-red); }
 
 .catalog-cta h2 {
+    color: var(--menu-dark);
     font-size: clamp(3.5rem, 8vw, 8rem);
+    text-shadow: 4px 5px 0 var(--color-yellow);
 }
 
 .catalog-cta > p:not(.menu-script) {
     margin: 1.5rem 0 2rem;
-    font-weight: 750;
+    font-size: 1.05rem;
+    font-weight: 700;
 }
 
 @media (max-width: 1050px) {
@@ -391,17 +364,17 @@
 
     .catalog-intro { padding: 5rem 1.2rem; }
     .catalog-intro h1 { font-size: clamp(3rem, 14vw, 4.8rem); }
-    .catalog-category-nav { align-items: stretch; flex-direction: column; }
+    .catalog-category-nav { align-items: stretch; flex-direction: column; padding: 0 0.4rem; }
     .catalog-category-nav a { text-align: center; }
 
     .catalog-section { padding: 5rem 1.2rem 7rem; }
-    .catalog-section-header { display: block; }
-    .catalog-section-header h2 { margin-top: 1.5rem; font-size: clamp(3rem, 14vw, 5rem); text-align: left; }
+    .catalog-section-title { font-size: clamp(3rem, 14vw, 5rem); }
     .catalog-grid { grid-template-columns: 1fr; }
     .catalog-cta { padding: 6rem 1.2rem 7rem; }
     .catalog-cta h2 { font-size: clamp(3.2rem, 15vw, 5rem); }
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .menu-ribbon > div { animation: none; }
+    .menu-pill,
+    .catalog-category-nav a { transition: none; }
 }

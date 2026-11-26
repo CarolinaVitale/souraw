@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { createPortal } from "react-dom";
 import "./CartDrawer.css";
-import { useCart } from "../../context/CartContext";
+import { useCart, MAX_ITEM_QUANTITY } from "../../context/CartContext";
 import CheckoutForm from "../CheckoutForm/CheckoutForm";
+import { getPickupInfo } from "../../utils/pickupDate";
 
 const CartDrawer = ({ isOpen, onClose }) => {
     const [checkoutOpen, setCheckoutOpen] = useState(false);
@@ -19,6 +20,9 @@ const CartDrawer = ({ isOpen, onClose }) => {
     useEffect(() => {
         if (!isOpen || !cartItems.length) setCheckoutOpen(false);
     }, [isOpen, cartItems.length]);
+
+    // During a pause (config/pickupSchedule.js) the cart explains why orders are closed.
+    const pickupInfo = getPickupInfo();
 
     const formatUSD = (price) =>
         Number(price).toLocaleString("en-US", {
@@ -79,7 +83,11 @@ const CartDrawer = ({ isOpen, onClose }) => {
 
                                             <strong>{item.quantity}</strong>
 
-                                            <button onClick={() => increaseQuantity(item.cartId)}>
+                                            <button
+                                                onClick={() => increaseQuantity(item.cartId)}
+                                                disabled={item.quantity >= MAX_ITEM_QUANTITY}
+                                                title={item.quantity >= MAX_ITEM_QUANTITY ? `Up to ${MAX_ITEM_QUANTITY} per item. Contact us for larger orders.` : undefined}
+                                            >
                                                 +
                                             </button>
                                         </div>
@@ -96,6 +104,9 @@ const CartDrawer = ({ isOpen, onClose }) => {
                         </div>
 
                         <div className="cart-footer">
+                            {!pickupInfo.open && (
+                                <p className="cart-paused" role="status">{pickupInfo.message}</p>
+                            )}
                             <div className="cart-total">
                                 <span>Total</span>
                                 <strong>{formatUSD(cartTotal)}</strong>

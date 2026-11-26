@@ -37,9 +37,26 @@
     gap: 0.8rem;
 }
 
+/* Visible label above each field (same text as its placeholder),
+   so it stays in view while typing. */
+.checkout-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.checkout-label {
+    color: var(--color-gray-dark);
+    font-family: "Montserrat", sans-serif;
+    font-size: 0.8125rem;
+    font-weight: 700;
+}
+
+/* 16px text: keeps iPhone Safari from zooming in when a field is tapped. */
 .checkout-form input,
 .checkout-form textarea {
     width: auto;
+    font-size: 16px;
     border: 1px solid var(--color-red);
     background: rgba(255, 255, 255, 0.6);
     border-radius: 3px;
@@ -67,6 +84,22 @@
     border-radius: 3px;
     font-family: "Montserrat", sans-serif;
     color: var(--color-gray-dark);
+}
+
+/* Holiday / schedule note under the pickup line (see config/pickupSchedule.js). */
+.checkout-pickup-note {
+    margin: 0.4rem 0 0.8rem;
+    border-left: 3px solid var(--color-red);
+    padding: 0.3rem 0 0.3rem 0.7rem;
+    color: var(--color-gray-dark);
+    font-size: 0.875rem;
+    font-weight: 700;
+    line-height: 1.45;
+}
+
+.checkout-submit:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
 }
 
 .checkout-summary strong {

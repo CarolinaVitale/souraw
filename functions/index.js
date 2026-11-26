@@ -190,7 +190,10 @@ exports.stripeWebhook = onRequest(
         };
       }
 
-      const emailResult = await resend.emails.send(emailPayload);
+      // Stripe may retry the webhook after the email was sent; Resend drops repeats of the same key.
+      const emailResult = await resend.emails.send(emailPayload, {
+        idempotencyKey: `fulfillment-${sessionId}`,
+      });
 
       if (emailResult.error) {
         throw new Error(emailResult.error.message);

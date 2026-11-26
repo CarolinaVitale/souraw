@@ -50,13 +50,13 @@ async function fulfillBakeryOrder(session, resend) {
   if (!order.customerNotified) {
     await send(session.customer_details?.email || order.customer.email,
       "SOURAW — payment received ♡",
-      `Thank you, ${order.customer.name}! We received your payment of $${total} USD.\n\n${details}\n\nRequested date: ${order.customer.deliveryDate || 'To be arranged'}\nWe will contact you to confirm your date and local pickup details.`,
+      `Thank you, ${order.customer.name}! We received your payment of $${total} USD.\n\n${details}\n\n${order.customer.deliveryDate || 'We will contact you to confirm your date and local pickup details.'}`,
       `bakery-customer-${session.id}`);
     await ref.set({ customerNotified: true }, { merge: true });
   }
   if (bakeryOrdersEmail.value() && !order.ownerNotified) {
     await send(bakeryOrdersEmail.value(), `Paid SOURAW order — $${total}`,
-      `${orderId}\n${details}\n\n${order.customer.name}\n${order.customer.email}\n${order.customer.phone}\nRequested date: ${order.customer.deliveryDate}\nNotes: ${order.customer.notes}`,
+      `${orderId}\n${details}\n\n${order.customer.name}\n${order.customer.email}\n${order.customer.phone}\n${order.customer.deliveryDate || 'Pickup: to be arranged.'}\nNotes: ${order.customer.notes || '—'}`,
       `bakery-owner-${session.id}`);
     await ref.set({ ownerNotified: true }, { merge: true });
   }

@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
+import '../../styles/journal.css';
 import './ReviewsForm.css';
+import useInViewOnce from '../../hooks/useInViewOnce';
 import { db, auth } from '../../firebase';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 
 const ReviewsForm = () => {
+    const [sectionRef, inView] = useInViewOnce();
     const [name, setName] = useState('');
     const [rating, setRating] = useState(5);
     const [comment, setComment] = useState('');
@@ -42,19 +45,18 @@ const ReviewsForm = () => {
     };
 
     return (
-        <section className="review-form-section">
-            <div className="review-form-outline" aria-hidden="true">YOUR TURN</div>
-
+        <section ref={sectionRef} className={`review-form-section journal-reveal ${inView ? "is-inview" : ""}`}>
             <div className="review-form-intro">
-                <p className="reviews-script">pull up a chair</p>
-                <h2>Now it’s your turn.</h2>
-                <p>
+                <p className="reviews-script reveal-up">pull up a chair</p>
+                <h2 className="reveal-up" style={{ "--rd": "0.1s" }}>Now it’s your turn.</h2>
+                <p className="reveal-up" style={{ "--rd": "0.2s" }}>
                     Tried something from SOURAW? Leave a little note for the next
                     curious person at the table.
                 </p>
             </div>
 
-            <div className="review-form-card">
+            {/* Paper card with washi tape; it settles in like the notes above. */}
+            <div className="review-form-card journal-polaroid journal-polaroid--tilt-right journal-polaroid--yellow-tape" style={{ "--rd": "0.2s" }}>
                 <span className="reviews-sticker reviews-sticker-form">say it like it is</span>
                 <form className="review-form" onSubmit={handleSubmit}>
                     <label htmlFor="review-name">Your name</label>

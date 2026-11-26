@@ -1,11 +1,10 @@
 import BrandSticker from '../../components/BrandSticker/BrandSticker';
 import React, { useState } from "react";
 import { Clock, MapPin, ShoppingBag, ArrowUpRight } from "@phosphor-icons/react";
+import "../../styles/journal.css";
 import "./Prices.css";
-import { products } from "../../data/products";
+import { products, fourCookieBagPrices } from "../../data/products";
 import { useCart } from "../../context/CartContext";
-import sweetsImage from "../../assets/prices/cookies.webp";
-import breadImage from "../../assets/prices/classic.webp";
 import cookieBagImage from "../../assets/prices/four-cookie-bag.jpg";
 import spoonableCookieImage from "../../assets/prices/spoonable-cookie.jpg";
 import pistachioTiramisuImage from "../../assets/prices/pistachio-tiramisu.jpg";
@@ -13,8 +12,21 @@ import singleCookieImage from "../../assets/prices/chocolate-chip-single.jpg";
 import chocolateObsessionImage from "../../assets/prices/chocolate-obsession.jpg";
 import { Link } from "react-router-dom";
 import { openContactDrawer } from "../../utils/contactDrawer";
+import useInViewOnce from "../../hooks/useInViewOnce";
+import { getPickupInfo } from "../../utils/pickupDate";
+import { FEATURED_SWEET_IDS } from "../../data/orderCategories";
 
-const sweetIds = new Set(["tiramisu-sweet", "cookies-sweet", "snickerdoodles-sweet"]);
+/* Scroll-reveal wrapper: adds .journal-reveal, then .is-inview once. */
+function Reveal({ as: Tag = "div", className = "", children, ...rest }) {
+    const [ref, inView] = useInViewOnce();
+    return (
+        <Tag ref={ref} className={`${className} journal-reveal ${inView ? "is-inview" : ""}`} {...rest}>
+            {children}
+        </Tag>
+    );
+}
+
+const sweetIds = new Set(FEATURED_SWEET_IDS);
 const newSweets = [
     {
         id: "spoonable-cookie", name: "Spoonable Cookie",
@@ -33,16 +45,17 @@ const newSweets = [
         id: "four-cookie-bag", name: "Bag of 4 Cookies", size: "4 cookies",
         priceImage: cookieBagImage,
         description: "Choose chocolate chips or peanut butter chips. A little bag of happiness, made to share or keep.", symbol: "④",
-        prices: [
-            { label: "4 cookies · Chocolate chips", priceUSD: 7 },
-            { label: "4 cookies · Peanut butter chips", priceUSD: 7 },
-        ],
+        prices: fourCookieBagPrices,
     },
     { id: "single-cookie", name: "Individual Cookie", size: "1 cookie", description: "A little cookie moment just for you.", priceImage: singleCookieImage },
 ];
 
 const Prices = ({ sweets = false }) => {
     const { addToCart } = useCart();
+    // Holiday / vacation notice for the order note (config/pickupSchedule.js).
+    const pickupInfo = getPickupInfo();
+    // Pauses apply to every order; closed/moved Thursdays only to sourdough pickups.
+    const scheduleNotice = !pickupInfo.open || (pickupInfo.special && !sweets) ? pickupInfo.message : null;
     const [addedMessage, setAddedMessage] = useState("");
 
     const formatUSD = (price) =>
@@ -74,61 +87,52 @@ const Prices = ({ sweets = false }) => {
         <main className="prices-page">
             {addedMessage && <div className="cart-toast">{addedMessage}</div>}
 
-            <div className={`order-menu-context ${sweets ? "order-menu-context--sweets" : ""}`}>
+            <div className="order-menu-context">
                 <Link to="/orders">← All order menus</Link>
-                <strong>{sweets ? "Cookies & sweets · made without sourdough" : "Sourdough · naturally fermented"}</strong>
             </div>
-            <section className="order-hero" aria-labelledby="order-title">
-                <div className="order-hero-word" aria-hidden="true">{sweets ? "SWEET" : "SLOW"}</div>
 
-                <div className="order-hero-copy">
-                    <p className="prices-kicker">{sweets ? "small-batch sweets · Tampa local" : "fresh weekly · Tampa local"}</p>
-                    <h1 id="order-title">{sweets ? "Cookies &" : "Real"}<br /><span>{sweets ? "sweet things." : "sourdough."}</span></h1>
-                    <a className="order-jump" href="#weekly-menu">
-                        explore the menu <ArrowUpRight size={19} weight="bold" />
-                    </a>
-                </div>
-
-                <div className="order-hero-scene" aria-hidden="true">
-                    <div className="order-photo-frame">
-                        <img src={sweets ? sweetsImage : breadImage} alt="" />
-                    </div>
-                </div>
-                {!sweets && <BrandSticker name="packingBoxes" className="souraw-sticker--bread-hug" eager />}
-            </section>
-
-            <nav className="order-category-nav" aria-label="Order categories">
-                <Link to="/orders/sourdough" aria-current={!sweets ? "page" : undefined}>Sourdough</Link>
-                <Link to="/orders/sweets" aria-current={sweets ? "page" : undefined}>Cookies & sweets · no sourdough</Link>
-            </nav>
-
-            <section className="order-details-strip" aria-label="Order details">
-                <p className="prices-intro">
-                    {sweets ? "Cookies and desserts made without sourdough. A little treat for yourself, or something sweet to share." : "Naturally fermented breads and savory favorites. Real sourdough, made slowly and baked with intention."}
-                </p>
-                <div className="order-facts">
-                    <div className="order-fact">
-                        <ShoppingBag size={24} weight="bold" />
-                        <span><small>Pickup</small>{sweets ? "Canopy · Ocho Trece" : "Thursday at Canopy"}</span>
-                    </div>
-                    <div className="order-fact">
-                        <Clock size={24} weight="bold" />
-                        <span><small>{sweets ? "Cookies" : "Order by"}</small>{sweets ? "Same-day orders available" : "Tuesday · 8:00 PM"}</span>
-                    </div>
-                    <div className="order-fact order-fact-note">
-                        {sweets ? "Planning a celebration? Ask us about dates & quantities." : "no same-day orders · slow dough needs time"}
-                    </div>
-                </div>
-            </section>
-
-            <section className="prices-section" id="weekly-menu">
-                <header className="prices-section-head">
+            <section className="prices-section" id="weekly-menu" aria-labelledby="order-title">
+                <Reveal as="header" className="prices-section-head">
                     <div>
-                        <p className="prices-section-kicker">from the oven</p>
-                        <h2>{sweets ? "A sweeter kind of menu." : "Your sourdough favorites."}</h2>
+                        <p className="prices-section-kicker reveal-up">from the oven</p>
+                        <h1 id="order-title" className="reveal-up" style={{ "--rd": "0.1s" }}>
+                            {sweets ? "A sweeter kind of menu." : "Your sourdough favorites."}
+                        </h1>
                     </div>
-                    <p>{sweets ? "Individual treats, cookie bags, and boxes to share." : "Choose your favorites. We’ll take care of the slow part."}</p>
-                </header>
+                    <p className="reveal-up" style={{ "--rd": "0.2s" }}>{sweets ? "Individual treats, cookie bags, and boxes to share." : "Choose your favorites. We’ll take care of the slow part."}</p>
+                </Reveal>
+
+                {/* Order note: everything you need to know before adding to the cart. */}
+                <Reveal as="section" className="order-note-scope" aria-label="Order details">
+                    <div className="order-note reveal-up" style={{ "--rd": "0.3s" }}>
+                        <p className="prices-intro">
+                            {sweets ? "Cookies and desserts made without sourdough. A little treat for yourself, or something sweet to share." : "Naturally fermented breads and savory favorites. Real sourdough, made slowly and baked with intention."}
+                        </p>
+                        <div className="order-facts">
+                            <div className="order-fact">
+                                <ShoppingBag size={24} weight="bold" />
+                                <span><small>Pickup</small>{sweets ? "Canopy · Ocho Trece" : "Thursday at Canopy"}</span>
+                            </div>
+                            <div className="order-fact">
+                                <Clock size={24} weight="bold" />
+                                <span><small>{sweets ? "Cookies" : "Order by"}</small>{sweets ? "Same-day orders available" : "Tuesday · 8:00 PM"}</span>
+                            </div>
+                        </div>
+                        {scheduleNotice && (
+                            <p className={`order-schedule-notice ${pickupInfo.open ? "" : "order-schedule-notice--paused"}`} role="status">
+                                {scheduleNotice}
+                            </p>
+                        )}
+                        <p className="order-fact-note">
+                            {sweets ? "Planning a celebration? Ask us about dates & quantities." : "no same-day orders · slow dough needs time"}
+                        </p>
+                    </div>
+                </Reveal>
+
+                <nav className="order-category-nav" aria-label="Order categories">
+                    <Link to="/orders/sourdough" aria-current={!sweets ? "page" : undefined}>Sourdough</Link>
+                    <Link to="/orders/sweets" aria-current={sweets ? "page" : undefined}>Cookies & sweets · no sourdough</Link>
+                </nav>
 
                 <div className="prices-grid">
                     {displayedProducts.map((product, index) => !newSweets.includes(product) ? (
@@ -227,21 +231,22 @@ const Prices = ({ sweets = false }) => {
                 </div>
             </section>
 
-            {sweets && <section className="order-celebrations">
-                <p className="prices-section-kicker">little treats, big celebrations</p>
-                <h2>For you. For a few.<br />For the whole party.</h2>
-                <p>Order individual treats or plan something special for birthdays, catering, holidays, and special occasions. Tell us your date, guest count, and favorites so we can help with quantities and options.</p>
-                <button type="button" className="price-button" onClick={openContactDrawer}>plan a sweet celebration <ArrowUpRight size={18} /></button>
-            </section>}
+            {sweets && <Reveal as="section" className="order-celebrations">
+                <p className="prices-section-kicker reveal-up">little treats, big celebrations</p>
+                <h2 className="reveal-up" style={{ "--rd": "0.1s" }}>For you. For a few.<br />For the whole party.</h2>
+                <p className="reveal-up" style={{ "--rd": "0.2s" }}>Order individual treats or plan something special for birthdays, catering, holidays, and special occasions. Tell us your date, guest count, and favorites so we can help with quantities and options.</p>
+                <div className="reveal-up" style={{ "--rd": "0.3s" }}>
+                    <button type="button" className="price-button" onClick={openContactDrawer}>plan a sweet celebration <ArrowUpRight size={18} /></button>
+                </div>
+            </Reveal>}
 
-            <section className="order-pickup" aria-labelledby="pickup-title">
-                <div className="order-pickup-word" aria-hidden="true">LOCAL</div>
+            <Reveal as="section" className="order-pickup" aria-labelledby="pickup-title">
                 <div>
-                    <p className="prices-section-kicker">Tampa locals only</p>
-                    <h2 id="pickup-title">{sweets ? <>Pick up your<br />sweet things.</> : <>Meet me at<br />Canopy.</>}</h2>
+                    <p className="prices-section-kicker reveal-up">Tampa locals only</p>
+                    <h2 id="pickup-title" className="reveal-up" style={{ "--rd": "0.1s" }}>{sweets ? <>Pick up your<br />sweet things.</> : <>Meet me at<br />Canopy.</>}</h2>
                     <BrandSticker name="breadHug" className="souraw-sticker--pickup" />
                 </div>
-                <div className="order-pickup-copy">
+                <div className="order-pickup-copy journal-polaroid journal-polaroid--tilt-right" style={{ "--rd": "0.2s" }}>
                     <MapPin size={38} weight="fill" />
                     {sweets ? <>
                         <h3>Canopy at Citrus Park</h3>
@@ -259,7 +264,7 @@ const Prices = ({ sweets = false }) => {
                         <button type="button" className="price-button" onClick={openContactDrawer}>arrange pickup <ArrowUpRight size={18} /></button>
                     </div>}
                 </div>
-            </section>
+            </Reveal>
         </main>
     );
 };

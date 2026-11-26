@@ -22,14 +22,22 @@ test('rejects missing, unknown, duplicate, unavailable and invalid quantities', 
   assert.throws(() => validateOrder({ items: [item], customer: { ...customer, notes: 'a'.repeat(501) } }));
 });
 
+test('accepts the automatic pickup day and orders without one', () => {
+  const withPickup = validateOrder({ items: [item], customer: { ...customer, deliveryDate: 'Thursday, Dec 4 at Canopy' } });
+  assert.equal(withPickup.customer.deliveryDate, 'Thursday, Dec 4 at Canopy');
+  assert.equal(validateOrder(order([item])).customer.deliveryDate, '');
+});
+
 test('correctly prices cookie variants', () => {
   assert.equal(validateOrder(order([{ id: 'cookies-sweet', size: 'Box of 24', quantity: 3 }])).total, 10800);
 });
 
 test('backend catalog matches the published featured product prices', () => {
   const source = fs.readFileSync(`${__dirname}/../src/data/products.js`, 'utf8');
-  const products = vm.runInNewContext(source.replace(/export /g, '') + '\nproducts;', { require: (path) => path });
-  for (const product of products.filter((product) => product.featured && product.badge !== 'Coming Soon')) {
+  const { products, fourCookieBagPrices } = vm.runInNewContext(
+    source.replace(/export /g, '') + '\n({ products, fourCookieBagPrices });', { require: (path) => path });
+  const fourCookieBag = { id: 'four-cookie-bag', featured: true, prices: fourCookieBagPrices };
+  for (const product of [...products, fourCookieBag].filter((product) => product.featured && product.badge !== 'Coming Soon')) {
     for (const variant of product.prices || [{ label: product.size || '', priceUSD: product.priceUSD }]) {
       const entry = catalog.find(([id, , size]) => id === product.id && size === variant.label);
       assert.ok(entry, `Missing ${product.id}: ${variant.label}`);

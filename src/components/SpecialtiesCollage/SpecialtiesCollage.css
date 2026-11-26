@@ -7,10 +7,7 @@
 .specBoard {
     position: relative;
     isolation: isolate;
-    background:
-        radial-gradient(900px 520px at 18% 22%, rgba(247, 145, 195, .12), transparent 55%),
-        radial-gradient(900px 520px at 78% 62%, rgba(93, 48, 255, .08), transparent 58%),
-        #f6bc3f;
+    background: var(--color-bg);
 
     padding: 6rem 1.6rem 7rem;
     color: var(--color-gray-dark);
@@ -68,7 +65,7 @@
     font-size: clamp(3.8rem, 8vw, 8rem);
     line-height: 0.86;
     text-align: left;
-    text-shadow: 4px 5px 0 var(--color-bg);
+    text-shadow: 4px 5px 0 var(--color-yellow);
 }
 
 .sp-h2 span {

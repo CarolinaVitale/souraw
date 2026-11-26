@@ -256,6 +256,12 @@ export const products = [
     }
 ];
 
+// Shown on the sweets order page. Kept here so functions/bakery.test.js checks these prices too.
+export const fourCookieBagPrices = [
+    { label: "4 cookies · Chocolate chips", priceUSD: 7 },
+    { label: "4 cookies · Peanut butter chips", priceUSD: 7 },
+];
+
 export const categories = [
     { id: "wildLoaves", title: "Wild Loaves" },
     { id: "slowCravings", title: "Slow Cravings" },

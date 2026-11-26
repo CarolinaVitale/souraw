@@ -2,6 +2,10 @@ import React, { createContext, useContext, useMemo, useState, useEffect } from "
 
 const CartContext = createContext();
 
+// Same limits the payment server enforces (functions/bakery.js).
+export const MAX_ITEM_QUANTITY = 50;
+export const MAX_CART_LINES = 30;
+
 export const CartProvider = ({ children }) => {
     const [cartItems, setCartItems] = useState(() => {
         try {
@@ -38,11 +42,12 @@ export const CartProvider = ({ children }) => {
             if (existingItem) {
                 return prevItems.map((item) =>
                     item.cartId === cartId
-                        ? { ...item, quantity: item.quantity + 1 }
+                        ? { ...item, quantity: Math.min(item.quantity + 1, MAX_ITEM_QUANTITY) }
                         : item
                 );
             }
 
+            if (prevItems.length >= MAX_CART_LINES) return prevItems;
             return [...prevItems, itemToAdd];
         });
     };
@@ -57,7 +62,7 @@ export const CartProvider = ({ children }) => {
         setCartItems((prevItems) =>
             prevItems.map((item) =>
                 item.cartId === cartId
-                    ? { ...item, quantity: item.quantity + 1 }
+                    ? { ...item, quantity: Math.min(item.quantity + 1, MAX_ITEM_QUANTITY) }
                     : item
             )
         );

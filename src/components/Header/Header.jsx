@@ -131,10 +131,6 @@ function Navbar() {
                                     DIY
                                 </Link> */}
 
-                                <Link to="/schedule" className="nav-dropdown-link" onClick={closeMobileMenu}>
-                                    SCHEDULE
-                                </Link>
-
                                 <Link to="#" className="nav-dropdown-link" onClick={openContact}>
                                     CONTACT
                                 </Link>

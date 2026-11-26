@@ -41,9 +41,7 @@
     z-index: 8;
 }
 
-.reviews-hero-word,
-.reviews-outline-word,
-.review-form-outline {
+.reviews-hero-word {
     position: absolute;
     color: transparent;
     font-family: "Montserrat", sans-serif;
@@ -186,179 +184,140 @@
     color: var(--reviews-cream);
 }
 
-.reviews-ribbon {
-    position: relative;
-    z-index: 10;
-    overflow: hidden;
-    border-bottom: 4px solid var(--reviews-dark);
-    background: var(--color-blue);
-    transform: rotate(-1deg) scale(1.02);
-}
-
-.reviews-ribbon>div {
-    display: flex;
-    width: max-content;
-    animation: reviews-marquee 23s linear infinite;
-}
-
-.reviews-ribbon span {
-    padding: .8rem 0;
-    font-family: "Montserrat", sans-serif;
-    font-size: .88rem;
-    font-weight: 900;
-    letter-spacing: .1em;
-    white-space: nowrap;
-}
-
-@keyframes reviews-marquee {
-    to {
-        transform: translateX(-50%);
-    }
-}
-
+/* ------------------------------------------------------------------
+   Community notes: plain cream, magazine masthead, reviews as paper
+   notes in a two-column mosaic (one column on phones).
+   ------------------------------------------------------------------ */
 .reviews-community {
     position: relative;
-    padding: clamp(6rem, 10vw, 10rem) 5vw clamp(7rem, 11vw, 11rem);
-    background: var(--reviews-dark);
-    color: var(--reviews-cream);
+    padding: clamp(4rem, 7vw, 6rem) 5vw clamp(6rem, 10vw, 9rem);
+    background: var(--reviews-cream);
+    color: var(--reviews-dark);
 }
 
-.reviews-outline-word {
-    right: -3vw;
-    bottom: -2vw;
-    font-size: clamp(11rem, 25vw, 30rem);
-    -webkit-text-stroke-color: rgba(255, 232, 207, .1);
+.reviews-masthead {
+    width: min(1100px, 100%);
+    margin: 0 auto;
 }
 
 .reviews-community-header {
     position: relative;
-    z-index: 2;
     max-width: 900px;
-    margin: 0 auto clamp(3rem, 6vw, 5rem);
+    margin: clamp(2.8rem, 5vw, 4rem) auto clamp(3.5rem, 6vw, 5rem);
     text-align: center;
 }
 
 .reviews-community-header .reviews-script {
-    color: var(--reviews-pink);
+    color: var(--reviews-red);
 }
 
 .reviews-community-header h2 {
+    color: var(--reviews-dark);
     font-size: clamp(3.2rem, 7vw, 7.5rem);
+    text-shadow: 4px 5px 0 var(--reviews-yellow);
 }
 
-.reviews-community-header>p:last-child {
+.reviews-community-header > p:last-child {
     max-width: 600px;
     margin: 1.5rem auto 0;
     font-size: 1.05rem;
+    font-weight: 600;
     line-height: 1.6;
 }
 
+/* Mosaic: notes flow down the left column in order (01, 02, 03…), then
+   continue in the right one. Column heights are balanced; a note never splits. */
 .reviews-container {
-    position: relative;
-    z-index: 2;
-    width: min(1380px, 100%);
+    columns: 2;
+    column-gap: clamp(2.2rem, 4vw, 3.5rem);
+    width: min(1100px, 100%);
     margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    gap: clamp(1.25rem, 2.5vw, 2.5rem);
-    align-items: start;
 }
 
+/* Top padding leaves room for the washi tape at the top of each column. */
+.review-note-scope {
+    display: inline-block;
+    width: 100%;
+    padding: 1.1rem 0 clamp(1.6rem, 3vw, 2.4rem);
+    vertical-align: top;
+    break-inside: avoid;
+    page-break-inside: avoid;
+}
+
+/* Paper note. Frame, tape, tilt, hover and entrance come from journal.css;
+   the tilt is gentler than on photos. */
 .review-card {
-    position: relative;
-    grid-column: span 6;
-    min-height: 330px;
-    padding: clamp(1.5rem, 3vw, 2.5rem);
+    box-sizing: border-box;
+    width: 100%;
     display: flex;
     flex-direction: column;
-    border: 4px solid var(--reviews-cream);
-    box-shadow: 11px 12px 0 var(--reviews-cream);
+    border: 1.5px solid var(--reviews-dark);
+    background: #fffaf4;
+    box-shadow: 0 8px 20px rgba(54, 54, 54, 0.08);
+    padding: clamp(1.8rem, 3vw, 2.4rem) clamp(1.4rem, 3vw, 2.2rem) clamp(1.4rem, 2.5vw, 1.9rem);
     color: var(--reviews-dark);
 }
 
-.review-card-1 {
-    background: var(--reviews-pink);
-    transform: rotate(-1deg);
-}
-
-.review-card-2 {
-    background: var(--reviews-yellow);
-    transform: translateY(2rem) rotate(1deg);
-}
-
-.review-card-3 {
-    background: var(--reviews-green);
-    color: var(--reviews-cream);
-    transform: rotate(1deg);
-}
-
-.review-card-4 {
-    background: var(--reviews-purple);
-    color: var(--reviews-cream);
-    transform: translateY(2rem) rotate(-1deg);
-}
+.review-card.journal-polaroid--tilt-left { --tilt: -1.4deg; }
+.review-card.journal-polaroid--tilt-right { --tilt: 1.2deg; }
 
 .review-number {
     position: absolute;
-    top: 1rem;
+    top: 0.9rem;
     right: 1rem;
-    display: grid;
-    place-items: center;
-    width: 48px;
-    height: 48px;
-    border: 3px solid currentColor;
-    border-radius: 50%;
-    font-size: .72rem;
-    font-weight: 900;
-}
-
-.review-name {
-    max-width: calc(100% - 65px);
-    margin: 0 0 .6rem;
+    color: rgba(54, 54, 54, 0.55);
     font-family: "Montserrat", sans-serif;
-    font-size: clamp(1.5rem, 2.4vw, 2.4rem);
-    font-weight: 900;
-    line-height: 1;
-    text-transform: uppercase;
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
 }
 
 .review-stars {
-    margin-bottom: clamp(2rem, 4vw, 4rem);
+    margin-bottom: 1rem;
     color: var(--reviews-red);
-    font-size: 1.25rem;
-    letter-spacing: .12em;
-}
-
-.review-card-3 .review-stars,
-.review-card-4 .review-stars {
-    color: var(--reviews-yellow);
+    font-size: 1.15rem;
+    letter-spacing: 0.12em;
 }
 
 .review-comment {
-    margin: auto 0 1.5rem;
+    margin: 0;
     font-family: "Montserrat", sans-serif;
-    font-size: clamp(1.15rem, 1.65vw, 1.55rem);
-    font-weight: 750;
-    line-height: 1.35;
+    font-size: clamp(1.0625rem, 1.3vw, 1.15rem);
+    font-weight: 400;
+    line-height: 1.65;
+    overflow-wrap: anywhere;
+}
+
+/* The name signs the note, in handwriting. */
+.review-name {
+    margin: 1.2rem 0 0;
+    color: var(--reviews-red);
+    font-family: "Biro", cursive;
+    font-size: clamp(1.6rem, 2.2vw, 1.9rem);
+    line-height: 1.05;
+    text-align: right;
+    overflow-wrap: anywhere;
 }
 
 .review-date {
-    margin: 0;
-    font-size: .7rem;
-    font-weight: 850;
-    letter-spacing: .12em;
+    margin: 0.35rem 0 0;
+    color: rgba(54, 54, 54, 0.6);
+    font-family: "Montserrat", sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
     text-align: right;
     text-transform: uppercase;
 }
 
 .reviews-status {
-    grid-column: 1 / -1;
+    column-span: all;
     margin: 0;
-    padding: 4rem 1rem;
-    border: 3px dashed var(--reviews-pink);
-    color: var(--reviews-cream);
-    font-size: 1.1rem;
-    font-weight: 800;
+    padding: 3rem 1rem;
+    border: 1.5px dashed var(--reviews-dark);
+    color: var(--reviews-dark);
+    font-size: 1.05rem;
+    font-weight: 700;
     text-align: center;
 }
 
@@ -432,34 +391,15 @@
     }
 
     .reviews-community {
-        padding: 5rem 1.2rem 7rem;
+        padding: 4.5rem 1.1rem 6rem;
     }
 
     .reviews-community-header h2 {
         font-size: clamp(3rem, 14vw, 5rem);
     }
 
+    /* Phone: a single column, 01 to the last one. */
     .reviews-container {
-        display: flex;
-        flex-direction: column;
-    }
-
-    .review-card {
-        width: 100%;
-        min-height: 300px;
-        box-shadow: 7px 8px 0 var(--reviews-cream);
-    }
-
-    .review-card-1,
-    .review-card-2,
-    .review-card-3,
-    .review-card-4 {
-        transform: none;
-    }
-}
-
-@media (prefers-reduced-motion: reduce) {
-    .reviews-ribbon>div {
-        animation: none;
+        columns: 1;
     }
 }

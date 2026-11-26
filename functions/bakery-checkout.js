@@ -24,11 +24,24 @@ exports.createBakeryCheckout = onCall(options, async (request) => {
   try {
     const saved = await ref.get();
     if (!saved.exists) {
-      await ref.create({ ...order, uid: request.auth.uid, status: 'pending', createdAt: admin.firestore.FieldValue.serverTimestamp() });
+      try {
+        await ref.create({ ...order, uid: request.auth.uid, status: 'pending', createdAt: admin.firestore.FieldValue.serverTimestamp() });
+      } catch (error) {
+        // 6 = ALREADY_EXISTS: a parallel request (double click) created it first; continue with that one.
+        if (error.code !== 6) throw error;
+      }
     }
     const stored = (await ref.get()).data();
     if (!isDeepStrictEqual(stored.items, order.items) || !isDeepStrictEqual(stored.customer, order.customer)) {
       throw new HttpsError('failed-precondition', 'Your cart changed. Please try again.');
+    }
+    if (stored.status === 'paid') throw new HttpsError('already-exists', 'This order is already paid.');
+    // Reuse the session while it is open. Stripe forgets idempotency keys after 24 h and
+    // sessions expire, so an expired one gets a fresh session keyed on the previous id.
+    if (stored.sessionId) {
+      const previous = await stripe.checkout.sessions.retrieve(stored.sessionId);
+      if (previous.status === 'open') return { url: previous.url };
+      if (previous.status === 'complete') throw new HttpsError('already-exists', 'This order is already paid.');
     }
     const origin = new URL(siteUrl.value()).origin;
     const session = await stripe.checkout.sessions.create({
@@ -43,7 +56,7 @@ exports.createBakeryCheckout = onCall(options, async (request) => {
       success_url: `${origin}/orders/payment?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${origin}/orders/payment?canceled=1`,
       custom_text: { submit: { message: 'Tampa local orders only. Your requested date and pickup details will be confirmed by SOURAW.' } },
-    }, { idempotencyKey: `bakery-${ref.id}` });
+    }, { idempotencyKey: `bakery-${ref.id}-${stored.sessionId || 'first'}` });
     await ref.set({ sessionId: session.id }, { merge: true });
     return { url: session.url };
   } catch (error) {

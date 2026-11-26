@@ -1,5 +1,7 @@
 import React from "react";
+import "../../styles/journal.css";
 import "./ProductCard.css";
+import useInViewOnce from "../../hooks/useInViewOnce";
 
 const ProductCard = ({
     image,
@@ -16,14 +18,21 @@ const ProductCard = ({
 }) => {
     const productSize = size || weight;
     const isComingSoon = badge === "Coming Soon";
+    const [ref, inView] = useInViewOnce();
+    // Photos tilt left and right alternately; cards in the same row enter one after another.
+    const tilt = number % 2 === 1 ? "journal-polaroid--tilt-left" : "journal-polaroid--tilt-right";
+    const delay = `${((number - 1) % 3) * 0.12}s`;
 
     return (
-        <article className="product-card">
-            <div className="product-image-wrap">
-                <img src={image} alt={name} className="product-image" />
+        <article ref={ref} className={`product-card journal-reveal ${inView ? "is-inview" : ""}`}>
+            <figure
+                className={`product-image-wrap journal-polaroid journal-polaroid--plain ${tilt}`}
+                style={{ "--rd": delay }}
+            >
+                <img src={image} alt={name} className="product-image" loading="lazy" decoding="async" />
                 <span className="product-number">{String(number).padStart(2, "0")}</span>
                 {badge && <span className="product-badge">{badge}</span>}
-            </div>
+            </figure>
 
             <div className="product-info">
                 <div className="product-heading">

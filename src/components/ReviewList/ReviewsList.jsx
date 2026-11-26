@@ -1,10 +1,44 @@
 import React, { useEffect, useState } from 'react';
 import { collection, onSnapshot, query, orderBy } from 'firebase/firestore';
 import { db } from '../../firebase';
+import '../../styles/journal.css';
 import './ReviewsList.css';
 import reviewImage from '../../assets/reviews.jpg'
+import JournalMasthead from '../JournalMasthead/JournalMasthead';
+import useInViewOnce from '../../hooks/useInViewOnce';
+
+/* One review as a paper note: tilted left/right alternately, washi tape pink/yellow.
+   It settles into place once, the first time it scrolls into view (journal.css). */
+function ReviewNote({ review, index, formatDate, renderStars }) {
+    const [ref, inView] = useInViewOnce();
+    const even = index % 2 === 0;
+
+    return (
+        <div ref={ref} className={`review-note-scope journal-reveal ${inView ? 'is-inview' : ''}`}>
+            <article
+                className={`review-card journal-polaroid ${even ? 'journal-polaroid--tilt-left' : 'journal-polaroid--tilt-right journal-polaroid--yellow-tape'}`}
+                style={{ '--rd': '0.05s' }}
+            >
+                <span className="review-number">{String(index + 1).padStart(2, '0')}</span>
+                <div className="review-stars" aria-label={`${review.rating || 0} out of 5 stars`}>
+                    {renderStars(review.rating)}
+                </div>
+                <p className="review-comment">
+                    “{review.text || review.comment}”
+                </p>
+                <p className="review-name">
+                    {review.displayName || review.name || "Anónimo"}
+                </p>
+                {review.createdAt && (
+                    <p className="review-date">{formatDate(review.createdAt)}</p>
+                )}
+            </article>
+        </div>
+    );
+}
 
 const ReviewsList = () => {
+    const [headRef, headInView] = useInViewOnce();
     const [reviews, setReviews] = useState([]);
     const [loading, setLoading] = useState(true);
     const [loadError, setLoadError] = useState(false);
@@ -77,22 +111,18 @@ const ReviewsList = () => {
                 and came back for another slice.
             </p>
 
-            <div className="reviews-ribbon" aria-hidden="true">
-                <div>
-                    <span>GOOD BREAD • KIND WORDS • FULL HEARTS • PASS THE SOURAW • </span>
-                    <span>GOOD BREAD • KIND WORDS • FULL HEARTS • PASS THE SOURAW • </span>
-                    <span>GOOD BREAD • KIND WORDS • FULL HEARTS • PASS THE SOURAW • </span>
-                    <span>GOOD BREAD • KIND WORDS • FULL HEARTS • PASS THE SOURAW • </span>
-                    <span>GOOD BREAD • KIND WORDS • FULL HEARTS • PASS THE SOURAW • </span>
-                </div>
-            </div>
-
             <section className="reviews-community" id="community-notes">
-                <div className="reviews-outline-word" aria-hidden="true">NOTES</div>
-                <header className="reviews-community-header">
-                    <p className="reviews-script">straight from the community</p>
-                    <h2>What people are saying.</h2>
-                    <p>No polished scripts. Just honest bites, feelings, and favorites.</p>
+                <JournalMasthead
+                    className="reviews-masthead"
+                    left="Love notes"
+                    center="Straight from the community"
+                    right="Tampa"
+                />
+
+                <header ref={headRef} className={`reviews-community-header journal-reveal ${headInView ? 'is-inview' : ''}`}>
+                    <p className="reviews-script reveal-up">straight from the community</p>
+                    <h2 className="reveal-up" style={{ '--rd': '0.1s' }}>What people are saying.</h2>
+                    <p className="reveal-up" style={{ '--rd': '0.2s' }}>No polished scripts. Just honest bites, feelings, and favorites.</p>
                 </header>
 
                 <div className="reviews-container">
@@ -108,22 +138,15 @@ const ReviewsList = () => {
                         <p className="reviews-status">Be the first to leave a little love note.</p>
                     )}
 
+                    {/* Newest first, flowing down the left column, then the right one (see CSS). */}
                     {reviews.map((review, index) => (
-                        <article key={review.id} className={`review-card review-card-${(index % 4) + 1}`}>
-                            <span className="review-number">{String(index + 1).padStart(2, '0')}</span>
-                            <h3 className="review-name">
-                                {review.displayName || review.name || "Anónimo"}
-                            </h3>
-                            <div className="review-stars" aria-label={`${review.rating || 0} out of 5 stars`}>
-                                {renderStars(review.rating)}
-                            </div>
-                            <p className="review-comment">
-                                “{review.text || review.comment}”
-                            </p>
-                            {review.createdAt && (
-                                <p className="review-date">{formatDate(review.createdAt)}</p>
-                            )}
-                        </article>
+                        <ReviewNote
+                            key={review.id}
+                            review={review}
+                            index={index}
+                            formatDate={formatDate}
+                            renderStars={renderStars}
+                        />
                     ))}
                 </div>
             </section>

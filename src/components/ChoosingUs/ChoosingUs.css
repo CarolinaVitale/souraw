@@ -1,29 +1,9 @@
 .sk {
     position: relative;
     isolation: isolate;
-    background:
-        radial-gradient(800px 500px at 75% 70%, rgba(93, 48, 255, 0.10), transparent 60%),
-        var(--color-bg);
+    background: var(--color-bg);
     padding: 6rem 1.5rem 0rem;
     overflow: hidden;
-}
-
-.sk::before {
-    content: "FERMENTED";
-    position: absolute;
-    z-index: -1;
-    left: 50%;
-    top: 59%;
-    color: transparent;
-    font-family: "Montserrat", sans-serif;
-    font-size: clamp(7rem, 19vw, 17rem);
-    font-weight: 900;
-    letter-spacing: -0.08em;
-    line-height: 0.8;
-    -webkit-text-stroke: 2px rgba(93, 48, 255, 0.11);
-    transform: translate(-50%, -50%);
-    white-space: nowrap;
-    pointer-events: none;
 }
 
 .sk-wrap {
@@ -31,6 +11,10 @@
     z-index: 1;
     width: min(1100px, 100%);
     margin: 0 auto;
+}
+
+.sk-masthead {
+    margin-bottom: clamp(3rem, 6vw, 4.5rem);
 }
 
 .sk-heading {
@@ -96,10 +80,8 @@
 }
 
 .sk-centerFloat {
-    will-change: transform;
     transform: translateZ(0);
     -webkit-transform: translateZ(0);
-    animation: skFloatY 6.5s ease-in-out infinite;
 }
 
 .sk-centerImg {
@@ -113,37 +95,10 @@
     -webkit-user-drag: none;
 }
 
-@keyframes skFloatY {
-
-    0%,
-    100% {
-        transform: translate3d(0, 0, 0);
-    }
-
-    50% {
-        transform: translate3d(0, -8px, 0);
-    }
-}
-
 .sk-item {
     position: absolute;
     width: 300px;
-    opacity: 0;
-    filter: blur(2px);
-    transform: translate(-50%, calc(-50% + 12px));
-}
-
-.sk-stage.is-inview .sk-item {
-    animation: skTextIn 0.75s cubic-bezier(0.2, 0.9, 0.2, 1) forwards;
-    animation-delay: var(--d);
-}
-
-@keyframes skTextIn {
-    to {
-        opacity: 1;
-        filter: blur(0);
-        transform: translate(-50%, -50%);
-    }
+    transform: translate(-50%, -50%);
 }
 
 .sk-left {
@@ -180,21 +135,6 @@
 
 .sk-arrowWrap {
     margin-top: 12px;
-    opacity: 0;
-    transform: translateY(8px) scale(0.9);
-    transform-origin: center;
-}
-
-.sk-stage.is-inview .sk-arrowWrap {
-    animation: skArrowIn 0.7s ease forwards;
-    animation-delay: calc(var(--d) + 0.15s);
-}
-
-@keyframes skArrowIn {
-    to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-    }
 }
 
 .sk-arrow {
@@ -203,27 +143,43 @@
     transform: translate(var(--ax), var(--ay)) rotate(var(--ar));
 }
 
+/* Each arrow is "drawn" by uncovering it from where its stroke starts
+   (in the image's own coordinates, so mobile flips follow along). */
+.sk-arrow-digest,
+.sk-arrow-noadd { --wipe-from: inset(0 0 100% 0); }
+.sk-arrow-lighter { --wipe-from: inset(0 100% 0 0); }
+.sk-arrow-energy { --wipe-from: inset(0 0 0 100%); }
+
+/* Entrance, once: benefits rise ~12px; then each arrow draws itself. */
+@media (prefers-reduced-motion: no-preference) {
+    .sk-item {
+        opacity: 0;
+    }
+
+    .sk-stage.is-inview .sk-item {
+        opacity: 1;
+        animation: journal-rise 0.7s cubic-bezier(0.25, 0.8, 0.3, 1) var(--d) backwards;
+    }
+
+    .sk-arrow {
+        clip-path: var(--wipe-from);
+    }
+
+    .sk-stage.is-inview .sk-arrow {
+        clip-path: inset(0 0 0 0);
+        transition: clip-path 0.8s cubic-bezier(0.45, 0, 0.3, 1) calc(var(--d) + 0.4s);
+    }
+}
+
 @media (max-width: 780px) {
     .sk {
         margin: 0;
         padding-top: 2rem;
-    }
-
-    .sk-stage {
-        margin-left: 0;
-        padding-left: 0;
-        min-height: 680px;
-        margin-bottom: -160px;
+        padding-bottom: 4.5rem;
     }
 
     .sk-heading {
         padding-bottom: 3rem;
-    }
-
-    .sk::before {
-        top: 60%;
-        font-size: clamp(7rem, 31vw, 11rem);
-        -webkit-text-stroke-width: 1.5px;
     }
 
     .sk-kicker {
@@ -234,53 +190,50 @@
         font-size: clamp(3rem, 13vw, 4.5rem);
     }
 
-    .sk-item:nth-of-type(5) {
-        top: 70% !important;
-        left: 85% !important;
+    /* Phone: bread photo on top, the four benefits below in a 2x2 grid.
+       Inline left/top positions from the desktop layout are neutralised. */
+
+    .sk-stage {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1.8rem 1.1rem;
+        min-height: 0;
+        margin: 0;
+        padding: 0;
     }
 
-    .sk-item:nth-of-type(2) {
-        top: 20% !important;
-        left: 40% !important;
+    .sk-centerWrap {
+        position: static;
+        grid-column: 1 / -1;
+        width: min(78%, 320px);
+        margin: 0 auto 0.6rem;
+        transform: none;
     }
 
-    .sk-item:nth-of-type(3) {
-        top: 25% !important;
-        left: 85% !important;
+    .sk-item {
+        position: static;
+        width: auto;
+        left: auto !important;
+        top: auto !important;
+        transform: none;
+        text-align: left;
     }
 
-    .sk-item:nth-of-type(4) {
-        top: 70% !important;
-        left: 40% !important;
+    .sk-text {
+        width: auto;
     }
 
-    .sk-arrow-lighter {
-        transform: scaleY(-1) translate(-10px, 160px) rotate(70deg) !important;
+    .sk-title {
+        font-size: 1rem;
     }
 
-    .sk-arrow-energy {
-        transform: scaleX(-1) translate(-120px, -160px) rotate(100deg) !important;
+    .sk-desc {
+        display: block;
+        max-width: none;
+        font-size: 0.875rem;
     }
 
-    .sk-arrow-digest {
-        transform: translate(0px, 20px) rotate(17deg) !important;
-    }
-
-    .sk-arrow-noadd {
-        transform: translate(120px, 0px) rotate(-10deg) !important;
-    }
-}
-
-@media (prefers-reduced-motion: reduce) {
-    .sk-centerFloat {
-        animation: none;
-    }
-
-    .sk-item,
     .sk-arrowWrap {
-        animation: none;
-        opacity: 1;
-        filter: none;
-        transform: translate(-50%, -50%);
+        display: none;
     }
 }

@@ -71,3 +71,11 @@
     text-decoration: none;
     color: var(--color-bg);
 }
+/* Phone: small print no smaller than 13px. */
+@media (max-width: 620px) {
+    .footer-tagline,
+    .footer-copy,
+    .created-by {
+        font-size: 0.8125rem;
+    }
+}

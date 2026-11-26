@@ -1,7 +1,9 @@
 import BrandSticker from '../BrandSticker/BrandSticker';
 // About.jsx
 import React, { useEffect, useRef } from "react";
+import "../../styles/journal.css";
 import "./About.css";
+import useInViewOnce from "../../hooks/useInViewOnce";
 
 import baby from "../../assets/baby.jpg";
 import butterfly from "../../assets/butterfly.jpg";
@@ -91,6 +93,7 @@ const TIMELINE = [
             "When my mom was diagnosed with Alzheimer’s, something inside me broke — and something else quietly began. Bread became ritual. Fermentation became patience. Waiting became healing. In the silence, I found her. And I found myself.",
         ],
         image: founder,
+        round: true,
     },
     {
         year: "",
@@ -104,35 +107,87 @@ const TIMELINE = [
             "It is healing.",
         ],
         image: founder2,
+        round: true,
     },
 ];
 
+/* One timeline entry: polaroid, dot on the line, and the card.
+   Its entrance runs once, the first time it scrolls into view. */
+function TimelineItem({ item, idx }) {
+    const [ref, inView] = useInViewOnce();
+    const flipped = idx % 2 === 1;
+    const number = String(idx + 1).padStart(2, "0");
+    const paragraphs = Array.isArray(item.body) ? item.body : [item.body];
+
+    return (
+        <article
+            ref={ref}
+            className={`abt-item journal-reveal ${flipped ? "abt-item--flip" : ""} ${inView ? "is-inview" : ""}`}
+        >
+            <div className="abt-media">
+                <figure
+                    className={`journal-polaroid journal-polaroid--plain abt-polaroid ${
+                        flipped ? "journal-polaroid--tilt-right journal-polaroid--yellow-tape" : "journal-polaroid--tilt-left"
+                    }`}
+                    style={{ "--rd": "0.05s" }}
+                >
+                    {item.round ? (
+                        <div className="abt-photo-crop">
+                            <img src={item.image} alt={`${item.year || "story"}`} loading="lazy" decoding="async" />
+                        </div>
+                    ) : (
+                        <img src={item.image} alt={`${item.year || "story"}`} loading="lazy" decoding="async" />
+                    )}
+                </figure>
+            </div>
+
+            <div className="abt-mid" aria-hidden="true">
+                <span className="abt-dot" />
+            </div>
+
+            <div className="abt-content reveal-up" style={{ "--rd": "0.2s" }}>
+                <header className={`abt-cardhead ${item.year || item.title ? "" : "abt-cardhead--number"}`}>
+                    <span className="abt-index">{number}</span>
+                    {item.year && <span className="abt-year">{item.year}</span>}
+                    {item.title && <h3 className="abt-title">{item.title}</h3>}
+                </header>
+
+                <div className="abt-bodyGroup">
+                    {paragraphs.map((p, i) => (
+                        <p key={i} className="abt-body">
+                            {p}
+                        </p>
+                    ))}
+                </div>
+            </div>
+        </article>
+    );
+}
+
 export default function AboutTimeline() {
     const timelineRef = useRef(null);
+    const [introRef, introInView] = useInViewOnce();
+    const [endRef, endInView] = useInViewOnce();
 
+    // The line runs from the first dot to the last one; its solid part
+    // fills in as you scroll, over the dotted part still to go.
     useEffect(() => {
         const timelineEl = timelineRef.current;
-        if (!timelineEl) return;
+        if (!timelineEl) return undefined;
 
         const setLineOffsets = () => {
             const dots = timelineEl.querySelectorAll(".abt-dot");
             if (!dots.length) return;
 
-            const firstDot = dots[0];
-            const lastDot = dots[dots.length - 1];
-
             const tlRect = timelineEl.getBoundingClientRect();
-            const firstRect = firstDot.getBoundingClientRect();
-            const lastRect = lastDot.getBoundingClientRect();
+            const firstRect = dots[0].getBoundingClientRect();
+            const lastRect = dots[dots.length - 1].getBoundingClientRect();
 
             const firstCenter = firstRect.top - tlRect.top + firstRect.height / 2;
             const lastCenter = lastRect.top - tlRect.top + lastRect.height / 2;
 
-            const lineTop = Math.max(0, firstCenter);
-            const lineBottom = Math.max(0, tlRect.height - lastCenter);
-
-            timelineEl.style.setProperty("--lineTop", `${lineTop}px`);
-            timelineEl.style.setProperty("--lineBottom", `${lineBottom}px`);
+            timelineEl.style.setProperty("--lineTop", `${Math.max(0, firstCenter)}px`);
+            timelineEl.style.setProperty("--lineBottom", `${Math.max(0, tlRect.height - lastCenter)}px`);
         };
 
         const updateProgress = () => {
@@ -148,35 +203,20 @@ export default function AboutTimeline() {
             timelineEl.style.setProperty("--lineProgress", String(progress));
         };
 
-        const io = new IntersectionObserver(
-            (entries) => {
-                entries.forEach((e) => {
-                    if (e.isIntersecting) e.target.classList.add("is-inview");
-                    else e.target.classList.remove("is-inview");
-                });
-            },
-            { threshold: 0.25, rootMargin: "0px 0px -10% 0px" }
-        );
-
-        const items = timelineEl.querySelectorAll(".abt-item");
-        items.forEach((el) => io.observe(el));
-
         const onResize = () => {
             setLineOffsets();
             updateProgress();
         };
 
-        const onScroll = () => updateProgress();
-
-        setLineOffsets();
-        updateProgress();
-
-        window.addEventListener("scroll", onScroll, { passive: true });
+        onResize();
+        const resizeObserver = typeof ResizeObserver !== "undefined" ? new ResizeObserver(onResize) : null;
+        resizeObserver?.observe(timelineEl);
+        window.addEventListener("scroll", updateProgress, { passive: true });
         window.addEventListener("resize", onResize);
 
         return () => {
-            io.disconnect();
-            window.removeEventListener("scroll", onScroll);
+            resizeObserver?.disconnect();
+            window.removeEventListener("scroll", updateProgress);
             window.removeEventListener("resize", onResize);
         };
     }, []);
@@ -211,101 +251,34 @@ export default function AboutTimeline() {
                 fermentation, and discovering that our roots have a way of waking up.
             </p>
 
-            <div className="about-ribbon" aria-hidden="true">
-                <div>
-                    <span>VENEZUELA • ITALIAN ROOTS • MADRID • TAMPA • FERMENTINA • </span>
-                    <span>VENEZUELA • ITALIAN ROOTS • MADRID • TAMPA • FERMENTINA • </span>
-                </div>
-            </div>
-
             <section className="abt" id="about">
-                <div className="abt-background-word" aria-hidden="true">STORY</div>
                 <div className="abt-wrap">
-                    <p className="about-script">from Acarigua to Tampa</p>
-                    <h2 className="abt-heading">My story, made slowly.</h2>
-                    <BrandSticker name="coffeeBreak" className="souraw-sticker--story" />
-                    <p className="abt-body-p">
-                        If you’re here, it means you want to know a little more about me. So here is my story.
-                    </p>
-
-                    <div className="abt-timeline" ref={timelineRef}>
-                        {TIMELINE.map((item, idx) => {
-                            const isLeft = idx % 2 === 0;
-
-                            return (
-                                <article key={`${item.year}-${idx}`} className="abt-item">
-                                    {isLeft ? (
-                                        <>
-                                            <div className="abt-media">
-                                                <div className="abt-circle">
-                                                    <img src={item.image} alt={`${item.year || "story"}`} />
-                                                </div>
-                                            </div>
-
-                                            <div className="abt-mid" aria-hidden="true">
-                                                <span className="abt-dot" />
-                                            </div>
-
-                                            <div className="abt-content">
-                                                <span className="abt-index">{String(idx + 1).padStart(2, "0")}</span>
-                                                <div className="abt-year">{item.year}</div>
-                                                <h3 className="abt-title">{item.title}</h3>
-                                                {Array.isArray(item.body) ? (
-                                                    <div className="abt-bodyGroup">
-                                                        {item.body.map((p, i) => (
-                                                            <p key={i} className="abt-body">
-                                                                {p}
-                                                            </p>
-                                                        ))}
-                                                    </div>
-                                                ) : (
-                                                    <p className="abt-body">{item.body}</p>
-                                                )}
-                                            </div>
-                                        </>
-                                    ) : (
-                                        <>
-                                            <div className="abt-content abt-content--right">
-                                                <span className="abt-index">{String(idx + 1).padStart(2, "0")}</span>
-                                                <div className="abt-year">{item.year}</div>
-                                                <h3 className="abt-title">{item.title}</h3>
-                                                {Array.isArray(item.body) ? (
-                                                    <div className="abt-bodyGroup">
-                                                        {item.body.map((p, i) => (
-                                                            <p key={i} className="abt-body">
-                                                                {p}
-                                                            </p>
-                                                        ))}
-                                                    </div>
-                                                ) : (
-                                                    <p className="abt-body">{item.body}</p>
-                                                )}
-                                            </div>
-
-                                            <div className="abt-mid" aria-hidden="true">
-                                                <span className="abt-dot" />
-                                            </div>
-
-                                            <div className="abt-media">
-                                                <div className="abt-circle">
-                                                    <img src={item.image} alt={`${item.year || "story"}`} />
-                                                </div>
-                                            </div>
-                                        </>
-                                    )}
-                                </article>
-                            );
-                        })}
+                    <div ref={introRef} className={`abt-intro journal-reveal ${introInView ? "is-inview" : ""}`}>
+                        <h2 className="abt-heading reveal-up">My story, made slowly.</h2>
+                        <div className="reveal-up" style={{ "--rd": "0.15s" }}>
+                            <BrandSticker name="coffeeBreak" className="souraw-sticker--story" />
+                        </div>
+                        <p className="abt-body-p reveal-up" style={{ "--rd": "0.25s" }}>
+                            If you’re here, it means you want to know a little more about me. So here is my story.
+                        </p>
                     </div>
 
-                    <div className="abt-end">
-                        <p className="about-script">if you made it this far...</p>
-                        <p className="abt-p">If you’ve read this far, thank you. Truly.</p>
-                        <p className="abt-p">I’ve always been a little dramatic — and I wouldn’t have it any other way.</p>
-                        <p className="abt-p">Welcome to this world of sourdough experiments, heart, and history.</p>
-                        <p className="abt-end-title">
-                            This is Souraw <i className="fa-regular fa-heart" />
-                        </p>
+                    <div className="abt-timeline" ref={timelineRef}>
+                        {TIMELINE.map((item, idx) => (
+                            <TimelineItem key={`${item.year}-${idx}`} item={item} idx={idx} />
+                        ))}
+                    </div>
+
+                    <div ref={endRef} className={`abt-end-scope journal-reveal ${endInView ? "is-inview" : ""}`}>
+                        <div className="abt-end reveal-up">
+                            <p className="about-script">if you made it this far...</p>
+                            <p className="abt-p">If you’ve read this far, thank you. Truly.</p>
+                            <p className="abt-p">I’ve always been a little dramatic — and I wouldn’t have it any other way.</p>
+                            <p className="abt-p">Welcome to this world of sourdough experiments, heart, and history.</p>
+                            <p className="abt-end-title">
+                                This is Souraw <i className="fa-regular fa-heart" />
+                            </p>
+                        </div>
                     </div>
                 </div>
             </section>

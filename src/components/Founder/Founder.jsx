@@ -1,139 +1,117 @@
-import BrandSticker from '../BrandSticker/BrandSticker';
 import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
-import { FaPause, FaPlay } from "react-icons/fa";
+import "../../styles/journal.css";
+import JournalMasthead from "../JournalMasthead/JournalMasthead";
+import JournalMarker from "../JournalMarker/JournalMarker";
+import useInViewOnce from "../../hooks/useInViewOnce";
 import "./Founder.css";
 import founderImg from "../../assets/founder3.optimized.webp";
-import videoSrc from "../../assets/founder-video.optimized.mp4";
-import stampImg from "../../assets/brand-elements/souraw-stamp.png";
+import breadCutVideo from "../../assets/souraw-bread-cut.mp4";
+import breadCutPoster from "../../assets/souraw-bread-cut-poster.jpg";
 
-import videoPoster from "../../assets/founder-video-poster.webp";
+const reducedMotionQuery = "(prefers-reduced-motion: reduce)";
 
-const ease = [0.22, 1, 0.36, 1];
+function usePrefersReducedMotion() {
+    const [reduced, setReduced] = useState(
+        () => typeof window !== "undefined" && window.matchMedia(reducedMotionQuery).matches
+    );
+
+    useEffect(() => {
+        const query = window.matchMedia(reducedMotionQuery);
+        const onChange = () => setReduced(query.matches);
+        query.addEventListener("change", onChange);
+        return () => query.removeEventListener("change", onChange);
+    }, []);
+
+    return reduced;
+}
 
 export default function FounderSpotlight() {
     const videoRef = useRef(null);
-    const [isPlaying, setIsPlaying] = useState(false);
-    const [videoLoaded, setVideoLoaded] = useState(false);
-    const [autoplayAllowed, setAutoplayAllowed] = useState(false);
-    const userPaused = useRef(false);
+    const reducedMotion = usePrefersReducedMotion();
+    const [mediaRef, mediaInView] = useInViewOnce();
+    const [copyRef, copyInView] = useInViewOnce();
 
+    // Autoplay needs the element muted before play(); set it explicitly for iOS Safari.
     useEffect(() => {
         const video = videoRef.current;
-        const allowAutoplay = !window.matchMedia('(prefers-reduced-motion: reduce)').matches
-            && !navigator.connection?.saveData;
-        setAutoplayAllowed(allowAutoplay);
-        if (!video || !('IntersectionObserver' in window)) return;
-        const observer = new IntersectionObserver(([entry]) => {
-            if (!entry.isIntersecting) {
-                video.pause();
-                return;
-            }
-            if (allowAutoplay && !userPaused.current) {
-                setVideoLoaded(true);
-                if (video.getAttribute('src')) video.play().catch(() => setIsPlaying(false));
-            }
-        }, { threshold: 0.1 });
-        observer.observe(video);
-        return () => observer.disconnect();
-    }, []);
-
-    const togglePlay = async () => {
-        const video = videoRef.current;
         if (!video) return;
-
-        if (video.paused) {
-            userPaused.current = false;
-            setVideoLoaded(true);
-            if (!video.getAttribute('src')) video.src = videoSrc;
-            try {
-                await video.play();
-            } catch {
-                setIsPlaying(false);
-            }
-        } else {
-            userPaused.current = true;
-            video.pause();
-        }
-    };
+        video.muted = true;
+        video.play().catch(() => { /* autoplay blocked: the poster stays visible */ });
+    }, [reducedMotion]);
 
     return (
         <section className="fs" aria-labelledby="founder-title">
-            <span className="fs-background-word" aria-hidden="true">ROOTS</span>
+            <JournalMasthead left="Roots" center="N° 01 — The hands behind SOURAW" right="Tampa, FL" />
 
             <div className="fs-inner">
-                <motion.div
-                    className="fs-copy"
-                    initial={{ opacity: 0, y: 24 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, amount: 0.3 }}
-                    transition={{ duration: 0.85, ease }}
-                >
-                    <p className="fs-hand">Hi! I’m Carolina.<BrandSticker name="heart" className="souraw-sticker--founder-heart" /></p>
-                    <p className="fs-kicker">the hands behind SOURAW</p>
-                    <h2 id="founder-title">Bread brought me home.</h2>
+                <div ref={mediaRef} className={`fs-media journal-reveal ${mediaInView ? "is-inview" : ""}`}>
+                    <figure className="journal-polaroid journal-polaroid--tilt-left fs-polaroid" style={{ "--rd": "0.1s" }}>
+                        {reducedMotion ? (
+                            <img src={breadCutPoster} width="720" height="1280" alt="A SOURAW loaf being cut open" />
+                        ) : (
+                            <video
+                                ref={videoRef}
+                                src={breadCutVideo}
+                                poster={breadCutPoster}
+                                width="720"
+                                height="1280"
+                                autoPlay
+                                loop
+                                muted
+                                playsInline
+                                preload="metadata"
+                                disablePictureInPicture
+                                aria-label="A SOURAW loaf being cut open"
+                            />
+                        )}
+                        <figcaption>the first cut — always the best part</figcaption>
+                    </figure>
 
-                    <p className="fs-lead">
+                    <p className="fs-card reveal-up" style={{ "--rd": "0.75s" }}>memory, heritage &amp; healing.</p>
+
+                    <p className="fs-sticker reveal-up" style={{ "--rd": "0.9s" }}>
+                        <img src={founderImg} width="855" height="859" alt="" loading="lazy" decoding="async" />
+                        <span>Carolina · Founder + Baker</span>
+                    </p>
+
+                    <svg className="fs-pink-heart journal-draw" viewBox="0 0 40 36" aria-hidden="true" style={{ "--draw-delay": "1s" }}>
+                        <path pathLength="1" d="M20 33C8 24 3 17 4 10.5 5 5 10 2.5 14.5 4c2.6.9 4.4 3 5.5 5.2C21.3 6.8 23.4 4.6 26.3 3.8 31 2.6 35.6 5.6 36 11c.5 6.6-5 13.5-16 22z" />
+                    </svg>
+                </div>
+
+                <div ref={copyRef} className={`fs-copy journal-reveal ${copyInView ? "is-inview" : ""}`}>
+                    <p className="fs-hand reveal-up">
+                        Hi! I’m Carolina.
+                        <svg className="fs-line-heart journal-draw" viewBox="0 0 40 36" aria-hidden="true" style={{ "--draw-delay": "0.45s" }}>
+                            <path pathLength="1" d="M20 33C8 24 3 17 4 10.5 5 5 10 2.5 14.5 4c2.6.9 4.4 3 5.5 5.2C21.3 6.8 23.4 4.6 26.3 3.8 31 2.6 35.6 5.6 36 11c.5 6.6-5 13.5-16 22z" />
+                        </svg>
+                    </p>
+
+                    <h2 id="founder-title" className="reveal-up" style={{ "--rd": "0.1s" }}>
+                        <span>Bread</span>
+                        <JournalMarker>brought</JournalMarker>
+                        <span>me home.</span>
+                    </h2>
+
+                    <p className="fs-lead reveal-up" style={{ "--rd": "0.25s" }}>
                         SOURAW was born from discomfort, heartbreak, and the need
                         to feel better — physically and emotionally.
                     </p>
 
-                    <div className="fs-story-note">
+                    <blockquote className="fs-quote reveal-up" style={{ "--rd": "0.35s" }}>
                         <p>Fermentation taught me patience.</p>
                         <p>Bread taught me resilience.</p>
                         <p>My roots reminded me who I am.</p>
-                        <strong>Memory, heritage, and healing — baked slowly.</strong>
+                    </blockquote>
+
+                    <div className="fs-actions reveal-up" style={{ "--rd": "0.45s" }}>
+                        <Link to="/about" className="fs-cta">
+                            Read my story <span aria-hidden="true">↗</span>
+                        </Link>
+                        <span className="fs-signoff">— baked slowly, since day one</span>
                     </div>
-
-                    <Link to="/about" className="fs-cta">
-                        read my story <span aria-hidden="true">↗</span>
-                    </Link>
-                </motion.div>
-
-                <motion.div
-                    className="fs-scene"
-                    initial={{ opacity: 0, y: 28, rotate: 1.5 }}
-                    whileInView={{ opacity: 1, y: 0, rotate: 0 }}
-                    viewport={{ once: true, amount: 0.3 }}
-                    transition={{ duration: 0.95, ease, delay: 0.1 }}
-                >
-                    <div className="fs-videoFrame">
-                        <video
-                            ref={videoRef}
-                            className="fs-video"
-                            src={videoLoaded ? videoSrc : undefined}
-                            poster={videoPoster}
-                            autoPlay={autoplayAllowed}
-                            playsInline
-                            muted
-                            loop
-                            preload="none"
-                            onPlay={() => setIsPlaying(true)}
-                            onPause={() => setIsPlaying(false)}
-                            onClick={togglePlay}
-                        />
-
-                        <button
-                            type="button"
-                            className="fs-play"
-                            onClick={togglePlay}
-                            aria-label={isPlaying ? "Pause founder video" : "Play founder video"}
-                        >
-                            {isPlaying ? <FaPause aria-hidden="true" /> : <FaPlay aria-hidden="true" />}
-                        </button>
-                    </div>
-
-                    <div className="fs-founder-card">
-                        <img loading="lazy" decoding="async" src={founderImg} alt="Carolina, founder of SOURAW" />
-                        <span>Carolina<br />founder + baker</span>
-                    </div>
-
-                    <span className="fs-label fs-label-memory" aria-hidden="true">memory</span>
-                    <span className="fs-label fs-label-healing" aria-hidden="true">healing</span>
-                    <span className="fs-scene-arrow" aria-hidden="true">↙</span>
-                    <img loading="lazy" decoding="async" className="fs-stamp" src={stampImg} alt="" aria-hidden="true" />
-                </motion.div>
+                </div>
             </div>
         </section>
     );

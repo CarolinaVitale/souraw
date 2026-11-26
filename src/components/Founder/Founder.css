@@ -1,393 +1,250 @@
 @import "../../styles/variables.css";
 
+/* "Mi historia" in the journal style: plain cream, color only in details. */
 .fs {
-    position: relative;
-    z-index: 1;
-    isolation: isolate;
-    overflow: hidden;
-    background: var(--color-yellow);
-    padding: clamp(5rem, 9vw, 8rem) 6vw;
-    color: var(--color-bg);
-}
-
-.fs::before {
-    content: "";
-    position: absolute;
-    z-index: -1;
-    inset: 0;
-    background:
-        radial-gradient(circle at 88% 15%, rgba(229, 61, 35, 0.92) 0 11%, transparent 29%),
-        radial-gradient(circle at 8% 82%, rgba(247, 145, 195, 0.78) 0 10%, transparent 30%);
-    pointer-events: none;
-}
-
-.fs-background-word {
-    position: absolute;
-    z-index: -1;
-    left: -0.04em;
-    bottom: -0.18em;
-    color: transparent;
+    background: var(--color-bg);
+    padding: clamp(4rem, 7vw, 6rem) 6vw clamp(5rem, 9vw, 7.5rem);
+    color: var(--color-gray-dark);
     font-family: "Montserrat", sans-serif;
-    font-size: clamp(9rem, 25vw, 25rem);
-    font-weight: 900;
-    letter-spacing: -0.08em;
-    line-height: 0.8;
-    -webkit-text-stroke: 2px rgba(255, 232, 207, 0.18);
-    pointer-events: none;
 }
 
 .fs-inner {
-    width: min(1240px, 100%);
-    margin: 0 auto;
     display: grid;
-    grid-template-columns: minmax(0, 0.82fr) minmax(360px, 0.72fr);
-    gap: clamp(3rem, 8vw, 8rem);
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    gap: clamp(3rem, 7vw, 7rem);
     align-items: center;
+    width: min(1240px, 100%);
+    margin: clamp(3rem, 6vw, 4.5rem) auto 0;
 }
 
-.fs-copy {
+/* --- Media column --- */
+.fs-media {
     position: relative;
-    z-index: 4;
-    max-width: 650px;
+    width: min(100%, 460px);
+    justify-self: center;
+    padding: 2.5rem 1.5rem 4.6rem;
 }
 
-.fs-hand {
-    margin: 0 0 0.3rem;
+/* Polaroid frame comes from journal.css; the video fills it with a cover crop (no bands). */
+.fs-polaroid > video,
+.fs-polaroid > img {
+    aspect-ratio: 3 / 4;
+    background: var(--color-gray-dark);
+}
+
+.fs-card {
+    position: absolute;
+    top: 1.2rem;
+    left: -0.4rem;
+    margin: 0;
+    border: 2px solid var(--color-gray-dark);
+    background: var(--color-bg);
+    box-shadow: 4px 5px 0 var(--color-gray-dark);
+    padding: 0.6rem 0.9rem;
     color: var(--color-red);
     font-family: "Biro", cursive;
-    font-size: clamp(2rem, 4vw, 3.5rem);
+    font-size: clamp(1.2rem, 1.8vw, 1.5rem);
+    line-height: 1.1;
+    transform: rotate(-5deg);
+}
+
+.fs-sticker {
+    position: absolute;
+    bottom: 0.6rem;
+    left: 0.4rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    margin: 0;
+    border: 2px solid var(--color-gray-dark);
+    border-radius: 999px;
+    background: var(--color-yellow);
+    padding: 0.35rem 0.95rem 0.35rem 0.35rem;
+    font-size: 0.66rem;
+    font-weight: 900;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transform: rotate(-3deg);
+}
+
+.fs-sticker img {
+    width: 34px;
+    height: 34px;
+    flex: none;
+    border: 2px solid var(--color-gray-dark);
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.fs-pink-heart {
+    position: absolute;
+    right: 0.6rem;
+    bottom: 0.4rem;
+    width: 3.2rem;
+    fill: var(--color-pink);
+    stroke: var(--color-gray-dark);
+    stroke-width: 2;
+    stroke-linejoin: round;
+    transform: rotate(10deg);
+}
+
+/* --- Copy column --- */
+.fs-hand {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0 0 1rem;
+    color: var(--color-red);
+    font-family: "Biro", cursive;
+    font-size: clamp(1.9rem, 3.4vw, 2.9rem);
     line-height: 1;
     transform: rotate(-2deg);
 }
 
-.fs-kicker {
-    margin: 0 0 1.2rem;
-    font-family: "Montserrat", sans-serif;
-    font-size: 0.76rem;
-    font-weight: 900;
-    letter-spacing: 0.13em;
-    text-transform: uppercase;
+.fs-line-heart {
+    width: 1.9rem;
+    flex: none;
+    fill: none;
+    stroke: var(--color-red);
+    stroke-width: 2.5;
+    stroke-linejoin: round;
 }
 
 .fs h2 {
-    max-width: 7.5ch;
+    display: grid;
     margin: 0;
-    color: var(--color-bg);
-    font-family: "Montserrat", sans-serif;
-    font-size: clamp(3.5rem, 7vw, 7rem);
+    color: var(--color-gray-dark);
+    font-size: clamp(3.2rem, 7vw, 7rem);
     font-weight: 900;
-    letter-spacing: -0.055em;
+    letter-spacing: -0.065em;
     line-height: 0.88;
     text-transform: uppercase;
-    text-shadow: 4px 5px 0 var(--color-gray-dark);
+    text-shadow: 4px 5px 0 var(--color-yellow);
 }
 
 .fs-lead {
-    max-width: 48ch;
-    margin: 1.6rem 0 0;
-    font-family: "Montserrat", sans-serif;
+    max-width: 46ch;
+    margin: 1.8rem 0 0;
     font-size: clamp(1rem, 1.4vw, 1.15rem);
     font-weight: 600;
-    line-height: 1.6;
+    line-height: 1.65;
 }
 
-.fs-story-note {
-    width: min(100%, 470px);
-    margin-top: 1.6rem;
-    border: 3px solid var(--color-gray-dark);
-    background: var(--color-green);
-    box-shadow: 7px 8px 0 var(--color-gray-dark);
-    padding: 1.25rem 1.4rem;
-    color: var(--color-bg);
-    font-family: "Montserrat", sans-serif;
-    transform: rotate(-1.2deg);
-}
-
-.fs-story-note p {
-    margin: 0;
-    font-size: 0.88rem;
-    font-weight: 700;
-    line-height: 1.55;
-}
-
-.fs-story-note strong {
-    display: block;
-    margin-top: 0.8rem;
-    font-size: 0.92rem;
+/* Magazine drop cap */
+.fs-lead::first-letter {
+    float: left;
+    margin: 0.08em 0.1em 0 0;
+    color: var(--color-red);
+    font-size: 3.6em;
     font-weight: 900;
-    line-height: 1.4;
+    line-height: 0.8;
+}
+
+.fs-quote {
+    margin: 1.8rem 0 0;
+    border-left: 6px solid var(--color-red);
+    padding: 0.2rem 0 0.2rem 1.2rem;
+}
+
+.fs-quote p {
+    margin: 0;
+    font-size: clamp(0.85rem, 1.2vw, 0.95rem);
+    font-weight: 900;
+    letter-spacing: 0.06em;
+    line-height: 1.7;
     text-transform: uppercase;
+}
+
+.fs-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem 1.4rem;
+    margin-top: 2.2rem;
 }
 
 .fs-cta {
     display: inline-flex;
     align-items: center;
-    gap: 0.75rem;
-    margin-top: 2rem;
+    gap: 0.7rem;
     border: 3px solid var(--color-gray-dark);
     border-radius: 999px;
     background: var(--color-bg);
     box-shadow: 5px 6px 0 var(--color-gray-dark);
-    padding: 0.9rem 1.2rem;
+    padding: 0.9rem 1.25rem;
     color: var(--color-gray-dark);
-    font-family: "Montserrat", sans-serif;
-    font-size: 0.78rem;
+    font-size: 0.8rem;
     font-weight: 900;
     letter-spacing: 0.06em;
     text-decoration: none;
     text-transform: uppercase;
-    transition: box-shadow 0.2s ease, transform 0.2s ease;
+    transition: box-shadow 0.18s ease-out, transform 0.18s ease-out;
 }
 
 .fs-cta span {
-    font-size: 1.25rem;
+    font-size: 1.2rem;
     line-height: 0;
 }
 
+/* Hover: lifts a little. Click: sinks until it sits on its shadow. */
 .fs-cta:hover {
-    box-shadow: 2px 3px 0 var(--color-gray-dark);
-    transform: translate(3px, 3px) rotate(-1deg);
+    box-shadow: 7px 8px 0 var(--color-gray-dark);
+    transform: translate(-2px, -2px);
 }
 
-.fs-scene {
-    position: relative;
-    width: min(100%, 510px);
-    justify-self: center;
-    padding: 3.5rem 2rem 3rem;
+.fs-cta:active {
+    box-shadow: 0 0 0 var(--color-gray-dark);
+    transform: translate(5px, 6px);
+    transition-duration: 0.06s;
 }
 
-.fs-videoFrame {
-    position: relative;
-    z-index: 2;
-    width: min(100%, 410px);
-    margin-left: auto;
-    aspect-ratio: 4 / 5.1;
-    overflow: hidden;
-    border: 3px solid var(--color-gray-dark);
-    border-radius: 4px;
-    background: var(--color-gray-dark);
-    box-shadow: 16px 18px 0 var(--color-gray-dark), 0 25px 55px rgba(70, 10, 7, 0.3);
-    transform: rotate(3deg);
-    transition: transform 0.3s ease;
+.fs-cta:focus-visible {
+    outline: 3px solid var(--color-gray-dark);
+    outline-offset: 4px;
 }
 
-.fs-videoFrame:hover {
-    transform: rotate(1deg) translateY(-5px);
+.fs-signoff {
+    font-family: "Biro", cursive;
+    font-size: clamp(1.3rem, 2vw, 1.6rem);
+    line-height: 1.1;
 }
 
-.fs-video {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    cursor: pointer;
-}
-
-.fs-play {
-    position: absolute;
-    z-index: 4;
-    right: 1rem;
-    bottom: 1rem;
-    display: inline-flex;
-    width: 48px;
-    height: 48px;
-    align-items: center;
-    justify-content: center;
-    border: 2px solid var(--color-gray-dark);
-    border-radius: 50%;
-    background: var(--color-red);
-    box-shadow: 3px 4px 0 var(--color-gray-dark);
-    color: var(--color-gray-dark);
-    cursor: pointer;
-}
-
-.fs-founder-card {
-    position: absolute;
-    z-index: 5;
-    left: -1rem;
-    top: 0;
-    display: flex;
-    align-items: center;
-    gap: 0.65rem;
-    border: 3px solid var(--color-gray-dark);
-    background: var(--color-bg);
-    box-shadow: 5px 6px 0 var(--color-gray-dark);
-    padding: 0.55rem 0.8rem 0.55rem 0.55rem;
-    color: var(--color-gray-dark);
-    font-family: "Montserrat", sans-serif;
-    font-size: 0.68rem;
-    font-weight: 900;
-    line-height: 1.25;
-    text-transform: uppercase;
-    transform: rotate(-7deg);
-}
-
-.fs-founder-card img {
-    width: 64px;
-    height: 64px;
-    border: 2px solid var(--color-gray-dark);
-    border-radius: 50%;
-    object-fit: cover;
-}
-
-.fs-label {
-    position: absolute;
-    z-index: 5;
-    border: 2px solid var(--color-gray-dark);
-    box-shadow: 4px 4px 0 var(--color-gray-dark);
-    padding: 0.55rem 0.8rem;
-    color: var(--color-gray-dark);
-    font-family: "Montserrat", sans-serif;
-    font-size: 0.68rem;
-    font-weight: 900;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-}
-
-.fs-label-memory {
-    right: -0.4rem;
-    top: 31%;
-    background: var(--color-pink);
-    transform: rotate(-7deg);
-}
-
-.fs-label-healing {
-    left: -0.5rem;
-    bottom: 18%;
-    background: var(--color-green);
-    color: var(--color-bg);
-    transform: rotate(6deg);
-}
-
-@media (min-width: 621px) {
-    .fs-label-healing {
-        bottom: 24%;
-    }
-}
-
-.fs-scene-arrow {
-    position: absolute;
-    z-index: 5;
-    right: -0.4rem;
-    bottom: 4%;
-    color: var(--color-red);
-    font-family: "Montserrat", sans-serif;
-    font-size: 5rem;
-    font-weight: 900;
-    line-height: 1;
-    -webkit-text-stroke: 2px var(--color-gray-dark);
-    transform: rotate(-8deg);
-}
-
-.fs-stamp {
-    position: absolute;
-    z-index: 5;
-    left: -2rem;
-    bottom: -2rem;
-    width: clamp(120px, 13vw, 180px);
-    animation: fs-rotate-stamp 20s linear infinite;
-    transform-origin: center;
-}
-
-@keyframes fs-rotate-stamp {
-    to { transform: rotate(360deg); }
-}
-
+/* --- Phone: photo on top, text below --- */
 @media (max-width: 900px) {
     .fs-inner {
         grid-template-columns: 1fr;
     }
 
-    .fs h2 {
-        max-width: 8.5ch;
-    }
-
-    .fs-scene {
-        margin-top: 1rem;
+    .fs-media {
+        width: min(100%, 380px);
     }
 }
 
 @media (max-width: 620px) {
     .fs {
-        padding: 4.5rem 1.1rem 5.5rem;
+        padding-left: 1.1rem;
+        padding-right: 1.1rem;
     }
 
     .fs h2 {
-        font-size: clamp(3rem, 15vw, 4.6rem);
+        font-size: clamp(2.8rem, 15vw, 4.4rem);
+    }
+}
+
+/* Entrance: the pink heart's outline draws first, then its fill comes in. */
+@media (prefers-reduced-motion: no-preference) {
+    .journal-reveal .fs-pink-heart {
+        fill-opacity: 0;
     }
 
-    .fs-story-note {
-        padding: 1.1rem;
-    }
-
-    .fs-cta {
-        width: 100%;
-        justify-content: center;
-    }
-
-    .fs-scene {
-        width: 100%;
-        padding: 3rem 0 3.5rem;
-    }
-
-    .fs-videoFrame {
-        width: min(100%, 380px);
-        margin: auto;
-        border: 0;
-        border-radius: 26px;
-        background: transparent;
-        box-shadow: 0 9px 0 var(--color-pink);
-        transform: none;
-    }
-
-    .fs-videoFrame:hover {
-        transform: none;
-    }
-
-    .fs-founder-card {
-        top: 1rem;
-        left: 0.55rem;
-        border: 0;
-        border-radius: 999px;
-        box-shadow: none;
-        padding: 0.45rem 0.75rem 0.45rem 0.45rem;
-        transform: none;
-    }
-
-    .fs-founder-card img {
-        width: 54px;
-        height: 54px;
-        border: 0;
-    }
-
-    .fs-label-memory {
-        top: 29%;
-        right: 0.4rem;
-    }
-
-    .fs-label-healing {
-        left: 0.4rem;
-    }
-
-    .fs-label {
-        border: 0;
-        border-radius: 999px;
-        box-shadow: none;
-    }
-
-    .fs-scene-arrow {
-        display: none;
-    }
-
-    .fs-stamp {
-        left: 0;
-        bottom: -0.5rem;
-        width: 130px;
+    .journal-reveal.is-inview .fs-pink-heart {
+        fill-opacity: 1;
+        transition: fill-opacity 0.4s ease 1.7s;
     }
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .fs-stamp {
-        animation: none;
+    .fs-cta {
+        transition: none;
     }
 }

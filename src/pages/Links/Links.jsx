@@ -2,7 +2,11 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { FaAddressCard, FaInstagram, FaTiktok, FaArrowRight, FaShoppingBag, FaHeart, FaEtsy } from 'react-icons/fa';
 import BrandSticker from '../../components/BrandSticker/BrandSticker';
+import '../../styles/journal.css';
 import './Links.css';
+import JournalMasthead from '../../components/JournalMasthead/JournalMasthead';
+import JournalMarker from '../../components/JournalMarker/JournalMarker';
+import useInViewOnce from '../../hooks/useInViewOnce';
 import { AMAZON_STOREFRONT_URL } from '../../data/amazonStorefront';
 
 const destinations = [
@@ -19,13 +23,21 @@ const munbynLinks = [
 ];
 
 export default function Links() {
+    const [introRef, introInView] = useInViewOnce({ rootMargin: '0px' });
+
     return (
         <main className="souraw-links-page">
             <div className="souraw-links-shell">
-                <header className="souraw-links-intro">
-                    <p className="souraw-links-eyebrow">THE SOURAW EDIT / GOOD THINGS, GATHERED.</p>
-                    <h1>Your daily<br />dose of <span>SOURAW.</span></h1>
-                    <div className="souraw-links-intro-note">
+                <JournalMasthead
+                    className="souraw-links-masthead"
+                    left="THE SOURAW EDIT"
+                    center=""
+                    right="GOOD THINGS, GATHERED."
+                />
+
+                <header ref={introRef} className={`souraw-links-intro journal-reveal ${introInView ? 'is-inview' : ''}`}>
+                    <h1 className="reveal-up">Your daily<br />dose of <JournalMarker>SOURAW.</JournalMarker></h1>
+                    <div className="souraw-links-intro-note reveal-up" style={{ '--rd': '0.15s' }}>
                         <p>Bread, finds &amp; good things.<br />A little bit of everything. All in one place.</p>
                         <BrandSticker name="coffeeBreak" className="souraw-links-intro-sticker" eager />
                     </div>
@@ -39,7 +51,7 @@ export default function Links() {
                             <li key={href}>
                                 <a href={href} target="_blank" rel="noopener noreferrer">
                                     <strong>{title}</strong>
-                                    {code && <span>10% off with <b>{code}</b></span>}
+                                    {code && <span>10% off with <b className="souraw-links-code">{code}</b></span>}
                                 </a>
                             </li>
                         ))}
@@ -73,7 +85,6 @@ export default function Links() {
                 </section>
                 <div className="souraw-links-outro">
                     <Link className="souraw-links-home" to="/">Explore the whole SOURAW world <span aria-hidden="true">↗</span></Link>
-                    <BrandSticker name="goodThings" className="souraw-links-outro-sticker" />
                 </div>
                 <p className="souraw-links-signoff">untamed • unrushed • unapologetic</p>
             </div>

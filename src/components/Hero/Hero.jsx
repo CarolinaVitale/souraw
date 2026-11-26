@@ -1,4 +1,3 @@
-import BrandSticker from '../BrandSticker/BrandSticker';
 import React from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
@@ -11,9 +10,6 @@ const titleLines = ["Untamed.", "Unrushed.", "Unapologetic."];
 const Hero = () => (
     <section className="hero">
         <div className="hero-photo" aria-hidden="true" />
-        <div className="hero-background-word" aria-hidden="true">SOURAW</div>
-
-        <BrandSticker name="goodThings" className="souraw-sticker--hero" eager />
 
         <div className="hero-content">
             <p className="hero-kicker">

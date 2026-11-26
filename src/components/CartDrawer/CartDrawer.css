@@ -165,6 +165,19 @@
     background: var(--color-bg);
 }
 
+/* Orders paused (config/pickupSchedule.js): products stay, ordering waits. */
+.cart-paused {
+    margin: 0 0 1rem;
+    border: 1.5px solid var(--color-gray-dark);
+    background: #fffaf4;
+    padding: 0.8rem 0.9rem;
+    color: var(--color-gray-dark);
+    font-family: "Montserrat", sans-serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    line-height: 1.45;
+}
+
 .cart-total {
     display: flex;
     justify-content: space-between;

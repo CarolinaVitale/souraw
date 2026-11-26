@@ -2,7 +2,20 @@ import React from "react";
 import { categories, getProductsByCategory } from "../../data/products";
 import ProductCard from "../../components/ProductCard/ProductCard";
 import bannerImage from "../../assets/banner3.webp";
+import "../../styles/journal.css";
 import "./Catalog.css";
+import JournalMasthead from "../../components/JournalMasthead/JournalMasthead";
+import useInViewOnce from "../../hooks/useInViewOnce";
+
+/* Scroll-reveal wrapper: adds .journal-reveal, then .is-inview once. */
+function Reveal({ as: Tag = "div", className = "", children, ...rest }) {
+    const [ref, inView] = useInViewOnce();
+    return (
+        <Tag ref={ref} className={`${className} journal-reveal ${inView ? "is-inview" : ""}`} {...rest}>
+            {children}
+        </Tag>
+    );
+}
 
 const Catalog = () => {
     const catalogTitles = {
@@ -51,32 +64,23 @@ const Catalog = () => {
                 little reasons to gather around the table.
             </p>
 
-            <div className="menu-ribbon" aria-hidden="true">
-                <div>
-                    <span>REAL FERMENTATION • SMALL BATCHES • BAKED WITH INTENTION • </span>
-                    <span>REAL FERMENTATION • SMALL BATCHES • BAKED WITH INTENTION • </span>
-                    <span>REAL FERMENTATION • SMALL BATCHES • BAKED WITH INTENTION • </span>
-                    <span>REAL FERMENTATION • SMALL BATCHES • BAKED WITH INTENTION • </span>
-                </div>
-            </div>
-
             <section className="catalog" id="menu-selection">
-                <div className="catalog-intro">
-                    <p className="menu-script">choose your craving</p>
-                    <h1>Made slowly, meant to be savored.</h1>
-                    <span>
+                <Reveal className="catalog-intro">
+                    <p className="menu-script reveal-up">choose your craving</p>
+                    <h1 className="reveal-up" style={{ "--rd": "0.1s" }}>Made slowly, meant to be savored.</h1>
+                    <span className="reveal-up" style={{ "--rd": "0.25s" }}>
                         A quiet collection of sourdough breads, cravings, pizzas and sweet pauses —
                         crafted with real fermentation, patience and intention.
                     </span>
 
-                    <nav className="catalog-category-nav" aria-label="Menu categories">
+                    <nav className="catalog-category-nav reveal-up" style={{ "--rd": "0.35s" }} aria-label="Menu categories">
                         {visibleCategories.map((category) => (
                             <a key={category.id} href={`#${category.id}`}>
                                 {catalogTitles[category.id] || category.title}
                             </a>
                         ))}
                     </nav>
-                </div>
+                </Reveal>
 
                 {visibleCategories.map((category, categoryIndex) => {
                     return (
@@ -85,15 +89,16 @@ const Catalog = () => {
                             id={category.id}
                             key={category.id}
                         >
-                            <div className="catalog-section-word" aria-hidden="true">
-                                {catalogTitles[category.id] || category.title}
-                            </div>
                             <div className="catalog-section-header">
-                                <div>
-                                    <span>{String(categoryIndex + 1).padStart(2, "0")}</span>
-                                    <p>SOURAW selection</p>
-                                </div>
-                                <h2>{catalogTitles[category.id] || category.title}</h2>
+                                <JournalMasthead
+                                    className="catalog-masthead"
+                                    left={String(categoryIndex + 1).padStart(2, "0")}
+                                    center=""
+                                    right="SOURAW selection"
+                                />
+                                <Reveal as="h2" className="catalog-section-title">
+                                    <span className="reveal-up">{catalogTitles[category.id] || category.title}</span>
+                                </Reveal>
                             </div>
 
                             <div className="catalog-grid">
@@ -110,15 +115,17 @@ const Catalog = () => {
                     );
                 })}
 
-                <div className="catalog-cta">
-                    <p className="menu-script">ready when you are</p>
-                    <h2>Found your favorite?</h2>
-                    <p>Freshly baked for Tampa locals ♡</p>
+                <Reveal className="catalog-cta">
+                    <p className="menu-script reveal-up">ready when you are</p>
+                    <h2 className="reveal-up" style={{ "--rd": "0.1s" }}>Found your favorite?</h2>
+                    <p className="reveal-up" style={{ "--rd": "0.2s" }}>Freshly baked for Tampa locals ♡</p>
 
-                    <a href="/orders" className="menu-pill menu-pill-cream">
-                        Order SOURAW <span aria-hidden="true">↗</span>
-                    </a>
-                </div>
+                    <div className="reveal-up" style={{ "--rd": "0.3s" }}>
+                        <a href="/orders" className="menu-pill menu-pill-red">
+                            Order SOURAW <span aria-hidden="true">↗</span>
+                        </a>
+                    </div>
+                </Reveal>
             </section>
         </main>
     );

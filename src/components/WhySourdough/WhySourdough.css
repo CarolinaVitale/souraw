@@ -1,106 +1,88 @@
+@import "../../styles/variables.css";
+
+/* "Why sourdough" on /about, in the journal style of the home:
+   plain cream, color only in the details. */
 .why-sourdough {
-    position: relative;
-    min-height: 90vh;
+    background: var(--color-bg);
+    padding: clamp(4rem, 7vw, 6rem) 6vw clamp(5rem, 9vw, 7.5rem);
+    color: var(--color-gray-dark);
+    font-family: "Montserrat", sans-serif;
+}
+
+.why-sourdough-masthead {
+    width: min(1240px, 100%);
+    margin: 0 auto;
+}
+
+.why-sourdough-body {
     display: grid;
-    place-items: center;
-    overflow: hidden;
-    border-top: 5px solid var(--about-dark, #363636);
-    background: var(--about-red, #ef3d23);
-    isolation: isolate;
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.25fr) minmax(0, 0.8fr);
+    gap: clamp(2rem, 4vw, 4rem);
+    align-items: center;
+    width: min(1240px, 100%);
+    margin: clamp(3rem, 6vw, 4.5rem) auto 0;
 }
 
-.why-sourdough-gallery {
-    position: absolute;
-    inset: 0;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    z-index: -2;
+.why-sourdough-photo > img {
+    aspect-ratio: 3 / 4;
 }
 
-.why-sourdough-gallery > div {
-    background-position: center;
-    background-size: cover;
-    filter: saturate(.85) contrast(.95);
-}
-
-.why-sourdough::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-}
-
-.why-sourdough-word {
-    left: -2vw;
-    bottom: -4vw;
-    z-index: 0;
-    font-size: clamp(14rem, 32vw, 38rem);
-    -webkit-text-stroke-color: rgba(255, 232, 207, .28);
+.why-sourdough-photo:last-child {
+    margin-top: 4rem;
 }
 
 .text-overlay {
-    position: relative;
-    z-index: 2;
-    width: min(760px, calc(100% - 3rem));
-    box-sizing: border-box;
-    padding: clamp(2rem, 5vw, 4rem);
-    border: 4px solid var(--about-cream, #ffe8cf);
-    background: var(--about-dark, #363636);
-    box-shadow: 14px 15px 0 var(--about-yellow, #f6bc3f);
-    color: var(--about-cream, #ffe8cf);
     text-align: center;
-    transform: rotate(-1deg);
 }
 
 .text-overlay .about-script {
-    color: var(--about-pink, #f791c3);
+    margin: 0 0 0.9rem;
+    color: var(--color-red);
+    transform: rotate(-2deg);
 }
 
 .why-sourdough h2 {
-    font-size: clamp(3.4rem, 7vw, 7rem);
+    color: var(--color-gray-dark);
+    font-size: clamp(2.8rem, 4.6vw, 5rem);
+    text-shadow: 4px 5px 0 var(--color-yellow);
 }
 
 .text-overlay > p:not(.about-script) {
-    max-width: 610px;
-    margin: 1.5rem auto 2rem;
-    font-size: 1.05rem;
+    max-width: 46ch;
+    margin: 1.8rem auto 2rem;
+    font-size: clamp(1rem, 1.3vw, 1.1rem);
     font-weight: 600;
     line-height: 1.65;
 }
 
-@media (max-width: 720px) {
-    .why-sourdough {
-        box-sizing: border-box;
-        width: 100%;
-        min-height: 100vh;
-        padding: 5rem 1.2rem;
-    }
-
-    .why-sourdough-gallery {
+/* --- Phone: one column, text first, then the photos --- */
+@media (max-width: 900px) {
+    .why-sourdough-body {
         grid-template-columns: 1fr;
-    }
-
-    .why-sourdough-gallery > div:last-child {
-        display: none;
+        gap: 3rem;
     }
 
     .text-overlay {
-        width: 100%;
-        max-width: 100%;
-        min-width: 0;
-        padding: 2rem 1.2rem;
-        box-shadow: 8px 9px 0 var(--about-yellow, #f6bc3f);
-        transform: none;
+        order: -1;
+    }
+
+    .why-sourdough-photo {
+        width: min(86%, 340px);
+        justify-self: center;
+    }
+
+    .why-sourdough-photo:last-child {
+        margin-top: 0;
+    }
+}
+
+@media (max-width: 620px) {
+    .why-sourdough {
+        padding-left: 1.1rem;
+        padding-right: 1.1rem;
     }
 
     .why-sourdough h2 {
-        max-width: 100%;
-        font-size: clamp(2.35rem, 10vw, 3.5rem);
-        overflow-wrap: anywhere;
-    }
-
-    .text-overlay > p:not(.about-script) {
-        max-width: 100%;
-        overflow-wrap: anywhere;
+        font-size: clamp(2.4rem, 11.5vw, 3.6rem);
     }
 }

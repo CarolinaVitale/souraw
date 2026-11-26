@@ -1,67 +1,52 @@
+/* Menu product card, in the journal style: light cream paper, thin dark
+   border, a subtle 4px hard shadow; the photo is a polaroid with washi tape
+   in its category color (--cat, set on each catalog section). */
 .product-card {
+    position: relative;
     min-width: 0;
     display: flex;
     flex-direction: column;
-    overflow: hidden;
-    border: 4px solid var(--menu-dark, #363636);
-    background: var(--menu-cream, #ffe8cf);
-    box-shadow: 10px 11px 0 var(--menu-dark, #363636);
+    border: 1.5px solid var(--menu-dark, #363636);
+    background: #fffaf4;
+    box-shadow: 4px 4px 0 var(--menu-dark, #363636);
     color: var(--menu-dark, #363636);
 }
 
-.catalog-grid .product-card:nth-child(3n + 2) {
-    transform: translateY(1.5rem) rotate(1deg);
-}
-
-.catalog-grid .product-card:nth-child(3n + 3) {
-    transform: rotate(-1deg);
-}
-
+/* Polaroid frame, tilt, hover and entrance come from journal.css. */
 .product-image-wrap {
-    position: relative;
-    margin: .75rem;
-    aspect-ratio: 4 / 4.5;
-    overflow: hidden;
-    border: 3px solid var(--menu-dark, #363636);
+    margin: 1.6rem 1.3rem 0.4rem;
+}
+
+.product-image-wrap::before {
+    background: var(--cat, #f791c3);
+    opacity: 0.75;
+}
+
+.product-image-wrap > .product-image {
+    aspect-ratio: 4 / 4.4;
     background: #f7eadc;
 }
 
-.product-image {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform .6s ease;
-}
-
-.product-card:hover .product-image {
-    transform: scale(1.035);
-}
-
+/* Product number in handwriting, on the polaroid's bottom edge. */
 .product-number {
     position: absolute;
-    top: .7rem;
-    right: .7rem;
-    display: grid;
-    place-items: center;
-    width: 46px;
-    height: 46px;
-    border: 3px solid var(--menu-dark, #363636);
-    border-radius: 50%;
-    background: var(--menu-yellow, #f6bc3f);
-    font-size: .7rem;
-    font-weight: 900;
+    right: 0.9rem;
+    bottom: 0.35rem;
+    color: var(--menu-red, #ef3d23);
+    font-family: "Biro", cursive;
+    font-size: 1.6rem;
+    line-height: 1;
 }
 
 .product-badge {
     position: absolute;
-    left: .7rem;
-    bottom: .8rem;
-    max-width: calc(100% - 1.4rem);
+    left: 1.1rem;
+    bottom: 3.1rem;
+    max-width: calc(100% - 2.2rem);
     padding: .55rem .85rem;
-    border: 3px solid var(--menu-dark, #363636);
+    border: 2px solid var(--menu-dark, #363636);
     background: var(--menu-pink, #f791c3);
-    box-shadow: 5px 5px 0 var(--menu-dark, #363636);
+    box-shadow: 3px 3px 0 var(--menu-dark, #363636);
     font-size: .65rem;
     font-weight: 900;
     letter-spacing: .06em;
@@ -72,7 +57,7 @@
 
 .product-info {
     flex: 1;
-    padding: 1rem clamp(1.15rem, 2.5vw, 1.8rem) 1.7rem;
+    padding: 1rem clamp(1.15rem, 2.5vw, 1.6rem) 1.5rem;
     display: flex;
     flex-direction: column;
 }
@@ -90,28 +75,30 @@
     margin: 0;
     color: var(--menu-dark, #363636);
     font-family: "Montserrat", sans-serif;
-    font-size: clamp(1.7rem, 2.6vw, 2.8rem);
+    font-size: clamp(1.6rem, 2.4vw, 2.5rem);
     font-weight: 900;
     line-height: .9;
     letter-spacing: -.045em;
     text-transform: uppercase;
 }
 
+/* Size as a yellow sticker with a border. */
 .product-weight {
     flex: 0 0 auto;
-    padding: .35rem .55rem;
-    border: 2px solid var(--menu-dark, #363636);
+    padding: .35rem .6rem;
+    border: 1.5px solid var(--menu-dark, #363636);
     background: var(--menu-yellow, #f6bc3f);
     color: var(--menu-dark, #363636);
-    font-size: .65rem;
+    font-size: .7rem;
     font-weight: 900;
     white-space: nowrap;
+    transform: rotate(3deg);
 }
 
 .product-description {
     margin: 0 0 1.2rem;
     font-family: "Montserrat", sans-serif;
-    font-size: .94rem;
+    font-size: .95rem;
     font-weight: 600;
     line-height: 1.55;
 }
@@ -119,18 +106,17 @@
 .product-ingredients {
     margin: 0;
     padding-top: 1rem;
-    border-top: 2px solid rgba(54, 54, 54, .18);
+    border-top: 1px solid rgba(54, 54, 54, .25);
     font-family: "Montserrat", sans-serif;
-    font-size: .75rem;
-    line-height: 1.5;
-    opacity: .8;
+    font-size: .875rem;
+    line-height: 1.55;
 }
 
 .product-ingredients > span {
     display: block;
     margin-bottom: .3rem;
     color: var(--menu-red, #ef3d23);
-    font-size: .65rem;
+    font-size: .7rem;
     font-weight: 900;
     letter-spacing: .1em;
     text-transform: uppercase;
@@ -154,7 +140,7 @@
 .product-prices > strong,
 .product-prices span strong {
     display: block;
-    color: var(--menu-red, #ef3d23);
+    color: #c1272d;
     font-size: 1.8rem;
     font-weight: 900;
     line-height: 1;
@@ -163,7 +149,7 @@
 .product-prices span small {
     display: block;
     margin-bottom: .25rem;
-    font-size: .6rem;
+    font-size: .65rem;
     font-weight: 900;
     letter-spacing: .07em;
     text-transform: uppercase;
@@ -172,9 +158,9 @@
 .product-availability {
     max-width: 145px;
     padding: .45rem .6rem;
-    border: 2px solid var(--menu-dark, #363636);
+    border: 1.5px solid var(--menu-dark, #363636);
     background: var(--menu-pink, #f791c3);
-    font-size: .6rem;
+    font-size: .65rem;
     font-weight: 900;
     line-height: 1.2;
     text-align: center;
@@ -183,13 +169,10 @@
 }
 
 @media (max-width: 720px) {
-    .catalog-grid .product-card:nth-child(3n + 2),
-    .catalog-grid .product-card:nth-child(3n + 3) {
-        transform: none;
-    }
-
-    .product-image-wrap {
-        aspect-ratio: 1 / 1.05;
+    /* Size stickers and price labels (BOX OF 12…) at least 12px on phones. */
+    .product-weight,
+    .product-prices span small {
+        font-size: .75rem;
     }
 
     .product-name {

@@ -3,6 +3,7 @@ import { bakeryPaymentsEnabled, callBakeryPayment } from "../../utils/bakeryPaym
 import emailjs from "@emailjs/browser";
 import "./CheckoutForm.css";
 import { useCart } from "../../context/CartContext";
+import { getOrderPickup } from "../../utils/orderPickup";
 
 const CheckoutForm = ({ onClose }) => {
     const { cartItems, cartTotal, clearCart } = useCart();
@@ -11,7 +12,6 @@ const CheckoutForm = ({ onClose }) => {
         name: "",
         email: "",
         phone: "",
-        deliveryDate: "",
         notes: "",
     });
 
@@ -33,6 +33,9 @@ const CheckoutForm = ({ onClose }) => {
                 )}`
         )
         .join("\n");
+
+    // Pickup line depends on the cart (sourdough / sweets / mixed). See utils/orderPickup.js.
+    const pickupInfo = getOrderPickup(cartItems);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -61,6 +64,11 @@ const CheckoutForm = ({ onClose }) => {
 
         if (!cartItems.length) return;
 
+        // Recomputed at submit time in case a cutoff or a pause started meanwhile.
+        const latestPickup = getOrderPickup(cartItems);
+        if (!latestPickup.open) return;
+        const pickup = latestPickup.line;
+
         setIsSending(true);
         setStatus("");
 
@@ -68,7 +76,8 @@ const CheckoutForm = ({ onClose }) => {
             try {
                 const payload = {
                     items: cartItems.map(({ id, size, quantity }) => ({ id, size, quantity })),
-                    customer: formData,
+                    // deliveryDate carries the pickup line to the order emails.
+                    customer: { ...formData, deliveryDate: pickup },
                 };
                 const fingerprint = JSON.stringify(payload);
                 if (checkoutAttempt.current?.fingerprint !== fingerprint) {
@@ -94,9 +103,9 @@ const CheckoutForm = ({ onClose }) => {
             customer_name: formData.name,
             customer_email: formData.email,
             customer_phone: formData.phone,
-            delivery_date: formData.deliveryDate,
+            delivery_date: pickup,
             customer_notes: formData.notes,
-            order_details: orderDetails,
+            order_details: `${orderDetails}\n\n${pickup}`,
             order_total: formatUSD(cartTotal),
         };
 
@@ -111,7 +120,6 @@ const CheckoutForm = ({ onClose }) => {
             setStatus("success");
         } catch (error) {
             console.error("EmailJS error:", error.text || error);
-            alert(error.text || "EmailJS error");
             setStatus("error");
         } finally {
             setIsSending(false);
@@ -150,56 +158,68 @@ const CheckoutForm = ({ onClose }) => {
             ) : (
                 <form className="checkout-form" onSubmit={handleSubmit}>
                     <fieldset disabled={isSending} style={{ border: 0, padding: 0, margin: 0, minWidth: 0, display: "contents" }}>
-                    <input
-                        type="text"
-                        name="name"
-                        placeholder="Name *"
-                        value={formData.name}
-                        onChange={handleChange}
-                        required
-                    />
+                    <label className="checkout-field">
+                        <span className="checkout-label">Name *</span>
+                        <input
+                            type="text"
+                            name="name"
+                            placeholder="Name *"
+                            value={formData.name}
+                            onChange={handleChange}
+                            required
+                        />
+                    </label>
 
-                    <input
-                        type="email"
-                        name="email"
-                        placeholder="Email *"
-                        value={formData.email}
-                        onChange={handleChange}
-                        required
-                    />
+                    <label className="checkout-field">
+                        <span className="checkout-label">Email *</span>
+                        <input
+                            type="email"
+                            name="email"
+                            placeholder="Email *"
+                            value={formData.email}
+                            onChange={handleChange}
+                            required
+                        />
+                    </label>
 
-                    <input
-                        type="tel"
-                        name="phone"
-                        placeholder="Phone number *"
-                        value={formData.phone}
-                        onChange={handleChange}
-                        required
-                    />
+                    <label className="checkout-field">
+                        <span className="checkout-label">Phone number *</span>
+                        <input
+                            type="tel"
+                            name="phone"
+                            placeholder="Phone number *"
+                            value={formData.phone}
+                            onChange={handleChange}
+                            required
+                        />
+                    </label>
 
-                    <input
-                        type="text"
-                        name="deliveryDate"
-                        placeholder="Preferred delivery date"
-                        value={formData.deliveryDate}
-                        onChange={handleChange}
-                    />
-
-                    <textarea
-                        name="notes"
-                        placeholder="Notes / allergies / special requests"
-                        value={formData.notes}
-                        onChange={handleChange}
-                    />
+                    <label className="checkout-field">
+                        <span className="checkout-label">Notes / allergies / special requests</span>
+                        <textarea
+                            name="notes"
+                            placeholder="Notes / allergies / special requests"
+                            value={formData.notes}
+                            onChange={handleChange}
+                        />
+                    </label>
 
                     <div className="checkout-summary">
                         <strong>Order:</strong>
                         <pre>{orderDetails}</pre>
+                        {pickupInfo.open ? (
+                            <>
+                                <p className="checkout-pickup">{pickupInfo.line}</p>
+                                {pickupInfo.message && <p className="checkout-pickup-note">{pickupInfo.message}</p>}
+                            </>
+                        ) : (
+                            <p className="checkout-pickup-note checkout-pickup-note--paused" role="status">{pickupInfo.message}</p>
+                        )}
                         <p>Total: {formatUSD(cartTotal)}</p>
                     </div>
 
                     {bakeryPaymentsEnabled && <p>Tampa local orders only; we will confirm your requested date and pickup details.</p>}
-                    <button className="checkout-submit" type="submit" disabled={isSending}>
+                    <button className="checkout-submit" type="submit" disabled={isSending || !pickupInfo.open}>
                         {isSending ? (bakeryPaymentsEnabled ? "opening secure payment…" : "sending...") : (bakeryPaymentsEnabled ? "continue to payment" : "place order")}
                     </button>
 

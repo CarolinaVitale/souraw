@@ -1,6 +1,9 @@
 # /public_html/souraw/.htaccess
 RewriteEngine On
 
+# La página /schedule ya no existe: los links viejos (Instagram, favoritos) van a /orders.
+RewriteRule ^schedule/?$ /orders [R=301,L]
+
 # Sirve archivos y carpetas reales
 RewriteCond %{REQUEST_FILENAME} -f [OR]
 RewriteCond %{REQUEST_FILENAME} -d
