@@ -57,7 +57,6 @@ const ReviewsForm = () => {
 
             {/* Paper card with washi tape; it settles in like the notes above. */}
             <div className="review-form-card journal-polaroid journal-polaroid--tilt-right journal-polaroid--yellow-tape" style={{ "--rd": "0.2s" }}>
-                <span className="reviews-sticker reviews-sticker-form">say it like it is</span>
                 <form className="review-form" onSubmit={handleSubmit}>
                     <label htmlFor="review-name">Your name</label>
                     <input

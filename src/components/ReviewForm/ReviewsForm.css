@@ -46,13 +46,6 @@
 
 .review-form-card.journal-polaroid--tilt-right { --tilt: 1deg; }
 
-.reviews-sticker-form {
-    top: -1.5rem;
-    right: -1rem;
-    background: var(--reviews-pink);
-    transform: rotate(4deg);
-}
-
 .review-form {
     display: flex;
     flex-direction: column;
@@ -206,9 +199,6 @@
         padding: 1.8rem 1.25rem 1.4rem;
     }
 
-    .reviews-sticker-form {
-        right: -.4rem;
-    }
 }
 
 @media (prefers-reduced-motion: reduce) {

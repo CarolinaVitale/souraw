@@ -18,13 +18,12 @@ beforeEach(() => {
 });
 const open = (query) => { mockQuery = query; return render(<PaymentResult />); };
 test('only clears cart after server confirms payment', async () => {
-    sessionStorage.setItem('souraw-payment-cart', '[{}]');
     callBakeryPayment.mockResolvedValue({ paid: true });
     open('session_id=cs_test_reference');
     await screen.findByText('Payment received ♡');
     expect(callBakeryPayment).toHaveBeenCalledWith('getBakeryPayment', { sessionId: 'cs_test_reference' });
+    // clearCart also removes the saved copy of the cart (see CartContext).
     expect(clearCart).toHaveBeenCalledTimes(1);
-    expect(sessionStorage.getItem('souraw-payment-cart')).toBeNull();
 });
 test('retains cart and avoids claiming success when verification fails', async () => {
     callBakeryPayment.mockRejectedValue(new Error('offline'));

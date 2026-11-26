@@ -17,10 +17,8 @@ export default function PaymentResult() {
         callBakeryPayment('getBakeryPayment', { sessionId }).then(({ paid }) => {
             if (!active) return;
             setStatus(paid ? 'paid' : 'pending');
-            if (paid) {
-                sessionStorage.removeItem('souraw-payment-cart');
-                clearCart();
-            }
+            // Payment confirmed: the order is complete, so the saved cart goes away.
+            if (paid) clearCart();
         }).catch(() => { if (active) setStatus('error'); });
         return () => { active = false; };
         // clearCart is a context callback recreated when the cart changes.

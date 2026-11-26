@@ -6,7 +6,7 @@ import { useCart } from "../../context/CartContext";
 import { getOrderPickup } from "../../utils/orderPickup";
 
 const CheckoutForm = ({ onClose }) => {
-    const { cartItems, cartTotal, clearCart } = useCart();
+    const { cartItems, cartTotal, clearCart, markOrderPlaced } = useCart();
 
     const [formData, setFormData] = useState({
         name: "",
@@ -90,7 +90,6 @@ const CheckoutForm = ({ onClose }) => {
                 if (destination.protocol !== 'https:' || destination.hostname !== 'checkout.stripe.com') {
                     throw new Error('Invalid payment destination');
                 }
-                sessionStorage.setItem('souraw-payment-cart', JSON.stringify(cartItems));
                 window.location.assign(url);
             } catch (error) {
                 setStatus('error');
@@ -117,6 +116,8 @@ const CheckoutForm = ({ onClose }) => {
                 process.env.REACT_APP_EMAILJS_PUBLIC_KEY
             );
 
+            // Order complete: stop keeping the cart; it empties when the thank-you closes.
+            markOrderPlaced();
             setStatus("success");
         } catch (error) {
             console.error("EmailJS error:", error.text || error);
