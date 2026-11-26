@@ -1,5 +1,6 @@
 // Pickup line for an order, depending on what is in the cart. Pickup days are
 // flexible, so the line never promises a fixed date: SOURAW confirms by contact.
+// Every order can be picked up at Canopy or Ocho Trece.
 //
 // - Only sourdough: the next bake day (Tuesday 8:00 PM cutoff, Tampa time,
 //   plus the special dates in src/config/pickupSchedule.js).
@@ -13,9 +14,9 @@ import { isSweetProduct } from "../data/orderCategories";
 
 export const SWEETS_PICKUP_LINE =
     "Same day available · We'll contact you to arrange pickup at Canopy or Ocho Trece.";
-export const MIXED_PICKUP_LINE = "We'll contact you to coordinate pickup for your order.";
+export const MIXED_PICKUP_LINE = "We'll contact you to coordinate pickup for your order at Canopy or Ocho Trece.";
 export const sourdoughPickupLine = (dateLabel) =>
-    `Next bake: ${dateLabel} · We'll contact you to confirm pickup.`;
+    `Next bake: ${dateLabel} · We'll contact you to confirm pickup at Canopy or Ocho Trece.`;
 
 /**
  * Returns:

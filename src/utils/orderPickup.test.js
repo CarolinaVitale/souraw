@@ -12,7 +12,7 @@ describe("getOrderPickup", () => {
         expect(getOrderPickup([bread], sunday, [])).toEqual({
             open: true,
             kind: "sourdough",
-            line: "Next bake: Thursday, Dec 4 · We'll contact you to confirm pickup.",
+            line: "Next bake: Thursday, Dec 4 · We'll contact you to confirm pickup at Canopy or Ocho Trece.",
             message: null,
         });
     });
@@ -20,7 +20,7 @@ describe("getOrderPickup", () => {
     test("sourdough after the Tuesday 8 PM cutoff → the following Thursday", () => {
         // Tue Dec 2 2025, 8:00 PM in Tampa
         expect(getOrderPickup([bread], new Date("2025-12-03T01:00:00Z"), []).line)
-            .toBe("Next bake: Thursday, Dec 11 · We'll contact you to confirm pickup.");
+            .toBe("Next bake: Thursday, Dec 11 · We'll contact you to confirm pickup at Canopy or Ocho Trece.");
     });
 
     test("sweets only → same day, no date", () => {
@@ -36,7 +36,7 @@ describe("getOrderPickup", () => {
         expect(getOrderPickup([cookies, bread], sunday, [])).toEqual({
             open: true,
             kind: "mixed",
-            line: "We'll contact you to coordinate pickup for your order.",
+            line: "We'll contact you to coordinate pickup for your order at Canopy or Ocho Trece.",
             message: null,
         });
     });
@@ -44,7 +44,7 @@ describe("getOrderPickup", () => {
     test("special dates change the sourdough bake day and show their note", () => {
         const list = [{ type: "closed", date: "2025-12-04", message: "Closed for the holiday." }];
         expect(getOrderPickup([bread], sunday, list)).toMatchObject({
-            line: "Next bake: Thursday, Dec 11 · We'll contact you to confirm pickup.",
+            line: "Next bake: Thursday, Dec 11 · We'll contact you to confirm pickup at Canopy or Ocho Trece.",
             message: "Closed for the holiday.",
         });
         expect(getOrderPickup([cookies], sunday, list)).toMatchObject({ kind: "sweets", message: null });
@@ -54,7 +54,7 @@ describe("getOrderPickup", () => {
     test("a moved bake day shows its own weekday", () => {
         const list = [{ type: "moved", from: "2025-12-04", to: "2025-12-03", cutoff: "2025-12-01 8:00 PM" }];
         expect(getOrderPickup([bread], sunday, list).line)
-            .toBe("Next bake: Wednesday, Dec 3 · We'll contact you to confirm pickup.");
+            .toBe("Next bake: Wednesday, Dec 3 · We'll contact you to confirm pickup at Canopy or Ocho Trece.");
     });
 
     test("a pause closes ordering for every cart", () => {
@@ -68,7 +68,7 @@ describe("getOrderPickup", () => {
         // Longest possible date: a bake moved to a Wednesday in September.
         const list = [{ type: "moved", from: "2026-10-01", to: "2026-09-30", cutoff: "2026-09-28 8:00 PM" }];
         const longest = getOrderPickup([bread], new Date("2026-09-27T15:00:00Z"), list).line;
-        expect(longest).toBe("Next bake: Wednesday, Sep 30 · We'll contact you to confirm pickup.");
+        expect(longest).toBe("Next bake: Wednesday, Sep 30 · We'll contact you to confirm pickup at Canopy or Ocho Trece.");
         for (const line of [SWEETS_PICKUP_LINE, MIXED_PICKUP_LINE, longest]) {
             expect(line.length).toBeLessThanOrEqual(100);
         }

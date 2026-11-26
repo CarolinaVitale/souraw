@@ -111,7 +111,7 @@ const Prices = ({ sweets = false }) => {
                         <div className="order-facts">
                             <div className="order-fact">
                                 <ShoppingBag size={24} weight="bold" />
-                                <span><small>Pickup</small>{sweets ? "Canopy · Ocho Trece" : "Thursday at Canopy"}</span>
+                                <span><small>Pickup</small>Canopy · Ocho Trece</span>
                             </div>
                             <div className="order-fact">
                                 <Clock size={24} weight="bold" />
@@ -243,26 +243,27 @@ const Prices = ({ sweets = false }) => {
             <Reveal as="section" className="order-pickup" aria-labelledby="pickup-title">
                 <div>
                     <p className="prices-section-kicker reveal-up">Tampa locals only</p>
-                    <h2 id="pickup-title" className="reveal-up" style={{ "--rd": "0.1s" }}>{sweets ? <>Pick up your<br />sweet things.</> : <>Meet me at<br />Canopy.</>}</h2>
+                    <h2 id="pickup-title" className="reveal-up" style={{ "--rd": "0.1s" }}>{sweets ? <>Pick up your<br />sweet things.</> : <>Pick up your<br />order.</>}</h2>
                     <BrandSticker name="breadHug" className="souraw-sticker--pickup" />
                 </div>
                 <div className="order-pickup-copy journal-polaroid journal-polaroid--tilt-right" style={{ "--rd": "0.2s" }}>
                     <MapPin size={38} weight="fill" />
-                    {sweets ? <>
-                        <h3>Canopy at Citrus Park</h3>
-                        <p>Thursday pickup at Canopy. Cookies can also be ordered for the same day — contact us to arrange pickup.</p>
-                    </> : <p>Thursday pickup at Canopy at Citrus Park. Delivery availability depends on location.</p>}
+                    <h3>Canopy at Citrus Park</h3>
+                    {sweets
+                        ? <p>Thursday pickup at Canopy. Cookies can also be ordered for the same day — contact us to arrange pickup.</p>
+                        : <p>Thursday pickup at Canopy at Citrus Park. Delivery availability depends on location.</p>}
                     <a href="https://maps.apple/p/ActVsYKEG6B18B" target="_blank" rel="noopener noreferrer">
                         Canopy location <ArrowUpRight size={18} weight="bold" />
                     </a>
-                    {sweets && <div className="order-extra-pickup">
+                    {/* Second pickup place, for every order. */}
+                    <div className="order-extra-pickup">
                         <h3>Ocho Trece</h3>
                         <a href="https://maps.apple/p/00yuXC9dmV7z3K" target="_blank" rel="noopener noreferrer">
                             Ocho Trece location <ArrowUpRight size={18} weight="bold" />
                         </a>
-                        <p>Another place to pick up your treats. Contact us to coordinate your pickup.</p>
+                        <p>Another place to pick up your {sweets ? "treats" : "order"}. Contact us to coordinate your pickup.</p>
                         <button type="button" className="price-button" onClick={openContactDrawer}>arrange pickup <ArrowUpRight size={18} /></button>
-                    </div>}
+                    </div>
                 </div>
             </Reveal>
         </main>

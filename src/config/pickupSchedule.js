@@ -1,8 +1,9 @@
 // ─────────────────────────────────────────────────────────────────────────────
 // Special pickup dates (holidays, vacations).
 //
-// The normal rule needs no entry here: pickup is every Thursday at Canopy, and
-// the order cutoff is the Tuesday before at 8:00 PM (Tampa time).
+// The normal rule needs no entry here: sourdough bakes every Thursday (pickup at
+// Canopy or Ocho Trece), and the order cutoff is the Tuesday before at 8:00 PM
+// (Tampa time).
 //
 // Add one entry per exception. Dates are "YYYY-MM-DD". Times are Tampa time,
 // written "YYYY-MM-DD 8:00 PM" (or 24-hour, "YYYY-MM-DD 20:00").
